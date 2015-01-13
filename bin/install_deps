@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+source "$(dirname $0)/include"
+
+go get 'github.com/stretchr/testify/assert'
+go get 'github.com/djimenez/iconv-go'
+
+mkdir -p src/github.com/sendgrid
+test -d src/github.com/sendgrid/go-gmime \
+    || ln -sf ../../.. src/github.com/sendgrid/go-gmime

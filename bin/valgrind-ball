@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+source "$(dirname $0)/include"
+
+go build -tags valgrind -compiler gccgo -gccgoflags '-g -gdwarf-2  -fuse-ld=gold -fno-split-stack -Wl,-u,pthread_create -lgmime-2.6 -lgobject-2.0 -lglib-2.0' -o testball.gccgo  bench/gmime/testball.go
+
+export G_SLICE=always-malloc
+#,debug-blocks
+export G_DEBUG=gc-friendly
+export GOMAXPROCS=1
+#export GODEBUG=efence=1
+
+valgrind \
+        --show-below-main=yes \
+        --track-origins=yes   \
+        --show-leak-kinds=all \
+        --leak-check=full     \
+        --smc-check=all       \
+        --error-limit=no      \
+        --num-callers=100     \
+        --leak-check-heuristics=all \
+        --suppressions=./valgrind.supp \
+        ./testball.gccgo  >valgrind-ball.log 2>&1 \
+

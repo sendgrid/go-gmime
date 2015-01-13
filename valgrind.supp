@@ -1,0 +1,607 @@
+# Valgrind error suppression file
+
+# ============================= libc ==================================
+
+{
+   ld.so initialization + selinux
+   Memcheck:Leak
+   ...
+   fun:_dl_init
+   obj:/lib/ld-*.so
+}
+
+{
+   dlopen initialization, triggered by handle-leak-debug code
+   Memcheck:Leak
+   ...
+   fun:__libc_dlopen_mode
+   fun:init
+   fun:backtrace
+   fun:handle_leak_debug_bt
+   fun:dynamic_ensure_handle
+   fun:tp_handle_ensure
+}
+
+# default.supp has these for 2.10, but they're too specific
+{
+   Debian libc6 (2.10.x, 2.11.x) stripped dynamic linker
+   Memcheck:Cond
+   fun:index
+   fun:expand_dynamic_string_token
+   fun:_dl_map_object
+   fun:map_doit
+   fun:_dl_catch_error
+   fun:do_preload
+   fun:dl_main
+   fun:_dl_sysdep_start
+   fun:_dl_start
+   obj:/lib/ld-*.so
+}
+{
+   Debian libc6 (2.9.x - 2.11.x) stripped dynamic linker
+   Memcheck:Cond
+   fun:_dl_relocate_object
+   fun:dl_main
+   fun:_dl_sysdep_start
+   fun:_dl_start
+   obj:/lib/ld-*.so
+}
+
+{
+   ld.so initialization on glibc 2.9
+   Memcheck:Cond
+   fun:strlen
+   fun:_dl_init_paths
+   fun:dl_main
+   fun:_dl_sysdep_start
+   fun:_dl_start
+   obj:/lib/ld-2.9.so
+}
+
+# ======================= libselinux on Debian amd64 =====================
+
+{
+   I have no idea what SELinux is doing but it's not my problem
+   Memcheck:Cond
+   ...
+   obj:/lib/libselinux.so.1
+   obj:/lib/libselinux.so.1
+   obj:/lib/libselinux.so.1
+}
+
+{
+   I have no idea what SELinux is doing but it's not my problem
+   Memcheck:Value8
+   ...
+   obj:/lib/libselinux.so.1
+   obj:/lib/libselinux.so.1
+   obj:/lib/libselinux.so.1
+}
+
+{
+   I have no idea what SELinux is doing but it's not my problem
+   Memcheck:Leak
+   ...
+   obj:/lib/libselinux.so.1
+   obj:/lib/libselinux.so.1
+   obj:/lib/libselinux.so.1
+}
+
+# ============================= GLib ==================================
+
+{
+   g_set_prgname copies its argument
+   Memcheck:Leak
+   ...
+   fun:g_set_prgname
+}
+
+{
+   one g_get_charset per child^Wprocess
+   Memcheck:Leak
+   ...
+   fun:g_get_charset
+}
+
+{
+   one g_get_home_dir per process
+   Memcheck:Leak
+   ...
+   fun:g_get_home_dir
+}
+
+{
+   GQuarks can't be freed
+   Memcheck:Leak
+   ...
+   fun:g_quark_from_static_string
+}
+
+{
+   GQuarks can't be freed
+   Memcheck:Leak
+   ...
+   fun:g_quark_from_string
+}
+
+{
+   interned strings can't be freed
+   Memcheck:Leak
+   ...
+   fun:g_intern_string
+}
+
+{
+   interned strings can't be freed
+   Memcheck:Leak
+   ...
+   fun:g_intern_static_string
+}
+
+{
+   shared global default g_main_context
+   Memcheck:Leak
+   ...
+   fun:g_main_context_new
+   fun:g_main_context_default
+}
+
+{
+    types from gmime
+    Memcheck:Leak
+    ...
+    fun:g_mime_object_register_type
+}
+
+{
+   GTest initialization
+   Memcheck:Leak
+   ...
+   fun:g_test_init
+   fun:main
+}
+
+{
+   GTest admin
+   Memcheck:Leak
+   ...
+   fun:g_test_add_vtable
+}
+
+{
+   GTest pseudorandomness
+   Memcheck:Leak
+   ...
+   fun:g_rand_new_with_seed_array
+   fun:test_run_seed
+   ...
+   fun:g_test_run
+}
+
+{
+   GSLice initialization
+   Memcheck:Leak
+   ...
+   fun:g_malloc0
+   fun:g_slice_init_nomessage
+   fun:g_slice_alloc
+}
+
+# ============================= GObject ===============================
+
+{
+   g_type_init
+   Memcheck:Leak
+   ...
+   fun:g_type_init
+}
+
+{
+   gobject_init_ctor
+   Memcheck:Leak
+   ...
+   fun:gobject_init_ctor
+}
+
+{
+   g_type_init_with_debug_flags
+   Memcheck:Leak
+   ...
+   fun:g_type_init_with_debug_flags
+}
+
+{
+   g_type_register_static
+   Memcheck:Leak
+   ...
+   fun:g_type_register_static
+}
+
+{
+   g_type_add_interface_static
+   Memcheck:Leak
+   ...
+   fun:g_type_add_interface_static
+}
+
+{
+   initialization of interfaces
+   Memcheck:Leak
+   ...
+   fun:type_iface_vtable_base_init_Wm
+   fun:g_type_class_ref
+}
+
+# ============================= GIO ===================================
+
+{
+   GIO init
+   Memcheck:Leak
+   ...
+   fun:g_inet_address_class_intern_init
+}
+
+{
+   g_simple_async_result class
+   Memcheck:Leak
+   ...
+   fun:g_type_class_ref
+   ...
+   fun:g_simple_async_result_new
+}
+
+# ============================= dbus-glib =============================
+
+{
+   registering marshallers is permanent
+   Memcheck:Leak
+   ...
+   fun:dbus_g_object_register_marshaller_array
+   fun:dbus_g_object_register_marshaller
+}
+
+{
+   dbus-glib specialized GTypes are permanent
+   Memcheck:Leak
+   ...
+   fun:dbus_g_type_specialized_init
+}
+
+{
+   libdbus shared connection
+   Memcheck:Leak
+   ...
+   fun:dbus_g_bus_get
+}
+
+{
+   dbus-gobject registrations aren't freed unless we fall off the bus
+   Memcheck:Leak
+   ...
+   fun:g_slist_append
+   fun:dbus_g_connection_register_g_object
+}
+
+{
+   DBusGProxy slots aren't freed unless we fall off the bus
+   Memcheck:Leak
+   ...
+   fun:dbus_connection_allocate_data_slot
+   ...
+   fun:dbus_g_proxy_constructor
+}
+
+{
+   error registrations are for life, not just for Christmas
+   Memcheck:Leak
+   ...
+   fun:dbus_g_error_domain_register
+}
+
+{
+   DBusGProxy class init
+   Memcheck:Leak
+   ...
+   fun:dbus_g_proxy_class_init
+}
+
+# ============================= telepathy-glib ========================
+
+{
+   tp_dbus_daemon_constructor @daemons once per DBusConnection
+   Memcheck:Leak
+   ...
+   fun:g_slice_alloc
+   fun:tp_dbus_daemon_constructor
+}
+
+{
+   tp_proxy_subclass_add_error_mapping refs the enum
+   Memcheck:Leak
+   ...
+   fun:g_type_class_ref
+   fun:tp_proxy_subclass_add_error_mapping
+}
+
+{
+   tp_proxy_or_subclass_hook_on_interface_add never frees its list
+   Memcheck:Leak
+   ...
+   fun:tp_proxy_or_subclass_hook_on_interface_add
+}
+
+{
+   tp_dbus_daemon_constructor filter not freed til we fall off the bus
+   Memcheck:Leak
+   ...
+   fun:dbus_connection_add_filter
+   fun:tp_dbus_daemon_constructor
+}
+
+{
+   tp_g_socket_address_from_variant reffing GNIO types
+   Memcheck:Leak
+   ...
+   fun:g_type_class_ref
+   ...
+   fun:tp_g_socket_address_from_variant
+}
+
+{
+   creating classes for DBusGProxy
+   Memcheck:Leak
+   ...
+   fun:g_type_class_ref
+   ...
+   fun:g_object_new
+   ...
+   fun:tp_proxy_get_interface_by_id
+}
+
+{
+   creating classes for tp_dbus_daemon_new
+   Memcheck:Leak
+   ...
+   fun:g_type_class_ref
+   ...
+   fun:g_object_new
+   ...
+   fun:tp_dbus_daemon_new
+}
+
+{
+   creating classes for TpCHannel
+   Memcheck:Leak
+   ...
+   fun:g_type_class_ref
+   ...
+   fun:g_object_new
+   ...
+   fun:tp_channel_new
+}
+
+{
+   creating a boxed type to use in TpCapabilities
+   Memcheck:Leak
+   ...
+   fun:g_type_class_ref
+   ...
+   fun:g_param_spec_boxed
+   fun:tp_capabilities_class_intern_init
+}
+
+# ============================= questionable ==========================
+
+{
+   creating classes for instances (this is a pretty big hammer)
+   Memcheck:Leak
+   ...
+   fun:g_type_class_ref
+   ...
+   fun:g_type_create_instance
+   ...
+   fun:g_param_spec_string
+}
+
+# From: http://stuff.mit.edu/afs/sipb/project/php/src/mysql-standard-5.0.18-linux-i686/mysql-test/valgrind.supp
+#
+# Suppress some common (not fatal) errors in system libraries found by valgrind
+#
+
+#
+# Pthread doesn't free all thread specific memory before program exists
+#
+
+
+{
+   pthread allocate_tls memory loss
+   Memcheck:Leak
+   fun:calloc
+   fun:_dl_allocate_tls
+   fun:allocate_stack
+   fun:pthread_create@@GLIBC_2.1
+}
+
+{
+   pthread allocate_tls memory loss
+   Memcheck:Leak
+   fun:calloc
+   fun:_dl_allocate_tls
+   fun:pthread_create@@GLIBC_*
+}
+
+{
+   pthread allocate_dtv memory loss
+   Memcheck:Leak
+   fun:calloc
+   fun:allocate_dtv
+   fun:_dl_allocate_tls_storage
+   fun:__GI__dl_allocate_tls
+   fun:pthread_create
+}
+
+{
+   pthread allocate_dtv memory loss second
+   Memcheck:Leak
+   fun:calloc
+   fun:allocate_dtv
+   fun:_dl_allocate_tls
+   fun:pthread_create*
+}
+
+{
+   pthread allocate_dtv memory loss second
+   Memcheck:Leak
+   fun:calloc
+   fun:allocate_dtv
+   fun:_dl_allocate_tls
+   fun:pthread_create*
+}
+
+{
+   pthread memalign memory loss
+   Memcheck:Leak
+   fun:memalign
+   fun:_dl_allocate_tls_storage
+   fun:__GI__dl_allocate_tls
+   fun:pthread_create
+}
+
+{
+   pthread pthread_key_create
+   Memcheck:Leak
+   fun:malloc
+   fun:*
+   fun:*
+   fun:pthread_key_create
+   fun:my_thread_global_init
+}
+
+{
+   pthread strstr uninit
+   Memcheck:Cond
+   fun:strstr
+   obj:/lib/tls/libpthread.so.*
+   obj:/lib/tls/libpthread.so.*
+   fun:call_init
+   fun:_dl_init
+   obj:/lib/ld-*.so
+}
+
+{
+   pthread strstr uninit
+   Memcheck:Cond
+   fun:strstr
+   obj:/lib/tls/libpthread.so.*
+   obj:/lib/tls/libpthread.so.*
+   fun:call_init
+   fun:_dl_init
+   obj:/lib/ld-*.so
+}
+
+{
+   pthread errno
+   Memcheck:Leak
+   fun:calloc
+   fun:_dlerror_run
+   fun:dlsym
+   fun:__errno_location
+}
+
+
+#
+# Warnings in libz becasue it works with aligned memory(?)
+#
+
+{
+   libz tr_flush_block
+   Memcheck:Cond
+   fun:_tr_flush_block
+   fun:deflate_slow
+   fun:deflate
+   fun:do_flush
+   fun:gzclose
+}
+
+{
+   libz tr_flush_block2
+   Memcheck:Cond
+   fun:_tr_flush_block
+   fun:deflate_slow
+   fun:deflate
+   fun:compress2
+}
+
+{
+   libz longest_match
+   Memcheck:Cond
+   fun:longest_match
+   fun:deflate_slow
+   fun:deflate
+   fun:do_flush
+}
+
+{
+   libz longest_match2
+   Memcheck:Cond
+   fun:longest_match
+   fun:deflate_slow
+   fun:deflate
+   fun:compress2
+}
+
+{
+   libz deflate
+   Memcheck:Cond
+   obj:*/libz.so.*
+   obj:*/libz.so.*
+   fun:deflate
+   fun:compress2
+}
+
+{
+   libz deflate2
+   Memcheck:Cond
+   obj:*/libz.so.*
+   obj:*/libz.so.*
+   fun:deflate
+   obj:*/libz.so.*
+   fun:gzflush
+}
+
+{
+    g_signal_new intentionally leaks signals
+    Memcheck:Leak
+    fun:*alloc
+    ...
+    fun:g_signal_new
+    ...
+    fun:g_type_class_ref
+    ...
+    fun:g_object_newv
+}
+
+{
+   g_mutex
+   Memcheck:Leak
+   fun:*alloc
+   ...
+   fun:thread_memory_from_self*
+   fun:g_slice_*
+}
+
+{
+   glib g_type_add_interface_check
+   Memcheck:Leak
+   fun:*alloc
+   ...
+   fun:g_type_add_interface_check
+}
+
+{
+   gmime gpgme_check_version
+   Memcheck:Leak
+   fun:*alloc
+   ...
+   fun:gpgme_check_version
+}

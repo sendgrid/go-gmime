@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+vagrant up centos
+vagrant ssh centos -c "cd sendgrid/go-gmime && bash -le .jenkins"

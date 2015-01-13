@@ -1,0 +1,160 @@
+Delivered-To: foobar@foobar.com
+Received: by 10.220.189.73 with SMTP id dd9csp53075vcb;
+        Thu, 6 Mar 2014 11:12:14 -0800 (PST)
+X-Received: by 10.182.47.195 with SMTP id f3mr3484661obn.49.1394133134147;
+        Thu, 06 Mar 2014 11:12:14 -0800 (PST)
+Return-Path: <team-rd+bncBC7IRJHK3YFRBDMR4OMAKGQECEVDR7A@foobar.com>
+Received: from mail-oa0-x247.google.com (mail-oa0-x247.google.com [2607:f8b0:4003:c02::247])
+        by mx.google.com with ESMTPS id yv5si3409991oeb.104.2014.03.06.11.12.14
+        for <foobar@foobar.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Thu, 06 Mar 2014 11:12:14 -0800 (PST)
+Received-SPF: pass (google.com: domain of team-rd+bncBC7IRJHK3YFRBDMR4OMAKGQECEVDR7A@foobar.com designates 2607:f8b0:4003:c02::247 as permitted sender)
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of team-rd+bncBC7IRJHK3YFRBDMR4OMAKGQECEVDR7A@foobar.com designates 2607:f8b0:4003:c02::247 as permitted sender) smtp.mail=team-rd+bncBC7IRJHK3YFRBDMR4OMAKGQECEVDR7A@foobar.com;
+       dkim=pass header.i=@foobar.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=sendgrid.com
+Received: by mail-oa0-f71.google.com with SMTP id j17sf11439730oag.2
+        for <foobar@foobar.com>; Thu, 06 Mar 2014 11:12:14 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=sendgrid.com; s=ga1;
+        h=sender:from:subject:message-id:date:to:mime-version
+         :x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive
+         :list-unsubscribe:content-type;
+        bh=li81/E/fzv8skqnQE1XE2CJmtD9nzq3InspFRgZ6Iw8=;
+        b=cOtJUQRRS765WzrrPVA+WfQBBHh4uYlIO6RzYiom/jyFG3of/JRarXHARmCmH+CaRx
+         o/cptETgkOJWrpX9yftA5NxKmSeXepmIVrMx19F2bFmvCF6QkDIKBm4rNoZFb11htR+B
+         qmcBjiEfd+eIbrZB/1WU1aqZzpJd4RUHBkau8=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=sender:x-gm-message-state:from:subject:message-id:date:to
+         :mime-version:x-original-sender:x-original-authentication-results
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :list-unsubscribe:content-type;
+        bh=li81/E/fzv8skqnQE1XE2CJmtD9nzq3InspFRgZ6Iw8=;
+        b=P8Tk0sVLG+p80DFsei5qRJjK8Y36ftwx6Y5eejTMjGm/TpywA4Ex2A9dw6jQjUAEV3
+         6mfsHifMr/5CvESZ/plo+43Ye/fd7HX6r/LU+fbK/o0k0v9kAwdC3zCRDkPKCW1d9QOF
+         6GZRgipKM1Z/soYOF++Hm/0FyOF/uSUu2sfWmSozOCVBGUJPCUixx3omqzPbHICCrRyH
+         KneIX0w4ABiS6ZnqKpyxOm++K5rbNHy3LIf83+EFIPK29uA2hIte3GJuSkrD4rVoZ3Rx
+         83sHzOggJqT5Ruwgh3uE3rlSumP0S0aAdJ93SWhOiPKs+ul50umViIxmZgDb3AjrNag1
+         uDMw==
+Sender: foobar@foobar.com
+X-Gm-Message-State: ALoCoQkACflzfQun/CPMPOrL4bPIuzHWTPtsSz3qFntYOElaVnPLxUN1Z7hnkfFm1+1aXtXclg1D
+X-Received: by 10.182.11.70 with SMTP id o6mr4907089obb.19.1394133133926;
+        Thu, 06 Mar 2014 11:12:13 -0800 (PST)
+X-BeenThere: foobar@foobar.com
+Received: by 10.50.29.78 with SMTP id i14ls504856igh.42.gmail; Thu, 06 Mar
+ 2014 11:12:13 -0800 (PST)
+X-Received: by 10.68.12.74 with SMTP id w10mr16651581pbb.39.1394133133494;
+        Thu, 06 Mar 2014 11:12:13 -0800 (PST)
+Received: from mail-pb0-x22a.google.com (mail-pb0-x22a.google.com [2607:f8b0:400e:c01::22a])
+        by mx.google.com with ESMTPS id nv9si5781556pbb.125.2014.03.06.11.12.13
+        for <foobar@foobar.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Thu, 06 Mar 2014 11:12:13 -0800 (PST)
+Received-SPF: pass (google.com: domain of foobar@foobar.com designates 2607:f8b0:400e:c01::22a as permitted sender) client-ip=2607:f8b0:400e:c01::22a;
+Received: by mail-pb0-f42.google.com with SMTP id rr13so3028395pbb.15
+        for <foobar@foobar.com>; Thu, 06 Mar 2014 11:12:13 -0800 (PST)
+X-Received: by 10.66.27.202 with SMTP id v10mr16325785pag.127.1394133133346;
+        Thu, 06 Mar 2014 11:12:13 -0800 (PST)
+Received: from [10.0.0.3] (c-50-188-162-227.hsd1.or.comcast.net. [50.188.162.227])
+        by mx.google.com with ESMTPSA id pi1sm43537221pac.14.2014.03.06.11.12.10
+        for <foobar@foobar.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Thu, 06 Mar 2014 11:12:11 -0800 (PST)
+From: Dave McGuire <foobar@foobar.com>
+Subject: Distilled Content-Type headers (outbound & failed)
+Message-Id: <AC1EECDB-50BD-4429-BC79-81644263D535@foobar.com>
+Date: Thu, 6 Mar 2014 11:12:13 -0800
+To: Team R&D <foobar@foobar.com>
+Mime-Version: 1.0 (Mac OS X Mail 7.2 \(1874\))
+X-Mailer: Apple Mail (2.1874)
+X-Original-Sender: foobar@foobar.com
+X-Original-Authentication-Results: mx.google.com;       spf=pass (google.com:
+ domain of foobar@foobar.com designates 2607:f8b0:400e:c01::22a as
+ permitted sender) smtp.mail=foobar@foobar.com;       dkim=pass
+ header.i=@foobar.com;       dmarc=pass (p=NONE dis=NONE) header.from=sendgrid.com
+Precedence: list
+Mailing-list: list foobar@foobar.com; contact team-rd+owners@foobar.com
+List-ID: <team-rd.sendgrid.com>
+X-Google-Group-Id: 872842124954
+List-Post: <http://groups.google.com/a/sendgrid.com/group/team-rd/post>, <mailto:foobar@foobar.com>
+List-Help: <http://support.google.com/a/sendgrid.com/bin/topic.py?topic=25838>,
+ <mailto:team-rd+help@foobar.com>
+List-Archive: <http://groups.google.com/a/sendgrid.com/group/team-rd/>
+List-Unsubscribe: <http://groups.google.com/a/sendgrid.com/group/team-rd/subscribe>,
+ <mailto:googlegroups-manage+872842124954+unsubscribe@googlegroups.com>
+Content-Type: multipart/mixed; boundary="Apple-Mail=_2D887D1E-61C0-4F4F-B778-4102D4226B1C"
+
+--Apple-Mail=_2D887D1E-61C0-4F4F-B778-4102D4226B1C
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain;
+	charset=windows-1252
+
+Team,
+
+Attached are the content headers =
+library should handle it.
+
+=97Dave
+
+
+--Apple-Mail=_2D887D1E-61C0-4F4F-B778-4102D4226B1C
+Content-Disposition: attachment;
+	filename=content-type-sorted-distilled.txt
+Content-Type: text/plain;
+	name="content-type-sorted-distilled.txt"
+Content-Transfer-Encoding: 7bit
+
+application/doc
+application/docx
+application/ics
+application/json
+application/mp4
+application/ms-tnef
+application/msword
+application/octet-stream
+application/pdf
+application/vnd.apple.pkpass
+application/vnd.ms-excel
+application/vnd.ms-powerpoint
+application/vnd.oasis.opendocument.text
+application/vnd.openxmlformats-officedocument.presentationml.slideshow
+application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+application/vnd.openxmlformats-officedocument.wordprocessingml.document
+application/x-mobipocket-ebook
+application/x-www-form-urlencoded
+application/x-zip-compressed
+application/xml
+application/zip
+audio/mp4a-latm
+audio/wav
+audio/x-mp3
+audio/x-wav
+image/bmp
+image/gif
+image/jpeg
+image/jpg
+image/pjpeg
+image/png
+image/x-png
+message/delivery-status
+message/disposition-notification
+message/feedback-report
+message/rfc822
+message/rfc823
+multipart/alternative
+multipart/mixed
+multipart/related
+multipart/report
+text/calendar
+text/csv
+text/html
+text/plain
+text/rfc822-headers
+text/x-vcalendar
+text/xml
+video/mp4
+
+--Apple-Mail=_2D887D1E-61C0-4F4F-B778-4102D4226B1C--

@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+source "$(dirname $0)/include"
+
+if gccgo --version | grep -q 4.9;  then
+    GCCGO=gccgo
+else
+    GCCGO=gccgo-4.9
+fi
+
+go test -c -tags valgrind -compiler $GCCGO -gccgoflags '-g -gdwarf-3  -fuse-ld=gold -fno-split-stack -lgmime-2.6 -lgobject-2.0 -lglib-2.0' -x ./gmime
+
+export G_SLICE=always-malloc
+export G_DEBUG=gc-friendly
+export MALLOC_CHECK_=2
+
+(cd gmime &&
+    valgrind \
+        --show-below-main=yes \
+        --track-origins=yes   \
+        --show-leak-kinds=all \
+        --leak-check=full     \
+        --smc-check=all       \
+        --error-limit=no      \
+        --num-callers=100     \
+        --suppressions=../valgrind.supp \
+        ../gmime.test >../valgrind.log 2>&1 \
+)
+

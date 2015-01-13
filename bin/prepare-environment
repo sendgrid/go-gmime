@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+PREFIX=/usr
+unamestr=`uname`
+
+if [[ "$unamestr" == 'Linux' ]]; then
+
+    # Detect CentOS:
+    if [ -f /etc/centos-release ]; then
+        # build tools:
+        yum groupinstall 'Development Tools' -y
+        yum install https://s3.amazonaws.com/sendgrid-open-source/gmime/glib2-2.40.0-1.el6.x86_64.rpm https://s3.amazonaws.com/sendgrid-open-source/gmime/glib2-devel-2.40.0-1.el6.x86_64.rpm https://s3.amazonaws.com/sendgrid-open-source/gmime/gmime-2.6.20-1.el6.x86_64.rpm https://s3.amazonaws.com/sendgrid-open-source/gmime/gmime-devel-2.6.20-1.el6.x86_64.rpm -y
+    else
+        # assume Ubuntu:
+        ubuntu_version=`lsb_release -r -s`
+
+        # check for travis ubuntu:
+        if [[ "$ubuntu_version" < "14.04" ]]; then
+            # install gmime
+            # FIXME: packages for 12.04
+            apt-get install -y python-software-properties
+            apt-get update
+            apt-get install -y libffi-dev gettext libpcre3-dev pkg-config zlib1g-dev libbz2-dev libreadline-dev libgmime-2.6-dev libgmime-2.6-0-dbg libglib2.0-0-dbg libc6-dbg valgrind git mercurial
+        else
+            # trust build:
+            apt-get install golang-go gccgo-4.9 libgo5-dbg libgmime-2.6-0-dbg libglib2.0-0-dbg libc6-dbg valgrind pkg-config libgmime-2.6-dev git mercurial gccgo -y
+        fi
+    fi
+
+    # linking go-gmime package for build
+    PACKAGE=go-gmime
+    LOCATION=/home/vagrant/sendgrid/$PACKAGE/src/github.com/sendgrid
+
+    mkdir -p $LOCATION
+    ln -sfn /home/vagrant/sendgrid/$PACKAGE $LOCATION/$PACKAGE
+
+elif [[ "$unamestr" == 'Darwin' ]]; then
+    # MacOS:
+    brew install gmime
+fi

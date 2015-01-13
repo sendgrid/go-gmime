@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+source "$(dirname $0)/include"
+
+go test -bench -run=xxx -benchmem $PACKAGE

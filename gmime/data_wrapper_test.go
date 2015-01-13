@@ -1,0 +1,40 @@
+package gmime
+
+import (
+	"testing"
+
+	"github.com/stretchr/testify/assert"
+)
+
+func TestNewDataWrapper(t *testing.T) {
+	dw := NewDataWrapper()
+	assert.Equal(t, dw.Encoding().ToString(), "")
+}
+
+func TestNewDataWrapperWithStream(t *testing.T) {
+	loop := 1
+
+	for i := 0; i < loop; i++ {
+		raw := "foo=bar"
+		escaped := "foo\xbar"
+
+		instream := NewMemStream()
+		instream.Length()
+		instream.WriteString(raw)
+		encoding := NewContentEncodingFromString("quoted-printable")
+
+		wrapper := NewDataWrapperWithStream(instream, encoding)
+		assert.Equal(t, wrapper.Encoding().ToString(), encoding.ToString())
+
+		outstream := NewMemStream()
+		wrapper.WriteToStream(outstream)
+		assert.Equal(t, string(outstream.Bytes()), escaped)
+	}
+}
+
+func TestDataWrapperStream(t *testing.T) {
+	stream := NewMemStreamWithBuffer("hola")
+	encoding := NewContentEncodingFromString("gzip")
+	wrapper := NewDataWrapperWithStream(stream, encoding)
+	assert.Equal(t, wrapper.Stream().Length(), 4)
+}

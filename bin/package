@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+: ${BUILD_NUMBER:=0}
+
+NAME=gmime2.6
+VERSION=2.6.19
+CATEGORY="Development/Libraries"
+VENDOR=GNOME
+LICENSE=MIT
+DESCRIPTION="Gmime 2.6"
+URL=https://github.com/sendgrid/go-gmime
+
+PREFIX=/usr
+TARGET_RPM=dist/${NAME}-${VERSION}-${BUILD_NUMBER}.el6.noarch.rpm
+
+if [ ! -d dist ]; then mkdir dist; fi
+fpm \
+  --force \
+  -s dir \
+  -t rpm \
+  --name ${NAME} \
+  --version ${VERSION} \
+  --iteration ${BUILD_NUMBER}.el6 \
+  --architecture all \
+  --package ${TARGET_RPM} \
+  --category "${CATEGORY}" \
+  --vendor "${VENDOR}" \
+  --license "${LICENSE}" \
+  --description "${DESCRIPTION}" \
+  --url "${URL}" \
+  -C bin \
+  --prefix ${PREFIX} \
+  go-gmime

@@ -1,0 +1,12 @@
+pkg/
+*.out
+*.test
+*.iml
+.vagrant/
+src/
+*.lock
+*.log
+*.csv
+bin/ginkgo
+go-gmime
+data/
