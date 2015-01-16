@@ -6,10 +6,11 @@ package gmime
 #include <gmime/gmime.h>
 */
 import "C"
+import "unsafe"
 
 type DataWrapper interface {
 	Janitor
-	Encoding() ContentEncoding
+	Encoding() string
 	WriteToStream(stream Stream) uintptr
 	Stream() Stream
 }
@@ -33,11 +34,15 @@ func NewDataWrapper() DataWrapper {
 	return CastDataWrapper(dw)
 }
 
-func NewDataWrapperWithStream(stream Stream, encoding ContentEncoding) DataWrapper {
+func NewDataWrapperWithStream(stream Stream, encoding string) DataWrapper {
+	var rawEncoding C.GMimeContentEncoding
 	rawStream := stream.(rawStream)
-	rawEncoding := encoding.(rawContentEncoding)
 
-	dw := C.g_mime_data_wrapper_new_with_stream(rawStream.rawStream(), rawEncoding.rawContentEncoding())
+	cEncoding := C.CString(encoding)
+	defer C.free(unsafe.Pointer(cEncoding))
+
+	rawEncoding = C.g_mime_content_encoding_from_string(cEncoding)
+	dw := C.g_mime_data_wrapper_new_with_stream(rawStream.rawStream(), rawEncoding)
 	defer unref(C.gpointer(dw))
 	return CastDataWrapper(dw)
 }
@@ -46,8 +51,12 @@ func (d *aDataWrapper) Stream() Stream {
 	return CastStream(C.g_mime_data_wrapper_get_stream(d.rawDataWrapper()))
 }
 
-func (d *aDataWrapper) Encoding() ContentEncoding {
-	return CastContentEncoding(C.g_mime_data_wrapper_get_encoding(d.rawDataWrapper()))
+func (d *aDataWrapper) Encoding() string {
+	var _enc C.GMimeContentEncoding
+	_enc = C.g_mime_data_wrapper_get_encoding(d.rawDataWrapper())
+	enc := C.g_mime_content_encoding_to_string(_enc)
+	return C.GoString(enc)
+
 }
 
 func (d *aDataWrapper) WriteToStream(stream Stream) uintptr {

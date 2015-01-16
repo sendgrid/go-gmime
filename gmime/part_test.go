@@ -20,12 +20,12 @@ func (s *PartTestSuite) TestNewPart() {
 
 	instream := NewMemStreamWithBuffer("text")
 	outstream := NewMemStream() // NewMemStreamWithByteArray()
-	wrapper := NewDataWrapperWithStream(instream, NewContentEncodingFromString("7bit"))
+	wrapper := NewDataWrapperWithStream(instream, "7bit")
 	part.SetContentObject(wrapper)
 
 	part.ContentObject().WriteToStream(outstream)
 	assert.Equal(s.T(), (string)(outstream.Bytes()), "text")
-	assert.Equal(s.T(), part.ContentObject().Encoding().ToString(), "7bit")
+	assert.Equal(s.T(), part.ContentObject().Encoding(), "7bit")
 }
 
 func (s *PartTestSuite) TestNewPartWithType() {
@@ -35,18 +35,17 @@ func (s *PartTestSuite) TestNewPartWithType() {
 
 	instream := NewMemStreamWithBuffer("<html></html>")
 	outstream := NewMemStream() // NewMemStreamWithByteArray()
-	wrapper := NewDataWrapperWithStream(instream, NewContentEncodingFromString("8bit"))
+	wrapper := NewDataWrapperWithStream(instream, "8bit")
 	part.SetContentObject(wrapper)
 
 	part.ContentObject().WriteToStream(outstream)
 	assert.Equal(s.T(), (string)(outstream.Bytes()), "<html></html>")
-	assert.Equal(s.T(), part.ContentObject().Encoding().ToString(), "8bit")
+	assert.Equal(s.T(), part.ContentObject().Encoding(), "8bit")
 }
 
 func (s *PartTestSuite) TestContentObject() {
 	stream := NewMemStreamWithBuffer("hola")
-	ce := NewContentEncodingFromString("gzip")
-	dw := NewDataWrapperWithStream(stream, ce)
+	dw := NewDataWrapperWithStream(stream, "gzip")
 	part := NewPart()
 	part.SetContentObject(dw)
 	dwFromContent := part.ContentObject()
@@ -71,9 +70,8 @@ func (s *PartTestSuite) TestContentLocation() {
 
 func (s *PartTestSuite) TestContentEncoding() {
 	part := NewPart()
-	ce := NewContentEncodingFromString("gzip")
-	part.SetContentEncoding(ce)
-	assert.Equal(s.T(), part.ContentEncoding().ToString(), "")
+	part.SetContentEncoding("gzip")
+	assert.Equal(s.T(), part.ContentEncoding(), "") // FIXME: ???
 }
 
 func TestPartTestSuite(t *testing.T) {
