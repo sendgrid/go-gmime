@@ -20,6 +20,8 @@ type Message interface {
 	Subject() string
 	SetMessageId(string)
 	MessageId() string
+	DateAsString() string
+	SetDateAsString(string)
 	AddTo(string, string)
 	To() *InternetAddressList
 	AddCc(string, string)
@@ -93,6 +95,17 @@ func (m *aMessage) SetMessageId(messageId string) {
 func (m *aMessage) MessageId() string {
 	messageId := C.g_mime_message_get_message_id(m.rawMessage())
 	return C.GoString(messageId)
+}
+
+func (m *aMessage) DateAsString() string {
+	date := C.g_mime_message_get_date_as_string(m.rawMessage())
+	return C.GoString(date)
+}
+
+func (m *aMessage) SetDateAsString(date string) {
+	var cDate *C.char = C.CString(date)
+	C.g_mime_message_set_date_as_string(m.rawMessage(), cDate)
+	C.free(unsafe.Pointer(cDate))
 }
 
 func (m *aMessage) addRecipient(recipientType C.GMimeRecipientType, name string, address string) {
