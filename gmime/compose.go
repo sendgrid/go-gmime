@@ -17,8 +17,8 @@ type Compose interface {
 	AddBCC(string, string)
 	AddSubject(string)
 	AddFrom(string)
-	AddText(string)
-	AddHTML(string)
+	AddText(string, string)
+	AddHTML(string, string)
 	AddTextReader(io.Reader)
 	AddHTMLReader(io.Reader)
 
@@ -64,9 +64,9 @@ func (p *aCompose) AddSubject(subject string) {
 	p.message.SetSubject(subject)
 }
 
-func (p *aCompose) AddText(text string) {
+func (p *aCompose) AddText(text string, encoding string) {
 	contentType := "text/plain"
-	p.addPart(text, contentType)
+	p.addPart(text, contentType, encoding)
 }
 
 func (p *aCompose) AddTextReader(reader io.Reader) {
@@ -74,9 +74,9 @@ func (p *aCompose) AddTextReader(reader io.Reader) {
 
 }
 
-func (p *aCompose) AddHTML(html string) {
+func (p *aCompose) AddHTML(html string, encoding string) {
 	contentType := "text/html"
-	p.addPart(html, contentType)
+	p.addPart(html, contentType, encoding)
 }
 
 func (p *aCompose) AddHTMLReader(reader io.Reader) {
@@ -162,8 +162,7 @@ func (p *aCompose) part(part Object) string {
 	return payload
 }
 
-func (p *aCompose) addPart(data string, contentType string) {
-	contentEncoding := NewContentEncodingFromString(contentType)
+func (p *aCompose) addPart(data string, contentType string, contentEncoding string) {
 	contentTypeSplit := strings.Split(contentType, "/")
 	part := NewPartWithType(contentTypeSplit[0], contentTypeSplit[1])
 	stream := NewMemStreamWithBuffer(data)
