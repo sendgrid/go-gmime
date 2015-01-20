@@ -4,41 +4,76 @@ package gmime
 #cgo pkg-config: gmime-2.6
 #include <stdlib.h>
 #include <gmime/gmime.h>
+
+static GMimeEncoding * alloc_gmime_encoding() {
+    return g_new0(GMimeEncoding, 1);
+}
 */
 import "C"
 import (
+	"runtime"
 	"unsafe"
 )
 
-type ContentEncoding interface {
-	ToString() string
+type ContentEncodingState interface {
+	Outlen(inlen int) (outlen int)
+	Step(in []byte) (out []byte)
+	Flush(in []byte) (out []byte)
 }
 
-type rawContentEncoding interface {
-	ContentEncoding
-	rawContentEncoding() C.GMimeContentEncoding
+type contentEncoding struct {
+	Pointer *C.GMimeEncoding
 }
 
-type aContentEncoding struct {
-	encoding C.GMimeContentEncoding
+func allocateContentEncoder() *contentEncoding {
+	ptr := C.alloc_gmime_encoding()
+	obj := &contentEncoding{
+		Pointer: ptr,
+	}
+	runtime.SetFinalizer(obj, func(o *contentEncoding) {
+		C.g_free((C.gpointer)(unsafe.Pointer(o.Pointer)))
+	})
+	return obj
 }
 
-func CastContentEncoding(encoding C.GMimeContentEncoding) ContentEncoding {
-	return &aContentEncoding{encoding: encoding}
+func goGMimeString2Encoding(encoding string) C.GMimeContentEncoding {
+	cEncoding := C.CString(encoding)
+	defer C.free(unsafe.Pointer(cEncoding))
+	return C.g_mime_content_encoding_from_string(cEncoding)
 }
 
-func NewContentEncodingFromString(str string) ContentEncoding {
-	var _str *C.char = C.CString(str)
-	defer C.free(unsafe.Pointer(_str))
-	encoding := C.g_mime_content_encoding_from_string(_str)
-	return CastContentEncoding(encoding)
+func NewContentEncoder(encoding string) ContentEncodingState {
+	e := allocateContentEncoder()
+	C.g_mime_encoding_init_encode(e.Pointer, goGMimeString2Encoding(encoding))
+	return ContentEncodingState(e)
 }
 
-func (e *aContentEncoding) ToString() string {
-	var _str *C.char = C.g_mime_content_encoding_to_string(e.encoding)
-	return C.GoString(_str)
+func NewContentDecoder(encoding string) ContentEncodingState {
+	e := allocateContentEncoder()
+	C.g_mime_encoding_init_decode(e.Pointer, goGMimeString2Encoding(encoding))
+	return ContentEncodingState(e)
 }
 
-func (e *aContentEncoding) rawContentEncoding() C.GMimeContentEncoding {
-	return e.encoding
+func (e *contentEncoding) Outlen(inlen int) int {
+	return int(C.g_mime_encoding_outlen(e.Pointer, C.size_t(inlen)))
+}
+
+func (e *contentEncoding) Step(in []byte) []byte {
+	l := len(in)
+	outlen := e.Outlen(l)
+	inbuf := (*C.char)(unsafe.Pointer(&in[0]))
+	out := make([]byte, outlen)
+	outbuf := (*C.char)(unsafe.Pointer(&out[0]))
+	rlen := int(C.g_mime_encoding_step(e.Pointer, inbuf, C.size_t(l), outbuf))
+	return out[0:rlen]
+}
+
+func (e *contentEncoding) Flush(in []byte) []byte {
+	l := len(in)
+	outlen := e.Outlen(l)
+	inbuf := (*C.char)(unsafe.Pointer(&in[0]))
+	out := make([]byte, outlen)
+	outbuf := (*C.char)(unsafe.Pointer(&out[0]))
+	rlen := int(C.g_mime_encoding_flush(e.Pointer, inbuf, C.size_t(l), outbuf))
+	return out[0:rlen]
 }
