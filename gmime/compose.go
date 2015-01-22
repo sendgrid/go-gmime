@@ -150,7 +150,7 @@ func (p *aCompose) part(part Object) string {
 		dw := m.ContentObject()
 		resultStream := dw.Stream()
 		resultStream.Flush()
-		_, data := resultStream.Read(uint64(resultStream.Length()))
+		_, data := resultStream.Read(resultStream.Length())
 
 		if p.partsCount > 1 {
 			payload = m.Headers()

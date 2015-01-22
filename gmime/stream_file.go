@@ -52,6 +52,16 @@ func NewFileStreamWithBounds(f os.File, start int64, end int64) FileStream {
 	return CastFileStream(fileStream)
 }
 
+func NewFileStreamForPath(name string, mode string) FileStream {
+	cMode := C.CString(mode)
+	defer C.free(unsafe.Pointer(cMode))
+	cName := C.CString(name)
+	defer C.free(unsafe.Pointer(cName))
+	fileStream := C.g_mime_stream_file_new_for_path(cName, cMode)
+	defer unref(C.gpointer(fileStream))
+	return CastFileStream((*C.GMimeStreamFile)(unsafe.Pointer(fileStream)))
+}
+
 func (f *aFileStream) rawFileStream() *C.GMimeStreamFile {
 	return (*C.GMimeStreamFile)(f.pointer())
 }
