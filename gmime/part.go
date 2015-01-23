@@ -75,17 +75,13 @@ func (p *aPart) ContentLocation() string {
 }
 
 func (p *aPart) ContentEncoding() string {
-	var _enc C.GMimeContentEncoding
-	_enc = C.g_mime_part_get_content_encoding(p.rawPart())
-	enc := C.g_mime_content_encoding_to_string(_enc)
-	return C.GoString(enc)
+	var enc C.GMimeContentEncoding
+	enc = C.g_mime_part_get_content_encoding(p.rawPart())
+	return goGMimeEncoding2String(enc)
 }
 
 func (p *aPart) SetContentEncoding(encoding string) {
-	var rawEncode C.GMimeContentEncoding
-	cEncode := C.CString(encoding)
-	defer C.free(unsafe.Pointer(cEncode))
-	rawEncode = C.g_mime_content_encoding_from_string(cEncode)
+	rawEncode := goGMimeString2Encoding(encoding)
 	C.g_mime_part_set_content_encoding(p.rawPart(), rawEncode)
 }
 

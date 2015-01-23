@@ -6,7 +6,6 @@ package gmime
 #include <gmime/gmime.h>
 */
 import "C"
-import "unsafe"
 
 type DataWrapper interface {
 	Janitor
@@ -38,10 +37,7 @@ func NewDataWrapperWithStream(stream Stream, encoding string) DataWrapper {
 	var rawEncoding C.GMimeContentEncoding
 	rawStream := stream.(rawStream)
 
-	cEncoding := C.CString(encoding)
-	defer C.free(unsafe.Pointer(cEncoding))
-
-	rawEncoding = C.g_mime_content_encoding_from_string(cEncoding)
+	rawEncoding = goGMimeString2Encoding(encoding)
 	dw := C.g_mime_data_wrapper_new_with_stream(rawStream.rawStream(), rawEncoding)
 	defer unref(C.gpointer(dw))
 	return CastDataWrapper(dw)
@@ -52,10 +48,9 @@ func (d *aDataWrapper) Stream() Stream {
 }
 
 func (d *aDataWrapper) Encoding() string {
-	var _enc C.GMimeContentEncoding
-	_enc = C.g_mime_data_wrapper_get_encoding(d.rawDataWrapper())
-	enc := C.g_mime_content_encoding_to_string(_enc)
-	return C.GoString(enc)
+	var enc C.GMimeContentEncoding
+	enc = C.g_mime_data_wrapper_get_encoding(d.rawDataWrapper())
+	return goGMimeEncoding2String(enc)
 
 }
 

@@ -42,6 +42,10 @@ func goGMimeString2Encoding(encoding string) C.GMimeContentEncoding {
 	return C.g_mime_content_encoding_from_string(cEncoding)
 }
 
+func goGMimeEncoding2String(enc C.GMimeContentEncoding) string {
+	return C.GoString(C.g_mime_content_encoding_to_string(enc))
+}
+
 func NewContentEncoder(encoding string) ContentEncodingState {
 	e := allocateContentEncoder()
 	C.g_mime_encoding_init_encode(e.Pointer, goGMimeString2Encoding(encoding))
