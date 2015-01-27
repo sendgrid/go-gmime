@@ -8,7 +8,6 @@ package gmime
 import "C"
 
 import (
-	"os"
 	"unsafe"
 )
 
@@ -28,25 +27,23 @@ func CastFileStream(cfs *C.GMimeStreamFile) *aFileStream {
 	return &aFileStream{s}
 }
 
-func NewFileStream(f *os.File) FileStream {
+func NewFileStream(f *C.FILE) FileStream {
 	return NewFileStreamWithMode(f, "a")
 }
 
-func NewFileStreamWithMode(f *os.File, mode string) FileStream {
+func NewFileStreamWithMode(f *C.FILE, mode string) FileStream {
 	cMode := C.CString(mode)
 	defer C.free(unsafe.Pointer(cMode))
-	cFile := C.fdopen(C.int(f.Fd()), cMode)
-	s := C.g_mime_stream_file_new(cFile)
+	s := C.g_mime_stream_file_new(f)
 	fileStream := (*C.GMimeStreamFile)(unsafe.Pointer(s))
 	defer unref(C.gpointer(fileStream))
 	return CastFileStream(fileStream)
 }
 
-func NewFileStreamWithBounds(f os.File, start int64, end int64) FileStream {
+func NewFileStreamWithBounds(f *C.FILE, start int64, end int64) FileStream {
 	mode := C.CString("r")
 	defer C.free(unsafe.Pointer(mode))
-	cFile := C.fdopen(C.int(f.Fd()), mode)
-	sBound := C.g_mime_stream_file_new_with_bounds(cFile, (C.gint64)(start), (C.gint64)(end))
+	sBound := C.g_mime_stream_file_new_with_bounds(f, (C.gint64)(start), (C.gint64)(end))
 	fileStream := (*C.GMimeStreamFile)(unsafe.Pointer(sBound))
 	defer unref(C.gpointer(fileStream))
 	return CastFileStream(fileStream)

@@ -63,13 +63,11 @@ func init() {
 
 func main() {
     flag.Parse()
-    f, err := os.Open(file_name)
-    if err != nil {
+    fs := gmime.NewFileStreamForPath(file_name, "r")
+    if fs == nil {
        panic("can't open " + file_name)
     }
-    defer f.Close()
 
-    fs := gmime.NewFileStreamWithMode(f, "r")
     parser := gmime.NewParserWithStream(fs)
     parser.SetScanFrom(scan_from)
     message := parser.ConstructMessage()
