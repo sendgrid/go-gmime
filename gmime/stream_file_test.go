@@ -1,18 +1,22 @@
-package gmime
+package gmime_test
 
 import (
+	"io/ioutil"
 	"os"
+	"path"
 	"testing"
 
+	"github.com/sendgrid/go-gmime/gmime"
 	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/suite"
 )
 
-type FileStreamTestSuite AbstractStreamTestSuite
+//type FileStreamTestSuite AbstractStreamTestSuite
 
+/*
 func (s *FileStreamTestSuite) SetupTest() {
 	s.buffer = "hello, world!"
-	tempFilepath := os.TempDir() + string(os.PathSeparator) + "hello.txt"
+    tempFilepath := pathJoin(os.TempDir(), "hello-gmime.txt")
+    ioutil.WriteFile([]byte(s.buffer))
 	tempFile, _ := os.Create(tempFilepath)
 	assert.NotNil(s.T(), tempFile)
 	tempFile.WriteString(s.buffer)
@@ -31,4 +35,47 @@ func (s *FileStreamTestSuite) TearDownTest() {
 
 func TestFileStreamTestSuite(t *testing.T) {
 	suite.Run(t, new(FileStreamTestSuite))
+}
+*/
+
+func TestFileStreamWithPathTestSuite(t *testing.T) {
+	s := "hello, world!"
+	tempFilepath := path.Join(os.TempDir(), "hello-gmime.txt")
+
+	{
+		err := ioutil.WriteFile(tempFilepath, []byte(s), 0644)
+		assert.NoError(t, err)
+		defer os.Remove(tempFilepath)
+
+		rfs := gmime.NewFileStreamForPath(tempFilepath, "r")
+		l := rfs.Length()
+		l2, r := rfs.Read(l)
+		assert.Equal(t, l, len(s))
+		assert.Equal(t, l, l2)
+		assert.Equal(t, s, r)
+	}
+
+	{
+		wfs := gmime.NewFileStreamForPath(tempFilepath, "w")
+		defer os.Remove(tempFilepath)
+		b := []byte(s)
+		l := wfs.Write(b)
+		assert.Equal(t, l, len(b))
+		wfs.Close()
+
+		r, err := ioutil.ReadFile(tempFilepath)
+		assert.NoError(t, err)
+		assert.Equal(t, r, s)
+	}
+	{
+		wfs := gmime.NewFileStreamForPath(tempFilepath, "w")
+		defer os.Remove(tempFilepath)
+		l := wfs.WriteString(s)
+		assert.Equal(t, l, len(s))
+		wfs.Close()
+
+		r, err := ioutil.ReadFile(tempFilepath)
+		assert.NoError(t, err)
+		assert.Equal(t, r, s)
+	}
 }

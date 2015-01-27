@@ -71,6 +71,17 @@ func (s *MessageTestSuite) TestMessageId() {
 	assert.Equal(s.T(), messageId, secondMessageIdName)
 }
 
+// Minimal formal test
+// FIXME: add more tests here
+func (s *MessageTestSuite) TestDateAsString() {
+	message := NewMessage()
+
+	date := "Thu, 15 Jan 2015 15:10:40 -0800"
+	message.SetDateAsString(date)
+	dateAsString := message.DateAsString()
+	assert.Equal(s.T(), date, dateAsString)
+}
+
 func (s *MessageTestSuite) TestTo() {
 	message := NewMessage()
 	firstName := "hola"
@@ -193,7 +204,7 @@ func (s *MessageTestSuite) TestToString() {
 
 	text := "This is a text part"
 	textStream := NewMemStreamWithBuffer(text)
-	textEncoding := NewContentEncodingFromString("8bit")
+	textEncoding := "8bit"
 	textWrapper := NewDataWrapperWithStream(textStream, textEncoding)
 	textPart := NewPartWithType("text", "plain")
 	textPart.SetContentObject(textWrapper)
@@ -222,7 +233,7 @@ Content-Type: %s
 
 	html := "<html><body>This is an HTML part</body></hmtl>"
 	htmlStream := NewMemStreamWithBuffer(html)
-	htmlEncoding := NewContentEncodingFromString("8bit")
+	htmlEncoding := "8bit"
 	htmlWrapper := NewDataWrapperWithStream(htmlStream, htmlEncoding)
 	htmlPart := NewPartWithType("text", "html")
 	htmlPart.SetContentObject(htmlWrapper)

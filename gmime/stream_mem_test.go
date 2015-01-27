@@ -8,12 +8,8 @@ import (
 	"github.com/stretchr/testify/suite"
 )
 
-type MemStreamTestSuite AbstractStreamTestSuite
-
-func (s *MemStreamTestSuite) SetupTest() {
-}
-
-func (s *MemStreamTestSuite) TearDownTest() {
+type MemStreamTestSuite struct {
+	suite.Suite
 }
 
 func (s *MemStreamTestSuite) TestNewMemStreamWithBuffer() {

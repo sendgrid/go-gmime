@@ -9,7 +9,7 @@ import "C"
 
 type DataWrapper interface {
 	Janitor
-	Encoding() ContentEncoding
+	Encoding() string
 	WriteToStream(stream Stream) uintptr
 	Stream() Stream
 }
@@ -33,11 +33,12 @@ func NewDataWrapper() DataWrapper {
 	return CastDataWrapper(dw)
 }
 
-func NewDataWrapperWithStream(stream Stream, encoding ContentEncoding) DataWrapper {
+func NewDataWrapperWithStream(stream Stream, encoding string) DataWrapper {
+	var rawEncoding C.GMimeContentEncoding
 	rawStream := stream.(rawStream)
-	rawEncoding := encoding.(rawContentEncoding)
 
-	dw := C.g_mime_data_wrapper_new_with_stream(rawStream.rawStream(), rawEncoding.rawContentEncoding())
+	rawEncoding = goGMimeString2Encoding(encoding)
+	dw := C.g_mime_data_wrapper_new_with_stream(rawStream.rawStream(), rawEncoding)
 	defer unref(C.gpointer(dw))
 	return CastDataWrapper(dw)
 }
@@ -46,8 +47,11 @@ func (d *aDataWrapper) Stream() Stream {
 	return CastStream(C.g_mime_data_wrapper_get_stream(d.rawDataWrapper()))
 }
 
-func (d *aDataWrapper) Encoding() ContentEncoding {
-	return CastContentEncoding(C.g_mime_data_wrapper_get_encoding(d.rawDataWrapper()))
+func (d *aDataWrapper) Encoding() string {
+	var enc C.GMimeContentEncoding
+	enc = C.g_mime_data_wrapper_get_encoding(d.rawDataWrapper())
+	return goGMimeEncoding2String(enc)
+
 }
 
 func (d *aDataWrapper) WriteToStream(stream Stream) uintptr {

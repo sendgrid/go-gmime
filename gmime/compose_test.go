@@ -97,10 +97,10 @@ func (s *ComposerTestSuite) TestNewMixedComposer() {
 		composer.AddBCC(s.ReceiverName, s.ReceiverEmail)
 		composer.AddSubject(s.Subject)
 
-		composer.AddText("Text part # 1")
-		composer.AddHTML("<strong>HTML</strong> part #1")
-		composer.AddText("Text part # 2")
-		composer.AddHTML("<strong>HTML</strong> part #2")
+		composer.AddText("Text part # 1", "")
+		composer.AddHTML("<strong>HTML</strong> part #1", "8bit")
+		composer.AddText("Text part # 2", "8bit")
+		composer.AddHTML("<strong>HTML</strong> part #2", "8bit")
 
 		expected := `From: senderEmail@example.com
 To: Some Receiver <receiver@example.com>
