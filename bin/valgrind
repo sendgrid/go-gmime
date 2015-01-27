@@ -6,8 +6,9 @@ if gccgo --version | grep -q 4.9;  then
 else
     GCCGO=gccgo-4.9
 fi
+LIBS="$(pkg-config --libs gmime-2.6)"
 
-go test -c -tags valgrind -compiler $GCCGO -gccgoflags '-g -gdwarf-3  -fuse-ld=gold -fno-split-stack -lgmime-2.6 -lgobject-2.0 -lglib-2.0' -x ./gmime
+go test -c -tags valgrind -compiler $GCCGO -gccgoflags "-g -gdwarf-3  -fuse-ld=gold -fno-split-stack ${LIBS}" -x ./gmime
 
 export G_SLICE=always-malloc
 export G_DEBUG=gc-friendly
