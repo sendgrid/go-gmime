@@ -99,7 +99,7 @@ func (m *aMessage) MessageId() string {
 
 func (m *aMessage) DateAsString() string {
 	date := C.g_mime_message_get_date_as_string(m.rawMessage())
-    defer C.free(unsafe.Pointer(date))
+	defer C.free(unsafe.Pointer(date))
 	return C.GoString(date)
 }
 
