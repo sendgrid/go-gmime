@@ -36,6 +36,8 @@ func castFilter(ptr *C.GMimeFilter) *aFilter {
 }
 
 func (f *aFilter) Copy() *aFilter {
+	fc := C.g_mime_filter_copy(f.rawFilter())
+	defer unref(C.gpointer(fc))
 	return castFilter(C.g_mime_filter_copy(f.rawFilter()))
 }
 
@@ -52,6 +54,7 @@ func (f *aFilter) rawFilter() *C.GMimeFilter {
 func NewBasicFilter(encoding string, encode bool) *aFilter {
 	enc := goGMimeString2Encoding(encoding)
 	f := C.g_mime_filter_basic_new(enc, gbool(encode))
+	defer unref(C.gpointer(f))
 	return castFilter(f)
 }
 
@@ -76,6 +79,7 @@ const (
 
 func NewBestFilter(flags int) *aBestFilter {
 	f := castFilter((*C.GMimeFilter)(C.g_mime_filter_best_new(C.GMimeFilterBestFlags(flags))))
+	defer unref(C.gpointer(f))
 	return &aBestFilter{f}
 }
 
@@ -108,6 +112,7 @@ func NewCharsetFilter(source string, target string) *aFilter {
 
 func NewCRLFFilter(encode bool, dots bool) *aFilter {
 	f := C.g_mime_filter_crlf_new(gbool(encode), gbool(dots))
+	defer unref(C.gpointer(f))
 	return castFilter(f)
 }
 
@@ -154,11 +159,13 @@ const (
 
 func NewHTMLFilter(flags uint32, colour int32) *aFilter {
 	f := C.g_mime_filter_html_new(C.guint32(flags), C.guint32(colour))
+	defer unref(C.gpointer(f))
 	return castFilter(f)
 }
 
 func NewStripFilter() *aFilter {
 	f := C.g_mime_filter_strip_new()
+	defer unref(C.gpointer(f))
 	return castFilter(f)
 }
 
@@ -173,6 +180,7 @@ type aFilterMD5 struct {
 
 func NewMD5Filter() *aFilterMD5 {
 	f := castFilter(C.g_mime_filter_md5_new())
+	defer unref(C.gpointer(f))
 	return &aFilterMD5{f}
 }
 
@@ -186,5 +194,6 @@ func (m *aFilterMD5) GetDigest() []byte {
 
 func NewYEncFilter(encode bool) *aFilter {
 	f := C.g_mime_filter_yenc_new(gbool(encode))
+	defer unref(C.gpointer(f))
 	return castFilter(f)
 }
