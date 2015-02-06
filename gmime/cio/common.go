@@ -9,12 +9,11 @@ import "C"
 import (
 	"io"
 	"runtime"
-	"unsafe"
 )
 
 type Wrapper struct {
 	val     interface{}
-	f       *C.FILE
+	f       *File
 	mode    string
 	doClose bool
 	closed  bool
@@ -29,14 +28,14 @@ func newWrapper(val interface{}, doClose bool) *Wrapper {
 	}
 	runtime.SetFinalizer(w, func(ww *Wrapper) {
 		if !ww.closed && ww.f != nil {
-			C.fclose(ww.f)
+			ww.f.Close()
 		}
 	})
 	return w
 }
 
-func (w Wrapper) File() (unsafe.Pointer, string) {
-	return unsafe.Pointer(w.f), w.mode
+func (w Wrapper) File() *File {
+	return w.f
 }
 
 func (c Wrapper) Closer() (io.Closer, bool) {

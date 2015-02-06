@@ -14,8 +14,8 @@ func newIOStream(w *cio.Wrapper, err error) FileStream {
 	if w == nil {
 		return nil
 	}
-	file, mode := w.File()
-	fs := NewFileStreamWithMode(file, mode)
+	file := w.File()
+	fs := NewFileStreamWithMode(file.Pointer(), file.Mode())
 	return &ioStream{
 		aFileStream: fs.(*aFileStream),
 		wrapper:     w,

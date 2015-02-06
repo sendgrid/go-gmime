@@ -133,7 +133,7 @@ func wrapReadWriter(cookie *Wrapper) (*Wrapper, error) {
 	if f == nil {
 		return nil, errors.New("fopencookie")
 	}
-	cookie.f = f
-	cookie.mode = mode
+	nf := newFile(f, mode)
+	cookie.f = nf
 	return cookie, err
 }
