@@ -23,10 +23,10 @@ type Compose interface {
 	AddHTMLReader(io.Reader)
 
 	To() string
-	Subject() string
+	Subject() (string, bool)
 	Text() string
 	HTML() string
-	From() string
+	From() (string, bool)
 	Recipient() string
 	ToString() string
 
@@ -95,7 +95,7 @@ func (p *aCompose) To() string {
 	return p.message.To().ToString(true)
 }
 
-func (p *aCompose) Subject() string {
+func (p *aCompose) Subject() (string, bool) {
 	return p.message.Subject()
 }
 
@@ -109,7 +109,7 @@ func (p *aCompose) HTML() string {
 	return p.Text()
 }
 
-func (p *aCompose) From() string {
+func (p *aCompose) From() (string, bool) {
 	return p.message.Sender()
 }
 

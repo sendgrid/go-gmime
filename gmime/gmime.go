@@ -52,3 +52,10 @@ func ref(referee C.gpointer) {
 	}
 	C.g_object_ref(referee)
 }
+
+func maybeGoString(s *C.char) (string, bool) {
+	if s == nil {
+		return "", false
+	}
+	return C.GoString(s), true
+}

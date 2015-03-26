@@ -66,7 +66,9 @@ func (s *ComposerTestSuite) TestNewTextComposer() {
 		reader := bufio.NewReader(s.ThisFileHandler)
 		composer.AddTextReader(reader)
 
-		assert.Equal(s.T(), composer.From(), s.SenderEmail)
+		from, ok := composer.From()
+		assert.True(s.T(), ok)
+		assert.Equal(s.T(), from, s.SenderEmail)
 		assert.Equal(s.T(), composer.To(), s.ReceiverNameAndEmail)
 
 		// TODO: test this

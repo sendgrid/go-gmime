@@ -233,7 +233,10 @@ func ParsingADeliveryStatusNotification(t *testing.T) {
 			assert.NotNil(t, preamble)
 			contentType := strings.ToLower(preamble.ContentType().ToString())
 			assert.Equal(t, contentType, "text/plain")
-			assert.Equal(t, preamble.Header("Content-Description"), "Notification")
+
+			header, ok := preamble.Header("Content-Description")
+			assert.True(t, ok)
+			assert.Equal(t, header, "Notification")
 			explanation := preamble.ToString()
 			assert.Contains(t, explanation, "not able to be")
 			assert.Contains(t, explanation, "delivered to one of its intended recipients")
@@ -249,8 +252,14 @@ func ParsingADeliveryStatusNotification(t *testing.T) {
 			assert.NotNil(t, status)
 			contentType := strings.ToLower(status.ContentType().ToString())
 			assert.Equal(t, contentType, "message/delivery-status")
-			assert.Equal(t, status.Header("Action"), "failed")
-			assert.Equal(t, status.Header("Status"), "5.1.1")
+
+			header, ok := status.Header("Action")
+			assert.True(t, ok)
+			assert.Equal(t, header, "failed")
+
+			header, ok = status.Header("Status")
+			assert.True(t, ok)
+			assert.Equal(t, header, "5.1.1")
 			assert.Contains(t, status.ToString(), "Arrival-Date: 2014-03-26 00-01-19")
 			assert.Contains(t, status.ToString(), "Diagnostic-Code: 550 5.1.1 sid=i01K1n00l0kn1Em01 Address rejected tobigeri-555@mail.goo.ne.jp. [code=28]")
 		}
@@ -264,7 +273,10 @@ func ParsingADeliveryStatusNotification(t *testing.T) {
 			assert.NotNil(t, rfc822)
 			contentType := strings.ToLower(rfc822.ContentType().ToString())
 			assert.Equal(t, contentType, "message/rfc822")
-			assert.Equal(t, rfc822.Header("Content-Description"), "Undelivered Message")
+
+			header, ok := rfc822.Header("Content-Description")
+			assert.True(t, ok)
+			assert.Equal(t, header, "Undelivered Message")
 		}
 
 		// "When examining the container part of the original message"
@@ -277,10 +289,18 @@ func ParsingADeliveryStatusNotification(t *testing.T) {
 
 			// "should have enough information to be able to record the bounce"
 			{
-				assert.Equal(t, original.Header("To"), "tobigeri-555@mail.goo.ne.jp")
+				header, ok := original.Header("To")
+				assert.True(t, ok)
+				assert.Equal(t, header, "tobigeri-555@mail.goo.ne.jp")
+
 				// These headers encode things like user id, etc.
-				assert.NotNil(t, original.Header("X-SG-EID"))
-				assert.NotNil(t, original.Header("X-SG-ID"))
+				header, ok = original.Header("X-SG-EID")
+				assert.True(t, ok)
+				assert.NotNil(t, header)
+
+				header, ok = original.Header("X-SG-ID")
+				assert.True(t, ok)
+				assert.NotNil(t, header)
 			}
 		}
 	}

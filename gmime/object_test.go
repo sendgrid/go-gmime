@@ -33,7 +33,12 @@ func (s *ObjectTestSuite) TestHeader() {
 	contentType := NewContentType("text", "plain")
 	part := NewObject(contentType)
 	part.SetHeader("X-SendGrid-Name", "hola!")
-	assert.Equal(s.T(), part.Header("X-SendGrid-Name"), "hola!")
+	header, ok := part.Header("X-SendGrid-Name")
+	assert.True(s.T(), ok)
+	assert.Equal(s.T(), header, "hola!")
+
+	_, ok = part.Header("X-Not-Exists")
+	assert.False(s.T(), ok)
 
 	// test multiple headers
 	part.SetHeader("X-SendGrid-Name2", "hola2")

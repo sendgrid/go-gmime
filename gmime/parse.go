@@ -10,18 +10,18 @@ import (
 
 type Parse interface {
 	To() string
-	Subject() string
-	From() string
+	Subject() (string, bool)
+	From() (string, bool)
 	Bcc() string
 	Cc() string
 	Recipients() string
-	MessageId() string
+	MessageId() (string, bool)
 	Text() string
 	Html() string
 	Attachment() map[string][]byte
 	//	AttachmentReader() Reader
 	Headers() string
-	Header(string) string
+	Header(string) (string, bool)
 	Boundary() string
 }
 
@@ -44,11 +44,11 @@ func (p *aParse) To() string {
 	return p.message.To().ToString(true)
 }
 
-func (p *aParse) Subject() string {
+func (p *aParse) Subject() (string, bool) {
 	return p.message.Subject()
 }
 
-func (p *aParse) From() string {
+func (p *aParse) From() (string, bool) {
 	return p.message.Sender()
 }
 
@@ -64,7 +64,7 @@ func (p *aParse) Recipients() string {
 	return p.message.AllRecipients().ToString(true)
 }
 
-func (p *aParse) MessageId() string {
+func (p *aParse) MessageId() (string, bool) {
 	return p.message.MessageId()
 }
 
@@ -115,7 +115,7 @@ func (p *aParse) Headers() string {
 	return p.message.Headers()
 }
 
-func (p *aParse) Header(name string) string {
+func (p *aParse) Header(name string) (string, bool) {
 	return p.message.Header(name)
 }
 

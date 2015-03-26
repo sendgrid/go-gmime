@@ -13,14 +13,14 @@ import (
 type Message interface {
 	Object
 	SetSender(string)
-	Sender() string
+	Sender() (string, bool)
 	SetReplyTo(string)
-	ReplyTo() string
+	ReplyTo() (string, bool)
 	SetSubject(string)
-	Subject() string
+	Subject() (string, bool)
 	SetMessageId(string)
-	MessageId() string
-	DateAsString() string
+	MessageId() (string, bool)
+	DateAsString() (string, bool)
 	SetDateAsString(string)
 	AddTo(string, string)
 	To() *InternetAddressList
@@ -59,9 +59,9 @@ func (m *aMessage) SetSender(sender string) {
 	C.free(unsafe.Pointer(cSender))
 }
 
-func (m *aMessage) Sender() string {
+func (m *aMessage) Sender() (string, bool) {
 	sender := C.g_mime_message_get_sender(m.rawMessage())
-	return C.GoString(sender)
+	return maybeGoString(sender)
 }
 
 func (m *aMessage) SetReplyTo(replyTo string) {
@@ -70,9 +70,9 @@ func (m *aMessage) SetReplyTo(replyTo string) {
 	C.free(unsafe.Pointer(cReply))
 }
 
-func (m *aMessage) ReplyTo() string {
+func (m *aMessage) ReplyTo() (string, bool) {
 	replyTo := C.g_mime_message_get_reply_to(m.rawMessage())
-	return C.GoString(replyTo)
+	return maybeGoString(replyTo)
 }
 
 func (m *aMessage) SetSubject(subject string) {
@@ -81,9 +81,9 @@ func (m *aMessage) SetSubject(subject string) {
 	C.free(unsafe.Pointer(cSubject))
 }
 
-func (m *aMessage) Subject() string {
+func (m *aMessage) Subject() (string, bool) {
 	subject := C.g_mime_message_get_subject(m.rawMessage())
-	return C.GoString(subject)
+	return maybeGoString(subject)
 }
 
 func (m *aMessage) SetMessageId(messageId string) {
@@ -92,15 +92,15 @@ func (m *aMessage) SetMessageId(messageId string) {
 	C.free(unsafe.Pointer(cMessageId))
 }
 
-func (m *aMessage) MessageId() string {
+func (m *aMessage) MessageId() (string, bool) {
 	messageId := C.g_mime_message_get_message_id(m.rawMessage())
-	return C.GoString(messageId)
+	return maybeGoString(messageId)
 }
 
-func (m *aMessage) DateAsString() string {
+func (m *aMessage) DateAsString() (string, bool) {
 	date := C.g_mime_message_get_date_as_string(m.rawMessage())
 	defer C.free(unsafe.Pointer(date))
-	return C.GoString(date)
+	return maybeGoString(date)
 }
 
 func (m *aMessage) SetDateAsString(date string) {
