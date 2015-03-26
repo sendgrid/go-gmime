@@ -72,11 +72,25 @@ func TestAddressList(t *testing.T) {
 		assert.Equal(t, parsedMailbox.Email(), memberMailbox.Email())
 	}
 
+	parsed.Walk(func(a Address) {
+		_, ok1 := a.(*MailboxAddress)
+		assert.True(t, ok1)
+	})
+
 	parsed = ParseString(encoded)
 	for i := 0; i < members.GetLength(); i++ {
 		parsedMailbox, ok1 := parsed.GetAddress(i).(*MailboxAddress)
 		assert.True(t, ok1)
 		memberMailbox, ok2 := members.GetAddress(i).(*MailboxAddress)
+		assert.True(t, ok2)
+		assert.Equal(t, parsedMailbox.Name(), memberMailbox.Name())
+		assert.Equal(t, parsedMailbox.Email(), memberMailbox.Email())
+	}
+
+	for i, each := range members.Slice() {
+		parsedMailbox, ok1 := parsed.GetAddress(i).(*MailboxAddress)
+		assert.True(t, ok1)
+		memberMailbox, ok2 := each.(*MailboxAddress)
 		assert.True(t, ok2)
 		assert.Equal(t, parsedMailbox.Name(), memberMailbox.Name())
 		assert.Equal(t, parsedMailbox.Email(), memberMailbox.Email())

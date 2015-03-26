@@ -58,6 +58,8 @@ type AddressList interface {
 	GetAddress(int) Address
 	SetAddress(Address, int)
 	ToString(bool) string
+	Walk(callback func(Address))
+	Slice() []Address
 }
 
 type internetAddress struct {
@@ -259,6 +261,23 @@ func (l *InternetAddressList) ToString(encode bool) string {
 		return addressString
 	}
 	return ""
+}
+
+func (l *InternetAddressList) Walk(callback func(Address)) {
+	m := l.GetLength()
+	for i := 0; i < m; i++ {
+		a := l.GetAddress(i)
+		callback(a)
+	}
+}
+
+func (l *InternetAddressList) Slice() []Address {
+	m := l.GetLength()
+	r := make([]Address, m)
+	for i := 0; i < m; i++ {
+		r[i] = l.GetAddress(i)
+	}
+	return r
 }
 
 func (l *InternetAddressList) rawList() *C.InternetAddressList {
