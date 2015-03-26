@@ -1,5 +1,5 @@
-// Package cio provide wrappers for libc FILE* stuff
-package cio
+// Package stdio provide wrappers for libc FILE* stuff
+package stdio
 
 import (
 	"io"

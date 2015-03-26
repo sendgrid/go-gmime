@@ -1,16 +1,16 @@
 package gmime
 
 import (
-	"github.com/sendgrid/go-gmime/gmime/cio"
+	"github.com/sendgrid/go-gmime/gmime/stdio"
 	"io"
 )
 
 type ioStream struct {
 	*aFileStream
-	wrapper *cio.Wrapper
+	wrapper *stdio.Wrapper
 }
 
-func newIOStream(w *cio.Wrapper, err error) FileStream {
+func newIOStream(w *stdio.Wrapper, err error) FileStream {
 	if w == nil {
 		return nil
 	}
@@ -23,13 +23,13 @@ func newIOStream(w *cio.Wrapper, err error) FileStream {
 }
 
 func NewReaderStream(r io.Reader, doClose bool) FileStream {
-	return newIOStream(cio.WrapReader(r, doClose))
+	return newIOStream(stdio.WrapReader(r, doClose))
 }
 
 func NewWriterStream(w io.Writer, doClose bool) FileStream {
-	return newIOStream(cio.WrapWriter(w, doClose))
+	return newIOStream(stdio.WrapWriter(w, doClose))
 }
 
 func NewReadWriterStream(rw io.ReadWriter, doClose bool) FileStream {
-	return newIOStream(cio.WrapReadWriter(rw, doClose))
+	return newIOStream(stdio.WrapReadWriter(rw, doClose))
 }

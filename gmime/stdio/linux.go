@@ -1,5 +1,5 @@
 // +build linux
-package cio
+package stdio
 
 /*
 #define _GNU_SOURCE
@@ -12,7 +12,7 @@ package cio
 
 static void seterr ( int e ) { errno = e; }
 
-static FILE * cio_setup_cookie(void *cookie, const char *mode, bool r, bool w, bool s) {
+static FILE * stdio_setup_cookie(void *cookie, const char *mode, bool r, bool w, bool s) {
     cookie_io_functions_t funcswrap = {
        .read = r ? c_reader : NULL,
        .write = w ? c_writer : NULL,
@@ -129,7 +129,7 @@ func wrapReadWriter(cookie *Wrapper) (*Wrapper, error) {
 	}
 	cmode := C.CString(mode)
 	defer C.free(unsafe.Pointer(cmode))
-	f, err := C.cio_setup_cookie(unsafe.Pointer(cookie), cmode, C._Bool(rdr), C._Bool(wtr), C._Bool(skr))
+	f, err := C.stdio_setup_cookie(unsafe.Pointer(cookie), cmode, C._Bool(rdr), C._Bool(wtr), C._Bool(skr))
 	if f == nil {
 		return nil, errors.New("fopencookie")
 	}
