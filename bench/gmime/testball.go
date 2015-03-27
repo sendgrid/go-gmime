@@ -6,15 +6,12 @@ package main
 
 import (
 	"archive/tar"
-	"bufio"
-	"bytes"
 	"compress/gzip"
 	"flag"
 	"fmt"
 	"github.com/sendgrid/go-gmime/bench/util"
 	"github.com/sendgrid/go-gmime/gmime"
 	"io"
-	"io/ioutil"
 	"log"
 	"os"
 	"runtime/debug"
@@ -69,9 +66,8 @@ func parseArchive(filename string) {
 			break
 		}
 		path := hdr.Name
-		data, _ := ioutil.ReadAll(t)
 		start := time.Now().UnixNano()
-		if parseGMime(data) {
+		if parseGMime(t) {
 			end := time.Now().UnixNano()
 			seconds := float64(end-start) / 1000000000.0
 			util.Time += seconds
@@ -87,9 +83,7 @@ func parseArchive(filename string) {
 	log.Printf("Parsed %d files in %f seconds with GMime binding.\n", util.Counter, util.Time)
 }
 
-func parseGMime(data []byte) bool {
-	buf := bytes.NewBuffer(data)
-	reader := bufio.NewReader(buf)
+func parseGMime(reader io.Reader) bool {
 	parse := gmime.NewParse(reader)
 
 	parse.Headers()

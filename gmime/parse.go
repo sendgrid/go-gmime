@@ -2,7 +2,6 @@ package gmime
 
 import (
 	"io"
-	"io/ioutil"
 	"strings"
 
 	iconv "github.com/djimenez/iconv-go"
@@ -30,9 +29,7 @@ type aParse struct {
 }
 
 func NewParse(reader io.Reader) Parse {
-	// TODO: stream instead read all in at once
-	data, _ := ioutil.ReadAll(reader)
-	stream := NewMemStreamWithBuffer(string(data))
+	stream := NewReaderStream(reader, true)
 	parser := NewParserWithStream(stream)
 	message := parser.ConstructMessage()
 	return &aParse{
