@@ -59,11 +59,11 @@ func (s *ParseMessageTestSuite) TestParseTextOnly() {
 		assert.True(s.T(), ok)
 		assert.Equal(s.T(), msgid, "CAGPJ=uZ8BfOdJr9E-J3o=5uC=4j0YECrm6Aa58d8vovNNrMS4Q@mail.gmail.com")
 
-        text, ok := parse.Text()
+		text, ok := parse.Text()
 		assert.True(s.T(), ok)
 		assert.Equal(s.T(), text, "this is text only email")
 
-        html, ok := parse.Html()
+		html, ok := parse.Html()
 		assert.False(s.T(), ok)
 		assert.Equal(s.T(), html, "")
 
@@ -102,13 +102,13 @@ func (s *ParseMessageTestSuite) TestParseMultipart() {
 
 		hasher := md5.New()
 
-        text, _ := parse.Text()
+		text, _ := parse.Text()
 		hasher.Write([]byte(text))
 		hashString := hex.EncodeToString(hasher.Sum(nil))
 		assert.Equal(s.T(), hashString, "28e0cd851e8c6a443813c6178dc61213")
 		hasher.Reset()
 
-        html, _ := parse.Html()
+		html, _ := parse.Html()
 		hasher.Write([]byte(html))
 		hashString = hex.EncodeToString(hasher.Sum(nil))
 		assert.Equal(s.T(), hashString, "e9c42f1ed2abfc23603896e2e8c31568")
@@ -155,13 +155,13 @@ func (s *ParseMessageTestSuite) TestParseLargeAttachments() {
 
 		hasher := md5.New()
 
-        text, _ := parse.Text()
+		text, _ := parse.Text()
 		hasher.Write([]byte(text))
 		hashString := hex.EncodeToString(hasher.Sum(nil))
 		assert.Equal(s.T(), hashString, "3a84d07f16dd41d574054e3762b5fb0e")
 		hasher.Reset()
 
-        html, _ := parse.Html()
+		html, _ := parse.Html()
 		hasher.Write([]byte(html))
 		hashString = hex.EncodeToString(hasher.Sum(nil))
 		assert.Equal(s.T(), hashString, "d864471b159bafe6271c40c7dddb238b")
@@ -204,13 +204,13 @@ func (s *ParseMessageTestSuite) TestParseTextAttachment() {
 		assert.Equal(s.T(), parse.To(), "Team R&D <foobar@foobar.com>")
 		hasher := md5.New()
 
-        text, _ := parse.Text()
+		text, _ := parse.Text()
 		hasher.Write([]byte(text))
 		hashString := hex.EncodeToString(hasher.Sum(nil))
 		assert.Equal(s.T(), hashString, "b5b94cd495174ab6e4443fa81847b6ce")
 		hasher.Reset()
 
-        html, _ := parse.Html()
+		html, _ := parse.Html()
 		hasher.Write([]byte(html))
 		hashString = hex.EncodeToString(hasher.Sum(nil))
 		assert.Equal(s.T(), hashString, "d41d8cd98f00b204e9800998ecf8427e")

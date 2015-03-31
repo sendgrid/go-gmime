@@ -151,7 +151,7 @@ func (p *aParse) parsePart(part Part, contentType string) (string, bool) {
 		if sourceCharset != targetCharset {
 			payload, _ = iconv.ConvertString(payload, sourceCharset, targetCharset)
 		}
-        return payload, true
+		return payload, true
 	}
 
 	return "", false
@@ -160,7 +160,7 @@ func (p *aParse) parsePart(part Part, contentType string) (string, bool) {
 // parse the message body, might contains many Parts
 func (p *aParse) parseBody(contentType string) (string, bool) {
 	container := p.message.MimePart()
-    payload := ""
+	payload := ""
 
 	if part, ok := container.(Part); ok {
 		return p.parsePart(part, contentType)
@@ -169,9 +169,9 @@ func (p *aParse) parseBody(contentType string) (string, bool) {
 			if object := iter.Current(); object != nil {
 				if part, ok = object.(Part); ok {
 					// TODO: looks wrong
-                    if payloadPart, ok := p.parsePart(part, contentType); ok {
-                        payload += payloadPart
-                    }
+					if payloadPart, ok := p.parsePart(part, contentType); ok {
+						payload += payloadPart
+					}
 				}
 			}
 		}
