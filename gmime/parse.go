@@ -10,18 +10,18 @@ import (
 
 type Parse interface {
 	To() string
-	Subject() string
-	From() string
+	Subject() (string, bool)
+	From() (string, bool)
 	Bcc() string
 	Cc() string
 	Recipients() string
-	MessageId() string
-	Text() string
-	Html() string
+	MessageId() (string, bool)
+	Text() (string, bool)
+	Html() (string, bool)
 	Attachment() map[string][]byte
 	//	AttachmentReader() Reader
 	Headers() string
-	Header(string) string
+	Header(string) (string, bool)
 	Boundary() string
 }
 
@@ -44,11 +44,11 @@ func (p *aParse) To() string {
 	return p.message.To().ToString(true)
 }
 
-func (p *aParse) Subject() string {
+func (p *aParse) Subject() (string, bool) {
 	return p.message.Subject()
 }
 
-func (p *aParse) From() string {
+func (p *aParse) From() (string, bool) {
 	return p.message.Sender()
 }
 
@@ -64,7 +64,7 @@ func (p *aParse) Recipients() string {
 	return p.message.AllRecipients().ToString(true)
 }
 
-func (p *aParse) MessageId() string {
+func (p *aParse) MessageId() (string, bool) {
 	return p.message.MessageId()
 }
 
@@ -72,11 +72,11 @@ func (p *aParse) ContentType() string {
 	return p.message.ContentType().ToString()
 }
 
-func (p *aParse) Text() string {
+func (p *aParse) Text() (string, bool) {
 	return p.parseBody("text/plain")
 }
 
-func (p *aParse) Html() string {
+func (p *aParse) Html() (string, bool) {
 	return p.parseBody("text/html")
 }
 
@@ -115,7 +115,7 @@ func (p *aParse) Headers() string {
 	return p.message.Headers()
 }
 
-func (p *aParse) Header(name string) string {
+func (p *aParse) Header(name string) (string, bool) {
 	return p.message.Header(name)
 }
 
@@ -141,9 +141,9 @@ func (p *aParse) rawPart(part Part) []byte {
 }
 
 // parse a Part
-func (p *aParse) parsePart(part Part, contentType string) (payload string) {
+func (p *aParse) parsePart(part Part, contentType string) (string, bool) {
 	if part.ContentType().ToString() == contentType && part.Filename() == "" {
-		payload = string(p.rawPart(part))
+		payload := string(p.rawPart(part))
 
 		// convert charset
 		targetCharset := "utf-8"
@@ -151,27 +151,31 @@ func (p *aParse) parsePart(part Part, contentType string) (payload string) {
 		if sourceCharset != targetCharset {
 			payload, _ = iconv.ConvertString(payload, sourceCharset, targetCharset)
 		}
+		return payload, true
 	}
 
-	return payload
+	return "", false
 }
 
 // parse the message body, might contains many Parts
-func (p *aParse) parseBody(contentType string) (payload string) {
+func (p *aParse) parseBody(contentType string) (string, bool) {
 	container := p.message.MimePart()
+	payload := ""
 
 	if part, ok := container.(Part); ok {
-		payload = p.parsePart(part, contentType)
+		return p.parsePart(part, contentType)
 	} else if _, ok := container.(Multipart); ok {
 		for iter := NewPartIter(p.message); iter.HasNext(); iter.Next() {
 			if object := iter.Current(); object != nil {
 				if part, ok = object.(Part); ok {
 					// TODO: looks wrong
-					payload += p.parsePart(part, contentType)
+					if payloadPart, ok := p.parsePart(part, contentType); ok {
+						payload += payloadPart
+					}
 				}
 			}
 		}
 	}
 
-	return payload
+	return payload, len(payload) > 0
 }

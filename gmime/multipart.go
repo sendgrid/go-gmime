@@ -17,6 +17,7 @@ type Multipart interface {
 	GetPart(int) Object
 	Count() int
 	Clear()
+    Walk(func (Object) error) error
 }
 
 type aMultipart struct {
@@ -67,6 +68,16 @@ func (m *aMultipart) Count() int {
 
 func (m *aMultipart) Boundary() string {
 	return C.GoString(C.g_mime_multipart_get_boundary(m.rawMultipart()))
+}
+
+// FIXME: need tests
+func (m *aMultipart) Walk(callback func(Object) error) error {
+	for i := 0; i < m.Count(); i++ {
+		if ok := callback(m.GetPart(i)); ok != nil {
+			return ok
+		}
+	}
+	return nil
 }
 
 func (m *aMultipart) rawMultipart() *C.GMimeMultipart {

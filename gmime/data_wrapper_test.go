@@ -8,7 +8,7 @@ import (
 
 func TestNewDataWrapper(t *testing.T) {
 	dw := NewDataWrapper()
-	assert.Equal(t, dw.Encoding().ToString(), "")
+	assert.Equal(t, dw.Encoding(), "")
 }
 
 func TestNewDataWrapperWithStream(t *testing.T) {
@@ -21,10 +21,10 @@ func TestNewDataWrapperWithStream(t *testing.T) {
 		instream := NewMemStream()
 		instream.Length()
 		instream.WriteString(raw)
-		encoding := NewContentEncodingFromString("quoted-printable")
+		encoding := "quoted-printable"
 
 		wrapper := NewDataWrapperWithStream(instream, encoding)
-		assert.Equal(t, wrapper.Encoding().ToString(), encoding.ToString())
+		assert.Equal(t, wrapper.Encoding(), encoding)
 
 		outstream := NewMemStream()
 		wrapper.WriteToStream(outstream)
@@ -34,7 +34,7 @@ func TestNewDataWrapperWithStream(t *testing.T) {
 
 func TestDataWrapperStream(t *testing.T) {
 	stream := NewMemStreamWithBuffer("hola")
-	encoding := NewContentEncodingFromString("gzip")
+	encoding := "gzip"
 	wrapper := NewDataWrapperWithStream(stream, encoding)
 	assert.Equal(t, wrapper.Stream().Length(), 4)
 }

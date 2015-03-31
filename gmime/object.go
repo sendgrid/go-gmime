@@ -33,7 +33,7 @@ type Object interface {
 	SetContentType(ContentType)
 	ContentType() ContentType
 	SetHeader(string, string)
-	Header(string) string
+	Header(string) (string, bool)
 	ToString() string
 	ContentDisposition() ContentDisposition
 	Headers() string
@@ -94,11 +94,11 @@ func (o *anObject) SetHeader(name, value string) {
 	C.g_mime_object_set_header(o.rawObject(), _name, _value)
 }
 
-func (o *anObject) Header(name string) string {
+func (o *anObject) Header(name string) (string, bool) {
 	var _name *C.char = C.CString(name)
 	defer C.free(unsafe.Pointer(_name))
 
-	return C.GoString(C.g_mime_object_get_header(o.rawObject(), _name))
+	return maybeGoString(C.g_mime_object_get_header(o.rawObject(), _name))
 }
 
 func (o *anObject) ToString() string {

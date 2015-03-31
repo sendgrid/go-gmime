@@ -17,8 +17,8 @@ type Part interface {
 	Filename() string
 	Description() string
 	ContentLocation() string
-	ContentEncoding() ContentEncoding
-	SetContentEncoding(encoding ContentEncoding)
+	ContentEncoding() string
+	SetContentEncoding(encoding string)
 }
 
 type aPart struct {
@@ -74,13 +74,15 @@ func (p *aPart) ContentLocation() string {
 	return C.GoString(loc)
 }
 
-func (p *aPart) ContentEncoding() ContentEncoding {
-	return &aContentEncoding{encoding: C.g_mime_part_get_content_encoding(p.rawPart())}
+func (p *aPart) ContentEncoding() string {
+	var enc C.GMimeContentEncoding
+	enc = C.g_mime_part_get_content_encoding(p.rawPart())
+	return goGMimeEncoding2String(enc)
 }
 
-func (p *aPart) SetContentEncoding(encoding ContentEncoding) {
-	rawEncode := encoding.(rawContentEncoding)
-	C.g_mime_part_set_content_encoding(p.rawPart(), rawEncode.rawContentEncoding())
+func (p *aPart) SetContentEncoding(encoding string) {
+	rawEncode := goGMimeString2Encoding(encoding)
+	C.g_mime_part_set_content_encoding(p.rawPart(), rawEncode)
 }
 
 func (p *aPart) Filename() string {

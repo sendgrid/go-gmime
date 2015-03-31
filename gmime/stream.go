@@ -13,8 +13,9 @@ import (
 
 type Stream interface {
 	Janitor
-	Read(uint64) (int64, []byte)
-	Write([]byte, uint64) int64
+	Read(int64) (int64, []byte)
+	Write([]byte) int64
+	WriteBlock([]byte, int64) int64
 	Flush() int
 	Close() int
 	Eos() bool
@@ -42,7 +43,7 @@ func CastStream(cs *C.GMimeStream) *aStream {
 	return &aStream{CastPointer(C.gpointer(cs))}
 }
 
-func (s *aStream) Read(length uint64) (int64, []byte) {
+func (s *aStream) Read(length int64) (int64, []byte) {
 	cBuf := make([]byte, length)
 	cChar := (*C.char)(unsafe.Pointer(&cBuf[0]))
 
@@ -53,7 +54,11 @@ func (s *aStream) Read(length uint64) (int64, []byte) {
 	return int64(cLength), cBuf[:cLength]
 }
 
-func (s *aStream) Write(buf []byte, length uint64) int64 {
+func (s *aStream) Write(buf []byte) int64 {
+	return s.WriteBlock(buf, int64(len(buf)))
+}
+
+func (s *aStream) WriteBlock(buf []byte, length int64) int64 {
 	cLength := C.g_mime_stream_write(s.rawStream(), (*C.char)(unsafe.Pointer(&buf[0])), (C.size_t)(length))
 	return int64(cLength)
 }

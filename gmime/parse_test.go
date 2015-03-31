@@ -23,9 +23,11 @@ func ExampleNewParse() {
 	reader := bufio.NewReader(fileHandler)
 	parse := NewParse(reader)
 
-	fmt.Println(parse.From())
+	from, _ := parse.From()
+	subject, _ := parse.Subject()
+	fmt.Println(from)
 	fmt.Println(parse.To())
-	fmt.Println(parse.Subject())
+	fmt.Println(subject)
 
 	// Output:
 	// Dave McGuire <foobar@foobar.com>
@@ -44,14 +46,27 @@ func (s *ParseMessageTestSuite) TestParseTextOnly() {
 		parse := NewParse(reader)
 
 		assert.Equal(s.T(), parse.To(), "Kien Pham <kien@sendgrid.com>")
-		assert.Equal(s.T(), parse.Subject(), "text only")
-		assert.Equal(s.T(), parse.From(), "Kien Pham <kien.pham@sendgrid.com>")
+		subj, ok := parse.Subject()
+		assert.True(s.T(), ok)
+		assert.Equal(s.T(), subj, "text only")
+		from, ok := parse.From()
+		assert.Equal(s.T(), from, "Kien Pham <kien.pham@sendgrid.com>")
+		assert.True(s.T(), ok)
 		assert.Equal(s.T(), parse.Bcc(), "")
 		assert.Equal(s.T(), parse.Cc(), "")
 		assert.Equal(s.T(), parse.Recipients(), "Kien Pham <kien@sendgrid.com>")
-		assert.Equal(s.T(), parse.MessageId(), "CAGPJ=uZ8BfOdJr9E-J3o=5uC=4j0YECrm6Aa58d8vovNNrMS4Q@mail.gmail.com")
-		assert.Equal(s.T(), parse.Text(), "this is text only email")
-		assert.Equal(s.T(), parse.Html(), "")
+		msgid, ok := parse.MessageId()
+		assert.True(s.T(), ok)
+		assert.Equal(s.T(), msgid, "CAGPJ=uZ8BfOdJr9E-J3o=5uC=4j0YECrm6Aa58d8vovNNrMS4Q@mail.gmail.com")
+
+		text, ok := parse.Text()
+		assert.True(s.T(), ok)
+		assert.Equal(s.T(), text, "this is text only email")
+
+		html, ok := parse.Html()
+		assert.False(s.T(), ok)
+		assert.Equal(s.T(), html, "")
+
 		attachments := parse.Attachment()
 		assert.Equal(s.T(), len(attachments), 0)
 		fileHandler.Close()
@@ -69,20 +84,32 @@ func (s *ParseMessageTestSuite) TestParseMultipart() {
 		parse := NewParse(reader)
 
 		assert.Equal(s.T(), parse.To(), "joe@sixpack.org")
-		assert.Equal(s.T(), parse.Subject(), "Test")
-		assert.Equal(s.T(), parse.From(), "Jihad <jihad@vt.edu>")
+		subj, ok := parse.Subject()
+		assert.True(s.T(), ok)
+		assert.Equal(s.T(), subj, "Test")
+
+		from, ok := parse.From()
+		assert.True(s.T(), ok)
+		assert.Equal(s.T(), from, "Jihad <jihad@vt.edu>")
+
 		assert.Equal(s.T(), parse.Bcc(), "")
 		assert.Equal(s.T(), parse.Cc(), "")
 		assert.Equal(s.T(), parse.Recipients(), "joe@sixpack.org")
-		assert.Equal(s.T(), parse.MessageId(), "000901bf1857$25c23850$66d9c026@jackhandy")
+
+		msgid, ok := parse.MessageId()
+		assert.True(s.T(), ok)
+		assert.Equal(s.T(), msgid, "000901bf1857$25c23850$66d9c026@jackhandy")
 
 		hasher := md5.New()
-		hasher.Write([]byte(parse.Text()))
+
+		text, _ := parse.Text()
+		hasher.Write([]byte(text))
 		hashString := hex.EncodeToString(hasher.Sum(nil))
 		assert.Equal(s.T(), hashString, "28e0cd851e8c6a443813c6178dc61213")
 		hasher.Reset()
 
-		hasher.Write([]byte(parse.Html()))
+		html, _ := parse.Html()
+		hasher.Write([]byte(html))
 		hashString = hex.EncodeToString(hasher.Sum(nil))
 		assert.Equal(s.T(), hashString, "e9c42f1ed2abfc23603896e2e8c31568")
 		hasher.Reset()
@@ -110,20 +137,32 @@ func (s *ParseMessageTestSuite) TestParseLargeAttachments() {
 		parse := NewParse(reader)
 
 		assert.Equal(s.T(), parse.To(), "Kien Pham <kien@sendgrid.com>")
-		assert.Equal(s.T(), parse.Subject(), "break my parse test!!!")
-		assert.Equal(s.T(), parse.From(), "Kien Pham <kien.pham@sendgrid.com>")
+
+		subj, ok := parse.Subject()
+		assert.True(s.T(), ok)
+		assert.Equal(s.T(), subj, "break my parse test!!!")
+
+		from, ok := parse.From()
+		assert.True(s.T(), ok)
+		assert.Equal(s.T(), from, "Kien Pham <kien.pham@sendgrid.com>")
 		assert.Equal(s.T(), parse.Bcc(), "")
 		assert.Equal(s.T(), parse.Cc(), "")
 		assert.Equal(s.T(), parse.Recipients(), "Kien Pham <kien@sendgrid.com>")
-		assert.Equal(s.T(), parse.MessageId(), "CAGPJ=ubOouY1J7wqDEMKdTVzs3xYg7xa=UcupvZzWCGk0nMP1Q@mail.gmail.com")
+
+		msgid, ok := parse.MessageId()
+		assert.True(s.T(), ok)
+		assert.Equal(s.T(), msgid, "CAGPJ=ubOouY1J7wqDEMKdTVzs3xYg7xa=UcupvZzWCGk0nMP1Q@mail.gmail.com")
 
 		hasher := md5.New()
-		hasher.Write([]byte(parse.Text()))
+
+		text, _ := parse.Text()
+		hasher.Write([]byte(text))
 		hashString := hex.EncodeToString(hasher.Sum(nil))
 		assert.Equal(s.T(), hashString, "3a84d07f16dd41d574054e3762b5fb0e")
 		hasher.Reset()
 
-		hasher.Write([]byte(parse.Html()))
+		html, _ := parse.Html()
+		hasher.Write([]byte(html))
 		hashString = hex.EncodeToString(hasher.Sum(nil))
 		assert.Equal(s.T(), hashString, "d864471b159bafe6271c40c7dddb238b")
 		hasher.Reset()
@@ -164,12 +203,15 @@ func (s *ParseMessageTestSuite) TestParseTextAttachment() {
 		parse := NewParse(reader)
 		assert.Equal(s.T(), parse.To(), "Team R&D <foobar@foobar.com>")
 		hasher := md5.New()
-		hasher.Write([]byte(parse.Text()))
+
+		text, _ := parse.Text()
+		hasher.Write([]byte(text))
 		hashString := hex.EncodeToString(hasher.Sum(nil))
 		assert.Equal(s.T(), hashString, "b5b94cd495174ab6e4443fa81847b6ce")
 		hasher.Reset()
 
-		hasher.Write([]byte(parse.Html()))
+		html, _ := parse.Html()
+		hasher.Write([]byte(html))
 		hashString = hex.EncodeToString(hasher.Sum(nil))
 		assert.Equal(s.T(), hashString, "d41d8cd98f00b204e9800998ecf8427e")
 		hasher.Reset()

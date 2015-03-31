@@ -17,16 +17,16 @@ type Compose interface {
 	AddBCC(string, string)
 	AddSubject(string)
 	AddFrom(string)
-	AddText(string)
-	AddHTML(string)
+	AddText(string, string)
+	AddHTML(string, string)
 	AddTextReader(io.Reader)
 	AddHTMLReader(io.Reader)
 
 	To() string
-	Subject() string
+	Subject() (string, bool)
 	Text() string
 	HTML() string
-	From() string
+	From() (string, bool)
 	Recipient() string
 	ToString() string
 
@@ -64,9 +64,9 @@ func (p *aCompose) AddSubject(subject string) {
 	p.message.SetSubject(subject)
 }
 
-func (p *aCompose) AddText(text string) {
+func (p *aCompose) AddText(text string, encoding string) {
 	contentType := "text/plain"
-	p.addPart(text, contentType)
+	p.addPart(text, contentType, encoding)
 }
 
 func (p *aCompose) AddTextReader(reader io.Reader) {
@@ -74,9 +74,9 @@ func (p *aCompose) AddTextReader(reader io.Reader) {
 
 }
 
-func (p *aCompose) AddHTML(html string) {
+func (p *aCompose) AddHTML(html string, encoding string) {
 	contentType := "text/html"
-	p.addPart(html, contentType)
+	p.addPart(html, contentType, encoding)
 }
 
 func (p *aCompose) AddHTMLReader(reader io.Reader) {
@@ -95,7 +95,7 @@ func (p *aCompose) To() string {
 	return p.message.To().ToString(true)
 }
 
-func (p *aCompose) Subject() string {
+func (p *aCompose) Subject() (string, bool) {
 	return p.message.Subject()
 }
 
@@ -109,7 +109,7 @@ func (p *aCompose) HTML() string {
 	return p.Text()
 }
 
-func (p *aCompose) From() string {
+func (p *aCompose) From() (string, bool) {
 	return p.message.Sender()
 }
 
@@ -150,7 +150,7 @@ func (p *aCompose) part(part Object) string {
 		dw := m.ContentObject()
 		resultStream := dw.Stream()
 		resultStream.Flush()
-		_, data := resultStream.Read(uint64(resultStream.Length()))
+		_, data := resultStream.Read(resultStream.Length())
 
 		if p.partsCount > 1 {
 			payload = m.Headers()
@@ -162,8 +162,7 @@ func (p *aCompose) part(part Object) string {
 	return payload
 }
 
-func (p *aCompose) addPart(data string, contentType string) {
-	contentEncoding := NewContentEncodingFromString(contentType)
+func (p *aCompose) addPart(data string, contentType string, contentEncoding string) {
 	contentTypeSplit := strings.Split(contentType, "/")
 	part := NewPartWithType(contentTypeSplit[0], contentTypeSplit[1])
 	stream := NewMemStreamWithBuffer(data)

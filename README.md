@@ -84,7 +84,13 @@ fmt.Println(parse.Subject())
 Documentation
 ---
 
-	bin/doc
+Use [https://developer.gnome.org/gmime/stable/|GMime Reference Manual] as
+documentation, this library have all classes/methods named very similiar with
+original ``GMime`` classes. 
+
+All objects will be unreferenced (in terms of glib/gmime) when go-gmime
+provided wrappers will be collected by go runtime.
+
 
 Testing / Coverage
 ---

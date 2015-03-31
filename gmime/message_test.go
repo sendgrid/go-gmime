@@ -17,13 +17,15 @@ func (s *MessageTestSuite) TestSender() {
 	message := NewMessage()
 	senderName := "hola"
 	message.SetSender(senderName)
-	sender := message.Sender()
+	sender, ok := message.Sender()
+	assert.True(s.T(), ok)
 	assert.Equal(s.T(), senderName, sender)
 
 	// add 2nd sender, should still be 1st sender
 	secondSender := "hola 2"
 	message.SetSender(secondSender)
-	sender = message.Sender()
+	sender, ok = message.Sender()
+	assert.True(s.T(), ok)
 	assert.Equal(s.T(), senderName, sender)
 }
 
@@ -31,13 +33,15 @@ func (s *MessageTestSuite) TestReplyTo() {
 	message := NewMessage()
 	replyName := "hola"
 	message.SetReplyTo(replyName)
-	reply := message.ReplyTo()
+	reply, ok := message.ReplyTo()
+	assert.True(s.T(), ok)
 	assert.Equal(s.T(), replyName, reply)
 
 	// add 2nd replyTo, should not take it
+	// FIXME: but actually does, check where is mistake -- in comment or code?
 	secondReply := ""
 	message.SetReplyTo(secondReply)
-	reply = message.ReplyTo()
+	reply, _ = message.ReplyTo()
 	assert.Equal(s.T(), reply, secondReply)
 }
 
@@ -46,13 +50,15 @@ func (s *MessageTestSuite) TestSubject() {
 	message := NewMessage()
 
 	message.SetSubject(subjectName)
-	subject := message.Subject()
+	subject, ok := message.Subject()
+	assert.True(s.T(), ok)
 	assert.Equal(s.T(), subjectName, subject)
 
 	// add 2nd subject, should take it
 	secondSubject := "hola 2"
 	message.SetSubject(secondSubject)
-	subject = message.Subject()
+	subject, ok = message.Subject()
+	assert.True(s.T(), ok)
 	assert.Equal(s.T(), secondSubject, subject)
 }
 
@@ -61,14 +67,28 @@ func (s *MessageTestSuite) TestMessageId() {
 	message := NewMessage()
 
 	message.SetMessageId(messageIdName)
-	messageId := message.MessageId()
+	messageId, ok := message.MessageId()
+	assert.True(s.T(), ok)
 	assert.Equal(s.T(), messageId, messageIdName)
 
 	// add 2nd message id, should replace 1st id
 	secondMessageIdName := "hola 2"
 	message.SetMessageId(secondMessageIdName)
-	messageId = message.MessageId()
+	messageId, ok = message.MessageId()
+	assert.True(s.T(), ok)
 	assert.Equal(s.T(), messageId, secondMessageIdName)
+}
+
+// Minimal formal test
+// FIXME: add more tests here
+func (s *MessageTestSuite) TestDateAsString() {
+	message := NewMessage()
+
+	date := "Thu, 15 Jan 2015 15:10:40 -0800"
+	message.SetDateAsString(date)
+	dateAsString, ok := message.DateAsString()
+	assert.True(s.T(), ok)
+	assert.Equal(s.T(), date, dateAsString)
 }
 
 func (s *MessageTestSuite) TestTo() {
@@ -193,7 +213,7 @@ func (s *MessageTestSuite) TestToString() {
 
 	text := "This is a text part"
 	textStream := NewMemStreamWithBuffer(text)
-	textEncoding := NewContentEncodingFromString("8bit")
+	textEncoding := "8bit"
 	textWrapper := NewDataWrapperWithStream(textStream, textEncoding)
 	textPart := NewPartWithType("text", "plain")
 	textPart.SetContentObject(textWrapper)
@@ -222,7 +242,7 @@ Content-Type: %s
 
 	html := "<html><body>This is an HTML part</body></hmtl>"
 	htmlStream := NewMemStreamWithBuffer(html)
-	htmlEncoding := NewContentEncodingFromString("8bit")
+	htmlEncoding := "8bit"
 	htmlWrapper := NewDataWrapperWithStream(htmlStream, htmlEncoding)
 	htmlPart := NewPartWithType("text", "html")
 	htmlPart.SetContentObject(htmlWrapper)
