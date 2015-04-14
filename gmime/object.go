@@ -81,8 +81,10 @@ func (o *anObject) SetContentType(contentType ContentType) {
 }
 
 func (o *anObject) ContentType() ContentType {
-	ct := C.g_mime_object_get_content_type(o.rawObject())
-	return CastContentType(ct)
+	if ct := C.g_mime_object_get_content_type(o.rawObject()); ct != nil {
+		return CastContentType(ct)
+	}
+	return nil
 }
 
 func (o *anObject) SetHeader(name, value string) {
