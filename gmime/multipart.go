@@ -17,7 +17,7 @@ type Multipart interface {
 	GetPart(int) Object
 	Count() int
 	Clear()
-    Walk(func (Object) error) error
+	Walk(func(Object) error) error
 }
 
 type aMultipart struct {
