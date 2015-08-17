@@ -31,6 +31,7 @@ type Message interface {
 	AllRecipients() *InternetAddressList
 	SetMimePart(Object)
 	MimePart() Object
+	Body() Object
 	Date() string
 }
 
@@ -163,6 +164,11 @@ func (m *aMessage) SetMimePart(mimePart Object) {
 
 func (m *aMessage) MimePart() Object {
 	object := C.g_mime_message_get_mime_part(m.rawMessage())
+	return objectAsSubclass(object)
+}
+
+func (m *aMessage) Body() Object {
+	object := C.g_mime_message_get_body(m.rawMessage())
 	return objectAsSubclass(object)
 }
 

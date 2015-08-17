@@ -38,6 +38,7 @@ type Object interface {
 	ContentDisposition() ContentDisposition
 	Headers() string
 	WriteToStream(Stream) int
+    WalkHeaders(cb func(string, string) error) error
 }
 
 type anObject struct {
@@ -81,8 +82,10 @@ func (o *anObject) SetContentType(contentType ContentType) {
 }
 
 func (o *anObject) ContentType() ContentType {
-	ct := C.g_mime_object_get_content_type(o.rawObject())
-	return CastContentType(ct)
+	if ct := C.g_mime_object_get_content_type(o.rawObject()); ct != nil {
+		return CastContentType(ct)
+	}
+	return nil
 }
 
 func (o *anObject) SetHeader(name, value string) {
@@ -149,4 +152,35 @@ func objectAsSubclass(o *C.GMimeObject) Object {
 	} else {
 		return CastObject(o)
 	}
+}
+
+
+func (o *anObject) WalkHeaders(cb func(string, string) error) error {
+    ghl := C.g_mime_object_get_header_list(o.rawObject())
+    iter := C.g_mime_header_iter_new()
+    defer C.g_mime_header_iter_free(iter)
+    if !gobool(C.g_mime_header_list_get_iter(ghl, iter)) {
+        return nil
+    }
+    for {
+        name := C.GoString(C.g_mime_header_iter_get_name(iter))
+        value := C.GoString(C.g_mime_header_iter_get_value(iter))
+        err := cb(name, value)
+        if err != nil {
+            return err
+        }
+        if !gobool(C.g_mime_header_iter_next(iter)) {
+            return nil
+        }
+    }
+}
+// Very minimal interface, to inspection only
+type HeaderIterator interface {
+	Janitor
+    Name() string
+    Value() string
+    Next() bool
+}
+
+type aHeader struct {
 }

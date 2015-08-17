@@ -34,8 +34,11 @@ func NewParserWithStream(stream Stream) Parser {
 
 func (p *aParser) ConstructMessage() Message {
 	message := C.g_mime_parser_construct_message(p.rawParser())
-	defer unref(C.gpointer(message))
-	return CastMessage(message)
+	if message != nil {
+		defer unref(C.gpointer(message))
+		return CastMessage(message)
+	}
+	return nil
 }
 
 func (p *aParser) ConstructPart() Object {
