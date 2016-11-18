@@ -1,4 +1,4 @@
-source 'http://chef.sjc1.sendgrid.net:26200'
+source :chef_server
 
 
 cookbook 'golang', '~> 1.3'
