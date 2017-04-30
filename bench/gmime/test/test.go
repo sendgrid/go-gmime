@@ -36,8 +36,8 @@ var parseGMime util.ParseFunc = func(data []byte) bool {
 
 		parse.Headers()
 		parse.Header("Content-Type")
-		text := parse.Text()
-		html := parse.Html()
+		text, _ := parse.Text()
+		html, _ := parse.Html()
 		attachments := parse.Attachment()
 
 		if text == "" && html == "" && attachments == nil {

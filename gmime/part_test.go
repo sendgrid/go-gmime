@@ -50,7 +50,7 @@ func (s *PartTestSuite) TestContentObject() {
 	part.SetContentObject(dw)
 	dwFromContent := part.ContentObject()
 	length := dwFromContent.Stream().Length()
-	assert.Equal(s.T(), length, 4)
+	assert.Equal(s.T(), int64(4), length)
 }
 
 func (s *PartTestSuite) TestFilename() {

@@ -2,10 +2,6 @@
 
 source "$(dirname $0)/include"
 
+export GOTRACEBACK=all
 # handle a specific test run. Ex: bin/test TestSimpleMessage
-if [ -z "$1" ]
-then
-    go test -v $PACKAGE
-else
-    go test -v -test.timeout=3600s -test.run=$1 $PACKAGE
-fi
+go test -v github.com/sendgrid/go-gmime/gmime

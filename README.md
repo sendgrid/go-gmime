@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/sendgrid/go-gmime.svg?branch=master)](https://travis-ci.org/sendgrid/go-gmime)
+
 go-gmime
 ========
 

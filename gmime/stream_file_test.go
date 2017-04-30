@@ -50,9 +50,9 @@ func TestFileStreamWithPathTestSuite(t *testing.T) {
 		rfs := gmime.NewFileStreamForPath(tempFilepath, "r")
 		l := rfs.Length()
 		l2, r := rfs.Read(l)
-		assert.Equal(t, l, len(s))
+		assert.Equal(t, int64(len(s)), l)
 		assert.Equal(t, l, l2)
-		assert.Equal(t, s, r)
+		assert.Equal(t, s, string(r))
 	}
 
 	{
@@ -60,22 +60,22 @@ func TestFileStreamWithPathTestSuite(t *testing.T) {
 		defer os.Remove(tempFilepath)
 		b := []byte(s)
 		l := wfs.Write(b)
-		assert.Equal(t, l, len(b))
+		assert.Equal(t, int64(len(b)), l)
 		wfs.Close()
 
 		r, err := ioutil.ReadFile(tempFilepath)
 		assert.NoError(t, err)
-		assert.Equal(t, r, s)
+		assert.Equal(t, s, string(r))
 	}
 	{
 		wfs := gmime.NewFileStreamForPath(tempFilepath, "w")
 		defer os.Remove(tempFilepath)
 		l := wfs.WriteString(s)
-		assert.Equal(t, l, len(s))
+		assert.Equal(t, int64(len(s)), l)
 		wfs.Close()
 
 		r, err := ioutil.ReadFile(tempFilepath)
 		assert.NoError(t, err)
-		assert.Equal(t, r, s)
+		assert.Equal(t, s, string(r))
 	}
 }

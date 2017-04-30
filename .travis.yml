@@ -1,0 +1,12 @@
+dist: trusty
+sudo: required
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install libgmime-2.6-dev
+  - sudo apt-get install libgmime2.6-cil
+  - sudo apt-get install libglib2.0-dev
+  - sudo apt-get install libgmime2.6-cil-dev
+language: go
+go:
+  - master
+script: go test -cover -v ./...

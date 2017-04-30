@@ -1,17 +1,1 @@
 #!/usr/bin/env bash
-
-export PACKAGE=github.com/sendgrid/go-gmime/gmime
-
-export GOPATH="$(pwd)"
-
-export GOBIN=$GOPATH/bin
-export PATH=$PATH:$GOBIN
-
-# needed for gmime2.6:
-export LD_LIBRARY_PATH=/usr/lib
-export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/lib/pkgconfig
-
-#TODO: detect this
-#export GOOS=linux
-#export GOARCH=amd64
-#export GOROOT=/usr/local/go

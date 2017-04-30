@@ -36,5 +36,5 @@ func TestDataWrapperStream(t *testing.T) {
 	stream := NewMemStreamWithBuffer("hola")
 	encoding := "gzip"
 	wrapper := NewDataWrapperWithStream(stream, encoding)
-	assert.Equal(t, wrapper.Stream().Length(), 4)
+	assert.Equal(t, int64(4), wrapper.Stream().Length())
 }

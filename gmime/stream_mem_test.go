@@ -18,7 +18,7 @@ func (s *MemStreamTestSuite) TestNewMemStreamWithBuffer() {
 	loop := 1
 	for i := 0; i < loop; i++ {
 		stream := NewMemStreamWithBuffer(string(data))
-		assert.Equal(s.T(), stream.Length(), len(data))
+		assert.Equal(s.T(), int64(len(data)), stream.Length())
 	}
 }
 
