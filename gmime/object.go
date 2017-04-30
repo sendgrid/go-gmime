@@ -38,7 +38,7 @@ type Object interface {
 	ContentDisposition() ContentDisposition
 	Headers() string
 	WriteToStream(Stream) int
-    WalkHeaders(cb func(string, string) error) error
+	WalkHeaders(cb func(string, string) error) error
 }
 
 type anObject struct {
@@ -154,32 +154,32 @@ func objectAsSubclass(o *C.GMimeObject) Object {
 	}
 }
 
-
 func (o *anObject) WalkHeaders(cb func(string, string) error) error {
-    ghl := C.g_mime_object_get_header_list(o.rawObject())
-    iter := C.g_mime_header_iter_new()
-    defer C.g_mime_header_iter_free(iter)
-    if !gobool(C.g_mime_header_list_get_iter(ghl, iter)) {
-        return nil
-    }
-    for {
-        name := C.GoString(C.g_mime_header_iter_get_name(iter))
-        value := C.GoString(C.g_mime_header_iter_get_value(iter))
-        err := cb(name, value)
-        if err != nil {
-            return err
-        }
-        if !gobool(C.g_mime_header_iter_next(iter)) {
-            return nil
-        }
-    }
+	ghl := C.g_mime_object_get_header_list(o.rawObject())
+	iter := C.g_mime_header_iter_new()
+	defer C.g_mime_header_iter_free(iter)
+	if !gobool(C.g_mime_header_list_get_iter(ghl, iter)) {
+		return nil
+	}
+	for {
+		name := C.GoString(C.g_mime_header_iter_get_name(iter))
+		value := C.GoString(C.g_mime_header_iter_get_value(iter))
+		err := cb(name, value)
+		if err != nil {
+			return err
+		}
+		if !gobool(C.g_mime_header_iter_next(iter)) {
+			return nil
+		}
+	}
 }
+
 // Very minimal interface, to inspection only
 type HeaderIterator interface {
 	Janitor
-    Name() string
-    Value() string
-    Next() bool
+	Name() string
+	Value() string
+	Next() bool
 }
 
 type aHeader struct {
