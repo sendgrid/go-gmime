@@ -3,5 +3,5 @@
 package gmime
 
 import (
-    _ "github.com/sendgrid/go-gmime/gmime"
+	_ "github.com/sendgrid/go-gmime/gmime"
 )
