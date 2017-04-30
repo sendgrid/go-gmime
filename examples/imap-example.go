@@ -30,12 +30,12 @@ type EnvelopeT struct {
 
 type ParamT struct {
 	Name  string `json:"name"`
-	Value string `json:"name"`
+	Value string `json:"value"`
 }
 
 type ContentTypeT struct {
 	Type    string   `json:"type"`
-	SubType string   `json:"type"`
+	SubType string   `json:"subtype"`
 	Params  []ParamT `json:"params"`
 }
 
@@ -219,7 +219,7 @@ func reconstruct_message(uid string) {
 func reconstruct_multipart(part gmime.Multipart, bs Bodystruct, uid string, spec string) {
 	for i, sub := range bs.Subparts {
 		subspec := fmt.Sprintf("%s.%d", spec, i)
-		fmt.Println("reconstructing a %s/%s part (%s)", sub.ContentType.Type, sub.ContentType, subspec)
+		fmt.Printf("reconstructing a %s/%s part (%s)\n", sub.ContentType.Type, sub.ContentType, subspec)
 
 		fn := path.Join(uid, fmt.Sprintf("%s.HEADER", subspec))
 		data, err := ioutil.ReadFile(fn)
