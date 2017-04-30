@@ -9,4 +9,4 @@ before_install:
 language: go
 go:
   - master
-script: go test -cover -bench=. -v github.com/sendgrid/go-gmime/gmime
+script: go test -cover -v ./...
