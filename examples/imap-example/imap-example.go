@@ -71,7 +71,7 @@ func main() {
 	parser.SetScanFrom(scan_from)
 	message := parser.ConstructMessage()
 	if message != nil {
-		uid := message.MessageId()
+		uid, _ := message.MessageId()
 		// FIXME: uid should be "Maybe uid" here
 		if uid == "" {
 			uid = path.Base(file_name)
@@ -147,17 +147,27 @@ func serialize_part_bodystructure(ob gmime.Object) Bodystruct {
 		}
 	} else if mp, ok := ob.(gmime.MessagePart); ok {
 		inner := mp.Message()
+		date, _ := inner.DateAsString()
+		subject, _ := inner.Header("Subject")
+		to, _ := inner.Header("To")
+		from, _ := inner.Header("From")
+		sender, _ := inner.Header("Sender")
+		replyto, _ := inner.Header("Reply-To")
+		inreplyto, _ := inner.Header("In-Reply-To")
+		cc, _ := inner.Header("Cc")
+		bcc, _ := inner.Header("Bcc")
+		msgid, _ := inner.MessageId()
 		bs.Envelope = EnvelopeT{
-			Date:      inner.DateAsString(),
-			Subject:   inner.Header("Subject"),
-			To:        inner.Header("To"),
-			From:      inner.Header("From"),
-			Sender:    inner.Header("Sender"),
-			ReplyTo:   inner.Header("Reply-To"),
-			InReplyTo: inner.Header("In-Reply-To"),
-			Cc:        inner.Header("Cc"),
-			Bcc:       inner.Header("Bcc"),
-			MessageId: inner.MessageId(),
+			Date:      date,
+			Subject:   subject,
+			To:        to,
+			From:      from,
+			Sender:    sender,
+			ReplyTo:   replyto,
+			InReplyTo: inreplyto,
+			Cc:        cc,
+			Bcc:       bcc,
+			MessageId: msgid,
 		}
 		ssp := serialize_part_bodystructure(mp)
 		bs.Subparts = append(bs.Subparts, ssp)
