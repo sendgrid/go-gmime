@@ -53,7 +53,7 @@ func (s *ObjectTestSuite) TestWriteToStream() {
 	part.SetHeader("X-Test", "value")
 	stream := NewMemStream()
 	part.WriteToStream(stream)
-	assert.Equal(s.T(), stream.Length(), 40)
+	assert.Equal(s.T(), int64(40), stream.Length())
 	stream.Close()
 }
 

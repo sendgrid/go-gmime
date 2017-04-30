@@ -20,13 +20,13 @@ func (s *StreamBufferTestSuite) SetupTest() {
 
 func (s *StreamBufferTestSuite) TestNewBufferStream() {
 	cacheReadBufferStream := NewBufferedStream(s.stream, CACHE_READ)
-	assert.Equal(s.T(), cacheReadBufferStream.Length(), 0)
+	assert.Equal(s.T(), int64(0), cacheReadBufferStream.Length())
 
 	blockReadBufferStream := NewBufferedStream(s.stream, BLOCK_READ)
-	assert.Equal(s.T(), blockReadBufferStream.Length(), 0)
+	assert.Equal(s.T(), int64(0), blockReadBufferStream.Length())
 
 	blockWriteBufferStream := NewBufferedStream(s.stream, BLOCK_WRITE)
-	assert.Equal(s.T(), blockWriteBufferStream.Length(), 0)
+	assert.Equal(s.T(), int64(0), blockWriteBufferStream.Length())
 
 	// TODO: stream some data
 }
