@@ -46,11 +46,13 @@ func (m *Envelope) SetHeader() textproto.MIMEHeader {
 	return nil
 }
 
-func (m *Envelope) Header(header string) []string {
+// Header returns *first* header from envelope
+// if user wants to get all headers use `Headers` function
+func (m *Envelope) Header(header string) string {
 	cHeaderName := C.CString(header)
 	defer C.free(unsafe.Pointer(cHeaderName))
 	cHeader := C.g_mime_object_get_header((*C.GMimeObject)(unsafe.Pointer(m.gmimeMessage)), cHeaderName)
-	return []string{C.GoString(cHeader)}
+	return C.GoString(cHeader)
 }
 
 // ContentType returns envelope's content-type
