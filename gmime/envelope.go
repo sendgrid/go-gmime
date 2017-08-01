@@ -37,9 +37,22 @@ func (m *Envelope) Subject() string {
 func (m *Envelope) SetSubject(subject string) {
 }
 
+// Headers returns all headers for envelope
 func (m *Envelope) Headers() textproto.MIMEHeader {
-	C.gmime_get_headers((*C.GMimeObject)(unsafe.Pointer(m.gmimeMessage)))
-	return nil
+	headers := C.g_mime_object_get_header_list(m.asGMimeObject())
+	count := C.g_mime_header_list_get_count(headers)
+	goHeaders := make(textproto.MIMEHeader, int(count))
+	var i C.int
+	for i = 0; i < count; i++ {
+		header := C.g_mime_header_list_get_header_at(headers, i)
+		name := C.GoString(C.g_mime_header_get_name(header))
+		value := C.GoString(C.g_mime_header_get_value(header))
+		if _, ok := goHeaders[name]; !ok {
+			goHeaders[name] = nil
+		}
+		goHeaders[name] = append(goHeaders[name], value)
+	}
+	return goHeaders
 }
 
 func (m *Envelope) SetHeader() textproto.MIMEHeader {
@@ -51,7 +64,7 @@ func (m *Envelope) SetHeader() textproto.MIMEHeader {
 func (m *Envelope) Header(header string) string {
 	cHeaderName := C.CString(header)
 	defer C.free(unsafe.Pointer(cHeaderName))
-	cHeader := C.g_mime_object_get_header((*C.GMimeObject)(unsafe.Pointer(m.gmimeMessage)), cHeaderName)
+	cHeader := C.g_mime_object_get_header(m.asGMimeObject(), cHeaderName)
 	return C.GoString(cHeader)
 }
 
@@ -65,7 +78,7 @@ func (m *Envelope) ContentType() string {
 
 // Walk iterates all message parts and executes callback on each part
 func (m *Envelope) Walk(cb func(p *Part)) {
-	partIter := C.g_mime_part_iter_new((*C.GMimeObject)(unsafe.Pointer(m.gmimeMessage)))
+	partIter := C.g_mime_part_iter_new(m.asGMimeObject())
 	for {
 		next := C.g_mime_part_iter_next(partIter)
 		if !gobool(next) {
@@ -84,7 +97,7 @@ func (m *Envelope) Export() ([]byte, error) {
 	// TODO: optimize this, bundle cgo calls
 	stream := C.g_mime_stream_mem_new()                        // need unref
 	defer C.g_object_unref(C.gpointer(unsafe.Pointer(stream))) // unref
-	nWritten := C.g_mime_object_write_to_stream((*C.GMimeObject)(unsafe.Pointer(m.gmimeMessage)), nil, stream)
+	nWritten := C.g_mime_object_write_to_stream(m.asGMimeObject(), nil, stream)
 	if nWritten <= 0 {
 		return nil, errors.New("can't write to stream")
 	}
@@ -96,4 +109,8 @@ func (m *Envelope) Export() ([]byte, error) {
 // Close frees up message resources
 func (m *Envelope) Close() {
 	C.g_object_unref(C.gpointer(m.gmimeMessage))
+}
+
+func (m *Envelope) asGMimeObject() *C.GMimeObject {
+	return (*C.GMimeObject)(unsafe.Pointer(m.gmimeMessage))
 }

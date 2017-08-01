@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"fmt"
 	"io/ioutil"
 	"os"
 
@@ -22,7 +23,8 @@ func main() {
 	defer msg.Close()
 	println("Envelope Subject: ", msg.Subject())
 	println("Envelope Content-Type:", msg.ContentType())
-	println("Headers", msg.Header("Message-ID"))
+	println("Envelope Message-ID", msg.Header("Message-ID"))
+	fmt.Println("All Headers:", msg.Headers())
 
 	msg.Walk(func(p *gmime.Part) {
 		println("content-type:", p.ContentType())

@@ -52,14 +52,3 @@ GByteArray *gmime_get_bytes (GMimeObject *object) {
 	g_object_unref (stream);
 	return buf;
 }
-
-void gmime_get_headers (GMimeObject *object) {
-    GMimeHeaderList *headers = g_mime_object_get_header_list (object);
-    int count = g_mime_header_list_get_count (headers);
-    for (int i = 0; i < count; i++) {
-        GMimeHeader *header = g_mime_header_list_get_header_at (headers, i);
-        char *name = g_mime_header_get_name (header);
-        char *value = g_mime_header_get_value (header);
-        printf("%s: %s\n", name, value);
-    }
-}
