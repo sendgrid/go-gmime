@@ -22,6 +22,7 @@ func main() {
 	defer msg.Close()
 	println("Envelope Subject: ", msg.Subject())
 	println("Envelope Content-Type:", msg.ContentType())
+	println("Headers", msg.Header("Message-ID")[0])
 
 	msg.Walk(func(p *gmime.Part) {
 		println("content-type:", p.ContentType())
