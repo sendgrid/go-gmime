@@ -14,10 +14,6 @@ static GMimeMessage *gmime_parse (const char *buffer, size_t len) {
 	g_object_unref (parser);
 
 	InternetAddressList *list = g_mime_message_get_addresses (message, GMIME_ADDRESS_TYPE_TO);
-	GMimeFormatOptions *format = g_mime_format_options_get_default ();
-	char *buf = internet_address_list_to_string (list, format, FALSE);
-	g_free (buf);
-
 	int listLen = internet_address_list_length (list);
 	for(int i = 0; i < listLen; i++) {
 		InternetAddress *addr = internet_address_list_get_address (list, i);
@@ -53,8 +49,7 @@ static GByteArray *gmime_get_bytes (GMimeObject *object) {
 		return NULL;
 	stream = g_mime_stream_mem_new ();
 	ssize_t size = g_mime_data_wrapper_write_to_stream (content, stream);
-	printf("size: %zu\n", size);
-	// g_mime_stream_flush (stream);
+	g_mime_stream_flush (stream);
 
 	buf = g_mime_stream_mem_get_byte_array ((GMimeStreamMem *) stream);
 	g_mime_stream_mem_set_owner ((GMimeStreamMem *) stream, FALSE);
@@ -65,8 +60,11 @@ static GByteArray *gmime_get_bytes (GMimeObject *object) {
 
 */
 import "C"
-import "unsafe"
-import "io"
+import (
+	"errors"
+	"net/textproto"
+	"unsafe"
+)
 
 // This function call automatically by runtime
 func init() {
@@ -141,6 +139,10 @@ func (p *Part) SetText(text string) error {
 	return nil
 }
 
+func (p *Part) Headers() textproto.MIMEHeader {
+	return nil
+}
+
 // Parse parses message and returns Message
 func Parse(data string) *Envelope {
 	// very inefficient
@@ -155,6 +157,22 @@ func Parse(data string) *Envelope {
 func (m *Envelope) Subject() string {
 	subject := C.g_mime_message_get_subject(m.gmimeMessage)
 	return C.GoString(subject)
+}
+
+// SetSubject returns envelope's Subject
+func (m *Envelope) SetSubject(subject string) {
+}
+
+func (m *Envelope) Headers() textproto.MIMEHeader {
+	return nil
+}
+
+func (m *Envelope) SetHeader() textproto.MIMEHeader {
+	return nil
+}
+
+func (m *Envelope) Header(header string) []string {
+	return nil
 }
 
 // ContentType returns envelope's content-type
@@ -183,11 +201,12 @@ func (m *Envelope) Walk(cb func(p *Part)) {
 
 // Export composes mime from envelope
 func (m *Envelope) Export() ([]byte, error) {
+	// TODO: optimize this, bundle cgo calls
 	stream := C.g_mime_stream_mem_new()                        // need unref
 	defer C.g_object_unref(C.gpointer(unsafe.Pointer(stream))) // unref
 	nWritten := C.g_mime_object_write_to_stream((*C.GMimeObject)(unsafe.Pointer(m.gmimeMessage)), nil, stream)
 	if nWritten <= 0 {
-		return nil, io.EOF
+		return nil, errors.New("can't write to stream")
 	}
 	// byteArray is owned by stream and will be freed with it
 	byteArray := C.g_mime_stream_mem_get_byte_array((*C.GMimeStreamMem)(unsafe.Pointer(stream)))

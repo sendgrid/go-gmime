@@ -32,6 +32,7 @@ func main() {
 			// fmt.Println("Bytes:", string(p.Bytes()))
 		}
 	})
+	println(">>> test")
 
 	// data, _ = msg.Export()
 	// println(">>>>>>>>>>>>> Export: ", string(data))
