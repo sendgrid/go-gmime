@@ -73,7 +73,7 @@ func init() {
 	C.g_mime_init()
 }
 
-// This function really need only for valgrind
+// Shutdown is really needed only for valgrind
 func Shutdown() {
 	C.g_mime_shutdown()
 }
@@ -106,29 +106,33 @@ type Part struct {
 	gmimePart *C.GMimeObject
 }
 
+// ContentType returns part's content type
 func (p *Part) ContentType() string {
 	ctype := C.gmime_get_content_type_string(p.gmimePart)
 	defer C.g_free(C.gpointer(unsafe.Pointer(ctype)))
 	return C.GoString(ctype)
 }
 
+// IsText returns true if part's mime is text/*
 func (p *Part) IsText() bool {
 	return gobool(C.gmime_is_text_part(p.gmimePart))
 }
 
+// Text returns text portion of the part if it's mime is text/*
 func (p *Part) Text() string {
 	content := C.gmime_get_content_string(p.gmimePart)
 	defer C.g_free(C.gpointer(unsafe.Pointer(content)))
 	return C.GoString(content)
 }
 
+// Bytes returns decoded raw bytes of the part, most useful to access attachment data
 func (p *Part) Bytes() []byte {
 	b := C.gmime_get_bytes(p.gmimePart)
 	defer C.g_byte_array_free((*C.GByteArray)(unsafe.Pointer(b)), C.TRUE)
-	println(">>>>>>>>>>>", C.int(b.len))
 	return C.GoBytes(unsafe.Pointer(b.data), C.int(b.len))
 }
 
+// SetText replaces text content if part is text/*
 func (p *Part) SetText(text string) error {
 	// TODO: Optimize this
 	cstr := C.CString(text)
@@ -161,7 +165,7 @@ func (m *Envelope) ContentType() string {
 	return C.GoString(ctype)
 }
 
-// Walk
+// Walk iterates all message parts and executes callback on each part
 func (m *Envelope) Walk(cb func(p *Part)) {
 	partIter := C.g_mime_part_iter_new((*C.GMimeObject)(unsafe.Pointer(m.gmimeMessage)))
 	for {
@@ -177,6 +181,7 @@ func (m *Envelope) Walk(cb func(p *Part)) {
 	}
 }
 
+// Export composes mime from envelope
 func (m *Envelope) Export() ([]byte, error) {
 	stream := C.g_mime_stream_mem_new()                        // need unref
 	defer C.g_object_unref(C.gpointer(unsafe.Pointer(stream))) // unref

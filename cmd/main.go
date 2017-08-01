@@ -11,7 +11,7 @@ import (
 func main() {
 	println(">>> test")
 
-	fh, err := os.Open("./local/gmime/fixtures/inline-attachment.eml")
+	fh, err := os.Open("./gmime/fixtures/inline-attachment.eml")
 	if err != nil {
 		panic(err)
 	}
@@ -27,7 +27,7 @@ func main() {
 		println("content-type:", p.ContentType())
 		if p.IsText() {
 			println("text:", p.Text())
-			p.SetText("my replaced всякая фигня")
+			p.SetText("my replaced всякий текст スラングまで幅広く収録")
 		} else {
 			// fmt.Println("Bytes:", string(p.Bytes()))
 		}

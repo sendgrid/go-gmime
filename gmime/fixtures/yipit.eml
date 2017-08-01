@@ -1,0 +1,1140 @@
+Delivered-To: shop@foobar.com
+Received: by 10.66.228.36 with SMTP id sf4csp183281pac;
+        Tue, 11 Mar 2014 10:57:29 -0700 (PDT)
+X-Received: by 10.68.170.66 with SMTP id ak2mr48960139pbc.5.1394560649518;
+        Tue, 11 Mar 2014 10:57:29 -0700 (PDT)
+Return-Path: <bounces+6814-98b2-shop=foobar.com@email.yipit.com>
+Received: from o3.email.yipit.com (o3.email.yipit.com. [208.117.61.109])
+        by mx.google.com with SMTP id mt5si20619447pbb.126.2014.03.11.10.57.28
+        for <shop@foobar.com>;
+        Tue, 11 Mar 2014 10:57:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+6814-98b2-shop=foobar.com@email.yipit.com designates 208.117.61.109 as permitted sender) client-ip=208.117.61.109;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of bounces+6814-98b2-shop=foobar.com@email.yipit.com designates 208.117.61.109 as permitted sender) smtp.mail=bounces+6814-98b2-shop=foobar.com@email.yipit.com;
+       dkim=pass header.i=@email.yipit.com
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=email.yipit.com;
+	h=content-type:mime-version:from:to:reply-to:subject; s=smtpapi;
+	bh=Kc3eYaF72YZJiem5vI08jrOr3Sw=; b=L/kSpqiJKL5Z3PP9y/qGPLqehwl6Q
+	fN2prndhrofeMOIKwf7p3Zw/xXHtFpVWn8va0XSJa78AhDpceZBaf0Rc1q9rj5Op
+	qF9UeZx/BgYVE8gWaaM/7/WMoRmSR3MDxR3hABacAzQDxgEkwhNkHdK6UzQkZywZ
+	Z+kmy65Lqh09Z0=
+DomainKey-Signature: a=rsa-sha1; c=nofws; d=yipit.com;
+	h=content-type:mime-version:from:to:reply-to:subject; q=dns;
+	s=smtpapi; b=mrIMDa206MsulicWOVMp/CnxkMefv5arAoE6ry3M/vNZ8mG15El
+	q7CZjJ87wmt0v1jb3Kd4t2p4wSmQLlSOy3ytVoc2M6AVsGpR1VfU9No6DWKIUBXD
+	hWWlnqbixxuLru4KUO5EH1XM6RC3GyJyqzasC79ZAz2Q69M/mtYDx/to=
+Received: by mf181.sendgrid.net with SMTP id mf181.28168.531F4E884
+        Tue, 11 Mar 2014 17:57:28 +0000 (UTC)
+Received: from localhost (ec2-107-21-46-159.compute-1.amazonaws.com [107.21.46.159])
+	by ismtpd-015 (SG) with ESMTP id 144b24ac3ab.2f1c.a5c49b
+	for <shop@foobar.com>; Tue, 11 Mar 2014 17:57:28 +0000 (GMT)
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+	by localhost (Postfix) with ESMTP id 0B607811B8
+	for <shop@foobar.com>; Tue, 11 Mar 2014 17:57:28 +0000 (UTC)
+Content-Type: multipart/alternative;
+ boundary="===============4020431116584329713=="
+MIME-Version: 1.0
+From: Yipit Orange County <foobar@yipit.com>
+To: shop@foobar.com
+Reply-To: Yipit Orange County <foobar@yipit.com>
+Subject: CreateMyWalls, Old Towne Orange Walking Food Tours,
+ Catalina Snorkel & Scuba, Beach Cities Scuba, Thai Spice, Velvet Lounge,
+ Newport Fun Tours, Legendary Tours of Temecula, Ze...
+Date: Tue, 11 Mar 2014 17:57:27 GMT
+Message-Id: <20140311175728.0B607811B8@localhost>
+X-SG-EID: 0Zta28bMrQ0G6HI5EGfl4ooankM0a1tEqoMREfbLvaQb25nzwTRNk1xCLZg8jD8Z9nlbf8TRpkfvIeBX0jYgOsWDLUp8DeqYJzA6bE0vAt9BsBFVO5+gvBHWLyqXxbeU8oQOBcE/UPjLU+Dvv+rczA==
+
+--===============4020431116584329713==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+X-Machine: i-cfc5d3ee
+Content-Transfer-Encoding: quoted-printable
+
+Orange County March 03, 2014 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~=
+~~~~~~~~~~~~~~~~~~~~~~~ | | | Orange County Deals Expiring Soon: | | | ~~~~=
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Custom Metal Print with Free Shipping (6=
+ days left to buy) $28 dollars - 69% Off ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~=
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ | Get it now: http:/=
+/yipit.com/emailer/deal/044db939af534f6c8f387e116deae1bf/25454234/ | ~~~~~~=
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~=
+~~~~~~~ ...................................................................=
+............................................................... Up to 61% O=
+ff Snorkeling Tour (weeks left to buy) 400 Pebbly Beach Rd, Avalon, CA $19 =
+dollars - 58% Off ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~=
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ | Get it now: http://yipit.com/emailer/deal=
+/044db939af534f6c8f387e116deae1bf/16485133/ | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~=
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ...............=
+...........................................................................=
+........................................ Up to 40% Off Thai Food (weeks lef=
+t to buy) 2 Hutton Centre Dr, Santa Ana, CA $12 dollars - 40% Off ~~~~~~~~~=
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~=
+~~~~ | Get it now: http://yipit.com/emailer/deal/044db939af534f6c8f387e116d=
+eae1bf/25459566/ | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~=
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ..........................................=
+...........................................................................=
+............. Luxury Electric Boat Rental (9 days left to buy) 3101 West Co=
+ast Hwy, Newport Beach, CA $67 dollars - 51% Off ~~~~~~~~~~~~~~~~~~~~~~~~~~=
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ | Get it now=
+: http://yipit.com/emailer/deal/044db939af534f6c8f387e116deae1bf/25464872/ =
+| ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~=
+~~~~~~~~~~~~~~~ ...........................................................=
+....................................................................... One=
+-Hour Private Horseback Riding Lesson (8 days left to buy) 26282 Oso Rd, Sa=
+n Juan Capistrano, CA $35 dollars - 54% Off ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~=
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ | Get it now: htt=
+p://yipit.com/emailer/deal/044db939af534f6c8f387e116deae1bf/25463686/ | ~~~=
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~=
+~~~~~~~~~~ ................................................................=
+.................................................................. iPhone B=
+attery Case Charger (8 days left to buy) $11 dollars - 78% Off ~~~~~~~~~~~~=
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~=
+~ | Get it now: http://yipit.com/emailer/deal/044db939af534f6c8f387e116deae=
+1bf/25454131/ | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~=
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ .............................................=
+...........................................................................=
+.......... Free Coupon for 30% Off Select Kindle Accessories (4 days left t=
+o buy) $Free! dollars - 30% Off ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~=
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ | Get it now: http://yipit.co=
+m/emailer/deal/044db939af534f6c8f387e116deae1bf/25453801/ | ~~~~~~~~~~~~~~~=
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ .=
+...........................................................................=
+...................................................... $27 -- Old Towne Ora=
+nge: 'Best Walking Tour' w/Food Tastings (weeks left to buy) 642 W Chapman =
+Ave, Orange, CA $27 dollars - 50% Off ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~=
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ | Get it now: http://yi=
+pit.com/emailer/deal/044db939af534f6c8f387e116deae1bf/25453543/ | ~~~~~~~~~=
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~=
+~~~~ ......................................................................=
+............................................................ Up to 71% Off =
+PADI Course at Beach Cities Scuba (weeks left to buy) 19036 Brookhurst St, =
+Huntington Beach, CA $199 dollars - 66% Off ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~=
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ | Get it now: htt=
+p://yipit.com/emailer/deal/044db939af534f6c8f387e116deae1bf/13208098/ | ~~~=
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~=
+~~~~~~~~~~ ................................................................=
+.................................................................. Saturday=
+ Drag Brunch with Mimosas (8 days left to buy) 416 W 4th St, Santa Ana, CA =
+$18 dollars - 50% Off ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~=
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ | Get it now: http://yipit.com/emailer/=
+deal/044db939af534f6c8f387e116deae1bf/25454241/ | ~~~~~~~~~~~~~~~~~~~~~~~~~=
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ...........=
+...........................................................................=
+............................................ 5.5-Hour Backcountry Wine-Tast=
+ing Tour (9 days left to buy) 39870 De Portola Rd, Temecula, CA $89 dollars=
+ - 40% Off ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~=
+~~~~~~~~~~~~~~~~~~~~~~~~ | Get it now: http://yipit.com/emailer/deal/044db9=
+39af534f6c8f387e116deae1bf/25453093/ | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~=
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ......................=
+...........................................................................=
+................................. Half Off at Zubaz.com (11 days left to bu=
+y) $15 dollars - 50% Off ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~=
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ | Get it now: http://yipit.com/email=
+er/deal/044db939af534f6c8f387e116deae1bf/25460691/ | ~~~~~~~~~~~~~~~~~~~~~~=
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ........=
+...........................................................................=
+............................................... Earbuds with Built-In Mic a=
+nd Remote (8 days left to buy) $6 dollars - 70% Off ~~~~~~~~~~~~~~~~~~~~~~~=
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ | Get it =
+now: http://yipit.com/emailer/deal/044db939af534f6c8f387e116deae1bf/2545412=
+8/ | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~=
+~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~=
+~~~~~~~~~~~~~~ | Yipit tracks amazing daily deals being struck around Orang=
+e County | | and sends you the best one each day. | | | | You can customize=
+ your Yipit email or unsubscribe from | | it altogether by going to the lun=
+k in the end of this email. | | | | You can also unsubscribe by sending a l=
+etter to: | | | | Yipit, 3 West 18th Street, 2nd Floor | | New York, NY 100=
+11. | | | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~=
+~~~~~ Unsubscribe link: http://yipit.com/account/unsubscribe/?eid=3D044db94=
+9af534f6c8f387e116deae1bf=
+
+--===============4020431116584329713==
+Content-Type: text/html; charset="utf-8"
+MIME-Version: 1.0
+X-Machine: i-cfc5d3ee
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.=
+w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns=3Dhttp://www.w3.org/1999/xhtml> <head><meta http-equiv=3DConten=
+t-Type content=3Dtext/html;charset=3Dutf-8><title>Yipit</title></head> <bod=
+y bgcolor=3D#ebebeb style=3D"width:100% !important;margin:0;padding:0;font-=
+family:Helvetica Neue, Helvetica,sans-serif"> <table class=3Dwrapper width=
+=3D100% cellspacing=3D0 cellpadding=3D0 bgcolor=3D#ebebeb style=3Dbackgroun=
+d-color:#ebebeb;> <tr> <td> <table width=3D100% cellspacing=3D0 cellpadding=
+=3D0> <tr height=3D5> <td width=3D5% style=3Dbackground-color:#da5444;></td=
+><td width=3D5% style=3Dbackground-color:#6dbbe0;></td><td width=3D5% style=
+=3Dbackground-color:#a2dff8;></td><td width=3D5% style=3Dbackground-color:#=
+b5d936;></td><td width=3D5% style=3Dbackground-color:#da5444;></td><td widt=
+h=3D5% style=3Dbackground-color:#6dbbe0;></td><td width=3D5% style=3Dbackgr=
+ound-color:#b5d936;></td><td width=3D5% style=3Dbackground-color:#a2dff8;><=
+/td><td width=3D5% style=3Dbackground-color:#74bee2;></td><td width=3D5% st=
+yle=3Dbackground-color:#a2dff8;></td><td width=3D5% style=3Dbackground-colo=
+r:#da5444;></td><td width=3D5% style=3Dbackground-color:#6dbbe0;></td><td w=
+idth=3D5% style=3Dbackground-color:#a2dff8;></td><td width=3D5% style=3Dbac=
+kground-color:#b5d936;></td><td width=3D5% style=3Dbackground-color:#da5444=
+;></td><td width=3D5% style=3Dbackground-color:#6dbbe0;></td><td width=3D5%=
+ style=3Dbackground-color:#b5d936;></td><td width=3D5% style=3Dbackground-c=
+olor:#a2dff8;></td><td width=3D5% style=3Dbackground-color:#74bee2;></td><t=
+d width=3D5% style=3Dbackground-color:#a2dff8;></td> </tr> </table> </td> <=
+/tr> <tr> <td> <table cellpadding=3D0 cellspacing=3D0 border=3D0 width=3D72=
+8 align=3Dcenter> <tbody> <tr> <td colspan=3D3 align=3Dcenter height=3D1 va=
+lign=3Dbottom> <a href=3Dhttp://li.yipit.com/click?s=3D71022&amp;t=3Dnewsle=
+tter&amp;sz=3D728x91&amp;li=3DDailyLocal&amp;e=3Dshop@foobar.com&amp;p=3D=
+201403111757 rel=3Dnofollow> <img src=3Dhttp://li.yipit.com/imp?s=3D71022&a=
+mp;t=3Dnewsletter&amp;sz=3D728x91&amp;li=3DDailyLocal&amp;e=3Dshop@kienpham=
+.com&amp;p=3D201403111757 border=3D0> </a> </td> </tr> <tr> <td align=3Drig=
+ht valign=3Dtop width=3D1> <a href=3Dhttp://li.yipit.com/click?s=3D71020&am=
+p;t=3Dnewsletter&amp;sz=3D160x601&amp;li=3DDailyLocal&amp;e=3Dshop@kienpham=
+.com&amp;p=3D201403111757 rel=3Dnofollow> <img src=3Dhttp://li.yipit.com/im=
+p?s=3D71020&amp;t=3Dnewsletter&amp;sz=3D160x601&amp;li=3DDailyLocal&amp;e=
+=3Dshop@foobar.com&amp;p=3D201403111757 border=3D0> </a> </td> <td valign=
+=3Dtop> <table cellspacing=3D0 cellpadding=3D0 width=3D620 align=3Dcenter> =
+<tr style=3Dpadding-top:20px;> <td width=3D85 style=3D"vertical-align:top;p=
+adding-top: 10px;" valign=3Dtop> <a class=3Dyipit-link href=3Dhttp://yipit.=
+com/orange-county/?eid=3D044db949af534f6c8f387e116deae1bf> <img vspace=3D0 =
+hspace=3D0 src=3Dhttp://yipit.com/emailer/email_logo/044db939af534f6c8f387e=
+116deae1bf/?eid=3D044db949af534f6c8f387e116deae1bf alt=3Dyipit width=3D62 h=
+eight=3D30 align=3Dleft border=3D0 style=3D"font-size: 24px;color:#6dbbe0;p=
+adding-left:10px;font-weight:bold;"> </a> </td> <td width=3D90 style=3D"fon=
+t-family:Helvetica Neue, Helvetica,sans-serif;line-height:12px;font-size: 1=
+1px;font-weight: bold;color: #999999;vertical-align:top;padding-top: 10px;"=
+ valign=3Dtop> Every Deal In Your City </td> <td style=3D"font-family:Helve=
+tica Neue, Helvetica,sans-serif;line-height:12px;font-size:11px;font-weight=
+:500;color:#999;text-align:right;vertical-align:top;padding-top:10px;" vali=
+gn=3Dtop> <a href=3Dhttp://yipit.com/account/tags/?eid=3D044db949af534f6c8f=
+387e116deae1bf style=3Dcolor:#999;text-decoration:none;>Change your prefere=
+nces</a> | <a href=3Dhttp://yipit.com/account/unsubscribe/?eid=3D044db949af=
+534f6c8f387e116deae1bf style=3Dcolor:#999;text-decoration:none;>Unsubscribe=
+</a> </td> </tr> </table> <table cellspacing=3D0 cellpadding=3D0 width=3D62=
+0 align=3Dcenter> <tr><td height=3D30></td></tr> <tr> <td width=3D300 valig=
+n=3Dtop> <table class=3Ddeals-left width=3D100% cellspacing=3D0 cellpadding=
+=3D0> <tr class=3D"deal-row real-deal"> <td> <table width=3D298 cellspacing=
+=3D0 cellpadding=3D0 bgcolor=3D#fff style=3D"background-color:#ffffff;borde=
+r:1px solid #dddddd;-webkit-border-radius:3px;-moz-border-radius:3px;border=
+-radius:3px;" align=3Dcenter> <tr> <td> <table width=3D100% cellspacing=3D0=
+ cellpadding=3D0> <tr> <td width=3D50% style=3D"font-family:Helvetica Neue,=
+ Helvetica,sans-serif;font-size: 10px;font-weight: bold;color: #999999;vert=
+ical-align:top;text-transform:uppercase;padding:10px 9px;" align=3Dleft val=
+ign=3Dtop> Amazon Local </td> <td width=3D50% style=3D"font-family:Helvetic=
+a Neue, Helvetica,sans-serif;font-size: 10px;font-weight: bold;color: #6666=
+66;vertical-align:top;text-transform:uppercase;padding:10px 9px;" align=3Dr=
+ight valign=3Dtop> <span class=3Dtime-left>6 days left</span> </td> </tr> <=
+/table> </td> </tr> <tr class=3Dheadline> <td> <table cellspacing=3D0 cellp=
+adding=3D0> <tr> <td width=3D30 style=3D"padding: 0 9px 10px 9px;vertical-a=
+lign:top;" valign=3Dtop> <img border=3D0 src=3Dhttp://a.yipitcdn.com/img/ic=
+ons/trending.png width=3D25 alt=3D"Trending deal icon"> </td> <td style=3Dv=
+ertical-align:top; valign=3Dtop> <p style=3D"font-family:Helvetica Neue, He=
+lvetica,sans-serif;margin:0;padding:0;font-size:12px;line-height:10px;font-=
+weight:bold;color:#666666">Trending Deal</p> <p style=3D"font-family:Helvet=
+ica Neue, Helvetica,sans-serif;margin:0;padding:0;color:#999999;font-size:1=
+0px;font-weight:500"></p> </td> </tr> </table> </td> </tr> <tr> <td style=
+=3D"padding: 0 9px 10px 9px;vertical-align:top;" valign=3Dtop> <a href=3Dht=
+tp://yipit.com/emailer/deal/044db939af534f6c8f387e116deae1bf/25454234/> <im=
+g src=3Dhttps://d.yipitcdn.com/thumbor/qG_23R0dTWEyxOo7FXwir3w8QDg=3D/259x1=
+94/smart/d.yipitcdn.com/deal/custom-metal-print-with-free-shipping-88-13941=
+12110.jpg width=3D280 height=3D209> </a> </td> </tr> <tr> <td style=3D"padd=
+ing: 0 9px 10px 9px;vertical-align:top;font-family:Helvetica Neue, Helvetic=
+a,sans-serif;font-weight:bold;font-size:17px;" align=3Dleft valign=3Dtop> <=
+a href=3Dhttp://yipit.com/emailer/deal/044db939af534f6c8f387e116deae1bf/254=
+54234/ style=3Dcolor:#498fb1;text-decoration:none>Custom Metal Print with F=
+ree Shipping</a> </td> </tr> <tr> <td class=3Ddeal-business-name style=3D"p=
+adding: 0 9px;vertical-align:top;font-family:Helvetica Neue, Helvetica,sans=
+-serif;font-weight:bold;font-size:13px;color:#666666;" align=3Dleft valign=
+=3Dtop> CreateMyWalls </td> </tr> <tr><td height=3D10></td></tr> <tr> <td> =
+<table width=3D100% cellspacing=3D0 cellpadding=3D0 bgcolor=3D#fafafa style=
+=3D"background-color:#fafafa;border-top: 1px solid #dddddd;border-bottom-le=
+ft-radius:3px;-moz-border-radius-bottomleft:3px;-webkit-border-bottom-left-=
+radius:3px;border-bottom-right-radius:3px;-moz-border-radius-bottomright:3p=
+x;-webkit-border-bottom-right-radius:30px;"> <tr> <td width=3D80 align=3Dle=
+ft style=3D"border-right: 1px solid #dddddd;vertical-align:top;padding: 10p=
+x 0;font-family:Helvetica Neue, Helvetica,sans-serif;" valign=3Dtop> <span =
+style=3Dfont-size:10px;color:#999999;text-transform:uppercase;padding-left:=
+9px;line-height:15px;-webkit-text-size-adjust:none;>Deal Price:</span><br> =
+<span class=3Dprice style=3Dpadding-left:9px;color:#666666;font-size:17px;v=
+ertical-align:top>$<span style=3Dfont-size:24px;font-weight:bold;padding-le=
+ft:1px;line-height:24px;>28</span></span> </td> <td width=3D80 align=3Dleft=
+ style=3D"border-right: 1px solid #dddddd;vertical-align:top;padding: 10px =
+0;" valign=3Dtop> <span style=3D"font-family:Helvetica Neue, Helvetica,sans=
+-serif;font-size: 10px;color: #999999;text-transform:uppercase;padding-left=
+:9px;line-height:15px;">Discount:</span><br> <span class=3Ddiscount style=
+=3Dpadding-left:9px;color:#666666;font-size:17px;vertical-align:top><span s=
+tyle=3Dfont-size:24px;font-weight:bold;padding-left:1px;line-height:24px;>6=
+9</span>%</span> </td> <td style=3D"padding: 10px 0;"> <table cellspacing=
+=3D0 cellpadding=3D0 align=3Dcenter> <tr> <td style=3Dfont-size:0;text-alig=
+n:center;vertical-align:center; bgcolor=3D#a2c42c valign=3Dtop> <a href=3Dh=
+ttp://yipit.com/emailer/deal/044db939af534f6c8f387e116deae1bf/25454234/> <i=
+mg class=3Dview-btn vspace=3D0 hspace=3D0 src=3Dhttp://email.yipitcdn.com/a=
+ssets/local/btn_view.0fd59840.gif title=3DView alt=3DView width=3D115 heigh=
+t=3D38 align=3Dleft border=3D0 style=3D"font-family:Helvetica Neue, Helveti=
+ca,sans-serif;font-size:18px;color:#ffffff;text-align:center;line-height: 3=
+6px;font-weight: bold;"> </a> </td> </tr> </table> </td> </tr> </table> </t=
+d> </tr> </table> </td> </tr> <tr><td height=3D20></td></tr> <tr class=3D"d=
+eal-row real-deal"> <td> <table width=3D298 cellspacing=3D0 cellpadding=3D0=
+ bgcolor=3D#fff style=3D"background-color:#ffffff;border:1px solid #dddddd;=
+-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;" align=
+=3Dcenter> <tr> <td> <table width=3D100% cellspacing=3D0 cellpadding=3D0> <=
+tr> <td width=3D50% style=3D"font-family:Helvetica Neue, Helvetica,sans-ser=
+if;font-size: 10px;font-weight: bold;color: #999999;vertical-align:top;text=
+-transform:uppercase;padding:10px 9px;" align=3Dleft valign=3Dtop> Groupon =
+</td> <td width=3D50% style=3D"font-family:Helvetica Neue, Helvetica,sans-s=
+erif;font-size: 10px;font-weight: bold;color: #666666;vertical-align:top;te=
+xt-transform:uppercase;padding:10px 9px;" align=3Dright valign=3Dtop> <span=
+ class=3Dtime-left>weeks left</span> </td> </tr> </table> </td> </tr> <tr> =
+<td style=3D"padding: 0 9px 10px 9px;vertical-align:top;" valign=3Dtop> <a =
+href=3Dhttp://yipit.com/emailer/deal/044db939af534f6c8f387e116deae1bf/16485=
+133/> <img src=3Dhttps://d.yipitcdn.com/thumbor/DfVqiPpLDq8pC-PGpn0WwR9LW8Q=
+=3D/259x194/smart/d.yipitcdn.com/deal/traditional-or-power-snorkeling-tour-=
+for-one-or-two-from-catalina-snorkel-and-scuba-up-to-61-off-18-1359536902.j=
+pg width=3D280 height=3D209> </a> </td> </tr> <tr> <td style=3D"padding: 0 =
+9px 10px 9px;vertical-align:top;font-family:Helvetica Neue, Helvetica,sans-=
+serif;font-weight:bold;font-size:17px;" align=3Dleft valign=3Dtop> <a href=
+=3Dhttp://yipit.com/emailer/deal/044db939af534f6c8f387e116deae1bf/16485133/=
+ style=3Dcolor:#498fb1;text-decoration:none>Up to 61% Off Snorkeling Tour</=
+a> </td> </tr> <tr> <td class=3Ddeal-business-name style=3D"padding: 0 9px;=
+vertical-align:top;font-family:Helvetica Neue, Helvetica,sans-serif;font-we=
+ight:bold;font-size:13px;color:#666666;" align=3Dleft valign=3Dtop> Catalin=
+a Snorkel & Scuba </td> </tr> <tr> <td style=3D"padding: 0 9px;vertical-ali=
+gn:top;font-family:Helvetica Neue, Helvetica,sans-serif;font-size:13px;colo=
+r:#999999;" align=3Dleft valign=3Dtop> 400 Pebbly Beach Rd, Avalon, CA </td=
+> </tr> <tr> <td style=3D"padding: 5px 9px 0 9px;vertical-align:top;" align=
+=3Dleft valign=3Dtop> <a class=3Dyelp-link href=3Dhttp://www.yelp.com/biz/c=
+atalina-snorkel-and-scuba-avalon> <table cellspacing=3D0 cellpadding=3D0> <=
+tr> <td valign=3Dleft width=3D93> <img class=3Dyelp-stars-image vspace=3D0 =
+hspace=3D0 src=3Dhttps://c.yipitcdn.com/img/yelp/stars_4.png alt=3D style=
+=3D"color:#C41818; font-size:18px" width=3D83 height=3D16 align=3Dleft> </t=
+d> <td style=3D"font-family:Helvetica Neue, Helvetica,sans-serif;font-weigh=
+t:bold;font-size:12px;color:#999999;" align=3Dleft valign=3Dmiddle> 66 Yelp=
+ reviews </td> </tr> </table> </a> </td> </tr> <tr><td height=3D10></td></t=
+r> <tr> <td> <table width=3D100% cellspacing=3D0 cellpadding=3D0 bgcolor=3D=
+#fafafa style=3D"background-color:#fafafa;border-top: 1px solid #dddddd;bor=
+der-bottom-left-radius:3px;-moz-border-radius-bottomleft:3px;-webkit-border=
+-bottom-left-radius:3px;border-bottom-right-radius:3px;-moz-border-radius-b=
+ottomright:3px;-webkit-border-bottom-right-radius:30px;"> <tr> <td width=3D=
+80 align=3Dleft style=3D"border-right: 1px solid #dddddd;vertical-align:top=
+;padding: 10px 0;font-family:Helvetica Neue, Helvetica,sans-serif;" valign=
+=3Dtop> <span style=3Dfont-size:10px;color:#999999;text-transform:uppercase=
+;padding-left:9px;line-height:15px;-webkit-text-size-adjust:none;>Deal Pric=
+e:</span><br> <span class=3Dprice style=3Dpadding-left:9px;color:#666666;fo=
+nt-size:17px;vertical-align:top>$<span style=3Dfont-size:24px;font-weight:b=
+old;padding-left:1px;line-height:24px;>19</span></span> </td> <td width=3D8=
+0 align=3Dleft style=3D"border-right: 1px solid #dddddd;vertical-align:top;=
+padding: 10px 0;" valign=3Dtop> <span style=3D"font-family:Helvetica Neue, =
+Helvetica,sans-serif;font-size: 10px;color: #999999;text-transform:uppercas=
+e;padding-left:9px;line-height:15px;">Discount:</span><br> <span class=3Ddi=
+scount style=3Dpadding-left:9px;color:#666666;font-size:17px;vertical-align=
+:top><span style=3Dfont-size:24px;font-weight:bold;padding-left:1px;line-he=
+ight:24px;>58</span>%</span> </td> <td style=3D"padding: 10px 0;"> <table c=
+ellspacing=3D0 cellpadding=3D0 align=3Dcenter> <tr> <td style=3Dfont-size:0=
+;text-align:center;vertical-align:center; bgcolor=3D#a2c42c valign=3Dtop> <=
+a href=3Dhttp://yipit.com/emailer/deal/044db939af534f6c8f387e116deae1bf/164=
+85133/> <img class=3Dview-btn vspace=3D0 hspace=3D0 src=3Dhttp://email.yipi=
+tcdn.com/assets/local/btn_view.0fd59840.gif title=3DView alt=3DView width=
+=3D115 height=3D38 align=3Dleft border=3D0 style=3D"font-family:Helvetica N=
+eue, Helvetica,sans-serif;font-size:18px;color:#ffffff;text-align:center;li=
+ne-height: 36px;font-weight: bold;"> </a> </td> </tr> </table> </td> </tr> =
+</table> </td> </tr> </table> </td> </tr> <tr><td height=3D20></td></tr> <t=
+r class=3D"deal-row real-deal"> <td> <table width=3D298 cellspacing=3D0 cel=
+lpadding=3D0 bgcolor=3D#fff style=3D"background-color:#ffffff;border:1px so=
+lid #dddddd;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:=
+3px;" align=3Dcenter> <tr> <td> <table width=3D100% cellspacing=3D0 cellpad=
+ding=3D0> <tr> <td width=3D50% style=3D"font-family:Helvetica Neue, Helveti=
+ca,sans-serif;font-size: 10px;font-weight: bold;color: #999999;vertical-ali=
+gn:top;text-transform:uppercase;padding:10px 9px;" align=3Dleft valign=3Dto=
+p> Groupon </td> <td width=3D50% style=3D"font-family:Helvetica Neue, Helve=
+tica,sans-serif;font-size: 10px;font-weight: bold;color: #666666;vertical-a=
+lign:top;text-transform:uppercase;padding:10px 9px;" align=3Dright valign=
+=3Dtop> <span class=3Dtime-left>weeks left</span> </td> </tr> </table> </td=
+> </tr> <tr class=3Dheadline> <td> <table cellspacing=3D0 cellpadding=3D0> =
+<tr> <td width=3D30 style=3D"padding: 0 9px 10px 9px;vertical-align:top;" v=
+align=3Dtop> <img border=3D0 src=3Dhttp://a.yipitcdn.com/img/icons/trending=
+.png width=3D25 alt=3D"Trending deal icon"> </td> <td style=3Dvertical-alig=
+n:top; valign=3Dtop> <p style=3D"font-family:Helvetica Neue, Helvetica,sans=
+-serif;margin:0;padding:0;font-size:12px;line-height:10px;font-weight:bold;=
+color:#666666">Trending Deal</p> <p style=3D"font-family:Helvetica Neue, He=
+lvetica,sans-serif;margin:0;padding:0;color:#999999;font-size:10px;font-wei=
+ght:500">1,000 purchased (6x Groupon average)</p> </td> </tr> </table> </td=
+> </tr> <tr> <td style=3D"padding: 0 9px 10px 9px;vertical-align:top;" vali=
+gn=3Dtop> <a href=3Dhttp://yipit.com/emailer/deal/044db939af534f6c8f387e116=
+deae1bf/25459566/> <img src=3Dhttps://b.yipitcdn.com/thumbor/Fb401pcw2NerZJ=
+xG9HU7DxW1eFc=3D/259x194/smart/b.yipitcdn.com/deal/thai-food-at-thai-spice-=
+up-to-40-off-four-locations-available-1394258788.jpg width=3D280 height=3D2=
+09> </a> </td> </tr> <tr> <td style=3D"padding: 0 9px 10px 9px;vertical-ali=
+gn:top;font-family:Helvetica Neue, Helvetica,sans-serif;font-weight:bold;fo=
+nt-size:17px;" align=3Dleft valign=3Dtop> <a href=3Dhttp://yipit.com/emaile=
+r/deal/044db939af534f6c8f387e116deae1bf/25459566/ style=3Dcolor:#498fb1;tex=
+t-decoration:none>Up to 40% Off Thai Food</a> </td> </tr> <tr> <td class=3D=
+deal-business-name style=3D"padding: 0 9px;vertical-align:top;font-family:H=
+elvetica Neue, Helvetica,sans-serif;font-weight:bold;font-size:13px;color:#=
+666666;" align=3Dleft valign=3Dtop> Thai Spice </td> </tr> <tr> <td style=
+=3D"padding: 0 9px;vertical-align:top;font-family:Helvetica Neue, Helvetica=
+,sans-serif;font-size:13px;color:#999999;" align=3Dleft valign=3Dtop> 2 Hut=
+ton Centre Dr, Santa Ana, CA </td> </tr> <tr> <td style=3D"padding: 5px 9px=
+ 0 9px;vertical-align:top;" align=3Dleft valign=3Dtop> <a class=3Dyelp-link=
+ href=3Dhttp://www.yelp.com/biz/pho-factory-irvine> <table cellspacing=3D0 =
+cellpadding=3D0> <tr> <td valign=3Dleft width=3D93> <img class=3Dyelp-stars=
+-image vspace=3D0 hspace=3D0 src=3Dhttps://b.yipitcdn.com/img/yelp/stars_3.=
+png alt=3D style=3D"color:#C41818; font-size:18px" width=3D83 height=3D16 a=
+lign=3Dleft> </td> <td style=3D"font-family:Helvetica Neue, Helvetica,sans-=
+serif;font-weight:bold;font-size:12px;color:#999999;" align=3Dleft valign=
+=3Dmiddle> 148 Yelp reviews </td> </tr> </table> </a> </td> </tr> <tr><td h=
+eight=3D10></td></tr> <tr> <td> <table width=3D100% cellspacing=3D0 cellpad=
+ding=3D0 bgcolor=3D#fafafa style=3D"background-color:#fafafa;border-top: 1p=
+x solid #dddddd;border-bottom-left-radius:3px;-moz-border-radius-bottomleft=
+:3px;-webkit-border-bottom-left-radius:3px;border-bottom-right-radius:3px;-=
+moz-border-radius-bottomright:3px;-webkit-border-bottom-right-radius:30px;"=
+> <tr> <td width=3D80 align=3Dleft style=3D"border-right: 1px solid #dddddd=
+;vertical-align:top;padding: 10px 0;font-family:Helvetica Neue, Helvetica,s=
+ans-serif;" valign=3Dtop> <span style=3Dfont-size:10px;color:#999999;text-t=
+ransform:uppercase;padding-left:9px;line-height:15px;-webkit-text-size-adju=
+st:none;>Deal Price:</span><br> <span class=3Dprice style=3Dpadding-left:9p=
+x;color:#666666;font-size:17px;vertical-align:top>$<span style=3Dfont-size:=
+24px;font-weight:bold;padding-left:1px;line-height:24px;>12</span></span> <=
+/td> <td width=3D80 align=3Dleft style=3D"border-right: 1px solid #dddddd;v=
+ertical-align:top;padding: 10px 0;" valign=3Dtop> <span style=3D"font-famil=
+y:Helvetica Neue, Helvetica,sans-serif;font-size: 10px;color: #999999;text-=
+transform:uppercase;padding-left:9px;line-height:15px;">Discount:</span><br=
+> <span class=3Ddiscount style=3Dpadding-left:9px;color:#666666;font-size:1=
+7px;vertical-align:top><span style=3Dfont-size:24px;font-weight:bold;paddin=
+g-left:1px;line-height:24px;>40</span>%</span> </td> <td style=3D"padding: =
+10px 0;"> <table cellspacing=3D0 cellpadding=3D0 align=3Dcenter> <tr> <td s=
+tyle=3Dfont-size:0;text-align:center;vertical-align:center; bgcolor=3D#a2c4=
+2c valign=3Dtop> <a href=3Dhttp://yipit.com/emailer/deal/044db939af534f6c8f=
+387e116deae1bf/25459566/> <img class=3Dview-btn vspace=3D0 hspace=3D0 src=
+=3Dhttp://email.yipitcdn.com/assets/local/btn_view.0fd59840.gif title=3DVie=
+w alt=3DView width=3D115 height=3D38 align=3Dleft border=3D0 style=3D"font-=
+family:Helvetica Neue, Helvetica,sans-serif;font-size:18px;color:#ffffff;te=
+xt-align:center;line-height: 36px;font-weight: bold;"> </a> </td> </tr> </t=
+able> </td> </tr> </table> </td> </tr> </table> </td> </tr> <tr><td height=
+=3D20></td></tr> <tr class=3Ddeal-row> <td class=3Dad-unit-2> <table class=
+=3D"ad li-ad-unit" width=3D100% cellspacing=3D0 cellpadding=3D0> <tr> <td w=
+idth=3D300> <table border=3D0 cellpadding=3D0 cellspacing=3D0> <tr> <td col=
+span=3D2> <a style=3D"display: block; width: 300px; height: 250px;" href=3D=
+http://li.yipit.com/click?s=3D71030&amp;t=3Dnewsletter&amp;sz=3D300x250&amp=
+;li=3DDailyLocal&amp;e=3Dshop@foobar.com&amp;p=3D201403111757 rel=3Dnofol=
+low> <img src=3Dhttp://li.yipit.com/imp?s=3D71030&amp;t=3Dnewsletter&amp;sz=
+=3D300x250&amp;li=3DDailyLocal&amp;e=3Dshop@foobar.com&amp;p=3D2014031117=
+57 border=3D0 width=3D300 height=3D250> </a> </td> </tr> <tr style=3D"displ=
+ay:block; height:1px; line-height:1px;"> <td> <img src=3Dhttp://li.yipit.co=
+m/imp?s=3D71031&amp;t=3Dnewsletter&amp;sz=3D1x1&amp;li=3DDailyLocal&amp;e=
+=3Dshop@foobar.com&amp;p=3D201403111757 height=3D1 width=3D10> </td> <td>=
+ <img src=3Dhttp://li.yipit.com/imp?s=3D71032&amp;t=3Dnewsletter&amp;sz=3D1=
+x1&amp;li=3DDailyLocal&amp;e=3Dshop@foobar.com&amp;p=3D201403111757 heigh=
+t=3D1 width=3D10> </td> </tr> <tr> <td align=3Dleft> <a href=3Dhttp://li.yi=
+pit.com/click?s=3D70965&amp;t=3Dnewsletter&amp;sz=3D116x15&amp;li=3DDailyLo=
+cal&amp;e=3Dshop@foobar.com&amp;p=3D201403111757 rel=3Dnofollow> <img src=
+=3Dhttp://li.yipit.com/imp?s=3D70965&amp;t=3Dnewsletter&amp;sz=3D116x15&amp=
+;li=3DDailyLocal&amp;e=3Dshop@foobar.com&amp;p=3D201403111757 alt=3D"powe=
+red by" border=3D0> </a> </td> <td align=3Dright> <a href=3Dhttp://li.yipit=
+.com/click?s=3D70966&amp;t=3Dnewsletter&amp;sz=3D69x15&amp;li=3DDailyLocal&=
+amp;e=3Dshop@foobar.com&amp;p=3D201403111757 rel=3Dnofollow> <img src=3Dh=
+ttp://li.yipit.com/imp?s=3D70966&amp;t=3Dnewsletter&amp;sz=3D69x15&amp;li=
+=3DDailyLocal&amp;e=3Dshop@foobar.com&amp;p=3D201403111757 alt=3D"ad choi=
+ces" border=3D0> </a> </td> </tr> </table> </td> </tr> </table> </td> </tr>=
+ <tr><td height=3D20></td></tr> <tr class=3D"deal-row real-deal"> <td> <tab=
+le width=3D298 cellspacing=3D0 cellpadding=3D0 bgcolor=3D#fff style=3D"back=
+ground-color:#ffffff;border:1px solid #dddddd;-webkit-border-radius:3px;-mo=
+z-border-radius:3px;border-radius:3px;" align=3Dcenter> <tr> <td> <table wi=
+dth=3D100% cellspacing=3D0 cellpadding=3D0> <tr> <td width=3D50% style=3D"f=
+ont-family:Helvetica Neue, Helvetica,sans-serif;font-size: 10px;font-weight=
+: bold;color: #999999;vertical-align:top;text-transform:uppercase;padding:1=
+0px 9px;" align=3Dleft valign=3Dtop> Amazon Local </td> <td width=3D50% sty=
+le=3D"font-family:Helvetica Neue, Helvetica,sans-serif;font-size: 10px;font=
+-weight: bold;color: #666666;vertical-align:top;text-transform:uppercase;pa=
+dding:10px 9px;" align=3Dright valign=3Dtop> <span class=3Dtime-left>9 days=
+ left</span> </td> </tr> </table> </td> </tr> <tr> <td style=3D"padding: 0 =
+9px 10px 9px;vertical-align:top;" valign=3Dtop> <a href=3Dhttp://yipit.com/=
+emailer/deal/044db939af534f6c8f387e116deae1bf/25464872/> <img src=3Dhttps:/=
+/d.yipitcdn.com/thumbor/thUVzrxk1o6AAKCOV9O4MEIzHG0=3D/259x194/smart/d.yipi=
+tcdn.com/deal/luxury-electric-boat-rental-80-1394554544.jpg width=3D280 hei=
+ght=3D209> </a> </td> </tr> <tr> <td style=3D"padding: 0 9px 10px 9px;verti=
+cal-align:top;font-family:Helvetica Neue, Helvetica,sans-serif;font-weight:=
+bold;font-size:17px;" align=3Dleft valign=3Dtop> <a href=3Dhttp://yipit.com=
+/emailer/deal/044db939af534f6c8f387e116deae1bf/25464872/ style=3Dcolor:#498=
+fb1;text-decoration:none>Luxury Electric Boat Rental</a> </td> </tr> <tr> <=
+td class=3Ddeal-business-name style=3D"padding: 0 9px;vertical-align:top;fo=
+nt-family:Helvetica Neue, Helvetica,sans-serif;font-weight:bold;font-size:1=
+3px;color:#666666;" align=3Dleft valign=3Dtop> Newport Fun Tours </td> </tr=
+> <tr> <td style=3D"padding: 0 9px;vertical-align:top;font-family:Helvetica=
+ Neue, Helvetica,sans-serif;font-size:13px;color:#999999;" align=3Dleft val=
+ign=3Dtop> 3101 West Coast Hwy, Newport Beach, CA </td> </tr> <tr> <td styl=
+e=3D"padding: 5px 9px 0 9px;vertical-align:top;" align=3Dleft valign=3Dtop>=
+ <a class=3Dyelp-link href=3Dhttp://yelp.com/biz/newport-fun-tours-newport-=
+beach/> <table cellspacing=3D0 cellpadding=3D0> <tr> <td valign=3Dleft widt=
+h=3D93> <img class=3Dyelp-stars-image vspace=3D0 hspace=3D0 src=3Dhttps://b=
+.yipitcdn.com/img/yelp/stars_3.png alt=3D style=3D"color:#C41818; font-size=
+:18px" width=3D83 height=3D16 align=3Dleft> </td> <td style=3D"font-family:=
+Helvetica Neue, Helvetica,sans-serif;font-weight:bold;font-size:12px;color:=
+#999999;" align=3Dleft valign=3Dmiddle> 164 Yelp reviews </td> </tr> </tabl=
+e> </a> </td> </tr> <tr><td height=3D10></td></tr> <tr> <td> <table width=
+=3D100% cellspacing=3D0 cellpadding=3D0 bgcolor=3D#fafafa style=3D"backgrou=
+nd-color:#fafafa;border-top: 1px solid #dddddd;border-bottom-left-radius:3p=
+x;-moz-border-radius-bottomleft:3px;-webkit-border-bottom-left-radius:3px;b=
+order-bottom-right-radius:3px;-moz-border-radius-bottomright:3px;-webkit-bo=
+rder-bottom-right-radius:30px;"> <tr> <td width=3D80 align=3Dleft style=3D"=
+border-right: 1px solid #dddddd;vertical-align:top;padding: 10px 0;font-fam=
+ily:Helvetica Neue, Helvetica,sans-serif;" valign=3Dtop> <span style=3Dfont=
+-size:10px;color:#999999;text-transform:uppercase;padding-left:9px;line-hei=
+ght:15px;-webkit-text-size-adjust:none;>Deal Price:</span><br> <span class=
+=3Dprice style=3Dpadding-left:9px;color:#666666;font-size:17px;vertical-ali=
+gn:top>$<span style=3Dfont-size:24px;font-weight:bold;padding-left:1px;line=
+-height:24px;>67</span></span> </td> <td width=3D80 align=3Dleft style=3D"b=
+order-right: 1px solid #dddddd;vertical-align:top;padding: 10px 0;" valign=
+=3Dtop> <span style=3D"font-family:Helvetica Neue, Helvetica,sans-serif;fon=
+t-size: 10px;color: #999999;text-transform:uppercase;padding-left:9px;line-=
+height:15px;">Discount:</span><br> <span class=3Ddiscount style=3Dpadding-l=
+eft:9px;color:#666666;font-size:17px;vertical-align:top><span style=3Dfont-=
+size:24px;font-weight:bold;padding-left:1px;line-height:24px;>51</span>%</s=
+pan> </td> <td style=3D"padding: 10px 0;"> <table cellspacing=3D0 cellpaddi=
+ng=3D0 align=3Dcenter> <tr> <td style=3Dfont-size:0;text-align:center;verti=
+cal-align:center; bgcolor=3D#a2c42c valign=3Dtop> <a href=3Dhttp://yipit.co=
+m/emailer/deal/044db939af534f6c8f387e116deae1bf/25464872/> <img class=3Dvie=
+w-btn vspace=3D0 hspace=3D0 src=3Dhttp://email.yipitcdn.com/assets/local/bt=
+n_view.0fd59840.gif title=3DView alt=3DView width=3D115 height=3D38 align=
+=3Dleft border=3D0 style=3D"font-family:Helvetica Neue, Helvetica,sans-seri=
+f;font-size:18px;color:#ffffff;text-align:center;line-height: 36px;font-wei=
+ght: bold;"> </a> </td> </tr> </table> </td> </tr> </table> </td> </tr> </t=
+able> </td> </tr> <tr><td height=3D20></td></tr> <tr class=3D"deal-row real=
+-deal"> <td> <table width=3D298 cellspacing=3D0 cellpadding=3D0 bgcolor=3D#=
+fff style=3D"background-color:#ffffff;border:1px solid #dddddd;-webkit-bord=
+er-radius:3px;-moz-border-radius:3px;border-radius:3px;" align=3Dcenter> <t=
+r> <td> <table width=3D100% cellspacing=3D0 cellpadding=3D0> <tr> <td width=
+=3D50% style=3D"font-family:Helvetica Neue, Helvetica,sans-serif;font-size:=
+ 10px;font-weight: bold;color: #999999;vertical-align:top;text-transform:up=
+percase;padding:10px 9px;" align=3Dleft valign=3Dtop> Amazon Local </td> <t=
+d width=3D50% style=3D"font-family:Helvetica Neue, Helvetica,sans-serif;fon=
+t-size: 10px;font-weight: bold;color: #666666;vertical-align:top;text-trans=
+form:uppercase;padding:10px 9px;" align=3Dright valign=3Dtop> <span class=
+=3Dtime-left>8 days left</span> </td> </tr> </table> </td> </tr> <tr> <td s=
+tyle=3D"padding: 0 9px 10px 9px;vertical-align:top;" valign=3Dtop> <a href=
+=3Dhttp://yipit.com/emailer/deal/044db939af534f6c8f387e116deae1bf/25463686/=
+> <img src=3Dhttps://c.yipitcdn.com/thumbor/jvY6VjhHdvhXHIfa0gMHjhtmuK8=3D/=
+259x194/smart/c.yipitcdn.com/deal/one-hour-private-horseback-riding-lesson-=
+73-1394468085.jpg width=3D280 height=3D209> </a> </td> </tr> <tr> <td style=
+=3D"padding: 0 9px 10px 9px;vertical-align:top;font-family:Helvetica Neue, =
+Helvetica,sans-serif;font-weight:bold;font-size:17px;" align=3Dleft valign=
+=3Dtop> <a href=3Dhttp://yipit.com/emailer/deal/044db939af534f6c8f387e116de=
+ae1bf/25463686/ style=3Dcolor:#498fb1;text-decoration:none>One-Hour Private=
+ Horseback Riding Lesson</a> </td> </tr> <tr> <td class=3Ddeal-business-nam=
+e style=3D"padding: 0 9px;vertical-align:top;font-family:Helvetica Neue, He=
+lvetica,sans-serif;font-weight:bold;font-size:13px;color:#666666;" align=3D=
+left valign=3Dtop> Zequestrian </td> </tr> <tr> <td style=3D"padding: 0 9px=
+;vertical-align:top;font-family:Helvetica Neue, Helvetica,sans-serif;font-s=
+ize:13px;color:#999999;" align=3Dleft valign=3Dtop> 26282 Oso Rd, San Juan =
+Capistrano, CA </td> </tr> <tr><td height=3D10></td></tr> <tr> <td> <table =
+width=3D100% cellspacing=3D0 cellpadding=3D0 bgcolor=3D#fafafa style=3D"bac=
+kground-color:#fafafa;border-top: 1px solid #dddddd;border-bottom-left-radi=
+us:3px;-moz-border-radius-bottomleft:3px;-webkit-border-bottom-left-radius:=
+3px;border-bottom-right-radius:3px;-moz-border-radius-bottomright:3px;-webk=
+it-border-bottom-right-radius:30px;"> <tr> <td width=3D80 align=3Dleft styl=
+e=3D"border-right: 1px solid #dddddd;vertical-align:top;padding: 10px 0;fon=
+t-family:Helvetica Neue, Helvetica,sans-serif;" valign=3Dtop> <span style=
+=3Dfont-size:10px;color:#999999;text-transform:uppercase;padding-left:9px;l=
+ine-height:15px;-webkit-text-size-adjust:none;>Deal Price:</span><br> <span=
+ class=3Dprice style=3Dpadding-left:9px;color:#666666;font-size:17px;vertic=
+al-align:top>$<span style=3Dfont-size:24px;font-weight:bold;padding-left:1p=
+x;line-height:24px;>35</span></span> </td> <td width=3D80 align=3Dleft styl=
+e=3D"border-right: 1px solid #dddddd;vertical-align:top;padding: 10px 0;" v=
+align=3Dtop> <span style=3D"font-family:Helvetica Neue, Helvetica,sans-seri=
+f;font-size: 10px;color: #999999;text-transform:uppercase;padding-left:9px;=
+line-height:15px;">Discount:</span><br> <span class=3Ddiscount style=3Dpadd=
+ing-left:9px;color:#666666;font-size:17px;vertical-align:top><span style=3D=
+font-size:24px;font-weight:bold;padding-left:1px;line-height:24px;>54</span=
+>%</span> </td> <td style=3D"padding: 10px 0;"> <table cellspacing=3D0 cell=
+padding=3D0 align=3Dcenter> <tr> <td style=3Dfont-size:0;text-align:center;=
+vertical-align:center; bgcolor=3D#a2c42c valign=3Dtop> <a href=3Dhttp://yip=
+it.com/emailer/deal/044db939af534f6c8f387e116deae1bf/25463686/> <img class=
+=3Dview-btn vspace=3D0 hspace=3D0 src=3Dhttp://email.yipitcdn.com/assets/lo=
+cal/btn_view.0fd59840.gif title=3DView alt=3DView width=3D115 height=3D38 a=
+lign=3Dleft border=3D0 style=3D"font-family:Helvetica Neue, Helvetica,sans-=
+serif;font-size:18px;color:#ffffff;text-align:center;line-height: 36px;font=
+-weight: bold;"> </a> </td> </tr> </table> </td> </tr> </table> </td> </tr>=
+ </table> </td> </tr> <tr><td height=3D20></td></tr> <tr class=3D"deal-row =
+real-deal"> <td> <table width=3D298 cellspacing=3D0 cellpadding=3D0 bgcolor=
+=3D#fff style=3D"background-color:#ffffff;border:1px solid #dddddd;-webkit-=
+border-radius:3px;-moz-border-radius:3px;border-radius:3px;" align=3Dcenter=
+> <tr> <td> <table width=3D100% cellspacing=3D0 cellpadding=3D0> <tr> <td w=
+idth=3D50% style=3D"font-family:Helvetica Neue, Helvetica,sans-serif;font-s=
+ize: 10px;font-weight: bold;color: #999999;vertical-align:top;text-transfor=
+m:uppercase;padding:10px 9px;" align=3Dleft valign=3Dtop> LivingSocial </td=
+> <td width=3D50% style=3D"font-family:Helvetica Neue, Helvetica,sans-serif=
+;font-size: 10px;font-weight: bold;color: #666666;vertical-align:top;text-t=
+ransform:uppercase;padding:10px 9px;" align=3Dright valign=3Dtop> <span cla=
+ss=3Dtime-left>8 days left</span> </td> </tr> </table> </td> </tr> <tr clas=
+s=3Dheadline> <td> <table cellspacing=3D0 cellpadding=3D0> <tr> <td width=
+=3D30 style=3D"padding: 0 9px 10px 9px;vertical-align:top;" valign=3Dtop> <=
+img border=3D0 src=3Dhttp://a.yipitcdn.com/img/icons/trending.png width=3D2=
+5 alt=3D"Trending deal icon"> </td> <td style=3Dvertical-align:top; valign=
+=3Dtop> <p style=3D"font-family:Helvetica Neue, Helvetica,sans-serif;margin=
+:0;padding:0;font-size:12px;line-height:10px;font-weight:bold;color:#666666=
+">Trending Deal</p> <p style=3D"font-family:Helvetica Neue, Helvetica,sans-=
+serif;margin:0;padding:0;color:#999999;font-size:10px;font-weight:500">10,9=
+01 purchased (8x LivingSocial average)</p> </td> </tr> </table> </td> </tr>=
+ <tr> <td style=3D"padding: 0 9px 10px 9px;vertical-align:top;" valign=3Dto=
+p> <a href=3Dhttp://yipit.com/emailer/deal/044db939af534f6c8f387e116deae1bf=
+/25454131/> <img src=3Dhttps://b.yipitcdn.com/thumbor/-XiLQgIzhZc6g2na-ue7x=
+vBS26M=3D/259x194/smart/b.yipitcdn.com/deal/chat-text-and-surf-for-hours-on=
+-end-34-1394101738.jpg width=3D280 height=3D209> </a> </td> </tr> <tr> <td =
+style=3D"padding: 0 9px 10px 9px;vertical-align:top;font-family:Helvetica N=
+eue, Helvetica,sans-serif;font-weight:bold;font-size:17px;" align=3Dleft va=
+lign=3Dtop> <a href=3Dhttp://yipit.com/emailer/deal/044db939af534f6c8f387e1=
+16deae1bf/25454131/ style=3Dcolor:#498fb1;text-decoration:none>iPhone Batte=
+ry Case Charger</a> </td> </tr> <tr> <td class=3Ddeal-business-name style=
+=3D"padding: 0 9px;vertical-align:top;font-family:Helvetica Neue, Helvetica=
+,sans-serif;font-weight:bold;font-size:13px;color:#666666;" align=3Dleft va=
+lign=3Dtop> Dotzila </td> </tr> <tr><td height=3D10></td></tr> <tr> <td> <t=
+able width=3D100% cellspacing=3D0 cellpadding=3D0 bgcolor=3D#fafafa style=
+=3D"background-color:#fafafa;border-top: 1px solid #dddddd;border-bottom-le=
+ft-radius:3px;-moz-border-radius-bottomleft:3px;-webkit-border-bottom-left-=
+radius:3px;border-bottom-right-radius:3px;-moz-border-radius-bottomright:3p=
+x;-webkit-border-bottom-right-radius:30px;"> <tr> <td width=3D80 align=3Dle=
+ft style=3D"border-right: 1px solid #dddddd;vertical-align:top;padding: 10p=
+x 0;font-family:Helvetica Neue, Helvetica,sans-serif;" valign=3Dtop> <span =
+style=3Dfont-size:10px;color:#999999;text-transform:uppercase;padding-left:=
+9px;line-height:15px;-webkit-text-size-adjust:none;>Deal Price:</span><br> =
+<span class=3Dprice style=3Dpadding-left:9px;color:#666666;font-size:17px;v=
+ertical-align:top>$<span style=3Dfont-size:24px;font-weight:bold;padding-le=
+ft:1px;line-height:24px;>11</span></span> </td> <td width=3D80 align=3Dleft=
+ style=3D"border-right: 1px solid #dddddd;vertical-align:top;padding: 10px =
+0;" valign=3Dtop> <span style=3D"font-family:Helvetica Neue, Helvetica,sans=
+-serif;font-size: 10px;color: #999999;text-transform:uppercase;padding-left=
+:9px;line-height:15px;">Discount:</span><br> <span class=3Ddiscount style=
+=3Dpadding-left:9px;color:#666666;font-size:17px;vertical-align:top><span s=
+tyle=3Dfont-size:24px;font-weight:bold;padding-left:1px;line-height:24px;>7=
+8</span>%</span> </td> <td style=3D"padding: 10px 0;"> <table cellspacing=
+=3D0 cellpadding=3D0 align=3Dcenter> <tr> <td style=3Dfont-size:0;text-alig=
+n:center;vertical-align:center; bgcolor=3D#a2c42c valign=3Dtop> <a href=3Dh=
+ttp://yipit.com/emailer/deal/044db939af534f6c8f387e116deae1bf/25454131/> <i=
+mg class=3Dview-btn vspace=3D0 hspace=3D0 src=3Dhttp://email.yipitcdn.com/a=
+ssets/local/btn_view.0fd59840.gif title=3DView alt=3DView width=3D115 heigh=
+t=3D38 align=3Dleft border=3D0 style=3D"font-family:Helvetica Neue, Helveti=
+ca,sans-serif;font-size:18px;color:#ffffff;text-align:center;line-height: 3=
+6px;font-weight: bold;"> </a> </td> </tr> </table> </td> </tr> </table> </t=
+d> </tr> </table> </td> </tr> <tr><td height=3D20></td></tr> <tr class=3D"d=
+eal-row real-deal"> <td> <table width=3D298 cellspacing=3D0 cellpadding=3D0=
+ bgcolor=3D#fff style=3D"background-color:#ffffff;border:1px solid #dddddd;=
+-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;" align=
+=3Dcenter> <tr> <td> <table width=3D100% cellspacing=3D0 cellpadding=3D0> <=
+tr> <td width=3D50% style=3D"font-family:Helvetica Neue, Helvetica,sans-ser=
+if;font-size: 10px;font-weight: bold;color: #999999;vertical-align:top;text=
+-transform:uppercase;padding:10px 9px;" align=3Dleft valign=3Dtop> Amazon L=
+ocal </td> <td width=3D50% style=3D"font-family:Helvetica Neue, Helvetica,s=
+ans-serif;font-size: 10px;font-weight: bold;color: #666666;vertical-align:t=
+op;text-transform:uppercase;padding:10px 9px;" align=3Dright valign=3Dtop> =
+<span class=3Dtime-left>4 days left</span> </td> </tr> </table> </td> </tr>=
+ <tr> <td style=3D"padding: 0 9px 10px 9px;vertical-align:top;" valign=3Dto=
+p> <a href=3Dhttp://yipit.com/emailer/deal/044db939af534f6c8f387e116deae1bf=
+/25453801/> <img src=3Dhttps://a.yipitcdn.com/thumbor/fj5SAqPpopvkfRFl_C9iI=
+xcdK_Q=3D/259x194/smart/a.yipitcdn.com/deal/free-coupon-for-30-off-select-k=
+indle-accessories-1394080940.jpg width=3D280 height=3D209> </a> </td> </tr>=
+ <tr> <td style=3D"padding: 0 9px 10px 9px;vertical-align:top;font-family:H=
+elvetica Neue, Helvetica,sans-serif;font-weight:bold;font-size:17px;" align=
+=3Dleft valign=3Dtop> <a href=3Dhttp://yipit.com/emailer/deal/044db939af534=
+f6c8f387e116deae1bf/25453801/ style=3Dcolor:#498fb1;text-decoration:none>Fr=
+ee Coupon for 30% Off Select Kindle Accessories</a> </td> </tr> <tr> <td cl=
+ass=3Ddeal-business-name style=3D"padding: 0 9px;vertical-align:top;font-fa=
+mily:Helvetica Neue, Helvetica,sans-serif;font-weight:bold;font-size:13px;c=
+olor:#666666;" align=3Dleft valign=3Dtop> Amazon.com </td> </tr> <tr><td he=
+ight=3D10></td></tr> <tr> <td> <table width=3D100% cellspacing=3D0 cellpadd=
+ing=3D0 bgcolor=3D#fafafa style=3D"background-color:#fafafa;border-top: 1px=
+ solid #dddddd;border-bottom-left-radius:3px;-moz-border-radius-bottomleft:=
+3px;-webkit-border-bottom-left-radius:3px;border-bottom-right-radius:3px;-m=
+oz-border-radius-bottomright:3px;-webkit-border-bottom-right-radius:30px;">=
+ <tr> <td width=3D80 align=3Dleft style=3D"border-right: 1px solid #dddddd;=
+vertical-align:top;padding: 10px 0;font-family:Helvetica Neue, Helvetica,sa=
+ns-serif;" valign=3Dtop> <span style=3Dfont-size:10px;color:#999999;text-tr=
+ansform:uppercase;padding-left:9px;line-height:15px;-webkit-text-size-adjus=
+t:none;>Deal Price:</span><br> <span class=3Dprice style=3Dpadding-left:9px=
+;color:#666666;font-size:17px;vertical-align:top><span style=3Dfont-size:24=
+px;font-weight:bold;padding-left:1px;line-height:24px;>Free!</span></span> =
+</td> <td width=3D80 align=3Dleft style=3D"border-right: 1px solid #dddddd;=
+vertical-align:top;padding: 10px 0;" valign=3Dtop> <span style=3D"font-fami=
+ly:Helvetica Neue, Helvetica,sans-serif;font-size: 10px;color: #999999;text=
+-transform:uppercase;padding-left:9px;line-height:15px;">Discount:</span><b=
+r> <span class=3Ddiscount style=3Dpadding-left:9px;color:#666666;font-size:=
+17px;vertical-align:top><span style=3Dfont-size:24px;font-weight:bold;paddi=
+ng-left:1px;line-height:24px;>30</span>%</span> </td> <td style=3D"padding:=
+ 10px 0;"> <table cellspacing=3D0 cellpadding=3D0 align=3Dcenter> <tr> <td =
+style=3Dfont-size:0;text-align:center;vertical-align:center; bgcolor=3D#a2c=
+42c valign=3Dtop> <a href=3Dhttp://yipit.com/emailer/deal/044db939af534f6c8=
+f387e116deae1bf/25453801/> <img class=3Dview-btn vspace=3D0 hspace=3D0 src=
+=3Dhttp://email.yipitcdn.com/assets/local/btn_view.0fd59840.gif title=3DVie=
+w alt=3DView width=3D115 height=3D38 align=3Dleft border=3D0 style=3D"font-=
+family:Helvetica Neue, Helvetica,sans-serif;font-size:18px;color:#ffffff;te=
+xt-align:center;line-height: 36px;font-weight: bold;"> </a> </td> </tr> </t=
+able> </td> </tr> </table> </td> </tr> </table> </td> </tr> <tr><td height=
+=3D20></td></tr> </table> </td> <td width=3D20></td> <td width=3D300 valign=
+=3Dtop> <table class=3Ddeals-right width=3D100% cellspacing=3D0 cellpadding=
+=3D0> <tr class=3D"deal-row real-deal"> <td> <table width=3D298 cellspacing=
+=3D0 cellpadding=3D0 bgcolor=3D#fff style=3D"background-color:#ffffff;borde=
+r:1px solid #dddddd;-webkit-border-radius:3px;-moz-border-radius:3px;border=
+-radius:3px;" align=3Dcenter> <tr> <td> <table width=3D100% cellspacing=3D0=
+ cellpadding=3D0> <tr> <td width=3D50% style=3D"font-family:Helvetica Neue,=
+ Helvetica,sans-serif;font-size: 10px;font-weight: bold;color: #999999;vert=
+ical-align:top;text-transform:uppercase;padding:10px 9px;" align=3Dleft val=
+ign=3Dtop> Travelzoo Local Deals </td> <td width=3D50% style=3D"font-family=
+:Helvetica Neue, Helvetica,sans-serif;font-size: 10px;font-weight: bold;col=
+or: #666666;vertical-align:top;text-transform:uppercase;padding:10px 9px;" =
+align=3Dright valign=3Dtop> <span class=3Dtime-left>weeks left</span> </td>=
+ </tr> </table> </td> </tr> <tr> <td style=3D"padding: 0 9px 10px 9px;verti=
+cal-align:top;" valign=3Dtop> <a href=3Dhttp://yipit.com/emailer/deal/044db=
+939af534f6c8f387e116deae1bf/25453543/> <img src=3Dhttps://b.yipitcdn.com/th=
+umbor/u_cLsl_Lce-EH8BuvCjR6LlV6l0=3D/259x194/smart/b.yipitcdn.com/deal/27-o=
+ld-towne-orange-best-walking-tour-wfood-tastings-1394065222.jpg width=3D280=
+ height=3D209> </a> </td> </tr> <tr> <td style=3D"padding: 0 9px 10px 9px;v=
+ertical-align:top;font-family:Helvetica Neue, Helvetica,sans-serif;font-wei=
+ght:bold;font-size:17px;" align=3Dleft valign=3Dtop> <a href=3Dhttp://yipit=
+.com/emailer/deal/044db939af534f6c8f387e116deae1bf/25453543/ style=3Dcolor:=
+#498fb1;text-decoration:none>$27 -- Old Towne Orange: 'Best Walking Tour' w=
+/Food Tastings</a> </td> </tr> <tr> <td class=3Ddeal-business-name style=3D=
+"padding: 0 9px;vertical-align:top;font-family:Helvetica Neue, Helvetica,sa=
+ns-serif;font-weight:bold;font-size:13px;color:#666666;" align=3Dleft valig=
+n=3Dtop> Old Towne Orange Walking Food Tours </td> </tr> <tr> <td style=3D"=
+padding: 0 9px;vertical-align:top;font-family:Helvetica Neue, Helvetica,san=
+s-serif;font-size:13px;color:#999999;" align=3Dleft valign=3Dtop> 642 W Cha=
+pman Ave, Orange, CA </td> </tr> <tr> <td style=3D"padding: 5px 9px 0 9px;v=
+ertical-align:top;" align=3Dleft valign=3Dtop> <a class=3Dyelp-link href=3D=
+http://www.yelp.com/biz/meads-green-door-cafe-orange> <table cellspacing=3D=
+0 cellpadding=3D0> <tr> <td valign=3Dleft width=3D93> <img class=3Dyelp-sta=
+rs-image vspace=3D0 hspace=3D0 src=3Dhttps://b.yipitcdn.com/img/yelp/stars_=
+4_half.png alt=3D" 12" style=3D"color:#C41818; font-size:18px" width=3D83 h=
+eight=3D16 align=3Dleft> </td> <td style=3D"font-family:Helvetica Neue, Hel=
+vetica,sans-serif;font-weight:bold;font-size:12px;color:#999999;" align=3Dl=
+eft valign=3Dmiddle> 179 Yelp reviews </td> </tr> </table> </a> </td> </tr>=
+ <tr><td height=3D10></td></tr> <tr> <td> <table width=3D100% cellspacing=
+=3D0 cellpadding=3D0 bgcolor=3D#fafafa style=3D"background-color:#fafafa;bo=
+rder-top: 1px solid #dddddd;border-bottom-left-radius:3px;-moz-border-radiu=
+s-bottomleft:3px;-webkit-border-bottom-left-radius:3px;border-bottom-right-=
+radius:3px;-moz-border-radius-bottomright:3px;-webkit-border-bottom-right-r=
+adius:30px;"> <tr> <td width=3D80 align=3Dleft style=3D"border-right: 1px s=
+olid #dddddd;vertical-align:top;padding: 10px 0;font-family:Helvetica Neue,=
+ Helvetica,sans-serif;" valign=3Dtop> <span style=3Dfont-size:10px;color:#9=
+99999;text-transform:uppercase;padding-left:9px;line-height:15px;-webkit-te=
+xt-size-adjust:none;>Deal Price:</span><br> <span class=3Dprice style=3Dpad=
+ding-left:9px;color:#666666;font-size:17px;vertical-align:top>$<span style=
+=3Dfont-size:24px;font-weight:bold;padding-left:1px;line-height:24px;>27</s=
+pan></span> </td> <td width=3D80 align=3Dleft style=3D"border-right: 1px so=
+lid #dddddd;vertical-align:top;padding: 10px 0;" valign=3Dtop> <span style=
+=3D"font-family:Helvetica Neue, Helvetica,sans-serif;font-size: 10px;color:=
+ #999999;text-transform:uppercase;padding-left:9px;line-height:15px;">Disco=
+unt:</span><br> <span class=3Ddiscount style=3Dpadding-left:9px;color:#6666=
+66;font-size:17px;vertical-align:top><span style=3Dfont-size:24px;font-weig=
+ht:bold;padding-left:1px;line-height:24px;>50</span>%</span> </td> <td styl=
+e=3D"padding: 10px 0;"> <table cellspacing=3D0 cellpadding=3D0 align=3Dcent=
+er> <tr> <td style=3Dfont-size:0;text-align:center;vertical-align:center; b=
+gcolor=3D#a2c42c valign=3Dtop> <a href=3Dhttp://yipit.com/emailer/deal/044d=
+b939af534f6c8f387e116deae1bf/25453543/> <img class=3Dview-btn vspace=3D0 hs=
+pace=3D0 src=3Dhttp://email.yipitcdn.com/assets/local/btn_view.0fd59840.gif=
+ title=3DView alt=3DView width=3D115 height=3D38 align=3Dleft border=3D0 st=
+yle=3D"font-family:Helvetica Neue, Helvetica,sans-serif;font-size:18px;colo=
+r:#ffffff;text-align:center;line-height: 36px;font-weight: bold;"> </a> </t=
+d> </tr> </table> </td> </tr> </table> </td> </tr> </table> </td> </tr> <tr=
+><td height=3D20></td></tr> <tr class=3Ddeal-row> <td class=3Dad-unit-0> <t=
+able class=3D"ad li-ad-unit" width=3D100% cellspacing=3D0 cellpadding=3D0> =
+<tr> <td width=3D300> <table border=3D0 cellpadding=3D0 cellspacing=3D0> <t=
+r> <td colspan=3D2> <a style=3D"display: block; width: 300px; height: 250px=
+;" href=3Dhttp://li.yipit.com/click?s=3D71027&amp;t=3Dnewsletter&amp;sz=3D3=
+00x250&amp;li=3DDailyLocal&amp;e=3Dshop@foobar.com&amp;p=3D201403111757 r=
+el=3Dnofollow> <img src=3Dhttp://li.yipit.com/imp?s=3D71027&amp;t=3Dnewslet=
+ter&amp;sz=3D300x250&amp;li=3DDailyLocal&amp;e=3Dshop@foobar.com&amp;p=3D=
+201403111757 border=3D0 width=3D300 height=3D250> </a> </td> </tr> <tr styl=
+e=3D"display:block; height:1px; line-height:1px;"> <td> <img src=3Dhttp://l=
+i.yipit.com/imp?s=3D71028&amp;t=3Dnewsletter&amp;sz=3D1x1&amp;li=3DDailyLoc=
+al&amp;e=3Dshop@foobar.com&amp;p=3D201403111757 height=3D1 width=3D10> </=
+td> <td> <img src=3Dhttp://li.yipit.com/imp?s=3D71029&amp;t=3Dnewsletter&am=
+p;sz=3D1x1&amp;li=3DDailyLocal&amp;e=3Dshop@foobar.com&amp;p=3D2014031117=
+57 height=3D1 width=3D10> </td> </tr> <tr> <td align=3Dleft> <a href=3Dhttp=
+://li.yipit.com/click?s=3D70965&amp;t=3Dnewsletter&amp;sz=3D116x15&amp;li=
+=3DDailyLocal&amp;e=3Dshop@foobar.com&amp;p=3D201403111757 rel=3Dnofollow=
+> <img src=3Dhttp://li.yipit.com/imp?s=3D70965&amp;t=3Dnewsletter&amp;sz=3D=
+116x15&amp;li=3DDailyLocal&amp;e=3Dshop@foobar.com&amp;p=3D201403111757 a=
+lt=3D"powered by" border=3D0> </a> </td> <td align=3Dright> <a href=3Dhttp:=
+//li.yipit.com/click?s=3D70966&amp;t=3Dnewsletter&amp;sz=3D69x15&amp;li=3DD=
+ailyLocal&amp;e=3Dshop@foobar.com&amp;p=3D201403111757 rel=3Dnofollow> <i=
+mg src=3Dhttp://li.yipit.com/imp?s=3D70966&amp;t=3Dnewsletter&amp;sz=3D69x1=
+5&amp;li=3DDailyLocal&amp;e=3Dshop@foobar.com&amp;p=3D201403111757 alt=3D=
+"ad choices" border=3D0> </a> </td> </tr> </table> </td> </tr> </table> </t=
+d> </tr> <tr><td height=3D20></td></tr> <tr class=3D"deal-row real-deal"> <=
+td> <table width=3D298 cellspacing=3D0 cellpadding=3D0 bgcolor=3D#fff style=
+=3D"background-color:#ffffff;border:1px solid #dddddd;-webkit-border-radius=
+:3px;-moz-border-radius:3px;border-radius:3px;" align=3Dcenter> <tr> <td> <=
+table width=3D100% cellspacing=3D0 cellpadding=3D0> <tr> <td width=3D50% st=
+yle=3D"font-family:Helvetica Neue, Helvetica,sans-serif;font-size: 10px;fon=
+t-weight: bold;color: #999999;vertical-align:top;text-transform:uppercase;p=
+adding:10px 9px;" align=3Dleft valign=3Dtop> Groupon </td> <td width=3D50% =
+style=3D"font-family:Helvetica Neue, Helvetica,sans-serif;font-size: 10px;f=
+ont-weight: bold;color: #666666;vertical-align:top;text-transform:uppercase=
+;padding:10px 9px;" align=3Dright valign=3Dtop> <span class=3Dtime-left>wee=
+ks left</span> </td> </tr> </table> </td> </tr> <tr> <td style=3D"padding: =
+0 9px 10px 9px;vertical-align:top;" valign=3Dtop> <a href=3Dhttp://yipit.co=
+m/emailer/deal/044db939af534f6c8f387e116deae1bf/13208098/> <img src=3Dhttps=
+://b.yipitcdn.com/thumbor/QKlc-yf_YVQ7Jcv2khY0BUphe0o=3D/259x194/smart/b.yi=
+pitcdn.com/deal/padi-open-water-diver-course-with-option-for-two-underwater=
+-scooter-dives-at-beach-cities-scuba-up-to-71-off-1354265576.jpg width=3D28=
+0 height=3D209> </a> </td> </tr> <tr> <td style=3D"padding: 0 9px 10px 9px;=
+vertical-align:top;font-family:Helvetica Neue, Helvetica,sans-serif;font-we=
+ight:bold;font-size:17px;" align=3Dleft valign=3Dtop> <a href=3Dhttp://yipi=
+t.com/emailer/deal/044db939af534f6c8f387e116deae1bf/13208098/ style=3Dcolor=
+:#498fb1;text-decoration:none>Up to 71% Off PADI Course at Beach Cities Scu=
+ba</a> </td> </tr> <tr> <td class=3Ddeal-business-name style=3D"padding: 0 =
+9px;vertical-align:top;font-family:Helvetica Neue, Helvetica,sans-serif;fon=
+t-weight:bold;font-size:13px;color:#666666;" align=3Dleft valign=3Dtop> Bea=
+ch Cities Scuba </td> </tr> <tr> <td style=3D"padding: 0 9px;vertical-align=
+:top;font-family:Helvetica Neue, Helvetica,sans-serif;font-size:13px;color:=
+#999999;" align=3Dleft valign=3Dtop> 19036 Brookhurst St, Huntington Beach,=
+ CA </td> </tr> <tr><td height=3D10></td></tr> <tr> <td> <table width=3D100=
+% cellspacing=3D0 cellpadding=3D0 bgcolor=3D#fafafa style=3D"background-col=
+or:#fafafa;border-top: 1px solid #dddddd;border-bottom-left-radius:3px;-moz=
+-border-radius-bottomleft:3px;-webkit-border-bottom-left-radius:3px;border-=
+bottom-right-radius:3px;-moz-border-radius-bottomright:3px;-webkit-border-b=
+ottom-right-radius:30px;"> <tr> <td width=3D80 align=3Dleft style=3D"border=
+-right: 1px solid #dddddd;vertical-align:top;padding: 10px 0;font-family:He=
+lvetica Neue, Helvetica,sans-serif;" valign=3Dtop> <span style=3Dfont-size:=
+10px;color:#999999;text-transform:uppercase;padding-left:9px;line-height:15=
+px;-webkit-text-size-adjust:none;>Deal Price:</span><br> <span class=3Dpric=
+e style=3Dpadding-left:9px;color:#666666;font-size:17px;vertical-align:top>=
+$<span style=3Dfont-size:24px;font-weight:bold;padding-left:1px;line-height=
+:24px;>199</span></span> </td> <td width=3D80 align=3Dleft style=3D"border-=
+right: 1px solid #dddddd;vertical-align:top;padding: 10px 0;" valign=3Dtop>=
+ <span style=3D"font-family:Helvetica Neue, Helvetica,sans-serif;font-size:=
+ 10px;color: #999999;text-transform:uppercase;padding-left:9px;line-height:=
+15px;">Discount:</span><br> <span class=3Ddiscount style=3Dpadding-left:9px=
+;color:#666666;font-size:17px;vertical-align:top><span style=3Dfont-size:24=
+px;font-weight:bold;padding-left:1px;line-height:24px;>66</span>%</span> </=
+td> <td style=3D"padding: 10px 0;"> <table cellspacing=3D0 cellpadding=3D0 =
+align=3Dcenter> <tr> <td style=3Dfont-size:0;text-align:center;vertical-ali=
+gn:center; bgcolor=3D#a2c42c valign=3Dtop> <a href=3Dhttp://yipit.com/email=
+er/deal/044db939af534f6c8f387e116deae1bf/13208098/> <img class=3Dview-btn v=
+space=3D0 hspace=3D0 src=3Dhttp://email.yipitcdn.com/assets/local/btn_view.=
+0fd59840.gif title=3DView alt=3DView width=3D115 height=3D38 align=3Dleft b=
+order=3D0 style=3D"font-family:Helvetica Neue, Helvetica,sans-serif;font-si=
+ze:18px;color:#ffffff;text-align:center;line-height: 36px;font-weight: bold=
+;"> </a> </td> </tr> </table> </td> </tr> </table> </td> </tr> </table> </t=
+d> </tr> <tr><td height=3D20></td></tr> <tr class=3D"deal-row real-deal"> <=
+td> <table width=3D298 cellspacing=3D0 cellpadding=3D0 bgcolor=3D#fff style=
+=3D"background-color:#ffffff;border:1px solid #dddddd;-webkit-border-radius=
+:3px;-moz-border-radius:3px;border-radius:3px;" align=3Dcenter> <tr> <td> <=
+table width=3D100% cellspacing=3D0 cellpadding=3D0> <tr> <td width=3D50% st=
+yle=3D"font-family:Helvetica Neue, Helvetica,sans-serif;font-size: 10px;fon=
+t-weight: bold;color: #999999;vertical-align:top;text-transform:uppercase;p=
+adding:10px 9px;" align=3Dleft valign=3Dtop> Amazon Local </td> <td width=
+=3D50% style=3D"font-family:Helvetica Neue, Helvetica,sans-serif;font-size:=
+ 10px;font-weight: bold;color: #666666;vertical-align:top;text-transform:up=
+percase;padding:10px 9px;" align=3Dright valign=3Dtop> <span class=3Dtime-l=
+eft>8 days left</span> </td> </tr> </table> </td> </tr> <tr> <td style=3D"p=
+adding: 0 9px 10px 9px;vertical-align:top;" valign=3Dtop> <a href=3Dhttp://=
+yipit.com/emailer/deal/044db939af534f6c8f387e116deae1bf/25454241/> <img src=
+=3Dhttps://b.yipitcdn.com/thumbor/O1g3E_ScCe6AWI2XAkiegiO4tBE=3D/259x194/sm=
+art/b.yipitcdn.com/deal/saturday-drag-brunch-with-mimosas-1394112350.jpg wi=
+dth=3D280 height=3D209> </a> </td> </tr> <tr> <td style=3D"padding: 0 9px 1=
+0px 9px;vertical-align:top;font-family:Helvetica Neue, Helvetica,sans-serif=
+;font-weight:bold;font-size:17px;" align=3Dleft valign=3Dtop> <a href=3Dhtt=
+p://yipit.com/emailer/deal/044db939af534f6c8f387e116deae1bf/25454241/ style=
+=3Dcolor:#498fb1;text-decoration:none>Saturday Drag Brunch with Mimosas</a>=
+ </td> </tr> <tr> <td class=3Ddeal-business-name style=3D"padding: 0 9px;ve=
+rtical-align:top;font-family:Helvetica Neue, Helvetica,sans-serif;font-weig=
+ht:bold;font-size:13px;color:#666666;" align=3Dleft valign=3Dtop> Velvet Lo=
+unge </td> </tr> <tr> <td style=3D"padding: 0 9px;vertical-align:top;font-f=
+amily:Helvetica Neue, Helvetica,sans-serif;font-size:13px;color:#999999;" a=
+lign=3Dleft valign=3Dtop> 416 W 4th St, Santa Ana, CA </td> </tr> <tr><td h=
+eight=3D10></td></tr> <tr> <td> <table width=3D100% cellspacing=3D0 cellpad=
+ding=3D0 bgcolor=3D#fafafa style=3D"background-color:#fafafa;border-top: 1p=
+x solid #dddddd;border-bottom-left-radius:3px;-moz-border-radius-bottomleft=
+:3px;-webkit-border-bottom-left-radius:3px;border-bottom-right-radius:3px;-=
+moz-border-radius-bottomright:3px;-webkit-border-bottom-right-radius:30px;"=
+> <tr> <td width=3D80 align=3Dleft style=3D"border-right: 1px solid #dddddd=
+;vertical-align:top;padding: 10px 0;font-family:Helvetica Neue, Helvetica,s=
+ans-serif;" valign=3Dtop> <span style=3Dfont-size:10px;color:#999999;text-t=
+ransform:uppercase;padding-left:9px;line-height:15px;-webkit-text-size-adju=
+st:none;>Deal Price:</span><br> <span class=3Dprice style=3Dpadding-left:9p=
+x;color:#666666;font-size:17px;vertical-align:top>$<span style=3Dfont-size:=
+24px;font-weight:bold;padding-left:1px;line-height:24px;>18</span></span> <=
+/td> <td width=3D80 align=3Dleft style=3D"border-right: 1px solid #dddddd;v=
+ertical-align:top;padding: 10px 0;" valign=3Dtop> <span style=3D"font-famil=
+y:Helvetica Neue, Helvetica,sans-serif;font-size: 10px;color: #999999;text-=
+transform:uppercase;padding-left:9px;line-height:15px;">Discount:</span><br=
+> <span class=3Ddiscount style=3Dpadding-left:9px;color:#666666;font-size:1=
+7px;vertical-align:top><span style=3Dfont-size:24px;font-weight:bold;paddin=
+g-left:1px;line-height:24px;>50</span>%</span> </td> <td style=3D"padding: =
+10px 0;"> <table cellspacing=3D0 cellpadding=3D0 align=3Dcenter> <tr> <td s=
+tyle=3Dfont-size:0;text-align:center;vertical-align:center; bgcolor=3D#a2c4=
+2c valign=3Dtop> <a href=3Dhttp://yipit.com/emailer/deal/044db939af534f6c8f=
+387e116deae1bf/25454241/> <img class=3Dview-btn vspace=3D0 hspace=3D0 src=
+=3Dhttp://email.yipitcdn.com/assets/local/btn_view.0fd59840.gif title=3DVie=
+w alt=3DView width=3D115 height=3D38 align=3Dleft border=3D0 style=3D"font-=
+family:Helvetica Neue, Helvetica,sans-serif;font-size:18px;color:#ffffff;te=
+xt-align:center;line-height: 36px;font-weight: bold;"> </a> </td> </tr> </t=
+able> </td> </tr> </table> </td> </tr> </table> </td> </tr> <tr><td height=
+=3D20></td></tr> <tr class=3D"deal-row real-deal"> <td> <table width=3D298 =
+cellspacing=3D0 cellpadding=3D0 bgcolor=3D#fff style=3D"background-color:#f=
+fffff;border:1px solid #dddddd;-webkit-border-radius:3px;-moz-border-radius=
+:3px;border-radius:3px;" align=3Dcenter> <tr> <td> <table width=3D100% cell=
+spacing=3D0 cellpadding=3D0> <tr> <td width=3D50% style=3D"font-family:Helv=
+etica Neue, Helvetica,sans-serif;font-size: 10px;font-weight: bold;color: #=
+999999;vertical-align:top;text-transform:uppercase;padding:10px 9px;" align=
+=3Dleft valign=3Dtop> LivingSocial </td> <td width=3D50% style=3D"font-fami=
+ly:Helvetica Neue, Helvetica,sans-serif;font-size: 10px;font-weight: bold;c=
+olor: #666666;vertical-align:top;text-transform:uppercase;padding:10px 9px;=
+" align=3Dright valign=3Dtop> <span class=3Dtime-left>9 days left</span> </=
+td> </tr> </table> </td> </tr> <tr> <td style=3D"padding: 0 9px 10px 9px;ve=
+rtical-align:top;" valign=3Dtop> <a href=3Dhttp://yipit.com/emailer/deal/04=
+4db939af534f6c8f387e116deae1bf/25453093/> <img src=3Dhttps://b.yipitcdn.com=
+/thumbor/OvlqKWPZrjO_V-oql7hHQwkhz88=3D/259x194/smart/b.yipitcdn.com/deal/5=
+5-hour-backcountry-wine-tasting-tour-42-1394025905.jpg width=3D280 height=
+=3D209> </a> </td> </tr> <tr> <td style=3D"padding: 0 9px 10px 9px;vertical=
+-align:top;font-family:Helvetica Neue, Helvetica,sans-serif;font-weight:bol=
+d;font-size:17px;" align=3Dleft valign=3Dtop> <a href=3Dhttp://yipit.com/em=
+ailer/deal/044db939af534f6c8f387e116deae1bf/25453093/ style=3Dcolor:#498fb1=
+;text-decoration:none>5.5-Hour Backcountry Wine-Tasting Tour</a> </td> </tr=
+> <tr> <td class=3Ddeal-business-name style=3D"padding: 0 9px;vertical-alig=
+n:top;font-family:Helvetica Neue, Helvetica,sans-serif;font-weight:bold;fon=
+t-size:13px;color:#666666;" align=3Dleft valign=3Dtop> Legendary Tours of T=
+emecula </td> </tr> <tr> <td style=3D"padding: 0 9px;vertical-align:top;fon=
+t-family:Helvetica Neue, Helvetica,sans-serif;font-size:13px;color:#999999;=
+" align=3Dleft valign=3Dtop> 39870 De Portola Rd, Temecula, CA </td> </tr> =
+<tr><td height=3D10></td></tr> <tr> <td> <table width=3D100% cellspacing=3D=
+0 cellpadding=3D0 bgcolor=3D#fafafa style=3D"background-color:#fafafa;borde=
+r-top: 1px solid #dddddd;border-bottom-left-radius:3px;-moz-border-radius-b=
+ottomleft:3px;-webkit-border-bottom-left-radius:3px;border-bottom-right-rad=
+ius:3px;-moz-border-radius-bottomright:3px;-webkit-border-bottom-right-radi=
+us:30px;"> <tr> <td width=3D80 align=3Dleft style=3D"border-right: 1px soli=
+d #dddddd;vertical-align:top;padding: 10px 0;font-family:Helvetica Neue, He=
+lvetica,sans-serif;" valign=3Dtop> <span style=3Dfont-size:10px;color:#9999=
+99;text-transform:uppercase;padding-left:9px;line-height:15px;-webkit-text-=
+size-adjust:none;>Deal Price:</span><br> <span class=3Dprice style=3Dpaddin=
+g-left:9px;color:#666666;font-size:17px;vertical-align:top>$<span style=3Df=
+ont-size:24px;font-weight:bold;padding-left:1px;line-height:24px;>89</span>=
+</span> </td> <td width=3D80 align=3Dleft style=3D"border-right: 1px solid =
+#dddddd;vertical-align:top;padding: 10px 0;" valign=3Dtop> <span style=3D"f=
+ont-family:Helvetica Neue, Helvetica,sans-serif;font-size: 10px;color: #999=
+999;text-transform:uppercase;padding-left:9px;line-height:15px;">Discount:<=
+/span><br> <span class=3Ddiscount style=3Dpadding-left:9px;color:#666666;fo=
+nt-size:17px;vertical-align:top><span style=3Dfont-size:24px;font-weight:bo=
+ld;padding-left:1px;line-height:24px;>40</span>%</span> </td> <td style=3D"=
+padding: 10px 0;"> <table cellspacing=3D0 cellpadding=3D0 align=3Dcenter> <=
+tr> <td style=3Dfont-size:0;text-align:center;vertical-align:center; bgcolo=
+r=3D#a2c42c valign=3Dtop> <a href=3Dhttp://yipit.com/emailer/deal/044db939a=
+f534f6c8f387e116deae1bf/25453093/> <img class=3Dview-btn vspace=3D0 hspace=
+=3D0 src=3Dhttp://email.yipitcdn.com/assets/local/btn_view.0fd59840.gif tit=
+le=3DView alt=3DView width=3D115 height=3D38 align=3Dleft border=3D0 style=
+=3D"font-family:Helvetica Neue, Helvetica,sans-serif;font-size:18px;color:#=
+ffffff;text-align:center;line-height: 36px;font-weight: bold;"> </a> </td> =
+</tr> </table> </td> </tr> </table> </td> </tr> </table> </td> </tr> <tr><t=
+d height=3D20></td></tr> <tr class=3D"deal-row real-deal"> <td> <table widt=
+h=3D298 cellspacing=3D0 cellpadding=3D0 bgcolor=3D#fff style=3D"background-=
+color:#ffffff;border:1px solid #dddddd;-webkit-border-radius:3px;-moz-borde=
+r-radius:3px;border-radius:3px;" align=3Dcenter> <tr> <td> <table width=3D1=
+00% cellspacing=3D0 cellpadding=3D0> <tr> <td width=3D50% style=3D"font-fam=
+ily:Helvetica Neue, Helvetica,sans-serif;font-size: 10px;font-weight: bold;=
+color: #999999;vertical-align:top;text-transform:uppercase;padding:10px 9px=
+;" align=3Dleft valign=3Dtop> Groupon </td> <td width=3D50% style=3D"font-f=
+amily:Helvetica Neue, Helvetica,sans-serif;font-size: 10px;font-weight: bol=
+d;color: #666666;vertical-align:top;text-transform:uppercase;padding:10px 9=
+px;" align=3Dright valign=3Dtop> <span class=3Dtime-left>11 days left</span=
+> </td> </tr> </table> </td> </tr> <tr class=3Dheadline> <td> <table cellsp=
+acing=3D0 cellpadding=3D0> <tr> <td width=3D30 style=3D"padding: 0 9px 10px=
+ 9px;vertical-align:top;" valign=3Dtop> <img border=3D0 src=3Dhttp://a.yipi=
+tcdn.com/img/icons/trending.png width=3D25 alt=3D"Trending deal icon"> </td=
+> <td style=3Dvertical-align:top; valign=3Dtop> <p style=3D"font-family:Hel=
+vetica Neue, Helvetica,sans-serif;margin:0;padding:0;font-size:12px;line-he=
+ight:10px;font-weight:bold;color:#666666">Trending Deal</p> <p style=3D"fon=
+t-family:Helvetica Neue, Helvetica,sans-serif;margin:0;padding:0;color:#999=
+999;font-size:10px;font-weight:500">940 purchased (12x Groupon average)</p>=
+ </td> </tr> </table> </td> </tr> <tr> <td style=3D"padding: 0 9px 10px 9px=
+;vertical-align:top;" valign=3Dtop> <a href=3Dhttp://yipit.com/emailer/deal=
+/044db939af534f6c8f387e116deae1bf/25460691/> <img src=3Dhttps://a.yipitcdn.=
+com/thumbor/wKR9XxojSTnlqbHTUKNisdAsstw=3D/259x194/smart/a.yipitcdn.com/dea=
+l/15-for-30-worth-of-apparel-and-accessories-at-zubazcom-27-1394343070.jpg =
+width=3D280 height=3D209> </a> </td> </tr> <tr> <td style=3D"padding: 0 9px=
+ 10px 9px;vertical-align:top;font-family:Helvetica Neue, Helvetica,sans-ser=
+if;font-weight:bold;font-size:17px;" align=3Dleft valign=3Dtop> <a href=3Dh=
+ttp://yipit.com/emailer/deal/044db939af534f6c8f387e116deae1bf/25460691/ sty=
+le=3Dcolor:#498fb1;text-decoration:none>Half Off at Zubaz.com</a> </td> </t=
+r> <tr> <td class=3Ddeal-business-name style=3D"padding: 0 9px;vertical-ali=
+gn:top;font-family:Helvetica Neue, Helvetica,sans-serif;font-weight:bold;fo=
+nt-size:13px;color:#666666;" align=3Dleft valign=3Dtop> Zubaz </td> </tr> <=
+tr><td height=3D10></td></tr> <tr> <td> <table width=3D100% cellspacing=3D0=
+ cellpadding=3D0 bgcolor=3D#fafafa style=3D"background-color:#fafafa;border=
+-top: 1px solid #dddddd;border-bottom-left-radius:3px;-moz-border-radius-bo=
+ttomleft:3px;-webkit-border-bottom-left-radius:3px;border-bottom-right-radi=
+us:3px;-moz-border-radius-bottomright:3px;-webkit-border-bottom-right-radiu=
+s:30px;"> <tr> <td width=3D80 align=3Dleft style=3D"border-right: 1px solid=
+ #dddddd;vertical-align:top;padding: 10px 0;font-family:Helvetica Neue, Hel=
+vetica,sans-serif;" valign=3Dtop> <span style=3Dfont-size:10px;color:#99999=
+9;text-transform:uppercase;padding-left:9px;line-height:15px;-webkit-text-s=
+ize-adjust:none;>Deal Price:</span><br> <span class=3Dprice style=3Dpadding=
+-left:9px;color:#666666;font-size:17px;vertical-align:top>$<span style=3Dfo=
+nt-size:24px;font-weight:bold;padding-left:1px;line-height:24px;>15</span><=
+/span> </td> <td width=3D80 align=3Dleft style=3D"border-right: 1px solid #=
+dddddd;vertical-align:top;padding: 10px 0;" valign=3Dtop> <span style=3D"fo=
+nt-family:Helvetica Neue, Helvetica,sans-serif;font-size: 10px;color: #9999=
+99;text-transform:uppercase;padding-left:9px;line-height:15px;">Discount:</=
+span><br> <span class=3Ddiscount style=3Dpadding-left:9px;color:#666666;fon=
+t-size:17px;vertical-align:top><span style=3Dfont-size:24px;font-weight:bol=
+d;padding-left:1px;line-height:24px;>50</span>%</span> </td> <td style=3D"p=
+adding: 10px 0;"> <table cellspacing=3D0 cellpadding=3D0 align=3Dcenter> <t=
+r> <td style=3Dfont-size:0;text-align:center;vertical-align:center; bgcolor=
+=3D#a2c42c valign=3Dtop> <a href=3Dhttp://yipit.com/emailer/deal/044db939af=
+534f6c8f387e116deae1bf/25460691/> <img class=3Dview-btn vspace=3D0 hspace=
+=3D0 src=3Dhttp://email.yipitcdn.com/assets/local/btn_view.0fd59840.gif tit=
+le=3DView alt=3DView width=3D115 height=3D38 align=3Dleft border=3D0 style=
+=3D"font-family:Helvetica Neue, Helvetica,sans-serif;font-size:18px;color:#=
+ffffff;text-align:center;line-height: 36px;font-weight: bold;"> </a> </td> =
+</tr> </table> </td> </tr> </table> </td> </tr> </table> </td> </tr> <tr><t=
+d height=3D20></td></tr> <tr class=3Ddeal-row> <td class=3Dad-unit-1> <tabl=
+e class=3D"ad li-ad-unit" width=3D100% cellspacing=3D0 cellpadding=3D0> <tr=
+> <td width=3D300> <table border=3D0 cellpadding=3D0 cellspacing=3D0> <tr> =
+<td colspan=3D2> <a style=3D"display: block; width: 300px; height: 250px;" =
+href=3Dhttp://li.yipit.com/click?s=3D82179&amp;t=3Dnewsletter&amp;sz=3D300x=
+250&amp;li=3DDailyLocal&amp;e=3Dshop@foobar.com&amp;p=3D201403111757 rel=
+=3Dnofollow> <img src=3Dhttp://li.yipit.com/imp?s=3D82179&amp;t=3Dnewslette=
+r&amp;sz=3D300x250&amp;li=3DDailyLocal&amp;e=3Dshop@foobar.com&amp;p=3D20=
+1403111757 border=3D0 width=3D300 height=3D250> </a> </td> </tr> <tr style=
+=3D"display:block; height:1px; line-height:1px;"> <td> <img src=3Dhttp://li=
+.yipit.com/imp?s=3D82180&amp;t=3Dnewsletter&amp;sz=3D1x1&amp;li=3DDailyLoca=
+l&amp;e=3Dshop@foobar.com&amp;p=3D201403111757 height=3D1 width=3D10> </t=
+d> <td> <img src=3Dhttp://li.yipit.com/imp?s=3D82181&amp;t=3Dnewsletter&amp=
+;sz=3D1x1&amp;li=3DDailyLocal&amp;e=3Dshop@foobar.com&amp;p=3D20140311175=
+7 height=3D1 width=3D10> </td> </tr> <tr> <td align=3Dleft> <a href=3Dhttp:=
+//li.yipit.com/click?s=3D70965&amp;t=3Dnewsletter&amp;sz=3D116x15&amp;li=3D=
+DailyLocal&amp;e=3Dshop@foobar.com&amp;p=3D201403111757 rel=3Dnofollow> <=
+img src=3Dhttp://li.yipit.com/imp?s=3D70965&amp;t=3Dnewsletter&amp;sz=3D116=
+x15&amp;li=3DDailyLocal&amp;e=3Dshop@foobar.com&amp;p=3D201403111757 alt=
+=3D"powered by" border=3D0> </a> </td> <td align=3Dright> <a href=3Dhttp://=
+li.yipit.com/click?s=3D70966&amp;t=3Dnewsletter&amp;sz=3D69x15&amp;li=3DDai=
+lyLocal&amp;e=3Dshop@foobar.com&amp;p=3D201403111757 rel=3Dnofollow> <img=
+ src=3Dhttp://li.yipit.com/imp?s=3D70966&amp;t=3Dnewsletter&amp;sz=3D69x15&=
+amp;li=3DDailyLocal&amp;e=3Dshop@foobar.com&amp;p=3D201403111757 alt=3D"a=
+d choices" border=3D0> </a> </td> </tr> </table> </td> </tr> </table> </td>=
+ </tr> <tr class=3D"deal-row real-deal"> <td> <table width=3D298 cellspacin=
+g=3D0 cellpadding=3D0 bgcolor=3D#fff style=3D"background-color:#ffffff;bord=
+er:1px solid #dddddd;-webkit-border-radius:3px;-moz-border-radius:3px;borde=
+r-radius:3px;" align=3Dcenter> <tr> <td> <table width=3D100% cellspacing=3D=
+0 cellpadding=3D0> <tr> <td width=3D50% style=3D"font-family:Helvetica Neue=
+, Helvetica,sans-serif;font-size: 10px;font-weight: bold;color: #999999;ver=
+tical-align:top;text-transform:uppercase;padding:10px 9px;" align=3Dleft va=
+lign=3Dtop> LivingSocial </td> <td width=3D50% style=3D"font-family:Helveti=
+ca Neue, Helvetica,sans-serif;font-size: 10px;font-weight: bold;color: #666=
+666;vertical-align:top;text-transform:uppercase;padding:10px 9px;" align=3D=
+right valign=3Dtop> <span class=3Dtime-left>8 days left</span> </td> </tr> =
+</table> </td> </tr> <tr class=3Dheadline> <td> <table cellspacing=3D0 cell=
+padding=3D0> <tr> <td width=3D30 style=3D"padding: 0 9px 10px 9px;vertical-=
+align:top;" valign=3Dtop> <img border=3D0 src=3Dhttp://a.yipitcdn.com/img/i=
+cons/trending.png width=3D25 alt=3D"Trending deal icon"> </td> <td style=3D=
+vertical-align:top; valign=3Dtop> <p style=3D"font-family:Helvetica Neue, H=
+elvetica,sans-serif;margin:0;padding:0;font-size:12px;line-height:10px;font=
+-weight:bold;color:#666666">Trending Deal</p> <p style=3D"font-family:Helve=
+tica Neue, Helvetica,sans-serif;margin:0;padding:0;color:#999999;font-size:=
+10px;font-weight:500">9,290 purchased (7x LivingSocial average)</p> </td> <=
+/tr> </table> </td> </tr> <tr> <td style=3D"padding: 0 9px 10px 9px;vertica=
+l-align:top;" valign=3Dtop> <a href=3Dhttp://yipit.com/emailer/deal/044db93=
+9af534f6c8f387e116deae1bf/25454128/> <img src=3Dhttps://c.yipitcdn.com/thum=
+bor/znpddYSjsukD59bACupgzCNaTfQ=3D/259x194/smart/c.yipitcdn.com/deal/earbud=
+s-with-built-in-mic-and-remote-1394101737.jpg width=3D280 height=3D209> </a=
+> </td> </tr> <tr> <td style=3D"padding: 0 9px 10px 9px;vertical-align:top;=
+font-family:Helvetica Neue, Helvetica,sans-serif;font-weight:bold;font-size=
+:17px;" align=3Dleft valign=3Dtop> <a href=3Dhttp://yipit.com/emailer/deal/=
+044db939af534f6c8f387e116deae1bf/25454128/ style=3Dcolor:#498fb1;text-decor=
+ation:none>Earbuds with Built-In Mic and Remote</a> </td> </tr> <tr> <td cl=
+ass=3Ddeal-business-name style=3D"padding: 0 9px;vertical-align:top;font-fa=
+mily:Helvetica Neue, Helvetica,sans-serif;font-weight:bold;font-size:13px;c=
+olor:#666666;" align=3Dleft valign=3Dtop> The Ultimate Bundle </td> </tr> <=
+tr><td height=3D10></td></tr> <tr> <td> <table width=3D100% cellspacing=3D0=
+ cellpadding=3D0 bgcolor=3D#fafafa style=3D"background-color:#fafafa;border=
+-top: 1px solid #dddddd;border-bottom-left-radius:3px;-moz-border-radius-bo=
+ttomleft:3px;-webkit-border-bottom-left-radius:3px;border-bottom-right-radi=
+us:3px;-moz-border-radius-bottomright:3px;-webkit-border-bottom-right-radiu=
+s:30px;"> <tr> <td width=3D80 align=3Dleft style=3D"border-right: 1px solid=
+ #dddddd;vertical-align:top;padding: 10px 0;font-family:Helvetica Neue, Hel=
+vetica,sans-serif;" valign=3Dtop> <span style=3Dfont-size:10px;color:#99999=
+9;text-transform:uppercase;padding-left:9px;line-height:15px;-webkit-text-s=
+ize-adjust:none;>Deal Price:</span><br> <span class=3Dprice style=3Dpadding=
+-left:9px;color:#666666;font-size:17px;vertical-align:top>$<span style=3Dfo=
+nt-size:24px;font-weight:bold;padding-left:1px;line-height:24px;>6</span></=
+span> </td> <td width=3D80 align=3Dleft style=3D"border-right: 1px solid #d=
+ddddd;vertical-align:top;padding: 10px 0;" valign=3Dtop> <span style=3D"fon=
+t-family:Helvetica Neue, Helvetica,sans-serif;font-size: 10px;color: #99999=
+9;text-transform:uppercase;padding-left:9px;line-height:15px;">Discount:</s=
+pan><br> <span class=3Ddiscount style=3Dpadding-left:9px;color:#666666;font=
+-size:17px;vertical-align:top><span style=3Dfont-size:24px;font-weight:bold=
+;padding-left:1px;line-height:24px;>70</span>%</span> </td> <td style=3D"pa=
+dding: 10px 0;"> <table cellspacing=3D0 cellpadding=3D0 align=3Dcenter> <tr=
+> <td style=3Dfont-size:0;text-align:center;vertical-align:center; bgcolor=
+=3D#a2c42c valign=3Dtop> <a href=3Dhttp://yipit.com/emailer/deal/044db939af=
+534f6c8f387e116deae1bf/25454128/> <img class=3Dview-btn vspace=3D0 hspace=
+=3D0 src=3Dhttp://email.yipitcdn.com/assets/local/btn_view.0fd59840.gif tit=
+le=3DView alt=3DView width=3D115 height=3D38 align=3Dleft border=3D0 style=
+=3D"font-family:Helvetica Neue, Helvetica,sans-serif;font-size:18px;color:#=
+ffffff;text-align:center;line-height: 36px;font-weight: bold;"> </a> </td> =
+</tr> </table> </td> </tr> </table> </td> </tr> </table> </td> </tr> <tr><t=
+d height=3D20></td></tr> </table> </td> </tr> </table> <table cellspacing=
+=3D0 cellpadding=3D0 width=3D620 align=3Dcenter> <tr><td height=3D20></td><=
+/tr> <tr> <td style=3Dtext-align:center;background-color:#F5F5F5;padding:20=
+px> <a href=3Dhttp://yipit.com/orange-county/?eid=3D044db949af534f6c8f387e1=
+16deae1bf style=3Dtext-decoration:none;color:#478FB3> <span class=3Dsee-mor=
+e style=3D"font-weight:bold;font-family:Helvetica Neue, Helvetica,sans-seri=
+f">See more deals at Yipit.com</span> </a> </td> </tr> <tr> <td> <p style=
+=3D"font-family:Helvetica Neue, Helvetica,sans-serif;color:#a1a1a1;font-siz=
+e:11px;line-height:16px;"> Yipit tracks amazing daily deals being struck ar=
+ound Orange County and sends you the best ones each day. You can <a style=
+=3Dtext-decoration:none;color:#478fb3 href=3Dhttp://yipit.com/account/tags/=
+?eid=3D044db949af534f6c8f387e116deae1bf>customize</a> your Yipit email or <=
+a style=3Dtext-decoration:none;color:#478fb3 href=3Dhttp://yipit.com/accoun=
+t/unsubscribe/local/?eid=3D044db949af534f6c8f387e116deae1bf>unsubscribe</a>=
+ from it altogether. You can also unsubscribe by sending a letter to Yipit,=
+ 3 West 18th Street, 2nd Floor, New York, NY 10011. </p> </td> </tr> </tabl=
+e> </td> <td align=3Dleft valign=3Dtop width=3D1> <table border=3D0 cellpad=
+ding=3D0 cellspacing=3D0> <tr> <td colspan=3D2> <a href=3Dhttp://li.yipit.c=
+om/click?s=3D71021&amp;t=3Dnewsletter&amp;sz=3D300x601&amp;li=3DDailyLocal&=
+amp;e=3Dshop@foobar.com&amp;p=3D201403111757 rel=3Dnofollow> <img src=3Dh=
+ttp://li.yipit.com/imp?s=3D71021&amp;t=3Dnewsletter&amp;sz=3D300x601&amp;li=
+=3DDailyLocal&amp;e=3Dshop@foobar.com&amp;p=3D201403111757 border=3D0> </=
+a> </td> </tr> <tr style=3D"display:block; height:1px; line-height:1px;"> <=
+td> <img src=3Dhttp://li.yipit.com/imp?s=3D71023&amp;t=3Dnewsletter&amp;sz=
+=3D1x1&amp;li=3DDailyLocal&amp;e=3Dshop@foobar.com&amp;p=3D201403111757 h=
+eight=3D1 width=3D10> </td> <td> <img src=3Dhttp://li.yipit.com/imp?s=3D710=
+24&amp;t=3Dnewsletter&amp;sz=3D1x1&amp;li=3DDailyLocal&amp;e=3Dshop@kienpha=
+m.com&amp;p=3D201403111757 height=3D1 width=3D10> </td> </tr> <tr> <td alig=
+n=3Dleft> <a href=3Dhttp://li.yipit.com/click?s=3D71026&amp;t=3Dnewsletter&=
+amp;sz=3D116x15&amp;li=3DDailyLocal&amp;e=3Dshop@foobar.com&amp;p=3D20140=
+3111757 rel=3Dnofollow> <img src=3Dhttp://li.yipit.com/imp?s=3D71026&amp;t=
+=3Dnewsletter&amp;sz=3D116x15&amp;li=3DDailyLocal&amp;e=3Dshop@foobar.com=
+&amp;p=3D201403111757 border=3D0> </a> </td> <td align=3Dright> <a href=3Dh=
+ttp://li.yipit.com/click?s=3D71025&amp;t=3Dnewsletter&amp;sz=3D69x15&amp;li=
+=3DDailyLocal&amp;e=3Dshop@foobar.com&amp;p=3D201403111757 rel=3Dnofollow=
+> <img src=3Dhttp://li.yipit.com/imp?s=3D71025&amp;t=3Dnewsletter&amp;sz=3D=
+69x15&amp;li=3DDailyLocal&amp;e=3Dshop@foobar.com&amp;p=3D201403111757 bo=
+rder=3D0> </a> </td> </tr> </table> </td> </tr> </tbody> </table> <table ce=
+llpadding=3D0 cellspacing=3D0 border=3D0 width=3D24 height=3D6> <tbody> <tr=
+> <td> <img src=3Dhttp://li.yipit.com/imp?s=3D71033&amp;t=3Dnewsletter&amp;=
+sz=3D2x1&amp;li=3DDailyLocal&amp;e=3Dshop@foobar.com&amp;p=3D201403111757=
+ width=3D2 height=3D6 border=3D0> </td> <td> <img src=3Dhttp://li.yipit.com=
+/imp?s=3D71034&amp;t=3Dnewsletter&amp;sz=3D2x1&amp;li=3DDailyLocal&amp;e=3D=
+shop@foobar.com&amp;p=3D201403111757 width=3D2 height=3D6 border=3D0> </t=
+d> <td> <img src=3Dhttp://li.yipit.com/imp?s=3D71035&amp;t=3Dnewsletter&amp=
+;sz=3D2x1&amp;li=3DDailyLocal&amp;e=3Dshop@foobar.com&amp;p=3D20140311175=
+7 width=3D2 height=3D6 border=3D0> </td> <td> <img src=3Dhttp://li.yipit.co=
+m/imp?s=3D71036&amp;t=3Dnewsletter&amp;sz=3D2x1&amp;li=3DDailyLocal&amp;e=
+=3Dshop@foobar.com&amp;p=3D201403111757 width=3D2 height=3D6 border=3D0> =
+</td> <td> <img src=3Dhttp://li.yipit.com/imp?s=3D71037&amp;t=3Dnewsletter&=
+amp;sz=3D2x1&amp;li=3DDailyLocal&amp;e=3Dshop@foobar.com&amp;p=3D20140311=
+1757 width=3D2 height=3D6 border=3D0> </td> <td> <img src=3Dhttp://li.yipit=
+.com/imp?s=3D71038&amp;t=3Dnewsletter&amp;sz=3D2x1&amp;li=3DDailyLocal&amp;=
+e=3Dshop@foobar.com&amp;p=3D201403111757 width=3D2 height=3D6 border=3D0>=
+ </td> <td> <img src=3Dhttp://li.yipit.com/imp?s=3D71039&amp;t=3Dnewsletter=
+&amp;sz=3D2x1&amp;li=3DDailyLocal&amp;e=3Dshop@foobar.com&amp;p=3D2014031=
+11757 width=3D2 height=3D6 border=3D0> </td> <td> <img src=3Dhttp://li.yipi=
+t.com/imp?s=3D71040&amp;t=3Dnewsletter&amp;sz=3D2x1&amp;li=3DDailyLocal&amp=
+;e=3Dshop@foobar.com&amp;p=3D201403111757 width=3D2 height=3D6 border=3D0=
+> </td> <td> <img src=3Dhttp://li.yipit.com/imp?s=3D71041&amp;t=3Dnewslette=
+r&amp;sz=3D2x1&amp;li=3DDailyLocal&amp;e=3Dshop@foobar.com&amp;p=3D201403=
+111757 width=3D2 height=3D6 border=3D0> </td> <td> <img src=3Dhttp://li.yip=
+it.com/imp?s=3D71042&amp;t=3Dnewsletter&amp;sz=3D2x1&amp;li=3DDailyLocal&am=
+p;e=3Dshop@foobar.com&amp;p=3D201403111757 width=3D2 height=3D6 border=3D=
+0> </td> <td> <img src=3Dhttp://li.yipit.com/imp?s=3D71043&amp;t=3Dnewslett=
+er&amp;sz=3D2x1&amp;li=3DDailyLocal&amp;e=3Dshop@foobar.com&amp;p=3D20140=
+3111757 width=3D2 height=3D6 border=3D0> </td> <td> <img src=3Dhttp://li.yi=
+pit.com/imp?s=3D71044&amp;t=3Dnewsletter&amp;sz=3D2x1&amp;li=3DDailyLocal&a=
+mp;e=3Dshop@foobar.com&amp;p=3D201403111757 width=3D2 height=3D6 border=
+=3D0> </td> </tr> </tbody> </table> </td> </tr> </table> </body> </html>=20=
+
+--===============4020431116584329713==--

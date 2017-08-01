@@ -1,0 +1,743 @@
+Delivered-To: foobar@foobar.com
+Received: by 10.59.6.165 with SMTP id cv5csp391059ved;
+        Wed, 20 Nov 2013 11:36:51 -0800 (PST)
+X-Received: by 10.66.248.168 with SMTP id yn8mr2371228pac.11.1384976210607;
+        Wed, 20 Nov 2013 11:36:50 -0800 (PST)
+Return-Path: <MJSL35I-18GGBC-1BLA5-JI26D86-16QHKV-M-M2-20131120-67ee29478a134f@foobar.com>
+Received: from homiemail-mx7.g.dreamhost.com (caiajhbdcagg.dreamhost.com. [208.97.132.66])
+        by mx.google.com with ESMTP id cx4si14934797pbc.239.2013.11.20.11.36.49
+        for <foobar@foobar.com>;
+        Wed, 20 Nov 2013 11:36:50 -0800 (PST)
+Received-SPF: fail (google.com: domain of MJSL35I-18GGBC-1BLA5-JI26D86-16QHKV-M-M2-20131120-67ee29478a134f@foobar.com does not designate 208.97.132.66 as permitted sender) client-ip=208.97.132.66;
+Authentication-Results: mx.google.com;
+       spf=hardfail (google.com: domain of MJSL35I-18GGBC-1BLA5-JI26D86-16QHKV-M-M2-20131120-67ee29478a134f@foobar.com does not designate 208.97.132.66 as permitted sender) smtp.mail=MJSL35I-18GGBC-1BLA5-JI26D86-16QHKV-M-M2-20131120-67ee29478a134f@foobar.com;
+       dkim=pass header.i=@foobar.com;
+       dmarc=pass (p=REJECT dis=NONE) header.from=paypal.com
+Received: from outbound.na.e.paypal.com (outbound.na.e.paypal.com [96.47.30.201])
+	by homiemail-mx7.g.dreamhost.com (Postfix) with ESMTP id 368011AEE27A
+	for <foobar@foobar.com>; Wed, 20 Nov 2013 11:36:49 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha1; d=e.paypal.com; s=ED-DKIM-V3; c=relaxed/relaxed;
+	q=dns/txt; i=@e.paypal.com; t=1384976208;
+	h=From:Subject:Date:To:MIME-Version:Content-Type;
+	bh=wFjjVz1hpU4TV1Da3a5uAJzA37k=;
+	b=P0Jgr2zWc8E1llMKH/AjDOAl6asO4SU+j/LJ/LNvwndvjKbAYsgvO63arNU6GgB2
+	mJX1de4NLvY6/zUK+vTDdYfWjepO9oRmDwblT6XoO4N846ZHDvFKq5Oysf/QYZ2b
+	9vgaZ3WHLTjIN7f1wM6d9bByQfLC9cQzb7fgkktd/Js=;
+Received: from [127.0.0.1] ([127.0.0.1:39033])
+	by bm1-08.bo3.e-dialog.com (envelope-from <MJSL35I-18GGBC-1BLA5-JI26D86-16QHKV-M-M2-20131120-67ee29478a134f@foobar.com>)
+	(ecelerity 2.2.2.45 r(34222M)) with ECSTREAM
+	id 6E/FD-23023-05F0D825; Wed, 20 Nov 2013 14:36:48 -0500
+Date: Wed, 20 Nov 2013 14:36:48 -0500
+Content-Type: multipart/alternative; boundary="-_-_-_-_-_1234567890"
+Content-Transfer-Encoding: binary
+MIME-Version: 1.0
+From: "PayPal" <foobar@foobar.com>
+Reply-To: "PayPal" <foobar@foobar.com>
+To: foobar@foobar.com
+Subject: Get $15 off a ride with Uber
+ when you pay with PayPal
+Message-Id: <5290-917-MJSL35I-18GGBC-1BLA5-JI26D86-16QHKV-M-M2-20131120-67ee29478a134f@e-dialog.com>
+X-Mail-From: MJSL35I-18GGBC-1BLA5-JI26D86-16QHKV-M-M2-20131120-67ee29478a134f@na.e.paypal.com
+X-Match: na.e.paypal.com
+X-RCPT-To: foobar@foobar.com
+X-Mailer: EDMAIL R6.00.02
+
+This is a multi-part message in MIME format...
+
+---_-_-_-_-_1234567890
+Content-Type: text/plain; charset=UTF-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D
+PayPal
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D
+
+Hello Fred Bar,
+
+Become a Uber user and save $15 on your first ride.
+https://email-edg.paypal.com/r/MJSL35I/1BLA5/JI26D86/16QHKV/FXWXSM/R1/t
+
+PayPal members will receive $15 USD off their first ride with Uber using Pa=
+yPal to pay (=E2=80=9COffer=E2=80=9D).   Offer begins November 20,2013 and =
+ends November 28, 2013 (=E2=80=9CPromotion Period=E2=80=9D). Offer is limit=
+ed to one per PayPal account and valid for only one transaction.  The $15 a=
+mount will be deducted at time of purchase, upon completion of your ride.=
+=20=20=20
+
+In order to receive this Offer you must have a) have a U.S. PayPal account =
+in good standing, b) receive an email from PayPal inviting you to participa=
+te in the Offer,  c) have or sign up for an Uber account, d) add PayPal as =
+a payment method to your Uber account, and  e) request a ride from Uber and=
+ pay for your ride using PayPal during the Promotion Period.=20
+
+Excluded transactions from the offer include but are not limited to the fol=
+lowing:  Uber taxi rides, gift certificate payments, gift card purchases, a=
+nd PayPal Extras MasterCard/eBay MasterCard payments not made through your =
+PayPal account.   Offer valid in the continental U.S. and cannot be transfe=
+rred or combined with any other coupon, Offer or discount and may not be re=
+deemed for cash.  Additional merchant terms and conditions may apply.
+PayPal and Uber reserve the right to cancel, suspend or modify the Offer in=
+ part or in its entirety at any time without notice, for any reason in thei=
+r sole discretion.=20=20=20
+
+
+View This Email Online
+https://email-edg.paypal.com/r/MJSL35I/1BLA5/JI26D86/16QHKV/18G8A2/R1/t?a=
+=3DMJSL35I&b=3D18GGBC&c=3DFS4OYCF&d=3D26FQGEQ&e=3D1&f=3D71b6be70214d401e3dc7
+
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D
+
+Accept Payments=20
+https://email-edg.paypal.com/r/MJSL35I/1BLA5/JI26D86/16QHKV/FXWK69/R1/t
+
+Help=20
+https://email-edg.paypal.com/r/MJSL35I/1BLA5/JI26D86/16QHKV/8A2Z1K/R1/t
+
+Fees=20
+https://email-edg.paypal.com/r/MJSL35I/1BLA5/JI26D86/16QHKV/6VC2PX/R1/t
+
+Security=20
+https://email-edg.paypal.com/r/MJSL35I/1BLA5/JI26D86/16QHKV/BM75HQ/R1/t
+
+PayPal App
+https://email-edg.paypal.com/r/MJSL35I/1BLA5/JI26D86/16QHKV/PRJF5G/R1/t
+
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D
+
+This email was sent to foobar@foobar.com, because your email preferenc=
+es are set to receive "News and Promotions". Click here to Unsubscribe.=20
+https://email-edg.paypal.com/r/MJSL35I/1BLA5/JI26D86/16QHKV/D45WGD/R1/t?a=
+=3D3U724204FF865721E&b=3DDNs-er3fxiyMTXD5F6fk0ZUMAuNA7fM6&c=3DPNP&d=3D26621=
+519&e=3D26629028&f=3DPNP
+
+Please do not reply to this email. We are unable to respond to inquiries se=
+nt to this address. For immediate answers to your questions, visit our Help=
+ Center by clicking "Help" located on any PayPal page or email.
+
+Copyright (C) 2013 PayPal, Inc. All rights reserved.=20
+PayPal is located at 2211 N. First St., San Jose, CA 95131.
+
+
+[[MJSL35I-18GGBC-1BLA5-JI26D86-16QHKV-M-M2-20131120-67ee29478a134f]]
+
+---_-_-_-_-_1234567890
+Content-Type: text/html; charset=UTF-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.=
+w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns=3D"http://www.w3.org/1999/xhtml">
+		<head>
+		<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8" =
+/>
+		<title>PayPal</title>
+=09
+		<style type=3D"text/css">.ReadMsgBody { width: 100%;}.ExternalClass {widt=
+h: 100%;}div, p, a, li, td, span, font {-webkit-text-size-adjust:none;-ms-t=
+ext-size-adjust:none;} .hotmailimg img{height:10px; width:10px;}</style></h=
+ead>
+		<body bgcolor=3D"#f2f2f2" style=3D"background-color:#f2f2f2;-webkit-text-=
+size-adjust:none; font-family:Arial; margin:0; padding:0;"><table border=3D=
+"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">
+		  <tr><td align=3D"center" valign=3D"top" bgcolor=3D"#f2f2f2">
+        <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"10=
+0%" bgcolor=3D"#f2f2f2">
+        <style type=3D"text/css">=20
+.ReadMsgBody {width: 100%;}
+.ExternalClass {width: 100%;}
+.ExternalClass * {line-height:100%;}
+.undoreset * {line-height:100%;}=20
+</style>
+          <tr>
+            <td align=3D"left" valign=3D"top"><table width=3D"522" border=
+=3D"0" cellspacing=3D"0" cellpadding=3D"0" align=3D"center">
+  <tr>
+    <td align=3D"left" valign=3D"top"><table width=3D"100%" border=3D"0" ce=
+llspacing=3D"0" cellpadding=3D"0">
+  <tr>
+    <td align=3D"left" valign=3D"top" height=3D"10" style=3D"font-size:0; l=
+ine-height:0;"><img src=3D"https://image.paypal-communication.com/paypal_na=
+/2013/20131120_US_Holiday_Hulu_Uber_20274/img_spacer.gif" width=3D"1" heigh=
+t=3D"10" alt=3D"" border=3D"0" style=3D"display:block;" /></td>
+  </tr>
+=20=20
+  <tr>
+    <td align=3D"left" valign=3D"top" height=3D"10" style=3D"font-size:0; l=
+ine-height:0;"><img src=3D"https://image.paypal-communication.com/paypal_na=
+/2013/20131120_US_Holiday_Hulu_Uber_20274/img_spacer.gif" width=3D"1" heigh=
+t=3D"10" alt=3D"" border=3D"0" style=3D"display:block;" /></td>
+  </tr>
+</table>
+</td>
+  </tr>
+  <tr>
+    <td align=3D"left" valign=3D"top" bgcolor=3D"#ffffff"><table width=3D"1=
+00%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0">
+=20=20=20
+  <tr>
+    <td align=3D"left" valign=3D"top"><table width=3D"100%" border=3D"0" ce=
+llspacing=3D"0" cellpadding=3D"0">
+  <tr>
+    <td align=3D"left" valign=3D"top"><table width=3D"100%" border=3D"0" ce=
+llspacing=3D"0" cellpadding=3D"0">
+    <tr>
+    <td align=3D"left" valign=3D"top" height=3D"1" bgcolor=3D"#e3e3e3" styl=
+e=3D"font-size:0; line-height:0;"><img src=3D"https://image.paypal-communic=
+ation.com/paypal_na/2013/20131120_US_Holiday_Hulu_Uber_20274/img_spacer.gif=
+" width=3D"1" height=3D"1" alt=3D"" border=3D"0" style=3D"display:block;" /=
+></td>
+  </tr>
+  <tr>
+    <td align=3D"left" valign=3D"top" height=3D"8" style=3D"font-size:0; li=
+ne-height:0;"><img src=3D"https://image.paypal-communication.com/paypal_na/=
+2013/20131120_US_Holiday_Hulu_Uber_20274/img_spacer.gif" width=3D"1" height=
+=3D"8" alt=3D"" border=3D"0" style=3D"display:block;" /></td>
+  </tr>
+     <tr>
+    <td align=3D"left" valign=3D"top" ><table width=3D"100%" border=3D"0" c=
+ellspacing=3D"0" cellpadding=3D"0">
+  <tr>
+    <td align=3D"left" valign=3D"top" width=3D"20" style=3D"font-size:0; li=
+ne-height:0;"><img src=3D"https://image.paypal-communication.com/paypal_na/=
+2013/20131120_US_Holiday_Hulu_Uber_20274/img_spacer.gif" width=3D"20" heigh=
+t=3D"1" alt=3D"" border=3D"0" style=3D"display:block;" /></td>
+    <td align=3D"left" valign=3D"top"><table width=3D"100%" border=3D"0" ce=
+llspacing=3D"0" cellpadding=3D"0">
+  <tr>
+    <td align=3D"left" valign=3D"top" style=3D"font-family:Arial, Helvetica=
+, sans-serif; font-size:10px; line-height:14px; text-decoration:none; color=
+:#666666;"><a
+ href=3D"https://email-edg.paypal.com/r/MJSL35I/1BLA5/JI26D86/16QHKV/RNFNBJ=
+/R1/h" target=3D"_blank" style=3D"font-family:Arial, Helvetica, sans-serif;=
+ font-size:10px; line-height:14px; text-decoration:none; color:#666666;"
+><strong>Fred Bar</strong> =E2=80=93 Become a Uber user and save $15 o=
+n your first ride.</a></td>
+    <td align=3D"right" valign=3D"top" style=3D"font-family:Arial, Helvetic=
+a, sans-serif; font-size:10px; line-height:14px; text-decoration:none; colo=
+r:#666666;"><a
+ href=3D"https://email-edg.paypal.com/r/MJSL35I/1BLA5/JI26D86/16QHKV/M9Q9UE=
+/R1/h?a=3DMJSL35I&b=3D18GGBC&c=3DFS4OYCF&d=3D26FQGEQ&e=3D1&f=3D71b6be70214d=
+401e3dc7" target=3D"_blank" style=3D"font-family:Arial, Helvetica, sans-ser=
+if; font-size:10px; line-height:14px; text-decoration:underline; color:#666=
+666;"
+>View online</a></td>
+  </tr>
+</table>
+</td>
+    <td align=3D"left" valign=3D"top" width=3D"20" style=3D"font-size:0; li=
+ne-height:0;"><img src=3D"https://image.paypal-communication.com/paypal_na/=
+2013/20131120_US_Holiday_Hulu_Uber_20274/img_spacer.gif" width=3D"20" heigh=
+t=3D"1" alt=3D"" border=3D"0" style=3D"display:block;" /></td>
+  </tr>
+</table></td>
+  </tr>
+  <tr>
+    <td align=3D"left" valign=3D"top" height=3D"39" style=3D"font-size:0; l=
+ine-height:0;"><img src=3D"https://image.paypal-communication.com/paypal_na=
+/2013/20131120_US_Holiday_Hulu_Uber_20274/img_spacer.gif" width=3D"1" heigh=
+t=3D"39" alt=3D"" border=3D"0" style=3D"display:block;" /></td>
+  </tr>
+  <tr>
+    <td align=3D"left" valign=3D"top"><table border=3D"0" cellspacing=3D"0"=
+ cellpadding=3D"0">
+  <tr>
+    <td align=3D"left" valign=3D"top" width=3D"20" style=3D"font-size:0; li=
+ne-height:0;"><img src=3D"https://image.paypal-communication.com/paypal_na/=
+2013/20131120_US_Holiday_Hulu_Uber_20274/img_spacer.gif" width=3D"20" heigh=
+t=3D"1" alt=3D"" border=3D"0" style=3D"display:block;" /></td>
+    <td align=3D"left" valign=3D"top"  width=3D"111" height=3D"30"><img src=
+=3D"https://image.paypal-communication.com/paypal_na/2013/20131120_US_Holid=
+ay_Hulu_Uber_20274/img_logo1.jpg" width=3D"111" height=3D"30" alt=3D"PayPal=
+=E2=84=A2" border=3D"0" style=3D"display:block;" /></td>
+  </tr>
+</table>
+</td>
+  </tr>
+  <tr>
+    <td align=3D"left" valign=3D"top" height=3D"32"><img src=3D"https://ima=
+ge.paypal-communication.com/paypal_na/2013/20131120_US_Holiday_Hulu_Uber_20=
+274/img_spacer.gif" width=3D"1" height=3D"32	" alt=3D"" border=3D"0" style=
+=3D"display:block;" /></td>
+  </tr>
+</table>
+</td>
+  </tr>
+  <tr>
+    <td align=3D"left" valign=3D"top"><table width=3D"100%" border=3D"0" ce=
+llspacing=3D"0" cellpadding=3D"0">
+  <tr>
+    <td align=3D"left" valign=3D"top" width=3D"20" style=3D"font-size:0; li=
+ne-height:0;"><img src=3D"https://image.paypal-communication.com/paypal_na/=
+2013/20131120_US_Holiday_Hulu_Uber_20274/img_spacer.gif" width=3D"20" heigh=
+t=3D"1" alt=3D"" border=3D"0" style=3D"display:block;" /></td>
+    <td align=3D"left" valign=3D"top"><table width=3D"100%" border=3D"0" ce=
+llspacing=3D"0" cellpadding=3D"0">
+  <tr>
+    <td width=3D"522" align=3D"left" valign=3D"top" style=3D"font-family:Ar=
+ial, Helvetica, sans-serif; font-size:32px; line-height:36px; text-decorati=
+on:none; color:#0079c1;">Pay with PayPal and Save $15 <br/>on your next rid=
+e with Uber.</td>
+  </tr>
+  <tr>
+    <td align=3D"left" valign=3D"top" height=3D"10" style=3D"font-size:0; l=
+ine-height:0;"><img src=3D"https://image.paypal-communication.com/paypal_na=
+/2013/20131120_US_Holiday_Hulu_Uber_20274/img_spacer.gif" width=3D"1" heigh=
+t=3D"10" alt=3D"" border=3D"0" style=3D"display:block;" /></td>
+  </tr>
+=20=20
+=20
+
+</table>
+</td>
+    <td align=3D"left" valign=3D"top" width=3D"20" style=3D"font-size:0; li=
+ne-height:0;"><img src=3D"https://image.paypal-communication.com/paypal_na/=
+2013/20131120_US_Holiday_Hulu_Uber_20274/img_spacer.gif" width=3D"20" heigh=
+t=3D"1" alt=3D"" border=3D"0" style=3D"display:block;" /></td>
+  </tr>
+</table>
+</td>
+  </tr>
+    <tr>
+    <td align=3D"left" valign=3D"top" ><table width=3D"100%" border=3D"0" c=
+ellspacing=3D"0" cellpadding=3D"0">
+  <tr>
+   <td align=3D"left" valign=3D"top"  height=3D"239"  width=3D"522"><img sr=
+c=3D"https://image.paypal-communication.com/paypal_na/2013/20131120_US_Holi=
+day_Hulu_Uber_20274/img_main1_pp.jpg" alt=3D"UBER" style=3D"display:block;"=
+ border=3D"0" height=3D"239"  width=3D"522"/></td>
+  </tr>
+  <tr><td><table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=
+=3D"0">
+  <tr>
+    <td align=3D"left" valign=3D"top" height=3D"34"  width=3D"20"><img src=
+=3D"https://image.paypal-communication.com/paypal_na/2013/20131120_US_Holid=
+ay_Hulu_Uber_20274/img_main2_ppa.jpg" alt=3D"" style=3D"display:block;" bor=
+der=3D"0" height=3D"34"  width=3D"20"/></td>
+   <td align=3D"left" valign=3D"top"><table width=3D"287" border=3D"0" cell=
+padding=3D"0" cellspacing=3D"0" align=3D"left">
+                                                          <tbody>
+
+                                                            <tr>
+                                                              <td align=3D"=
+left" valign=3D"top"><table width=3D"100%" background=3D"http://img.ed4.net=
+/hosted/paypal/2013_Q4_v2/20131120_US_Holiday_Hulu_Uber_20274/html/images/i=
+mg_bg2.gif" bgcolor=3D"#0091e6" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0">
+                                                                  <tbody>
+                                                                    <tr>
+                                                                      <td v=
+align=3D"top" width=3D"11"><a
+ href=3D"https://email-edg.paypal.com/r/MJSL35I/1BLA5/JI26D86/16QHKV/A7Z7IZ=
+/R1/h" target=3D"_blank"
+><img src=3D"https://image.paypal-communication.com/paypal_na/2013/20131120=
+_US_Holiday_Hulu_Uber_20274/img_side11.gif" alt=3D"" style=3D"display:block=
+;" height=3D"34" border=3D"0" width=3D"11" /></a></td>
+                                                                      <td h=
+eight=3D"34" align=3D"center" valign=3D"top"><table width=3D"100%" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0">
+                                                                          <=
+tbody>
+                                                                           =
+ <tr>
+                                                                           =
+   <td colspan=3D"3" height=3D"1" bgcolor=3D"#0079c1" style=3D"font-size:0;=
+ line-height:0;"><img src=3D"https://image.paypal-communication.com/paypal_=
+na/2013/20131120_US_Holiday_Hulu_Uber_20274/img_spacer.gif" alt=3D"" style=
+=3D"display:block;" height=3D"1" width=3D"1"/></td>
+
+                                                                           =
+ </tr>
+                                                                           =
+ <tr>
+                                                                           =
+   <td colspan=3D"3" height=3D"1" bgcolor=3D"#4dbeff" style=3D"font-size:0;=
+ line-height:0;"><img src=3D"https://image.paypal-communication.com/paypal_=
+na/2013/20131120_US_Holiday_Hulu_Uber_20274/img_spacer.gif" alt=3D"" style=
+=3D"display:block;" height=3D"1" width=3D"1"/></td>
+                                                                           =
+ </tr>
+                                                                           =
+ <tr>
+                                                                           =
+   <td height=3D"31" align=3D"center" valign=3D"middle" style=3D"font-famil=
+y:Arial, Helvetica, sans-serif; font-size:11px; color:#ffffff; text-decorat=
+ion:none;"><a
+ href=3D"https://email-edg.paypal.com/r/MJSL35I/1BLA5/JI26D86/16QHKV/2686M6=
+/R1/h" target=3D"_blank" style=3D"font-family:Arial, Helvetica, sans-serif;=
+ font-size:11px; color:#ffffff; text-decoration:none; display:block;"
+><span style=3D"font-family:Arial, Helvetica, sans-serif; font-size:12px; c=
+olor:#ffffff; text-decoration:none;"><font style=3D"font-size: 13px; color:=
+ #ffffff; text-decoration: none;"><strong>Sign up for Uber</strong></font><=
+/span></a></td>
+                                                                           =
+ </tr>
+                                                                          <=
+tr>
+                                                                           =
+   <td colspan=3D"3" height=3D"1" bgcolor=3D"#004b77" style=3D"font-size:0;=
+ line-height:0;"><img src=3D"https://image.paypal-communication.com/paypal_=
+na/2013/20131120_US_Holiday_Hulu_Uber_20274/img_spacer.gif" alt=3D"" style=
+=3D"display:block;" height=3D"1" width=3D"1"/></td>
+                                                                           =
+ </tr>
+                                                                          <=
+/tbody>
+                                                                        </t=
+able></td>
+                                                                      <td v=
+align=3D"top" width=3D"10"><a
+ href=3D"https://email-edg.paypal.com/r/MJSL35I/1BLA5/JI26D86/16QHKV/BM7ME5=
+/R1/h" target=3D"_blank"
+><img src=3D"https://image.paypal-communication.com/paypal_na/2013/20131120=
+_US_Holiday_Hulu_Uber_20274/img_side22.gif" alt=3D"" style=3D"display:block=
+;" height=3D"34" border=3D"0" width=3D"10"/></a></td>
+                                                                    </tr>
+                                                                  </tbody>
+                                                                </table></t=
+d>
+                                                            </tr>
+
+                                                          </tbody>
+                                  </table></td>
+         <td align=3D"left" valign=3D"top" height=3D"34"  width=3D"215"><im=
+g src=3D"https://image.paypal-communication.com/paypal_na/2013/20131120_US_=
+Holiday_Hulu_Uber_20274/img_main3_ppa.jpg" alt=3D"" style=3D"display:block;=
+" border=3D"0" height=3D"34"  width=3D"215"/></td>
+  </tr>
+</table>
+</td></tr>
+<tr> <td align=3D"left" valign=3D"top" height=3D"21"  width=3D"522"><img sr=
+c=3D"https://image.paypal-communication.com/paypal_na/2013/20131120_US_Holi=
+day_Hulu_Uber_20274/img_main4_ppa.jpg" alt=3D"" style=3D"display:block;" bo=
+rder=3D"0" height=3D"21"  width=3D"522"/></td></tr>
+=20=20
+</table>
+</td>
+  </tr>
+   <tr>
+    <td align=3D"left" valign=3D"top"><table width=3D"100%" border=3D"0" ce=
+llspacing=3D"0" cellpadding=3D"0">
+  <tr>
+    <td align=3D"left" valign=3D"top" width=3D"20" style=3D"font-size:0; li=
+ne-height:0;"><img src=3D"https://image.paypal-communication.com/paypal_na/=
+2013/20131120_US_Holiday_Hulu_Uber_20274/img_spacer.gif" width=3D"20" heigh=
+t=3D"1" alt=3D"" border=3D"0" style=3D"display:block;" /></td>
+    <td align=3D"left" valign=3D"top"><table width=3D"100%" border=3D"0" ce=
+llspacing=3D"0" cellpadding=3D"0">
+  <tr>
+    <td align=3D"left" valign=3D"top" height=3D"24" style=3D"font-size:0; l=
+ine-height:0;"><img src=3D"https://image.paypal-communication.com/paypal_na=
+/2013/20131120_US_Holiday_Hulu_Uber_20274/img_spacer.gif" width=3D"1" heigh=
+t=3D"24" alt=3D"" border=3D"0" style=3D"display:block;" /></td>
+  </tr>
+  <tr>
+    <td align=3D"left" valign=3D"top" style=3D"font-family:Arial, Helvetica=
+, sans-serif; font-size:16px; line-height:20px; text-decoration:none; color=
+:#0079c1;" >Hello Fred Bar,</td>
+  </tr>
+  <tr>
+    <td align=3D"left" valign=3D"top" height=3D"10" style=3D"font-size:0; l=
+ine-height:0;"><img src=3D"https://image.paypal-communication.com/paypal_na=
+/2013/20131120_US_Holiday_Hulu_Uber_20274/img_spacer.gif" width=3D"1" heigh=
+t=3D"10" alt=3D"" border=3D"0" style=3D"display:block;" /></td>
+  </tr>
+  <tr>
+    <td align=3D"left" valign=3D"top" style=3D"font-family:Arial, Helvetica=
+, sans-serif; font-size:14px; line-height:18px; text-decoration:none; color=
+:#717074;" >You can now pay for Uber using PayPal. Available for iPhone or =
+Android, Uber is an app that connects you with a ride right when you need i=
+t=E2=80=94just tap a button and a driver will be curbside in minutes. Once =
+you reach your destination, your fare is automatically billed to your PayPa=
+l account and there=E2=80=99s no need to tip. And, save $15 on the=20
+first ride that you pay for with PayPal. Hurry, offer ends 11/28/13.</td>
+  </tr>
+  <tr>
+    <td align=3D"left" valign=3D"top" height=3D"10" style=3D"font-size:0; l=
+ine-height:0;"><img src=3D"https://image.paypal-communication.com/paypal_na=
+/2013/20131120_US_Holiday_Hulu_Uber_20274/img_spacer.gif" width=3D"1" heigh=
+t=3D"10" alt=3D"" border=3D"0" style=3D"display:block;" /></td>
+  </tr>
+  <tr>
+    <td align=3D"left" valign=3D"top" style=3D"font-family:Arial, Helvetica=
+, sans-serif; font-size:14px; line-height:18px; text-decoration:none; color=
+:#0079c1;" ><a
+ href=3D"https://email-edg.paypal.com/r/MJSL35I/1BLA5/JI26D86/16QHKV/V1U10T=
+/R1/h" target=3D"_blank" style=3D"font-family:Arial, Helvetica, sans-serif;=
+ font-size:14px; line-height:18px; text-decoration:none; color:#0079c1;"
+><strong>Sign up for Uber>></strong></a></td>
+  </tr>
+  <tr>
+    <td align=3D"left" valign=3D"top" height=3D"20" style=3D"font-size:0; l=
+ine-height:0;"><img src=3D"https://image.paypal-communication.com/paypal_na=
+/2013/20131120_US_Holiday_Hulu_Uber_20274/img_spacer.gif" width=3D"1" heigh=
+t=3D"20" alt=3D"" border=3D"0" style=3D"display:block;" /></td>
+  </tr>
+</table>
+</td>
+    <td align=3D"left" valign=3D"top" width=3D"20" style=3D"font-size:0; li=
+ne-height:0;"><img src=3D"https://image.paypal-communication.com/paypal_na/=
+2013/20131120_US_Holiday_Hulu_Uber_20274/img_spacer.gif" width=3D"20" heigh=
+t=3D"1" alt=3D"" border=3D"0" style=3D"display:block;" /></td>
+  </tr>
+</table>
+</td>
+  </tr>
+</table>
+</td>
+  </tr>
+  <tr>
+    <td align=3D"left" valign=3D"top" height=3D"1" style=3D"font-size:0; li=
+ne-height:0;" bgcolor=3D"#e3e3e3"><img src=3D"https://image.paypal-communic=
+ation.com/paypal_na/2013/20131120_US_Holiday_Hulu_Uber_20274/img_spacer.gif=
+" width=3D"1" height=3D"1" alt=3D"" border=3D"0" style=3D"display:block;" /=
+></td>
+  </tr>
+</table>
+</td>
+  </tr>
+    <tr>
+    <td align=3D"left" valign=3D"top"><table width=3D"100%" border=3D"0" ce=
+llspacing=3D"0" cellpadding=3D"0">
+  <tr>
+    <td align=3D"left" valign=3D"top" width=3D"21" style=3D"font-size:0; li=
+ne-height:0;"><img src=3D"https://image.paypal-communication.com/paypal_na/=
+2013/20131120_US_Holiday_Hulu_Uber_20274/img_spacer.gif" width=3D"21" heigh=
+t=3D"1" alt=3D"" border=3D"0" style=3D"display:block;" /></td>
+    <td align=3D"left" valign=3D"top"><table width=3D"100%" border=3D"0" ce=
+llspacing=3D"0" cellpadding=3D"0">
+  <tr>
+    <td align=3D"left" valign=3D"top" height=3D"15" style=3D"font-size:0; l=
+ine-height:0;"><img src=3D"https://image.paypal-communication.com/paypal_na=
+/2013/20131120_US_Holiday_Hulu_Uber_20274/img_spacer.gif" width=3D"1" heigh=
+t=3D"15" alt=3D"" border=3D"0" style=3D"display:block;" /></td>
+  </tr>
+  <tr>
+    <td align=3D"left" valign=3D"top"><table border=3D"0" cellspacing=3D"0"=
+ cellpadding=3D"0">
+  <tr>
+    <td align=3D"left" valign=3D"top" width=3D"30" ><img   src=3D"https://i=
+mage.paypal-communication.com/paypal_na/2013/20131120_US_Holiday_Hulu_Uber_=
+20274/img_spacer.gif" width=3D"30" height=3D"1" alt=3D"" border=3D"0" style=
+=3D"display:block;" /></td>
+    <td align=3D"left" valign=3D"top"><table width=3D"100%" border=3D"0" ce=
+llspacing=3D"0" cellpadding=3D"0">
+  <tr>
+    <td align=3D"center" style=3D"padding:10px 0 10px 0;"><a
+ href=3D"https://email-edg.paypal.com/r/MJSL35I/1BLA5/JI26D86/16QHKV/YHTBQX=
+/R1/h" class=3D"footer" target=3D"_blank" style=3D"font-family: Arial, Helv=
+etica, sans-serif; font-size: 11px; color: #666666; text-decoration: none;"
+><strong>Accept Payments</strong></a><span style=3D"font-family: Arial, Hel=
+vetica, sans-serif; font-size: 11px; color: #666666;" class=3D"emailnomob">=
+&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+      <a
+ href=3D"https://email-edg.paypal.com/r/MJSL35I/1BLA5/JI26D86/16QHKV/HDKY0B=
+/R1/h" class=3D"footer" target=3D"_blank" style=3D"font-family: Arial, Helv=
+etica, sans-serif; font-size: 11px; color: #666666; text-decoration: none;"
+><strong>Help</strong></a><span style=3D"font-family: Arial, Helvetica, san=
+s-serif; font-size: 11px; color: #666666;" class=3D"emailnomob">&nbsp;&nbsp=
+;|&nbsp;&nbsp;</span>
+      <a
+ href=3D"https://email-edg.paypal.com/r/MJSL35I/1BLA5/JI26D86/16QHKV/GKXDOB=
+/R1/h" class=3D"footer" target=3D"_blank" style=3D"font-family: Arial, Helv=
+etica, sans-serif; font-size: 11px; color: #666666; text-decoration: none;"
+><strong>Fees</strong></a><span style=3D"font-family: Arial, Helvetica, san=
+s-serif; font-size: 11px; color: #666666;" class=3D"emailnomob">&nbsp;&nbsp=
+;|&nbsp;&nbsp;</span>
+      <a
+ href=3D"https://email-edg.paypal.com/r/MJSL35I/1BLA5/JI26D86/16QHKV/FXWK6B=
+/R1/h" class=3D"footer" target=3D"_blank" style=3D"font-family: Arial, Helv=
+etica, sans-serif; font-size: 11px; color: #666666; text-decoration: none;"
+><strong>Security</strong></a><span style=3D"font-family: Arial, Helvetica,=
+ sans-serif; font-size: 11px; color: #666666;" class=3D"emailnomob">&nbsp;&=
+nbsp;|&nbsp;&nbsp;</span>
+      <a
+ href=3D"https://email-edg.paypal.com/r/MJSL35I/1BLA5/JI26D86/16QHKV/6VC2PN=
+/R1/h" class=3D"footer" target=3D"_blank" style=3D"font-family: Arial, Helv=
+etica, sans-serif; font-size: 11px; color: #666666; text-decoration: none;"
+><strong>PayPal App</strong></a></td>
+  </tr>
+</table>
+</td>
+  </tr>
+</table></td>
+  </tr>
+  <tr>
+    <td align=3D"left" valign=3D"top" height=3D"15" style=3D"font-size:0; l=
+ine-height:0;"><img src=3D"https://image.paypal-communication.com/paypal_na=
+/2013/20131120_US_Holiday_Hulu_Uber_20274/img_spacer.gif" width=3D"1" heigh=
+t=3D"15" alt=3D"" border=3D"0" style=3D"display:block;" /></td>
+  </tr>
+  <tr>
+    <td align=3D"left" valign=3D"top" height=3D"1" style=3D"font-size:0; li=
+ne-height:0;" bgcolor=3D"#d9d9d9"><img src=3D"https://image.paypal-communic=
+ation.com/paypal_na/2013/20131120_US_Holiday_Hulu_Uber_20274/img_spacer.gif=
+" width=3D"1" height=3D"1" alt=3D"" border=3D"0" style=3D"display:block;" /=
+></td>
+  </tr>
+  <tr>
+    <td align=3D"left" valign=3D"top" height=3D"1" style=3D"font-size:0; li=
+ne-height:0;" bgcolor=3D"#ffffff"><img src=3D"https://image.paypal-communic=
+ation.com/paypal_na/2013/20131120_US_Holiday_Hulu_Uber_20274/img_spacer.gif=
+" width=3D"1" height=3D"1" alt=3D"" border=3D"0" style=3D"display:block;" /=
+></td>
+  </tr>
+  <tr>
+    <td align=3D"left" valign=3D"top" height=3D"18" style=3D"font-size:0; l=
+ine-height:0;"><img src=3D"https://image.paypal-communication.com/paypal_na=
+/2013/20131120_US_Holiday_Hulu_Uber_20274/img_spacer.gif" width=3D"1" heigh=
+t=3D"18" alt=3D"" border=3D"0" style=3D"display:block;" /></td>
+  </tr>
+  <tr>
+    <td align=3D"left" valign=3D"top"><table width=3D"100%" border=3D"0" ce=
+llspacing=3D"0" cellpadding=3D"0">
+  <tr>
+    <td align=3D"left" valign=3D"top" width=3D"20" style=3D"font-size:0; li=
+ne-height:0;"><img src=3D"https://image.paypal-communication.com/paypal_na/=
+2013/20131120_US_Holiday_Hulu_Uber_20274/img_spacer.gif" width=3D"20" heigh=
+t=3D"1" alt=3D"" border=3D"0" style=3D"display:block;" /></td>
+     <td align=3D"left" valign=3D"top"><table width=3D"100%" border=3D"0" c=
+ellspacing=3D"0" cellpadding=3D"0">
+  <tr>
+    <td align=3D"left" valign=3D"top" style=3D"font-family:Arial, Helvetica=
+, sans-serif;font-size:11px; line-height:15px; text-decoration:none; color:=
+#666666;"><strong>Terms & Conditions</strong></td>
+  </tr>
+  <tr>
+    <td align=3D"left" valign=3D"top" style=3D"font-family:Arial, Helvetica=
+, sans-serif;font-size:11px; line-height:15px; text-decoration:none; color:=
+#666666;">PayPal members will receive $15 USD off their first ride with Ube=
+r using PayPal to pay (=E2=80=9COffer=E2=80=9D).   Offer begins November 20=
+,2013 and ends November 28, 2013 (=E2=80=9CPromotion Period=E2=80=9D).   Of=
+fer is limited to one per PayPal account and valid for only one transaction=
+.  The $15 amount will be deducted at time of purchase, upon completion of =
+your ride.</td>
+  </tr>
+  <tr>
+    <td align=3D"left" valign=3D"top" height=3D"10" style=3D"font-size:0; l=
+ine-height:0;"><img src=3D"https://image.paypal-communication.com/paypal_na=
+/2013/20131120_US_Holiday_Hulu_Uber_20274/img_spacer.gif" width=3D"1" heigh=
+t=3D"10" alt=3D"" border=3D"0" style=3D"display:block;" /></td>
+  </tr>
+    <tr>
+    <td align=3D"left" valign=3D"top" style=3D"font-family:Arial, Helvetica=
+, sans-serif;font-size:11px; line-height:15px; text-decoration:none; color:=
+#666666;">In order to receive this Offer you must a) have a U.S. PayPal acc=
+ount in good standing, b) receive an email from PayPal inviting you to part=
+icipate in the Offer, b) have an Uber account, c) add PayPal as a payment m=
+ethod to your Uber account, and d) pay for  an Uber ride using PayPal durin=
+g the Promotion Period.</td>
+  </tr>
+  <tr>
+    <td align=3D"left" valign=3D"top" height=3D"10" style=3D"font-size:0; l=
+ine-height:0;"><img src=3D"https://image.paypal-communication.com/paypal_na=
+/2013/20131120_US_Holiday_Hulu_Uber_20274/img_spacer.gif" width=3D"1" heigh=
+t=3D"10" alt=3D"" border=3D"0" style=3D"display:block;" /></td>
+  </tr>
+    <tr>
+    <td align=3D"left" valign=3D"top" style=3D"font-family:Arial, Helvetica=
+, sans-serif;font-size:11px; line-height:15px; text-decoration:none; color:=
+#666666;">Excluded transactions from the offer include but are not limited =
+to the following:  Uber taxi rides, gift certificate payments, gift card pu=
+rchases, and PayPal Extras MasterCard/eBay MasterCard payments not made thr=
+ough your PayPal account.   Offer valid in the continental U.S. and cannot =
+be transferred or combined with any other coupon,=20
+Offer or discount and may not be redeemed for cash.  Additional merchant te=
+rms and conditions may apply.</td>
+  </tr>
+  <tr>
+    <td align=3D"left" valign=3D"top" height=3D"10" style=3D"font-size:0; l=
+ine-height:0;"><img src=3D"https://image.paypal-communication.com/paypal_na=
+/2013/20131120_US_Holiday_Hulu_Uber_20274/img_spacer.gif" width=3D"1" heigh=
+t=3D"10" alt=3D"" border=3D"0" style=3D"display:block;" /></td>
+  </tr>
+    <tr>
+    <td align=3D"left" valign=3D"top" style=3D"font-family:Arial, Helvetica=
+, sans-serif;font-size:11px; line-height:15px; text-decoration:none; color:=
+#666666;">PayPal and Uber reserve the right to cancel, suspend or modify th=
+e Offer in part or in its entirety at any time without notice, for any reas=
+on in their sole discretion.</td>
+  </tr>
+</table>
+</td>
+    <td align=3D"left" valign=3D"top" width=3D"20" style=3D"font-size:0; li=
+ne-height:0;"><img src=3D"https://image.paypal-communication.com/paypal_na/=
+2013/20131120_US_Holiday_Hulu_Uber_20274/img_spacer.gif" width=3D"20" heigh=
+t=3D"1" alt=3D"" border=3D"0" style=3D"display:block;" /></td>
+  </tr>
+  <tr><td></td>
+  <td align=3D"left" valign=3D"top"><table border=3D"0" cellspacing=3D"0" c=
+ellpadding=3D"0">
+<tr>
+  <td colspan=3D"3"><img style=3D"display: block" src=3D"https://image.payp=
+al-communication.com/paypal_na/common/spacer.gif" alt=3D"" width=3D"1" heig=
+ht=3D"10" border=3D"0"></td>
+</tr>
+<tr>
+<td style=3D"font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; fo=
+nt-size: 10px; color: #666666;">This email was sent to <a
+ href=3D"#" style=3D"color: #666666; text-decoration: none;"
+>foobar@foobar.com</a>, because your email preferences are set to rece=
+ive "News and Promotions". Click here to <a
+ href=3D"https://email-edg.paypal.com/r/MJSL35I/1BLA5/JI26D86/16QHKV/GKXDO9=
+/R1/h?a=3D3U724204FF865721E&b=3DDNs-er3fxiyMTXD5F6fk0ZUMAuNA7fM6&c=3DPNP&d=
+=3D26621519&e=3D26629028&f=3DPNP" target=3D"_blank" style=3D"font-family:'H=
+elvetica Neue', Helvetica, Arial, sans-serif; font-size: 10px; color: #0A3D=
+7B; text-decoration: underline"
+>Unsubscribe</a>.<br>
+<br>
+
+Please do not reply to this email. We are unable to respond to inquiries se=
+nt to this address. For immediate answers to your questions, visit our Help=
+ Center by clicking "Help" located on any PayPal page or email.
+<br>
+
+<br>
+
+Copyright <span class=3D"hotmailimgfooter">&copy;</span> 2013 PayPal, Inc. =
+All rights reserved. PayPal is located at 2211 N. First St., San Jose, CA 9=
+5131.</td>
+</tr>
+<tr>
+  <td colspan=3D"3"><img style=3D"display: block" src=3D"https://image.payp=
+al-communication.com/paypal_na/common/spacer.gif" alt=3D"" width=3D"1" heig=
+ht=3D"10" border=3D"0"></td>
+</tr>
+</table></td></tr>
+</table>
+</td>
+  </tr>
+</table>
+</td>
+    <td align=3D"left" valign=3D"top" width=3D"21" style=3D"font-size:0; li=
+ne-height:0;"><img src=3D"https://image.paypal-communication.com/paypal_na/=
+2013/20131120_US_Holiday_Hulu_Uber_20274/img_spacer.gif" width=3D"21" heigh=
+t=3D"1" alt=3D"" border=3D"0" style=3D"display:block;" /></td>
+  </tr>
+</table>
+</td>
+  </tr>
+  <tr>
+    <td align=3D"left" valign=3D"top" height=3D"40" style=3D"font-size:0; l=
+ine-height:0;"><img src=3D"https://image.paypal-communication.com/paypal_na=
+/2013/20131120_US_Holiday_Hulu_Uber_20274/img_spacer.gif" width=3D"1" heigh=
+t=3D"40" alt=3D"" border=3D"0" style=3D"display:block;" /></td>
+  </tr>
+</table>
+</td>
+          </tr>
+        </table>
+</td></tr></table></body>
+</html>
+<!-- [[MJSL35I-18GGBC-1BLA5-JI26D86-16QHKV-M-M2-20131120-67ee29478a134f]] -=
+-><img height=3D"1" width=3D"1" src=3D"https://email-edg.paypal.com/o/MJSL3=
+5I/1BLA5/JI26D86/16QHKV/LS28/MS"><img height=3D"1" width=3D"1" src=3D"https=
+://email-edg.paypal.com/o/MJSL35I/1BLA5/JI26D86/16QHKV/LS28/52">
+
+---_-_-_-_-_1234567890--
