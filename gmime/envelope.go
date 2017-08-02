@@ -39,6 +39,7 @@ func (m *Envelope) SetSubject(subject string) {
 
 // Headers returns all headers for envelope
 func (m *Envelope) Headers() textproto.MIMEHeader {
+	// TODO: this is not super efficient, but easier to read, may be optimize this?
 	headers := C.g_mime_object_get_header_list(m.asGMimeObject())
 	count := C.g_mime_header_list_get_count(headers)
 	goHeaders := make(textproto.MIMEHeader, int(count))
@@ -55,7 +56,8 @@ func (m *Envelope) Headers() textproto.MIMEHeader {
 	return goHeaders
 }
 
-func (m *Envelope) SetHeader() textproto.MIMEHeader {
+// SetHeader update/replace first `name` header
+func (m *Envelope) SetHeader(name, value string) textproto.MIMEHeader {
 	return nil
 }
 
