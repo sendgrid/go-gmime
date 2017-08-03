@@ -35,6 +35,7 @@ func (m *Envelope) Subject() string {
 
 // SetSubject returns envelope's Subject
 func (m *Envelope) SetSubject(subject string) {
+	C.g_mime_message_set_subject(m.gmimeMessage, C.CString(subject), C.CString("UTF-8"))
 }
 
 // Headers returns all headers for envelope
@@ -55,8 +56,14 @@ func (m *Envelope) Headers() textproto.MIMEHeader {
 	return goHeaders
 }
 
-func (m *Envelope) SetHeader() textproto.MIMEHeader {
-	return nil
+func (m *Envelope) SetHeader(name string, value string) {
+	headers := C.g_mime_object_get_header_list(m.asGMimeObject())
+	C.g_mime_header_list_set(headers, C.CString(name), C.CString(value), C.CString("UTF-8"))
+}
+
+func (m *Envelope) RemoveHeader(name string) bool {
+	headers := C.g_mime_object_get_header_list(m.asGMimeObject())
+	return gobool(C.g_mime_header_list_remove(headers, C.CString(name)))
 }
 
 // Header returns *first* header from envelope
