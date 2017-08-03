@@ -52,6 +52,7 @@ func (p *Part) SetText(text string) error {
 	return nil
 }
 
+// Headers gives you all headers for part
 func (p *Part) Headers() textproto.MIMEHeader {
 	return nil
 }
