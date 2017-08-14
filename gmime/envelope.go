@@ -59,14 +59,18 @@ func (m *Envelope) Headers() textproto.MIMEHeader {
 
 // SetHeader sets or replaces specified header
 func (m *Envelope) SetHeader(name string, value string) {
-	headers := C.g_mime_object_get_header_list(m.asGMimeObject())
-	C.g_mime_header_list_set(headers, C.CString(name), C.CString(value), C.CString("UTF-8"))
+	cHeaderName := C.CString(name)
+	defer C.free(unsafe.Pointer(cHeaderName))
+	cHeaderValue := C.CString(value)
+	defer C.free(unsafe.Pointer(cHeaderValue))
+	C.g_mime_object_set_header(m.asGMimeObject(), cHeaderName, cHeaderValue, C.CString("UTF-8"))
 }
 
 // RemoveHeader removes existing header
 func (m *Envelope) RemoveHeader(name string) bool {
-	headers := C.g_mime_object_get_header_list(m.asGMimeObject())
-	return gobool(C.g_mime_header_list_remove(headers, C.CString(name)))
+	cHeaderName := C.CString(name)
+	defer C.free(unsafe.Pointer(cHeaderName))
+	return gobool(C.g_mime_object_remove_header(m.asGMimeObject(), cHeaderName))
 }
 
 // Header returns *first* header from envelope
