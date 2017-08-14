@@ -109,15 +109,17 @@ func (m *Envelope) Walk(cb func(p *Part)) {
 // Export composes mime from envelope
 func (m *Envelope) Export() ([]byte, error) {
 	// TODO: optimize this, bundle cgo calls
+	format := C.g_mime_format_options_get_default()
+	C.g_mime_format_options_set_newline_format(format, C.GMIME_NEWLINE_FORMAT_DOS)
 	stream := C.g_mime_stream_mem_new()                        // need unref
 	defer C.g_object_unref(C.gpointer(unsafe.Pointer(stream))) // unref
-	nWritten := C.g_mime_object_write_to_stream(m.asGMimeObject(), nil, stream)
+	nWritten := C.g_mime_object_write_to_stream(m.asGMimeObject(), format, stream)
 	if nWritten <= 0 {
 		return nil, errors.New("can't write to stream")
 	}
 	// byteArray is owned by stream and will be freed with it
 	byteArray := C.g_mime_stream_mem_get_byte_array((*C.GMimeStreamMem)(unsafe.Pointer(stream)))
-	return C.GoBytes(unsafe.Pointer(byteArray.data), (C.int)(nWritten)), nil
+	return C.GoBytes(unsafe.Pointer(byteArray.data), (C.int)(byteArray.len)), nil
 }
 
 // Close frees up message resources
