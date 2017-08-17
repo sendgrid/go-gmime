@@ -52,7 +52,24 @@ func (p *Part) SetText(text string) error {
 	return nil
 }
 
+// SetHeader sets or replaces specified header
+func (p *Part) SetHeader(name string, value string) {
+	headers := C.g_mime_object_get_header_list(p.asGMimeObject())
+	cName := C.CString(name)
+	defer C.free(unsafe.Pointer(cName))
+	cValue := C.CString(value)
+	defer C.free(unsafe.Pointer(cValue))
+	cCharset := C.CString("UTF-8")
+	defer C.free(unsafe.Pointer(cCharset))
+
+	C.g_mime_header_list_set(headers, cName, cValue, cCharset)
+}
+
 // Headers gives you all headers for part
 func (p *Part) Headers() textproto.MIMEHeader {
 	return nil
+}
+
+func (p *Part) asGMimeObject() *C.GMimeObject {
+	return p.gmimePart
 }

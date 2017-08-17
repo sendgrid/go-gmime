@@ -10,7 +10,8 @@ GMimeMessage *gmime_parse (const char *buffer, size_t len) {
 
 	InternetAddressList *list = g_mime_message_get_addresses (message, GMIME_ADDRESS_TYPE_TO);
 	int listLen = internet_address_list_length (list);
-	for(int i = 0; i < listLen; i++) {
+	int i = 0;
+	for(i = 0; i < listLen; i++) {
 		InternetAddress *addr = internet_address_list_get_address (list, i);
 		// printf("Name: %s\n", internet_address_get_name (addr));
 		// printf("Address: %s\n", internet_address_mailbox_get_addr ((InternetAddressMailbox *)addr));
