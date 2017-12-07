@@ -8,6 +8,7 @@ import "C"
 
 import (
 	"errors"
+	"fmt"
 	"net/textproto"
 	"unsafe"
 )
@@ -18,13 +19,17 @@ type Envelope struct {
 }
 
 // Parse parses message and returns Message
-func Parse(data string) *Envelope {
+func Parse(data string) (*Envelope, error) {
 	// very inefficient
 	cBuf := C.CString(data)
 	defer C.free(unsafe.Pointer(cBuf))
-	return &Envelope{
-		gmimeMessage: C.gmime_parse(cBuf, C.size_t(len(data))),
+	gmsg := C.gmime_parse(cBuf, C.size_t(len(data)))
+	if gmsg == nil {
+		return nil, fmt.Errorf("test")
 	}
+	return &Envelope{
+		gmimeMessage: gmsg,
+	}, nil
 }
 
 // Subject returns envelope's Subject
@@ -59,11 +64,15 @@ func (m *Envelope) Headers() textproto.MIMEHeader {
 
 // SetHeader sets or replaces specified header
 func (m *Envelope) SetHeader(name string, value string) {
-	cHeaderName := C.CString(name)
-	defer C.free(unsafe.Pointer(cHeaderName))
-	cHeaderValue := C.CString(value)
-	defer C.free(unsafe.Pointer(cHeaderValue))
-	C.g_mime_object_set_header(m.asGMimeObject(), cHeaderName, cHeaderValue, C.CString("UTF-8"))
+	headers := C.g_mime_object_get_header_list(m.asGMimeObject())
+	cName := C.CString(name)
+	defer C.free(unsafe.Pointer(cName))
+	cValue := C.CString(value)
+	defer C.free(unsafe.Pointer(cValue))
+	cCharset := C.CString("UTF-8")
+	defer C.free(unsafe.Pointer(cCharset))
+
+	C.g_mime_header_list_set(headers, cName, cValue, cCharset)
 }
 
 // RemoveHeader removes existing header
@@ -109,15 +118,16 @@ func (m *Envelope) Walk(cb func(p *Part)) {
 // Export composes mime from envelope
 func (m *Envelope) Export() ([]byte, error) {
 	// TODO: optimize this, bundle cgo calls
-	format := C.g_mime_format_options_get_default()
-	C.g_mime_format_options_set_newline_format(format, C.GMIME_NEWLINE_FORMAT_DOS)
 	stream := C.g_mime_stream_mem_new()                        // need unref
 	defer C.g_object_unref(C.gpointer(unsafe.Pointer(stream))) // unref
+	format := C.g_mime_format_options_get_default()
+	C.g_mime_format_options_set_newline_format(format, C.GMIME_NEWLINE_FORMAT_DOS)
 	nWritten := C.g_mime_object_write_to_stream(m.asGMimeObject(), format, stream)
 	if nWritten <= 0 {
 		return nil, errors.New("can't write to stream")
 	}
 	// byteArray is owned by stream and will be freed with it
+	// TODO: we can optimize it, avoiding copy, but will have to free manually
 	byteArray := C.g_mime_stream_mem_get_byte_array((*C.GMimeStreamMem)(unsafe.Pointer(stream)))
 	return C.GoBytes(unsafe.Pointer(byteArray.data), (C.int)(byteArray.len)), nil
 }

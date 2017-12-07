@@ -9,6 +9,8 @@ import "C"
 // This function call automatically by runtime
 func init() {
 	C.g_mime_init()
+	format := C.g_mime_format_options_get_default()
+	C.g_mime_format_options_set_newline_format(format, C.GMIME_NEWLINE_FORMAT_DOS)
 }
 
 // Shutdown is really needed only for valgrind

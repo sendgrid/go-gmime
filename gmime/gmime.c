@@ -7,10 +7,14 @@ GMimeMessage *gmime_parse (const char *buffer, size_t len) {
 	g_object_unref (stream);
 	GMimeMessage *message = g_mime_parser_construct_message (parser, NULL);
 	g_object_unref (parser);
+	if (!message) {
+		return NULL; 
+	}
 
 	InternetAddressList *list = g_mime_message_get_addresses (message, GMIME_ADDRESS_TYPE_TO);
 	int listLen = internet_address_list_length (list);
-	for(int i = 0; i < listLen; i++) {
+	int i = 0;
+	for(i = 0; i < listLen; i++) {
 		InternetAddress *addr = internet_address_list_get_address (list, i);
 		// printf("Name: %s\n", internet_address_get_name (addr));
 		// printf("Address: %s\n", internet_address_mailbox_get_addr ((InternetAddressMailbox *)addr));
@@ -39,16 +43,26 @@ GByteArray *gmime_get_bytes (GMimeObject *object) {
 	GMimeStream *stream;
 	GMimeDataWrapper *content;
 	GByteArray *buf;
+	if (GMIME_IS_PART (object)) {
+		if (!(content = g_mime_part_get_content ((GMimePart *) object))) {
+			return NULL;
+		}
+		stream = g_mime_stream_mem_new ();
+		ssize_t size = g_mime_data_wrapper_write_to_stream (content, stream);
+		g_mime_stream_flush (stream);
 
-	if (!(content = g_mime_part_get_content ((GMimePart *) object)))
-		return NULL;
-	stream = g_mime_stream_mem_new ();
-	ssize_t size = g_mime_data_wrapper_write_to_stream (content, stream);
-	g_mime_stream_flush (stream);
+		buf = g_mime_stream_mem_get_byte_array ((GMimeStreamMem *) stream);
+		g_mime_stream_mem_set_owner ((GMimeStreamMem *) stream, FALSE);
 
-	buf = g_mime_stream_mem_get_byte_array ((GMimeStreamMem *) stream);
-	g_mime_stream_mem_set_owner ((GMimeStreamMem *) stream, FALSE);
-
-	g_object_unref (stream);
-	return buf;
+		g_object_unref (stream);
+		return buf;
+	} else {
+		// char *tmp = g_mime_object_to_string(object, NULL);
+		// printf("is not part %s\n", tmp);
+		// return NULL;
+		// printf("type: %s\n", g_type_name(G_TYPE_FROM_INSTANCE(object)));
+		GMimeMessagePart *part = g_mime_message_part_get_message((GMimeMessagePart *) object);
+		char *tmp = g_mime_object_to_string(part, NULL);
+		return g_byte_array_new_take((guint8 *)tmp, strlen(tmp));
+	}
 }
