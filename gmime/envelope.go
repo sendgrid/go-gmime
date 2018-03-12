@@ -97,15 +97,15 @@ func (m *Envelope) ContentType() string {
 func (m *Envelope) Walk(cb func(p *Part)) {
 	partIter := C.g_mime_part_iter_new(m.asGMimeObject())
 	for {
-		next := C.g_mime_part_iter_next(partIter)
-		if !gobool(next) {
-			break
-		}
 		currentPart := C.g_mime_part_iter_get_current(partIter)
 		part := &Part{
 			gmimePart: currentPart,
 		}
 		cb(part)
+		next := C.g_mime_part_iter_next(partIter)
+		if !gobool(next) {
+			break
+		}
 	}
 }
 
