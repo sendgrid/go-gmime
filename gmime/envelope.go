@@ -8,6 +8,7 @@ import "C"
 
 import (
 	"errors"
+	"fmt"
 	"net/textproto"
 	"unsafe"
 )
@@ -18,13 +19,17 @@ type Envelope struct {
 }
 
 // Parse parses message and returns Message
-func Parse(data string) *Envelope {
+func Parse(data string) (*Envelope, error) {
 	// very inefficient
 	cBuf := C.CString(data)
 	defer C.free(unsafe.Pointer(cBuf))
-	return &Envelope{
-		gmimeMessage: C.gmime_parse(cBuf, C.size_t(len(data))),
+	gmsg := C.gmime_parse(cBuf, C.size_t(len(data)))
+	if gmsg == nil {
+		return nil, fmt.Errorf("test")
 	}
+	return &Envelope{
+		gmimeMessage: gmsg,
+	}, nil
 }
 
 // Subject returns envelope's Subject
@@ -72,8 +77,9 @@ func (m *Envelope) SetHeader(name string, value string) {
 
 // RemoveHeader removes existing header
 func (m *Envelope) RemoveHeader(name string) bool {
-	headers := C.g_mime_object_get_header_list(m.asGMimeObject())
-	return gobool(C.g_mime_header_list_remove(headers, C.CString(name)))
+	cHeaderName := C.CString(name)
+	defer C.free(unsafe.Pointer(cHeaderName))
+	return gobool(C.g_mime_object_remove_header(m.asGMimeObject(), cHeaderName))
 }
 
 // Header returns *first* header from envelope
