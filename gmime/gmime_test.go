@@ -11,7 +11,8 @@ import (
 func TestParseAndMutationOnMime_Multipart(t *testing.T) {
 	mimeBytes, err := ioutil.ReadFile("test_data/inline-attachment_multipart.eml")
 	assert.NoError(t, err)
-	msg := Parse(string(mimeBytes))
+	msg, err := Parse(string(mimeBytes))
+	assert.NoError(t, err)
 	defer msg.Close()
 
 	//Verify that we get subject and header parsed correctly
@@ -32,7 +33,7 @@ func TestParseAndMutationOnMime_Multipart(t *testing.T) {
 
 	//Verify that we get parts contentType and text parsed correctly
 	var i, k int
-	msg.Walk(func(p *Part) {
+	err = msg.Walk(func(p *Part) error {
 		assert.Equal(t, contentType[i], p.ContentType())
 		if p.IsText() {
 			assert.Equal(t, partText[k], p.Text())
@@ -40,7 +41,9 @@ func TestParseAndMutationOnMime_Multipart(t *testing.T) {
 			k++
 		}
 		i++
+		return nil
 	})
+	assert.NoError(t, err)
 
 	// Mutate subject header and body
 	newSubject := "new subject"
@@ -53,18 +56,21 @@ func TestParseAndMutationOnMime_Multipart(t *testing.T) {
 	assert.Equal(t, msg.Header("Message-ID"), newMsgID)
 
 	i = 0
-	msg.Walk(func(p *Part) {
+	err = msg.Walk(func(p *Part) error {
 		if p.IsText() {
 			assert.Equal(t, p.Text(), fmt.Sprintf("my replaced всякий текст スラングまで幅広く収録 (%d)", i))
 		}
 		i++
+		return nil
 	})
+	assert.NoError(t, err)
 }
 
 func TestParseAndMutationOnMime_NestedMultipart(t *testing.T) {
 	mimeBytes, err := ioutil.ReadFile("test_data/inline-attachment_nested_multipart.eml")
 	assert.NoError(t, err)
-	msg := Parse(string(mimeBytes))
+	msg, err := Parse(string(mimeBytes))
+	assert.NoError(t, err)
 	defer msg.Close()
 
 	//Verify that we get subject and header parsed correctly
@@ -86,7 +92,7 @@ func TestParseAndMutationOnMime_NestedMultipart(t *testing.T) {
 
 	//Verify that we get parts contentType and text parsed correctly
 	var i, k int
-	msg.Walk(func(p *Part) {
+	err = msg.Walk(func(p *Part) error {
 		assert.Equal(t, contentType[i], p.ContentType())
 		if p.IsText() {
 			assert.Equal(t, partText[k], p.Text())
@@ -94,7 +100,9 @@ func TestParseAndMutationOnMime_NestedMultipart(t *testing.T) {
 			k++
 		}
 		i++
+		return nil
 	})
+	assert.NoError(t, err)
 
 	// Mutate subject header and body
 	newSubject := "new subject"
@@ -107,10 +115,12 @@ func TestParseAndMutationOnMime_NestedMultipart(t *testing.T) {
 	assert.Equal(t, msg.Header("Message-ID"), newMsgID)
 
 	i = 0
-	msg.Walk(func(p *Part) {
+	err = msg.Walk(func(p *Part) error {
 		if p.IsText() {
 			assert.Equal(t, p.Text(), fmt.Sprintf("my replaced всякий текст スラングまで幅広く収録 (%d)", i))
 		}
 		i++
+		return nil
 	})
+	assert.NoError(t, err)
 }

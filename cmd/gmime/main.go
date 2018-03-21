@@ -19,7 +19,10 @@ func main() {
 	defer fh.Close()
 	reader := bufio.NewReader(fh)
 	data, _ := ioutil.ReadAll(reader)
-	msg := gmime.Parse(string(data))
+	msg, err := gmime.Parse(string(data))
+	if err != nil {
+		panic(err)
+	}
 	defer msg.Close()
 	println("Envelope Subject: ", msg.Subject())
 	println("Envelope Content-Type:", msg.ContentType())

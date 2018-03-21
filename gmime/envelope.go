@@ -8,6 +8,7 @@ import "C"
 
 import (
 	"errors"
+	"fmt"
 	"net/textproto"
 	"unsafe"
 )
@@ -18,13 +19,18 @@ type Envelope struct {
 }
 
 // Parse parses message and returns Message
-func Parse(data string) *Envelope {
+func Parse(data string) (*Envelope, error) {
 	// very inefficient
 	cBuf := C.CString(data)
 	defer C.free(unsafe.Pointer(cBuf))
-	return &Envelope{
-		gmimeMessage: C.gmime_parse(cBuf, C.size_t(len(data))),
+	gmsg := C.gmime_parse(cBuf, C.size_t(len(data)))
+	if gmsg == nil {
+		return nil, fmt.Errorf("gmime.parse: unable to parse mime")
 	}
+
+	return &Envelope{
+		gmimeMessage: gmsg,
+	}, nil
 }
 
 // Subject returns envelope's Subject
@@ -94,19 +100,23 @@ func (m *Envelope) ContentType() string {
 }
 
 // Walk iterates all message parts and executes callback on each part
-func (m *Envelope) Walk(cb func(p *Part)) {
+func (m *Envelope) Walk(cb func(p *Part) error) error {
 	partIter := C.g_mime_part_iter_new(m.asGMimeObject())
 	for {
 		currentPart := C.g_mime_part_iter_get_current(partIter)
 		part := &Part{
 			gmimePart: currentPart,
 		}
-		cb(part)
+		err := cb(part)
+		if err != nil {
+			return err
+		}
 		next := C.g_mime_part_iter_next(partIter)
 		if !gobool(next) {
 			break
 		}
 	}
+	return nil
 }
 
 // Export composes mime from envelope
