@@ -7,6 +7,9 @@ GMimeMessage *gmime_parse (const char *buffer, size_t len) {
 	g_object_unref (stream);
 	GMimeMessage *message = g_mime_parser_construct_message (parser, NULL);
 	g_object_unref (parser);
+	if (!message) {
+		return NULL; 
+	}
 
 	InternetAddressList *list = g_mime_message_get_addresses (message, GMIME_ADDRESS_TYPE_TO);
 	int listLen = internet_address_list_length (list);
