@@ -29,6 +29,11 @@ func (p *Part) IsText() bool {
 	return gobool(C.gmime_is_text_part(p.gmimePart))
 }
 
+// IsAttachment returns true if part's mime is attachment
+func (p *Part) IsAttachment() bool {
+	return gobool(C.g_mime_part_is_attachment((*C.GMimePart)(unsafe.Pointer(p.gmimePart))))
+}
+
 // Text returns text portion of the part if it's mime is text/*
 func (p *Part) Text() string {
 	content := C.gmime_get_content_string(p.gmimePart)

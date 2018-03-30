@@ -32,7 +32,7 @@ Content-Type: text/html; charset=UTF-8
 --001a11362da4d1ade604fa67c853--
 --001a11362da4d1adf004fa67c854
 Content-Type: image/jpeg; name="kien.jpg"
-Content-Disposition: inline; filename="kien.jpg"
+Content-Disposition: attachment; filename="kien.jpg"
 Content-Transfer-Encoding: base64
 Content-ID: <ii_1463f6eb06c77530>
 X-Attachment-Id: ii_1463f6eb06c77530
