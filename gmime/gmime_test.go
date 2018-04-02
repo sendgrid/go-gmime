@@ -45,13 +45,17 @@ func TestParseAndMutationOnMime_Multipart(t *testing.T) {
 	})
 	assert.NoError(t, err)
 
-	msg.Walk(func(p *Part) {
+	msg.Walk(func(p *Part) error {
 		if p.IsAttachment() {
 			ct := p.ContentType()
+			filename := p.Filename()
 			assert.Equal(t, ct, "image/jpeg")
 			assert.NotEqual(t, ct, "text/html")
 			assert.NotEqual(t, ct, "text/plain")
+			assert.Equal(t, "kien.jpg", filename)
 		}
+
+		return nil
 	})
 
 	// Mutate subject header and body
