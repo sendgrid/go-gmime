@@ -34,6 +34,12 @@ func (p *Part) IsAttachment() bool {
 	return gobool(C.g_mime_part_is_attachment((*C.GMimePart)(unsafe.Pointer(p.gmimePart))))
 }
 
+// Filename retrieves the filename of the part
+func (p *Part) Filename() string {
+	ctype := C.g_mime_part_get_filename((*C.GMimePart)(unsafe.Pointer(p.gmimePart)))
+	return C.GoString(ctype)
+}
+
 // Text returns text portion of the part if it's mime is text/*
 func (p *Part) Text() string {
 	content := C.gmime_get_content_string(p.gmimePart)
