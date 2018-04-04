@@ -39,6 +39,14 @@ gboolean gmime_is_text_part (GMimeObject *object) {
 	return GMIME_IS_TEXT_PART (object);
 }
 
+gboolean gmime_is_multi_part (GMimeObject *object) {
+	return GMIME_IS_MULTIPART (object);
+}
+
+void gmime_type_name(GMimeObject *object){
+	printf("Name: %s\n", G_OBJECT_TYPE_NAME (object));
+}
+
 GByteArray *gmime_get_bytes (GMimeObject *object) {
 	GMimeStream *stream;
 	GMimeDataWrapper *content;

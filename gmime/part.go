@@ -31,6 +31,9 @@ func (p *Part) IsText() bool {
 
 // IsAttachment returns true if part's mime is attachment
 func (p *Part) IsAttachment() bool {
+	if gobool(C.gmime_is_multi_part(p.gmimePart)) {
+		return false
+	}
 	return gobool(C.g_mime_part_is_attachment((*C.GMimePart)(unsafe.Pointer(p.gmimePart))))
 }
 
