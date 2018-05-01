@@ -156,10 +156,8 @@ func (m *Envelope) AddHTMLPart(content string) {
 	goCType := C.GoString(ctype)
 	if !strings.HasPrefix(goCType, "multipart") {
 		multipart := C.g_mime_multipart_new_with_subtype(cStringAlternative)
-		rootPartAsObject := (*C.GMimeObject)(unsafe.Pointer(rootPart))
-		C.g_mime_multipart_add(multipart, rootPartAsObject)
-		multipartAsObject := (*C.GMimeObject)(unsafe.Pointer(multipart))
-		C.g_mime_message_set_mime_part(m.gmimeMessage, multipartAsObject)
+		C.g_mime_multipart_add(multipart, (*C.GMimeObject)(unsafe.Pointer(rootPart)))
+		C.g_mime_message_set_mime_part(m.gmimeMessage, (*C.GMimeObject)(unsafe.Pointer(multipart)))
 	}
 
 	// create a new html part and add it to the root level multipart
@@ -168,6 +166,5 @@ func (m *Envelope) AddHTMLPart(content string) {
 	cContent := C.CString(content)
 	defer C.g_free(C.gpointer(unsafe.Pointer(cContent)))
 	C.g_mime_text_part_set_text(newHTMLpart, cContent)
-	htmlPartAsObject := (*C.GMimeObject)(unsafe.Pointer(newHTMLpart))
-	C.g_mime_multipart_add(multipart, htmlPartAsObject)
+	C.g_mime_multipart_add(multipart, (*C.GMimeObject)(unsafe.Pointer(newHTMLpart)))
 }
