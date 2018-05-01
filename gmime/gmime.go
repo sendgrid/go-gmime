@@ -6,6 +6,24 @@ package gmime
 */
 import "C"
 
+var (
+	cStringEmpty       = C.CString("")
+	cStringAlternative = C.CString("alternative")
+	cStringMixed       = C.CString("mixed")
+	cStringRelated     = C.CString("related")
+	cStringCharset     = C.CString("charset")
+	cStringCharsetUTF8 = C.CString("utf-8")
+
+	cStringText   = C.CString("text")
+	cStringPlain  = C.CString("plain")
+	cStringHTML   = C.CString("html")
+	cStringBase64 = C.CString("base64")
+
+	cStringContentID               = C.CString("Content-Id")
+	cStringHeaderFormat            = C.CString("%s: %s\n")
+	cStringContentTransferEncoding = C.CString("Content-Transfer-Encoding")
+)
+
 // This function call automatically by runtime
 func init() {
 	C.g_mime_init()

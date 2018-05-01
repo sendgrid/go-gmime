@@ -10,6 +10,7 @@ import (
 	"errors"
 	"fmt"
 	"net/textproto"
+	"strings"
 	"unsafe"
 )
 
@@ -143,4 +144,30 @@ func (m *Envelope) Close() {
 
 func (m *Envelope) asGMimeObject() *C.GMimeObject {
 	return (*C.GMimeObject)(unsafe.Pointer(m.gmimeMessage))
+}
+
+// it is the caller's responsibility to make sure a text/html doens't already exist and there is a text/plain part
+func (m *Envelope) AddHTMLPart(content string) {
+	rootPart := C.g_mime_message_get_mime_part(m.gmimeMessage)
+	ctype := C.gmime_get_content_type_string(rootPart)
+	defer C.g_free(C.gpointer(unsafe.Pointer(ctype)))
+
+	// if original is not multipart, swap out the root part as a multipart and add the original to the multipart
+	goCType := C.GoString(ctype)
+	if !strings.HasPrefix(goCType, "multipart") {
+		multipart := C.g_mime_multipart_new()
+		rootPartAsObject := (*C.GMimeObject)(unsafe.Pointer(rootPart))
+		C.g_mime_multipart_add(multipart, rootPartAsObject)
+		multipartAsObject := (*C.GMimeObject)(unsafe.Pointer(multipart))
+		C.g_mime_message_set_mime_part(m.gmimeMessage, multipartAsObject)
+	}
+
+	// create a new html part and add it to the root level multipart
+	multipart := (*C.GMimeMultipart)(unsafe.Pointer(C.g_mime_message_get_mime_part(m.gmimeMessage)))
+	newHTMLpart := C.g_mime_text_part_new_with_subtype(cStringHTML)
+	cContent := C.CString(content)
+	defer C.g_free(C.gpointer(unsafe.Pointer(cContent)))
+	C.g_mime_text_part_set_text(newHTMLpart, cContent)
+	htmlPartAsObject := (*C.GMimeObject)(unsafe.Pointer(newHTMLpart))
+	C.g_mime_multipart_add(multipart, htmlPartAsObject)
 }
