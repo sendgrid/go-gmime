@@ -146,16 +146,18 @@ func TestAddHTMLPart(t *testing.T) {
 
 	htmlPayload := "<html><body></body></html>"
 	msg.AddHTMLPart(htmlPayload)
+	assert.Equal(t, "multipart/alternative", msg.ContentType())
 	exported, err := msg.Export()
 	assert.NoError(t, err)
 	assert.Contains(t, string(exported), htmlPayload)
 	msg.Close()
 
-	mimeBytes, err = ioutil.ReadFile("test_data/inline-attachment_nested_multipart.eml")
+	mimeBytes, err = ioutil.ReadFile("test_data/inline-attachment_multipart.eml")
 	assert.NoError(t, err)
 	msg, err = Parse(string(mimeBytes))
 	assert.NoError(t, err)
 	msg.AddHTMLPart(htmlPayload)
+	assert.Equal(t, "multipart/alternative", msg.ContentType())
 	exported, err = msg.Export()
 	assert.NoError(t, err)
 	assert.Contains(t, string(exported), htmlPayload)
