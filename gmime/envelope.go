@@ -144,3 +144,28 @@ func (m *Envelope) Close() {
 func (m *Envelope) asGMimeObject() *C.GMimeObject {
 	return (*C.GMimeObject)(unsafe.Pointer(m.gmimeMessage))
 }
+
+func (m *Envelope) AddHTMLAlternativeToPlainText(content string) bool {
+	rootPart := C.g_mime_message_get_mime_part(m.gmimeMessage)
+	ctype := C.gmime_get_content_type_string(rootPart)
+	defer C.g_free(C.gpointer(unsafe.Pointer(ctype)))
+
+	// if content type is not text/plain, we can't reliably add alternative html
+	goCType := C.GoString(ctype)
+	if goCType != "text/plain" {
+		return false
+	}
+
+	// set new multipart as root and add the original text/plain to it
+	multipart := C.g_mime_multipart_new_with_subtype(cStringAlternative)
+	C.g_mime_multipart_add(multipart, (*C.GMimeObject)(unsafe.Pointer(rootPart)))
+	C.g_mime_message_set_mime_part(m.gmimeMessage, (*C.GMimeObject)(unsafe.Pointer(multipart)))
+
+	// create a new html part and add it to the root level multipart
+	newHTMLpart := C.g_mime_text_part_new_with_subtype(cStringHTML)
+	cContent := C.CString(content)
+	defer C.g_free(C.gpointer(unsafe.Pointer(cContent)))
+	C.g_mime_text_part_set_text(newHTMLpart, cContent)
+	C.g_mime_multipart_add(multipart, (*C.GMimeObject)(unsafe.Pointer(newHTMLpart)))
+	return true
+}

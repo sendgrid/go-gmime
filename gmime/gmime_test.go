@@ -137,3 +137,31 @@ func TestParseAndMutationOnMime_NestedMultipart(t *testing.T) {
 	})
 	assert.NoError(t, err)
 }
+
+func TestAddHTMLAlternativeToPlainText(t *testing.T) {
+	mimeBytes, err := ioutil.ReadFile("test_data/textplain.eml")
+	assert.NoError(t, err)
+	msg, err := Parse(string(mimeBytes))
+	assert.NoError(t, err)
+
+	htmlPayload := "<html><body></body></html>"
+	added := msg.AddHTMLAlternativeToPlainText(htmlPayload)
+	assert.Equal(t, "multipart/alternative", msg.ContentType())
+	assert.True(t, added)
+	exported, err := msg.Export()
+	assert.NoError(t, err)
+	assert.Contains(t, string(exported), htmlPayload)
+	msg.Close()
+
+	mimeBytes, err = ioutil.ReadFile("test_data/inline-attachment_multipart.eml")
+	assert.NoError(t, err)
+	msg, err = Parse(string(mimeBytes))
+	assert.NoError(t, err)
+	added = msg.AddHTMLAlternativeToPlainText(htmlPayload)
+	assert.Equal(t, "multipart/alternative", msg.ContentType())
+	assert.False(t, added)
+	exported, err = msg.Export()
+	assert.NoError(t, err)
+	assert.NotContains(t, string(exported), htmlPayload)
+	msg.Close()
+}
