@@ -91,6 +91,12 @@ func (m *Envelope) Header(header string) string {
 	return C.GoString(cHeader)
 }
 
+func (m *Envelope) FromInternetAddress() string {
+	cHeader := C.gmime_from_internet_addr(m.gmimeMessage)
+
+	return C.GoString(cHeader)
+}
+
 // ContentType returns envelope's content-type
 func (m *Envelope) ContentType() string {
 	mimePart := C.g_mime_message_get_mime_part(m.gmimeMessage)

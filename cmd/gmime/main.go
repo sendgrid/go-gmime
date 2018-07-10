@@ -24,12 +24,13 @@ func main() {
 		panic(err)
 	}
 	defer msg.Close()
+	println("New stuff: ", msg.FromInternetAddress())
 	println("Envelope Subject: ", msg.Subject())
 	println("Envelope Content-Type:", msg.ContentType())
 	println("Envelope Message-ID", msg.Header("Message-ID"))
 	fmt.Println("All Headers:", msg.Headers())
 
-	msg.Walk(func(p *gmime.Part) {
+	msg.Walk(func(p *gmime.Part) error {
 		println("content-type:", p.ContentType())
 		if p.IsText() {
 			println("text:", p.Text())
@@ -37,6 +38,7 @@ func main() {
 		} else {
 			// fmt.Println("Bytes:", string(p.Bytes()))
 		}
+		return nil
 	})
 	println(">>> test")
 

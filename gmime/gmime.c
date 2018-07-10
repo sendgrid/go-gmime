@@ -23,6 +23,14 @@ GMimeMessage *gmime_parse (const char *buffer, size_t len) {
 	return message;
 }
 
+const char* gmime_from_internet_addr (GMimeMessage *message){
+	InternetAddressList *list = g_mime_message_get_addresses (message, GMIME_ADDRESS_TYPE_FROM);
+	int listLen = internet_address_list_length (list);
+	InternetAddress *addr = internet_address_list_get_address (list, 0);
+
+	return internet_address_mailbox_get_addr ((InternetAddressMailbox *)addr);
+}
+
 char* gmime_get_content_string (GMimeObject *object) {
 	if (!GMIME_IS_TEXT_PART (object)) {
 		return NULL;
