@@ -53,6 +53,9 @@ func (p *Part) Text() string {
 // Bytes returns decoded raw bytes of the part, most useful to access attachment data
 func (p *Part) Bytes() []byte {
 	b := C.gmime_get_bytes(p.gmimePart)
+	if b == nil {
+		return nil
+	}
 	defer C.g_byte_array_free((*C.GByteArray)(unsafe.Pointer(b)), C.TRUE)
 	return C.GoBytes(unsafe.Pointer(b.data), C.int(b.len))
 }
