@@ -79,6 +79,12 @@ func (m *Envelope) SetHeader(name string, value string) {
 // RemoveHeader removes existing header
 func (m *Envelope) RemoveHeader(name string) bool {
 	headers := C.g_mime_object_get_header_list(m.asGMimeObject())
+	return gobool(C.g_mime_header_list_remove(headers, C.CString(name)))
+}
+
+// RemoveAllHeaders removes all headers with the name if there are multiple
+func (m *Envelope) RemoveAllHeaders(name string) bool {
+	headers := C.g_mime_object_get_header_list(m.asGMimeObject())
 	maybeMore := true
 	removed := false
 	for maybeMore {

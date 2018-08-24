@@ -165,3 +165,19 @@ func TestAddHTMLAlternativeToPlainText(t *testing.T) {
 	assert.NotContains(t, string(exported), htmlPayload)
 	msg.Close()
 }
+
+func TestRemoveAll(t *testing.T) {
+	mimeBytes, err := ioutil.ReadFile("test_data/multipleHeaders.eml")
+	assert.NoError(t, err)
+	msg, err := Parse(string(mimeBytes))
+	assert.NoError(t, err)
+
+	removed := msg.RemoveAllHeaders("X-HEADER")
+	assert.Equal(t, "", msg.Header("X-HEADER"))
+	assert.True(t, removed)
+
+	removed = msg.RemoveAllHeaders("X-HEADER")
+	assert.False(t, removed)
+
+	assert.Equal(t, "Kien Pham <kien@sendgrid.com>", msg.Header("To"))
+}
