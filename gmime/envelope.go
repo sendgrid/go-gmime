@@ -41,7 +41,11 @@ func (m *Envelope) Subject() string {
 
 // SetSubject returns envelope's Subject
 func (m *Envelope) SetSubject(subject string) {
-	C.g_mime_message_set_subject(m.gmimeMessage, C.CString(subject), C.CString("UTF-8"))
+	cSubject := C.CString(subject)
+	defer C.free(unsafe.Pointer(cSubject))
+	cEncoding := C.CString("UTF-8")
+	defer C.free(unsafe.Pointer(cEncoding))
+	C.g_mime_message_set_subject(m.gmimeMessage, cSubject, cEncoding)
 }
 
 // Headers returns all headers for envelope
@@ -78,6 +82,8 @@ func (m *Envelope) SetHeader(name string, value string) {
 
 // RemoveHeader removes existing header
 func (m *Envelope) RemoveHeader(name string) bool {
+	cName := C.CString(name)
+	defer C.free(unsafe.Pointer(cName))
 	headers := C.g_mime_object_get_header_list(m.asGMimeObject())
 	return gobool(C.g_mime_header_list_remove(headers, C.CString(name)))
 }
@@ -85,11 +91,13 @@ func (m *Envelope) RemoveHeader(name string) bool {
 // RemoveAllHeaders removes all headers with the name if there are multiple
 func (m *Envelope) RemoveAllHeaders(name string) bool {
 	headers := C.g_mime_object_get_header_list(m.asGMimeObject())
-	maybeMore := true
+	cName := C.CString(name)
+	defer C.free(unsafe.Pointer(cName))
+	next := true
 	removed := false
-	for maybeMore {
-		maybeMore = C.g_mime_header_list_remove(headers, C.CString(name)) == 1
-		removed = removed || maybeMore
+	for next {
+		next = C.g_mime_header_list_remove(headers, cName) == 1
+		removed = removed || next
 	}
 
 	return removed
