@@ -43,9 +43,9 @@ func (m *Envelope) Subject() string {
 func (m *Envelope) SetSubject(subject string) {
 	cSubject := C.CString(subject)
 	defer C.free(unsafe.Pointer(cSubject))
-	cEncoding := C.CString("UTF-8")
-	defer C.free(unsafe.Pointer(cEncoding))
-	C.g_mime_message_set_subject(m.gmimeMessage, cSubject, cEncoding)
+	cType := C.CString("UTF-8")
+	defer C.free(unsafe.Pointer(cType))
+	C.g_mime_message_set_subject(m.gmimeMessage, cSubject, cType)
 }
 
 // Headers returns all headers for envelope
@@ -82,10 +82,10 @@ func (m *Envelope) SetHeader(name string, value string) {
 
 // RemoveHeader removes existing header
 func (m *Envelope) RemoveHeader(name string) bool {
+	headers := C.g_mime_object_get_header_list(m.asGMimeObject())
 	cName := C.CString(name)
 	defer C.free(unsafe.Pointer(cName))
-	headers := C.g_mime_object_get_header_list(m.asGMimeObject())
-	return gobool(C.g_mime_header_list_remove(headers, C.CString(name)))
+	return gobool(C.g_mime_header_list_remove(headers, cName))
 }
 
 // RemoveAllHeaders removes all headers with the name if there are multiple
@@ -123,6 +123,7 @@ func (m *Envelope) ContentType() string {
 // Walk iterates all message parts and executes callback on each part
 func (m *Envelope) Walk(cb func(p *Part) error) error {
 	partIter := C.g_mime_part_iter_new(m.asGMimeObject())
+	defer C.g_mime_part_iter_free(partIter)
 	for {
 		currentPart := C.g_mime_part_iter_get_current(partIter)
 		part := &Part{
@@ -166,6 +167,7 @@ func (m *Envelope) asGMimeObject() *C.GMimeObject {
 	return (*C.GMimeObject)(unsafe.Pointer(m.gmimeMessage))
 }
 
+// AddHTMLAlternativeToPlainText converts plain text to html
 func (m *Envelope) AddHTMLAlternativeToPlainText(content string) bool {
 	rootPart := C.g_mime_message_get_mime_part(m.gmimeMessage)
 	ctype := C.gmime_get_content_type_string(rootPart)
