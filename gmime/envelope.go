@@ -102,6 +102,7 @@ func (m *Envelope) ContentType() string {
 // Walk iterates all message parts and executes callback on each part
 func (m *Envelope) Walk(cb func(p *Part) error) error {
 	partIter := C.g_mime_part_iter_new(m.asGMimeObject())
+	defer C.g_mime_part_iter_free(partIter)
 	for {
 		currentPart := C.g_mime_part_iter_get_current(partIter)
 		part := &Part{
