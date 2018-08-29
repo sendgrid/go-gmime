@@ -88,6 +88,21 @@ func (m *Envelope) RemoveHeader(name string) bool {
 	return gobool(C.g_mime_header_list_remove(headers, cName))
 }
 
+// RemoveAllHeaders removes all headers with the name if there are multiple
+func (m *Envelope) RemoveAllHeaders(name string) bool {
+	headers := C.g_mime_object_get_header_list(m.asGMimeObject())
+	cName := C.CString(name)
+	defer C.free(unsafe.Pointer(cName))
+	next := true
+	removed := false
+	for next {
+		next = C.g_mime_header_list_remove(headers, cName) == 1
+		removed = removed || next
+	}
+
+	return removed
+}
+
 // Header returns *first* header from envelope
 // if user wants to get all headers use `Headers` function
 func (m *Envelope) Header(header string) string {
