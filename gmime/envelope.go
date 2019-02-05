@@ -10,6 +10,7 @@ import (
 	"errors"
 	"fmt"
 	"net/textproto"
+	"strings"
 	"unsafe"
 )
 
@@ -78,6 +79,62 @@ func (m *Envelope) SetHeader(name string, value string) {
 	defer C.free(unsafe.Pointer(cCharset))
 
 	C.g_mime_header_list_set(headers, cName, cValue, cCharset)
+}
+
+// AddAddress adds an address from/sender/reply-to/to to/cc/bcc
+func (m *Envelope) AddAddress(header, name, address string) error {
+	cName := C.CString(name)
+	defer C.free(unsafe.Pointer(cName))
+	cAddress := C.CString(address)
+	defer C.free(unsafe.Pointer(cAddress))
+
+	var addressList *C.InternetAddressList
+	switch strings.ToLower(header) {
+	case "from":
+		addressList = C.g_mime_message_get_from(m.gmimeMessage)
+	case "sender":
+		addressList = C.g_mime_message_get_sender(m.gmimeMessage)
+	case "reply-to":
+		addressList = C.g_mime_message_get_reply_to(m.gmimeMessage)
+	case "to":
+		addressList = C.g_mime_message_get_to(m.gmimeMessage)
+	case "cc":
+		addressList = C.g_mime_message_get_cc(m.gmimeMessage)
+	case "bcc":
+		addressList = C.g_mime_message_get_bcc(m.gmimeMessage)
+	default:
+		return fmt.Errorf("unknown header %s", header)
+	}
+
+	mb := C.internet_address_mailbox_new(cName, cAddress)
+	C.internet_address_list_add(addressList, mb)
+	return nil
+}
+
+// ClearAddress will clear the from/sender/reply-to/to/cc/bcc list
+// however, it will not clear the header name!
+// if you want the entire header removed, use RemoveHeader
+func (m *Envelope) ClearAddress(header string) error {
+	var addressList *C.InternetAddressList
+	switch strings.ToLower(header) {
+	case "from":
+		addressList = C.g_mime_message_get_from(m.gmimeMessage)
+	case "sender":
+		addressList = C.g_mime_message_get_sender(m.gmimeMessage)
+	case "reply-to":
+		addressList = C.g_mime_message_get_reply_to(m.gmimeMessage)
+	case "to":
+		addressList = C.g_mime_message_get_to(m.gmimeMessage)
+	case "cc":
+		addressList = C.g_mime_message_get_cc(m.gmimeMessage)
+	case "bcc":
+		addressList = C.g_mime_message_get_bcc(m.gmimeMessage)
+	default:
+		return fmt.Errorf("unknown header %s", header)
+	}
+
+	C.internet_address_list_clear(addressList)
+	return nil
 }
 
 // RemoveHeader removes existing header

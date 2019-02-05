@@ -24,21 +24,29 @@ func main() {
 		panic(err)
 	}
 	defer msg.Close()
-	println("Envelope Subject: ", msg.Subject())
-	println("Envelope Content-Type:", msg.ContentType())
-	println("Envelope Message-ID", msg.Header("Message-ID"))
-	fmt.Println("All Headers:", msg.Headers())
 
-	msg.Walk(func(p *gmime.Part) {
-		println("content-type:", p.ContentType())
-		if p.IsText() {
-			println("text:", p.Text())
-			p.SetText("my replaced всякий текст スラングまで幅広く収録")
-		} else {
-			// fmt.Println("Bytes:", string(p.Bytes()))
-		}
-	})
-	println(">>> test")
+	// msg.TestTo()
+	// msg.SetHeader("To", "さくらフォレスト[STAGING] <sakura_forest_ml@fiilse.com>")
+	err = msg.AddAddress("to", "", "さくらフォレスト[STAGING] <sakura_forest_ml@fiilse.com>")
+	if err != nil {
+		fmt.Printf("%s\n", err)
+	}
+	err = msg.AddAddress("bbcc", "", "さくらフォレスト[STAGING] <sakura_forest_ml@fiilse.com>")
+	if err != nil {
+		fmt.Printf("%s\n", err)
+	}
+
+	msg.ClearAddress("to")
+	msg.AddAddress("to", "", "hola@hola.com")
+	msg.ClearAddress("from")
+	msg.AddAddress("from", "from", "somewhere@somewhere.com")
+
+	b, err := msg.Export()
+	if err != nil {
+		fmt.Printf("%v\n", err)
+	}
+
+	fmt.Printf("%s\n", string(b))
 
 	// data, _ = msg.Export()
 	// println(">>>>>>>>>>>>> Export: ", string(data))
