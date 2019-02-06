@@ -10,6 +10,7 @@ import (
 	"errors"
 	"fmt"
 	"net/textproto"
+	"strings"
 	"unsafe"
 )
 
@@ -68,16 +69,78 @@ func (m *Envelope) Headers() textproto.MIMEHeader {
 }
 
 // SetHeader sets or replaces specified header
-func (m *Envelope) SetHeader(name string, value string) {
-	headers := C.g_mime_object_get_header_list(m.asGMimeObject())
+func (m *Envelope) SetHeader(name string, value string) error {
+	switch strings.ToLower(name) {
+	case "from", "sender", "reply-to", "to", "cc", "bcc":
+		return fmt.Errorf("use AddAddress for %s", name)
+	default:
+		headers := C.g_mime_object_get_header_list(m.asGMimeObject())
+		cName := C.CString(name)
+		defer C.free(unsafe.Pointer(cName))
+		cValue := C.CString(value)
+		defer C.free(unsafe.Pointer(cValue))
+		cCharset := C.CString("UTF-8")
+		defer C.free(unsafe.Pointer(cCharset))
+
+		C.g_mime_header_list_set(headers, cName, cValue, cCharset)
+		return nil
+	}
+}
+
+// AddAddress adds an address from/sender/reply-to/to to/cc/bcc
+func (m *Envelope) AddAddress(header, name, address string) error {
 	cName := C.CString(name)
 	defer C.free(unsafe.Pointer(cName))
-	cValue := C.CString(value)
-	defer C.free(unsafe.Pointer(cValue))
-	cCharset := C.CString("UTF-8")
-	defer C.free(unsafe.Pointer(cCharset))
+	cAddress := C.CString(address)
+	defer C.free(unsafe.Pointer(cAddress))
 
-	C.g_mime_header_list_set(headers, cName, cValue, cCharset)
+	var addressList *C.InternetAddressList
+	switch strings.ToLower(header) {
+	case "from":
+		addressList = C.g_mime_message_get_from(m.gmimeMessage)
+	case "sender":
+		addressList = C.g_mime_message_get_sender(m.gmimeMessage)
+	case "reply-to":
+		addressList = C.g_mime_message_get_reply_to(m.gmimeMessage)
+	case "to":
+		addressList = C.g_mime_message_get_to(m.gmimeMessage)
+	case "cc":
+		addressList = C.g_mime_message_get_cc(m.gmimeMessage)
+	case "bcc":
+		addressList = C.g_mime_message_get_bcc(m.gmimeMessage)
+	default:
+		return fmt.Errorf("unknown header %s", header)
+	}
+
+	mb := C.internet_address_mailbox_new(cName, cAddress)
+	C.internet_address_list_add(addressList, mb)
+	return nil
+}
+
+// ClearAddress will clear the from/sender/reply-to/to/cc/bcc list
+// however, it will not clear the header name!
+// if you want the entire header removed, use RemoveHeader
+func (m *Envelope) ClearAddress(header string) error {
+	var addressList *C.InternetAddressList
+	switch strings.ToLower(header) {
+	case "from":
+		addressList = C.g_mime_message_get_from(m.gmimeMessage)
+	case "sender":
+		addressList = C.g_mime_message_get_sender(m.gmimeMessage)
+	case "reply-to":
+		addressList = C.g_mime_message_get_reply_to(m.gmimeMessage)
+	case "to":
+		addressList = C.g_mime_message_get_to(m.gmimeMessage)
+	case "cc":
+		addressList = C.g_mime_message_get_cc(m.gmimeMessage)
+	case "bcc":
+		addressList = C.g_mime_message_get_bcc(m.gmimeMessage)
+	default:
+		return fmt.Errorf("unknown header %s", header)
+	}
+
+	C.internet_address_list_clear(addressList)
+	return nil
 }
 
 // RemoveHeader removes existing header

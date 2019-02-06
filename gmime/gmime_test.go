@@ -181,3 +181,94 @@ func TestRemoveAll(t *testing.T) {
 
 	assert.Equal(t, "Kien Pham <kien@sendgrid.com>", msg.Header("To"))
 }
+
+func TestAddAddresses(t *testing.T) {
+	tests := []struct {
+		header        string
+		phrase        string
+		address       string
+		expectedError string
+	}{
+		{"to", "123", "to@to.com", ""},
+		{"cc", "456", "cc@cc.com", ""},
+		{"bcc", "789", "cc@cc.com", ""},
+		{"from", "2342789", "from@from.com", ""},
+		{"sender", "78119", "sender@sender.com", ""},
+		{"reply-to", "734389", "reply-to@reply-to.com", ""},
+		{"wtf", "999", "wtf@wtf.com", "unknown header wtf"},
+	}
+
+	for _, test := range tests {
+		mimeBytes, err := ioutil.ReadFile("test_data/multipleHeaders.eml")
+		assert.NoError(t, err)
+		msg, err := Parse(string(mimeBytes))
+		assert.NoError(t, err)
+
+		err = msg.AddAddress(test.header, test.phrase, test.address)
+		if test.expectedError == "" {
+			assert.NoError(t, err)
+
+			to := msg.Header(test.header)
+			assert.Contains(t, to, test.address)
+
+			newMime, err := msg.Export()
+			m := string(newMime)
+			assert.NoError(t, err)
+			assert.Contains(t, m, test.address)
+			assert.Contains(t, m, test.phrase)
+		} else {
+			assert.Contains(t, err.Error(), test.expectedError)
+		}
+	}
+}
+
+func TestClearAddress(t *testing.T) {
+	mimeBytes, err := ioutil.ReadFile("test_data/multipleHeaders.eml")
+	assert.NoError(t, err)
+	msg, err := Parse(string(mimeBytes))
+	assert.NoError(t, err)
+
+	err = msg.ClearAddress("from")
+	assert.NoError(t, err)
+	err = msg.ClearAddress("to")
+	assert.NoError(t, err)
+	err = msg.ClearAddress("sender")
+	assert.NoError(t, err)
+	err = msg.ClearAddress("reply-to")
+	assert.NoError(t, err)
+	err = msg.ClearAddress("bcc")
+	assert.NoError(t, err)
+	err = msg.ClearAddress("cc")
+	assert.NoError(t, err)
+	err = msg.ClearAddress("wtf")
+	assert.Contains(t, err.Error(), "unknown header wtf")
+
+	newMime, err := msg.Export()
+	m := string(newMime)
+	assert.NotContains(t, m, "kien@sendgrid.com")
+	assert.NotContains(t, m, "kpham@sendgrid.com")
+	assert.NotContains(t, m, "kane@sendgrid.com")
+	assert.NotContains(t, m, "isaac@sendgrid.com")
+	assert.NotContains(t, m, "tim@sendgrid.com")
+	assert.NotContains(t, m, "trevor@sendgrid.com")
+}
+
+func TestSetHeaderAddress(t *testing.T) {
+	mimeBytes, err := ioutil.ReadFile("test_data/multipleHeaders.eml")
+	assert.NoError(t, err)
+	msg, err := Parse(string(mimeBytes))
+	assert.NoError(t, err)
+
+	err = msg.SetHeader("from", "someone@somewhere.com")
+	assert.Error(t, err)
+	err = msg.SetHeader("sender", "someone@somewhere.com")
+	assert.Error(t, err)
+	err = msg.SetHeader("reply-to", "someone@somewhere.com")
+	assert.Error(t, err)
+	err = msg.SetHeader("to", "someone@somewhere.com")
+	assert.Error(t, err)
+	err = msg.SetHeader("cc", "someone@somewhere.com")
+	assert.Error(t, err)
+	err = msg.SetHeader("bcc", "someone@somewhere.com")
+	assert.Error(t, err)
+}
