@@ -252,3 +252,23 @@ func TestClearAddress(t *testing.T) {
 	assert.NotContains(t, m, "tim@sendgrid.com")
 	assert.NotContains(t, m, "trevor@sendgrid.com")
 }
+
+func TestSetHeaderAddress(t *testing.T) {
+	mimeBytes, err := ioutil.ReadFile("test_data/multipleHeaders.eml")
+	assert.NoError(t, err)
+	msg, err := Parse(string(mimeBytes))
+	assert.NoError(t, err)
+
+	err = msg.SetHeader("from", "someone@somewhere.com")
+	assert.Error(t, err)
+	err = msg.SetHeader("sender", "someone@somewhere.com")
+	assert.Error(t, err)
+	err = msg.SetHeader("reply-to", "someone@somewhere.com")
+	assert.Error(t, err)
+	err = msg.SetHeader("to", "someone@somewhere.com")
+	assert.Error(t, err)
+	err = msg.SetHeader("cc", "someone@somewhere.com")
+	assert.Error(t, err)
+	err = msg.SetHeader("bcc", "someone@somewhere.com")
+	assert.Error(t, err)
+}

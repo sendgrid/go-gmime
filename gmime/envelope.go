@@ -69,7 +69,22 @@ func (m *Envelope) Headers() textproto.MIMEHeader {
 }
 
 // SetHeader sets or replaces specified header
-func (m *Envelope) SetHeader(name string, value string) {
+func (m *Envelope) SetHeader(name string, value string) error {
+	switch strings.ToLower(name) {
+	case "from":
+		fallthrough
+	case "sender":
+		fallthrough
+	case "reply-to":
+		fallthrough
+	case "to":
+		fallthrough
+	case "cc":
+		fallthrough
+	case "bcc":
+		return fmt.Errorf("use AddAddress for %s", name)
+	}
+
 	headers := C.g_mime_object_get_header_list(m.asGMimeObject())
 	cName := C.CString(name)
 	defer C.free(unsafe.Pointer(cName))
@@ -79,6 +94,7 @@ func (m *Envelope) SetHeader(name string, value string) {
 	defer C.free(unsafe.Pointer(cCharset))
 
 	C.g_mime_header_list_set(headers, cName, cValue, cCharset)
+	return nil
 }
 
 // AddAddress adds an address from/sender/reply-to/to to/cc/bcc
