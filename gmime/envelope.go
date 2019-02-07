@@ -109,11 +109,40 @@ func (m *Envelope) AddAddress(header, name, address string) error {
 	case "bcc":
 		addressList = C.g_mime_message_get_bcc(m.gmimeMessage)
 	default:
-		return fmt.Errorf("unknown header %s", header)
+		return fmt.Errorf("can't add to header %s", header)
 	}
 
 	mb := C.internet_address_mailbox_new(cName, cAddress)
 	C.internet_address_list_add(addressList, mb)
+	return nil
+}
+
+// ParseAndAppendAddresses will attempt to parse a string and appends to the list
+func (m *Envelope) ParseAndAppendAddresses(header, addresses string) error {
+	cAddresses := C.CString(addresses)
+	defer C.free(unsafe.Pointer(cAddresses))
+
+	var addressList *C.InternetAddressList
+	switch strings.ToLower(header) {
+	case "from":
+		addressList = C.g_mime_message_get_from(m.gmimeMessage)
+	case "sender":
+		addressList = C.g_mime_message_get_sender(m.gmimeMessage)
+	case "reply-to":
+		addressList = C.g_mime_message_get_reply_to(m.gmimeMessage)
+	case "to":
+		addressList = C.g_mime_message_get_to(m.gmimeMessage)
+	case "cc":
+		addressList = C.g_mime_message_get_cc(m.gmimeMessage)
+	case "bcc":
+		addressList = C.g_mime_message_get_bcc(m.gmimeMessage)
+	default:
+		return fmt.Errorf("can't append addresses to header %s", header)
+	}
+
+	options := C.g_mime_parser_options_new()
+	parsed := C.internet_address_list_parse(options, cAddresses)
+	C.internet_address_list_append(addressList, parsed)
 	return nil
 }
 

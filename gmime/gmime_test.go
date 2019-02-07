@@ -272,3 +272,30 @@ func TestSetHeaderAddress(t *testing.T) {
 	err = msg.SetHeader("bcc", "someone@somewhere.com")
 	assert.Error(t, err)
 }
+
+func TestParseAndAppendAddresses(t *testing.T) {
+	tests := []struct {
+		addresses string
+		expected  string
+	}{
+		{"a@a.com", "a@a.com"},
+		{"a@a.com,b@b.com", "a@a.com, b@b.com"},
+		{"a@a.com b@b.com", "a@a.com, b@b.com"},
+		{"a <a@a.com> b b@b.com", "a <a@a.com>"},
+		{`a a@a.com, b <b@b.com>, "c" <c@c.com>`, "b <b@b.com>, c <c@c.com>"},
+		{`a@a.com,b <b@b.com>`, "a@a.com, b <b@b.com>"},
+		{`a@a.com,[] <badbrackets@b.com>, c <c@c.com>`, "a@a.com, c <c@c.com>"},
+		{`a@a.com, "[]" <goodbrackets@b.com>, c@c.com`, `a@a.com, "[]" <goodbrackets@b.com>, c@c.com`},
+	}
+
+	for _, test := range tests {
+		mimeBytes, err := ioutil.ReadFile("test_data/multipleHeaders.eml")
+		assert.NoError(t, err)
+		msg, err := Parse(string(mimeBytes))
+		assert.NoError(t, err)
+
+		msg.RemoveHeader("to")
+		msg.ParseAndAppendAddresses("to", test.addresses)
+		assert.Equal(t, test.expected, msg.Header("to"))
+	}
+}
