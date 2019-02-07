@@ -140,8 +140,7 @@ func (m *Envelope) ParseAndAppendAddresses(header, addresses string) error {
 		return fmt.Errorf("can't append addresses to header %s", header)
 	}
 
-	options := C.g_mime_parser_options_new()
-	parsed := C.internet_address_list_parse(options, cAddresses)
+	parsed := C.internet_address_list_parse(C.g_mime_parser_options_get_default(), cAddresses)
 	C.internet_address_list_append(addressList, parsed)
 	return nil
 }
