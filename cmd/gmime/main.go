@@ -25,21 +25,7 @@ func main() {
 	}
 	defer msg.Close()
 
-	// msg.TestTo()
-	// msg.SetHeader("To", "さくらフォレスト[STAGING] <sakura_forest_ml@fiilse.com>")
-	err = msg.AddAddress("to", "", "さくらフォレスト[STAGING] <sakura_forest_ml@fiilse.com>")
-	if err != nil {
-		fmt.Printf("%s\n", err)
-	}
-	err = msg.AddAddress("bbcc", "", "さくらフォレスト[STAGING] <sakura_forest_ml@fiilse.com>")
-	if err != nil {
-		fmt.Printf("%s\n", err)
-	}
-
-	msg.ClearAddress("to")
-	msg.AddAddress("to", "", "hola@hola.com")
-	msg.ClearAddress("from")
-	msg.AddAddress("from", "from", "somewhere@somewhere.com")
+	// test stuff goes here
 
 	b, err := msg.Export()
 	if err != nil {
