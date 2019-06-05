@@ -1,0 +1,12 @@
+MIME-Version: 1.0
+Received: by 10.220.115.205 with HTTP; Tue, 27 May 2014 13:46:04 -0700 (PDT)
+Date: Tue, 27 May 2014 13:46:04 -0700
+Delivered-To: kien.pham@sendgrid.com
+Message-ID: <CAGPJ=uY91HEGoszHE9ELkB3wfcNJN4NGORM9q-vV8o_XJceBmg@mail.gmail.com>
+Subject: test inline image attachment
+From: Kien Pham <kien.pham@sendgrid.com>
+To: Kien Pham <kien@sendgrid.com>
+Content-Type: text/plain
+Content-Disposition: attachment
+
+this message has just plain text

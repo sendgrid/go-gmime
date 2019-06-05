@@ -299,3 +299,28 @@ func TestParseAndAppendAddresses(t *testing.T) {
 		assert.Equal(t, test.expected, msg.Header("to"))
 	}
 }
+
+func TestIsAttachment(t *testing.T) {
+	tests := []struct {
+		filename     string
+		isAttachment bool
+	}{
+		{"textplain.eml", false},
+		{"multipleHeaders.eml", false},
+		{"attachmentwithname.eml", true},
+		{"attachmentwithoutname.eml", true},
+		{"inlineattachment.eml", true},
+		{"inline.eml", false},
+	}
+
+	for _, test := range tests {
+		mimeBytes, err := ioutil.ReadFile(fmt.Sprintf("test_data/%s", test.filename))
+		assert.NoError(t, err)
+		msg, err := Parse(string(mimeBytes))
+		assert.NoError(t, err)
+		msg.Walk(func(p *Part) error {
+			assert.Equal(t, test.isAttachment, p.IsAttachment())
+			return nil
+		})
+	}
+}
