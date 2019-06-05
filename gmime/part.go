@@ -29,12 +29,19 @@ func (p *Part) IsText() bool {
 	return gobool(C.gmime_is_text_part(p.gmimePart))
 }
 
-// IsAttachment returns true if part's mime is attachment
+// IsAttachment returns true if part's mime is attachment or inline attachment
 func (p *Part) IsAttachment() bool {
 	if gobool(C.gmime_is_multi_part(p.gmimePart)) {
 		return false
 	}
-	return gobool(C.g_mime_part_is_attachment((*C.GMimePart)(unsafe.Pointer(p.gmimePart))))
+	if gobool(C.g_mime_part_is_attachment((*C.GMimePart)(unsafe.Pointer(p.gmimePart)))) {
+		return true
+	}
+	if len(p.Filename()) > 0 {
+		return true
+	}
+
+	return false
 }
 
 // Filename retrieves the filename of the part
