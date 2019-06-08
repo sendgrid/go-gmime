@@ -9,6 +9,7 @@ import "C"
 import (
 	"errors"
 	"fmt"
+	"net/mail"
 	"net/textproto"
 	"strings"
 	"unsafe"
@@ -142,6 +143,36 @@ func (m *Envelope) ParseAndAppendAddresses(header, addresses string) error {
 
 	parsed := C.internet_address_list_parse(C.g_mime_parser_options_get_default(), cAddresses)
 	C.internet_address_list_append(addressList, parsed)
+	return nil
+}
+
+// AppendAddressList appends a list of mail.Addresses to the specified header
+func (m *Envelope) AppendAddressList(header string, addrs []*mail.Address) error {
+	var addressList *C.InternetAddressList
+	switch strings.ToLower(header) {
+	case "from":
+		addressList = C.g_mime_message_get_from(m.gmimeMessage)
+	case "sender":
+		addressList = C.g_mime_message_get_sender(m.gmimeMessage)
+	case "reply-to":
+		addressList = C.g_mime_message_get_reply_to(m.gmimeMessage)
+	case "to":
+		addressList = C.g_mime_message_get_to(m.gmimeMessage)
+	case "cc":
+		addressList = C.g_mime_message_get_cc(m.gmimeMessage)
+	case "bcc":
+		addressList = C.g_mime_message_get_bcc(m.gmimeMessage)
+	default:
+		return fmt.Errorf("can't append addresses to header %s", header)
+	}
+	for _, addr := range addrs {
+		name := C.CString(addr.Name)
+		addr := C.CString(addr.Address)
+		mb := C.internet_address_mailbox_new(name, addr)
+		C.free(unsafe.Pointer(name))
+		C.free(unsafe.Pointer(addr))
+		C.internet_address_list_add(addressList, mb)
+	}
 	return nil
 }
 

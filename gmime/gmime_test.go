@@ -3,6 +3,7 @@ package gmime
 import (
 	"fmt"
 	"io/ioutil"
+	"net/mail"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -195,7 +196,7 @@ func TestAddAddresses(t *testing.T) {
 		{"from", "2342789", "from@from.com", ""},
 		{"sender", "78119", "sender@sender.com", ""},
 		{"reply-to", "734389", "reply-to@reply-to.com", ""},
-		{"wtf", "999", "wtf@wtf.com", "unknown header wtf"},
+		{"wtf", "999", "wtf@wtf.com", "can't add to header wtf"},
 	}
 
 	for _, test := range tests {
@@ -322,5 +323,123 @@ func TestIsAttachment(t *testing.T) {
 			assert.Equal(t, test.isAttachment, p.IsAttachment())
 			return nil
 		})
+	}
+}
+
+func TestParseAddressList(t *testing.T) {
+	tests := []struct {
+		addrList  string
+		gAddrList []*mail.Address
+	}{
+		{
+			addrList: "Foo Bar <foo@bar.baz>",
+			gAddrList: []*mail.Address{
+				&mail.Address{
+					Name:    "Foo Bar",
+					Address: "foo@bar.baz",
+				},
+			},
+		},
+		{
+			addrList: "Foo Bar <foo@bar.baz>, Bar Baz <bar@foo.com>",
+			gAddrList: []*mail.Address{
+				&mail.Address{
+					Name:    "Foo Bar",
+					Address: "foo@bar.baz",
+				},
+				&mail.Address{
+					Name:    "Bar Baz",
+					Address: "bar@foo.com",
+				},
+			},
+		},
+		{
+			addrList: "Foo Bar <foo@bar.baz>, Bar Baz <bar@foo.com>, Not an email at all",
+			gAddrList: []*mail.Address{
+				&mail.Address{
+					Name:    "Foo Bar",
+					Address: "foo@bar.baz",
+				},
+				&mail.Address{
+					Name:    "Bar Baz",
+					Address: "bar@foo.com",
+				},
+			},
+		},
+		{
+			addrList: "Foo Bar <foo@bar.baz>, Bar Baz <bar@foo.com>, Another Email <another.email@mail.com>",
+			gAddrList: []*mail.Address{
+				&mail.Address{
+					Name:    "Foo Bar",
+					Address: "foo@bar.baz",
+				},
+				&mail.Address{
+					Name:    "Bar Baz",
+					Address: "bar@foo.com",
+				},
+				&mail.Address{
+					Name:    "Another Email",
+					Address: "another.email@mail.com",
+				},
+			},
+		},
+	}
+
+	for _, test := range tests {
+		got := ParseAddressList(test.addrList)
+		assert.Equal(t, test.gAddrList, got)
+	}
+}
+
+func TestAppendAddressList(t *testing.T) {
+	tests := []struct {
+		addrs  []*mail.Address
+		header string
+	}{
+		{
+			header: "Foo Bar <foo@bar.baz>, Bar Baz <bar@foo.com>, Another Email\t<another.email@mail.com>",
+			addrs: []*mail.Address{
+				&mail.Address{
+					Name:    "Foo Bar",
+					Address: "foo@bar.baz",
+				},
+				&mail.Address{
+					Name:    "Bar Baz",
+					Address: "bar@foo.com",
+				},
+				&mail.Address{
+					Name:    "Another Email",
+					Address: "another.email@mail.com",
+				},
+			},
+		},
+		{
+			header: "Foo Bar <foo@bar.baz>, Bar Baz <bar@foo.com>",
+			addrs: []*mail.Address{
+				&mail.Address{
+					Name:    "Foo Bar",
+					Address: "foo@bar.baz",
+				},
+				&mail.Address{
+					Name:    "Bar Baz",
+					Address: "bar@foo.com",
+				},
+			},
+		},
+		// This is an actual test, no addrs == empty header
+		{},
+	}
+
+	for _, test := range tests {
+		mimeBytes, err := ioutil.ReadFile("test_data/multipleHeaders.eml")
+		assert.NoError(t, err)
+		msg, err := Parse(string(mimeBytes))
+		assert.NoError(t, err)
+
+		msg.RemoveHeader("from")
+		err = msg.AppendAddressList("from", test.addrs)
+		assert.NoError(t, err)
+
+		assert.Equal(t, test.header, msg.Header("from"))
 	}
 }
