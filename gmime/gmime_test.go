@@ -383,6 +383,59 @@ func TestParseAddressList(t *testing.T) {
 				},
 			},
 		},
+		{
+			addrList: "<foo@bar.baz>, <bar@foo.baz>",
+			gAddrList: []*mail.Address{
+				&mail.Address{
+					Address: "foo@bar.baz",
+				},
+				&mail.Address{
+					Address: "bar@foo.baz",
+				},
+			},
+		},
+		{
+			addrList: "foo@bar.baz, <bar@foo.baz>",
+			gAddrList: []*mail.Address{
+				&mail.Address{
+					Address: "foo@bar.baz",
+				},
+				&mail.Address{
+					Address: "bar@foo.baz",
+				},
+			},
+		},
+		{
+			addrList: "foo@bar.baz, Bar Foo <bar@foo.baz>",
+			gAddrList: []*mail.Address{
+				&mail.Address{
+					Address: "foo@bar.baz",
+				},
+				&mail.Address{
+					Name:    "Bar Foo",
+					Address: "bar@foo.baz",
+				},
+			},
+		},
+		{
+			addrList: "foo@bar.baz, Bar Foo bar@foo.baz",
+			gAddrList: []*mail.Address{
+				&mail.Address{
+					Address: "foo@bar.baz",
+				},
+			},
+		},
+		{
+			addrList: "foo@bar.baz, bar@foo.baz",
+			gAddrList: []*mail.Address{
+				&mail.Address{
+					Address: "foo@bar.baz",
+				},
+				&mail.Address{
+					Address: "bar@foo.baz",
+				},
+			},
+		},
 	}
 
 	for _, test := range tests {
