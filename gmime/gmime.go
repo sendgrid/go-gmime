@@ -5,6 +5,10 @@ package gmime
 #include "gmime.h"
 */
 import "C"
+import (
+	"net/mail"
+	"unsafe"
+)
 
 var (
 	cStringEmpty       = C.CString("")
@@ -52,4 +56,36 @@ func gobool(b C.gboolean) bool {
 // free up memory
 func unref(referee C.gpointer) {
 	C.g_object_unref(referee)
+}
+
+func ParseAddressList(addrs string) []*mail.Address {
+	cAddrs := C.CString(addrs)
+	defer C.free(unsafe.Pointer(cAddrs))
+	parsedAddrs := C.internet_address_list_parse(C.g_mime_parser_options_get_default(), cAddrs)
+	nAddrs := C.internet_address_list_length(parsedAddrs)
+
+	if nAddrs <= 0 {
+		return nil
+	}
+	var i C.int
+	goAddrs := make([]*mail.Address, nAddrs)
+	for i = 0; i < nAddrs; i++ {
+		address := C.internet_address_list_get_address(parsedAddrs, i)
+		gAddr := convertToGoAddress(address)
+		goAddrs[i] = gAddr
+	}
+	return goAddrs
+}
+
+func convertToGoAddress(addr *C.InternetAddress) *mail.Address {
+	var gAddr mail.Address
+	name := C.internet_address_get_name(addr)
+	address := C.internet_address_mailbox_get_addr((*C.InternetAddressMailbox)(unsafe.Pointer(addr)))
+	defer C.free(unsafe.Pointer(name))
+	defer C.free(unsafe.Pointer(address))
+	if name != nil {
+		gAddr.Name = C.GoString(name)
+	}
+	gAddr.Address = C.GoString(address)
+	return &gAddr
 }
