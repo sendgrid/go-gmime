@@ -142,7 +142,10 @@ func (m *Envelope) ParseAndAppendAddresses(header, addresses string) error {
 	}
 
 	parsed := C.internet_address_list_parse(C.g_mime_parser_options_get_default(), cAddresses)
-	C.internet_address_list_append(addressList, parsed)
+	if parsed != nil {
+		defer C.g_object_unref((C.gpointer)(unsafe.Pointer(parsed)))
+		C.internet_address_list_append(addressList, parsed)
+	}
 	return nil
 }
 
@@ -237,9 +240,12 @@ func (m *Envelope) Header(header string) string {
 // ContentType returns envelope's content-type
 func (m *Envelope) ContentType() string {
 	mimePart := C.g_mime_message_get_mime_part(m.gmimeMessage)
-	ctype := C.gmime_get_content_type_string(mimePart)
-	defer C.g_free(C.gpointer(unsafe.Pointer(ctype)))
-	return C.GoString(ctype)
+	if mimePart != nil && !gobool(C.gmime_is_content_type(mimePart)) {
+		ctype := C.gmime_get_content_type_string(mimePart)
+		defer C.g_free(C.gpointer(unsafe.Pointer(ctype)))
+		return C.GoString(ctype)
+	}
+	return ""
 }
 
 // Walk iterates all message parts and executes callback on each part

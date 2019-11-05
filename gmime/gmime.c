@@ -34,6 +34,14 @@ gboolean gmime_is_multi_part (GMimeObject *object) {
 	return GMIME_IS_MULTIPART (object);
 }
 
+gboolean gmime_is_part (GMimeObject *object) {
+	return GMIME_IS_PART (object);
+}
+
+gboolean gmime_is_content_type (GMimeObject *object) {
+	return GMIME_IS_CONTENT_TYPE (object);
+}
+
 void gmime_type_name(GMimeObject *object){
 	printf("Name: %s\n", G_OBJECT_TYPE_NAME (object));
 }
