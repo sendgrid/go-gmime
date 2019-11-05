@@ -240,7 +240,7 @@ func (m *Envelope) Header(header string) string {
 // ContentType returns envelope's content-type
 func (m *Envelope) ContentType() string {
 	mimePart := C.g_mime_message_get_mime_part(m.gmimeMessage)
-	if mimePart != nil && !gobool(C.gmime_is_content_type(mimePart)) {
+	if mimePart != nil {
 		ctype := C.gmime_get_content_type_string(mimePart)
 		defer C.g_free(C.gpointer(unsafe.Pointer(ctype)))
 		return C.GoString(ctype)
