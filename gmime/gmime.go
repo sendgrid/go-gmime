@@ -58,15 +58,22 @@ func unref(referee C.gpointer) {
 	C.g_object_unref(referee)
 }
 
+// ParseAddressList parses and returns address list
 func ParseAddressList(addrs string) []*mail.Address {
 	cAddrs := C.CString(addrs)
 	defer C.free(unsafe.Pointer(cAddrs))
 	parsedAddrs := C.internet_address_list_parse(C.g_mime_parser_options_get_default(), cAddrs)
+	if parsedAddrs == nil {
+		return nil
+	}
+	// dont move this up next to instatiation. we dont want to free this if parseAddrs is nil
+	// gmime will free it
+	defer C.g_object_unref((C.gpointer)(unsafe.Pointer(parsedAddrs)))
 	nAddrs := C.internet_address_list_length(parsedAddrs)
-
 	if nAddrs <= 0 {
 		return nil
 	}
+
 	var i C.int
 	goAddrs := make([]*mail.Address, nAddrs)
 	for i = 0; i < nAddrs; i++ {
@@ -81,8 +88,6 @@ func convertToGoAddress(addr *C.InternetAddress) *mail.Address {
 	var gAddr mail.Address
 	name := C.internet_address_get_name(addr)
 	address := C.internet_address_mailbox_get_addr((*C.InternetAddressMailbox)(unsafe.Pointer(addr)))
-	defer C.free(unsafe.Pointer(name))
-	defer C.free(unsafe.Pointer(address))
 	if name != nil {
 		gAddr.Name = C.GoString(name)
 	}
