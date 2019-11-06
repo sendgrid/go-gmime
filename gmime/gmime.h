@@ -11,3 +11,4 @@ gboolean gmime_is_text_part (GMimeObject *object);
 gboolean gmime_is_content_type (GMimeObject *object);
 void gmime_type_name(GMimeObject *object);
 GByteArray *gmime_get_bytes (GMimeObject *object);
+void gmime_text_part_set_text (GMimeTextPart *mime_part, const char *text);

@@ -81,7 +81,7 @@ func (p *Part) SetText(text string) error {
 	// TODO: Optimize this
 	cstr := C.CString(text)
 	defer C.free(unsafe.Pointer(cstr))
-	C.g_mime_text_part_set_text((*C.GMimeTextPart)(unsafe.Pointer(p.gmimePart)), cstr)
+	C.gmime_text_part_set_text((*C.GMimeTextPart)(unsafe.Pointer(p.gmimePart)), cstr)
 	return nil
 }
 
