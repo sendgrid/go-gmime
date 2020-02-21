@@ -183,6 +183,42 @@ func TestRemoveAll(t *testing.T) {
 	assert.Equal(t, "Kien Pham <kien@sendgrid.com>", msg.Header("To"))
 }
 
+func TestReplaceHeader(t *testing.T) {
+	mimeBytes, err := ioutil.ReadFile("test_data/multipleHeaders.eml")
+	assert.NoError(t, err)
+	msg, err := Parse(string(mimeBytes))
+	assert.NoError(t, err)
+
+	oldHeaders := msg.headersSlice()
+	replace := "5"
+	err = msg.ReplaceHeader("X-HEADER", "2", replace)
+	assert.NoError(t, err)
+	oldHeaders[13] = headerData{"X-HEADER", replace}
+	newHeaders := msg.headersSlice()
+	// check order and value
+	assert.True(t, equal(oldHeaders, newHeaders))
+
+	err = msg.ReplaceHeader("X-HEADER", "value don't exist", replace)
+	assert.Error(t, err, "failed to find header with matching key & value")
+	assert.True(t, equal(oldHeaders, newHeaders))
+
+	err = msg.ReplaceHeader("key don't exist", "1", replace)
+	assert.Error(t, err, "failed to find header with matching key & value")
+	assert.True(t, equal(oldHeaders, newHeaders))
+}
+
+func equal(a, b []headerData) bool {
+	if len(a) != len(b) {
+		return false
+	}
+	for i, v := range a {
+		if v != b[i] {
+			return false
+		}
+	}
+	return true
+}
+
 func TestAddAddresses(t *testing.T) {
 	tests := []struct {
 		header        string
