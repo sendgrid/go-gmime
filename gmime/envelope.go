@@ -71,7 +71,6 @@ func (m *Envelope) Headers() textproto.MIMEHeader {
 
 // ReplaceHeader replaces the header with matching key & originalValue with replaceValue
 func (m *Envelope) ReplaceHeader(key, originalValue, replaceValue string) error {
-	// TODO: this is not super efficient, but easier to read, may be optimize this?
 	headers := C.g_mime_object_get_header_list(m.asGMimeObject())
 	count := C.g_mime_header_list_get_count(headers)
 	var i C.int
