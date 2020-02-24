@@ -92,25 +92,6 @@ func (m *Envelope) ReplaceHeader(key, originalValue, replaceValue string) error 
 	return errors.New("failed to find header with matching key & value")
 }
 
-type headerData struct {
-	name  string
-	value string
-}
-
-func (m *Envelope) headersSlice() []headerData {
-	headers := C.g_mime_object_get_header_list(m.asGMimeObject())
-	count := C.g_mime_header_list_get_count(headers)
-	headersData := make([]headerData, int(count))
-	var i C.int
-	for i = 0; i < count; i++ {
-		header := C.g_mime_header_list_get_header_at(headers, i)
-		name := C.GoString(C.g_mime_header_get_name(header))
-		value := C.GoString(C.g_mime_header_get_value(header))
-		headersData[i] = headerData{name, value}
-	}
-	return headersData
-}
-
 // SetHeader sets or replaces specified header
 func (m *Envelope) SetHeader(name string, value string) error {
 	switch strings.ToLower(name) {
