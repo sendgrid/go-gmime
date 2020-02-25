@@ -89,7 +89,7 @@ func (m *Envelope) ReplaceHeader(key, originalValue, replaceValue string) error 
 		C.g_mime_header_set_value(header, format, C.CString(replaceValue), cCharset)
 		return nil
 	}
-	return errors.New("failed to find header with matching key & value")
+	return errors.New(fmt.Sprintf("failed to find header with matching key: %v & value: %v", key, originalValue))
 }
 
 // SetHeader sets or replaces specified header

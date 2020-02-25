@@ -207,7 +207,7 @@ func TestReplaceHeader(t *testing.T) {
 	assert.True(t, equal(oldHeaders, newHeaders))
 
 	err = msg.ReplaceHeader("X-HEADER", "value don't exist", replace)
-	assert.Error(t, err, "failed to find header with matching key & value")
+	assert.Error(t, err)
 	mimeBytes, err = msg.Export()
 	assert.NoError(t, err)
 	newHeaders, err = headersSlice(mimeBytes)
@@ -215,7 +215,7 @@ func TestReplaceHeader(t *testing.T) {
 	assert.True(t, equal(oldHeaders, newHeaders))
 
 	err = msg.ReplaceHeader("key don't exist", "1", replace)
-	assert.Error(t, err, "failed to find header with matching key & value")
+	assert.Error(t, err)
 	mimeBytes, err = msg.Export()
 	assert.NoError(t, err)
 	newHeaders, err = headersSlice(mimeBytes)
