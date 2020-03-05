@@ -195,6 +195,7 @@ func TestReplaceHeader(t *testing.T) {
 	oldHeaders, err := headersSlice(mimeBytes)
 	assert.NoError(t, err)
 
+	// Replace the second X-HEADER with 5
 	replace := "5"
 	err = msg.ReplaceHeader("X-HEADER", "2", replace)
 	assert.NoError(t, err)
@@ -206,6 +207,8 @@ func TestReplaceHeader(t *testing.T) {
 	// check order and value
 	assert.True(t, equal(oldHeaders, newHeaders))
 
+	// Replace a X-HEADER with value not exist in mime
+	// Should fail, headers should not be changed
 	err = msg.ReplaceHeader("X-HEADER", "value don't exist", replace)
 	assert.Error(t, err)
 	mimeBytes, err = msg.Export()
@@ -214,6 +217,8 @@ func TestReplaceHeader(t *testing.T) {
 	assert.NoError(t, err)
 	assert.True(t, equal(oldHeaders, newHeaders))
 
+	// Replace a header that doesn't exist in mime
+	// Should fail, headers should not be changed
 	err = msg.ReplaceHeader("key don't exist", "1", replace)
 	assert.Error(t, err)
 	mimeBytes, err = msg.Export()
