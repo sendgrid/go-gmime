@@ -86,7 +86,10 @@ func (m *Envelope) ReplaceHeader(key, originalValue, replaceValue string) error 
 		}
 		format := C.g_mime_format_options_get_default()
 		cCharset := C.CString("UTF-8")
-		C.g_mime_header_set_value(header, format, C.CString(replaceValue), cCharset)
+		cReplaceValue := C.CString(replaceValue)
+		C.g_mime_header_set_value(header, format, cReplaceValue, cCharset)
+		C.free(unsafe.Pointer(cReplaceValue))
+		C.free(unsafe.Pointer(cCharset))
 		return nil
 	}
 	return errors.New(fmt.Sprintf("failed to find header with matching key: %v & value: %v", key, originalValue))
