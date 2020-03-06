@@ -1,9 +1,12 @@
 package gmime
 
 import (
+	"bufio"
+	"bytes"
 	"fmt"
 	"io/ioutil"
 	"net/mail"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -181,6 +184,79 @@ func TestRemoveAll(t *testing.T) {
 	assert.False(t, removed)
 
 	assert.Equal(t, "Kien Pham <kien@sendgrid.com>", msg.Header("To"))
+}
+
+func TestReplaceHeader(t *testing.T) {
+	mimeBytes, err := ioutil.ReadFile("test_data/multipleHeaders.eml")
+	assert.NoError(t, err)
+	msg, err := Parse(string(mimeBytes))
+	assert.NoError(t, err)
+
+	oldHeaders, err := headersSlice(mimeBytes)
+	assert.NoError(t, err)
+
+	// Replace the second X-HEADER with 5
+	replace := "5"
+	err = msg.ReplaceHeader("X-HEADER", "2", replace)
+	assert.NoError(t, err)
+	oldHeaders[13] = headerData{"X-HEADER", replace}
+	mimeBytes, err = msg.Export()
+	assert.NoError(t, err)
+	newHeaders, err := headersSlice(mimeBytes)
+	assert.NoError(t, err)
+	// check order and value
+	assert.True(t, equal(oldHeaders, newHeaders))
+
+	// Replace a X-HEADER with value not exist in mime
+	// Should fail, headers should not be changed
+	err = msg.ReplaceHeader("X-HEADER", "value don't exist", replace)
+	assert.Error(t, err)
+	mimeBytes, err = msg.Export()
+	assert.NoError(t, err)
+	newHeaders, err = headersSlice(mimeBytes)
+	assert.NoError(t, err)
+	assert.True(t, equal(oldHeaders, newHeaders))
+
+	// Replace a header that doesn't exist in mime
+	// Should fail, headers should not be changed
+	err = msg.ReplaceHeader("key don't exist", "1", replace)
+	assert.Error(t, err)
+	mimeBytes, err = msg.Export()
+	assert.NoError(t, err)
+	newHeaders, err = headersSlice(mimeBytes)
+	assert.NoError(t, err)
+	assert.True(t, equal(oldHeaders, newHeaders))
+}
+
+type headerData struct {
+	name  string
+	value string
+}
+
+func headersSlice(mimeBytes []byte) ([]headerData, error) {
+	var headers []headerData
+	b := bytes.NewReader(mimeBytes)
+	scanner := bufio.NewScanner(b)
+
+	for scanner.Scan() {
+		header := strings.SplitN(scanner.Text(), ": ", 2)
+		if len(header) == 2 {
+			headers = append(headers, headerData{header[0], header[1]})
+		}
+	}
+	return headers, scanner.Err()
+}
+
+func equal(a, b []headerData) bool {
+	if len(a) != len(b) {
+		return false
+	}
+	for i, v := range a {
+		if v != b[i] {
+			return false
+		}
+	}
+	return true
 }
 
 func TestAddAddresses(t *testing.T) {

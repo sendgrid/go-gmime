@@ -69,6 +69,32 @@ func (m *Envelope) Headers() textproto.MIMEHeader {
 	return goHeaders
 }
 
+// ReplaceHeader replaces the header with matching key & originalValue with replaceValue
+func (m *Envelope) ReplaceHeader(key, originalValue, replaceValue string) error {
+	headers := C.g_mime_object_get_header_list(m.asGMimeObject())
+	count := C.g_mime_header_list_get_count(headers)
+	var i C.int
+	for i = 0; i < count; i++ {
+		header := C.g_mime_header_list_get_header_at(headers, i)
+		name := C.GoString(C.g_mime_header_get_name(header))
+		if name != key {
+			continue
+		}
+		value := C.GoString(C.g_mime_header_get_value(header))
+		if value != originalValue {
+			continue
+		}
+		format := C.g_mime_format_options_get_default()
+		cCharset := C.CString("UTF-8")
+		cReplaceValue := C.CString(replaceValue)
+		C.g_mime_header_set_value(header, format, cReplaceValue, cCharset)
+		C.free(unsafe.Pointer(cReplaceValue))
+		C.free(unsafe.Pointer(cCharset))
+		return nil
+	}
+	return errors.New(fmt.Sprintf("failed to find header with matching key: %v & value: %v", key, originalValue))
+}
+
 // SetHeader sets or replaces specified header
 func (m *Envelope) SetHeader(name string, value string) error {
 	switch strings.ToLower(name) {
