@@ -279,7 +279,7 @@ func (m *Envelope) ContentTypeWithParameters() string {
 	if mimePart != nil {
 		ctype := C.gmime_get_content_string_full(mimePart)
 		defer C.g_free(C.gpointer(unsafe.Pointer(ctype)))
-		return C.GoString(ctype)
+		return strings.TrimSpace(C.GoString(ctype))
 	}
 	return ""
 }
