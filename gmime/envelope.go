@@ -274,6 +274,16 @@ func (m *Envelope) ContentType() string {
 	return ""
 }
 
+func (m *Envelope) ContentTypeWithParameters() string {
+	mimePart := C.g_mime_message_get_mime_part(m.gmimeMessage)
+	if mimePart != nil {
+		ctype := C.gmime_get_content_string_full(mimePart)
+		defer C.g_free(C.gpointer(unsafe.Pointer(ctype)))
+		return strings.TrimSpace(C.GoString(ctype))
+	}
+	return ""
+}
+
 // Walk iterates all message parts and executes callback on each part
 func (m *Envelope) Walk(cb func(p *Part) error) error {
 	partIter := C.g_mime_part_iter_new(m.asGMimeObject())
