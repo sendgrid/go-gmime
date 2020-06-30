@@ -69,6 +69,25 @@ func (m *Envelope) Headers() textproto.MIMEHeader {
 	return goHeaders
 }
 
+// RawHeaders returns all headers for envelope without rfc2047 decoding
+func (m *Envelope) RawHeaders() textproto.MIMEHeader {
+	// TODO: this is not super efficient, but easier to read, may be optimize this?
+	headers := C.g_mime_object_get_header_list(m.asGMimeObject())
+	count := C.g_mime_header_list_get_count(headers)
+	goHeaders := make(textproto.MIMEHeader, int(count))
+	var i C.int
+	for i = 0; i < count; i++ {
+		header := C.g_mime_header_list_get_header_at(headers, i)
+		name := C.GoString(C.g_mime_header_get_name(header))
+		value := C.GoString(C.g_mime_header_get_raw_value(header))
+		if _, ok := goHeaders[name]; !ok {
+			goHeaders[name] = nil
+		}
+		goHeaders[name] = append(goHeaders[name], value)
+	}
+	return goHeaders
+}
+
 // ReplaceHeader replaces the header with matching key & originalValue with replaceValue
 func (m *Envelope) ReplaceHeader(key, originalValue, replaceValue string) error {
 	headers := C.g_mime_object_get_header_list(m.asGMimeObject())
