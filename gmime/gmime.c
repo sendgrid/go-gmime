@@ -21,6 +21,18 @@ char* gmime_get_content_string (GMimeObject *object) {
 	return g_mime_text_part_get_text ((GMimeTextPart *) object);
 }
 
+char* gmime_get_content_string_full (GMimeObject *object) {
+	if (!GMIME_IS_OBJECT (object)) {
+		return NULL;
+	}
+  GMimeContentType *ctype = g_mime_object_get_content_type (object);
+  if (ctype == NULL) {
+    return NULL;
+  }
+	return g_mime_content_type_encode (ctype, NULL);
+  
+}
+
 char* gmime_get_content_type_string (GMimeObject *object) {
 	GMimeContentType *ctype = g_mime_object_get_content_type (object);
 	return g_mime_content_type_get_mime_type (ctype);
