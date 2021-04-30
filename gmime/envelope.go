@@ -303,6 +303,12 @@ func (m *Envelope) ContentTypeWithParameters() string {
 	return ""
 }
 
+// Body attempts to identify the MIME part containing the body of the message.
+func (m *Envelope) Body() ([]byte, error) {
+	body := C.g_mime_message_get_body(m.gmimeMessage)
+	return exportGMimeObject(body)
+}
+
 // Walk iterates all message parts and executes callback on each part
 func (m *Envelope) Walk(cb func(p *Part) error) error {
 	partIter := C.g_mime_part_iter_new(m.asGMimeObject())
@@ -326,12 +332,16 @@ func (m *Envelope) Walk(cb func(p *Part) error) error {
 
 // Export composes mime from envelope
 func (m *Envelope) Export() ([]byte, error) {
+	return exportGMimeObject(m.asGMimeObject())
+}
+
+func exportGMimeObject(object *C.GMimeObject) ([]byte, error) {
 	// TODO: optimize this, bundle cgo calls
 	stream := C.g_mime_stream_mem_new()                        // need unref
 	defer C.g_object_unref(C.gpointer(unsafe.Pointer(stream))) // unref
 	format := C.g_mime_format_options_get_default()
 	C.g_mime_format_options_set_newline_format(format, C.GMIME_NEWLINE_FORMAT_DOS)
-	nWritten := C.g_mime_object_write_to_stream(m.asGMimeObject(), format, stream)
+	nWritten := C.g_mime_object_write_to_stream(object, format, stream)
 	if nWritten <= 0 {
 		return nil, errors.New("can't write to stream")
 	}
