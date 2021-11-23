@@ -103,6 +103,14 @@ func (p *Part) Headers() textproto.MIMEHeader {
 	return nil
 }
 
+// GetContentID returns the content ID (if there is one) per mime part
+// we expect all attachments to have a content-id
+func (p *Part) GetContentID() string {
+	cCID := C.g_mime_object_get_content_id(p.gmimePart)
+	defer C.g_free(C.gpointer(unsafe.Pointer(cCID)))
+	return C.GoString(cCID)
+}
+
 func (p *Part) asGMimeObject() *C.GMimeObject {
 	return p.gmimePart
 }
