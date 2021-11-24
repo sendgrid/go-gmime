@@ -103,6 +103,19 @@ func (p *Part) Headers() textproto.MIMEHeader {
 	return nil
 }
 
+// ContentID returns the content ID of the attachment if the type is attachment, if not we return empty string
+func (p *Part) ContentID() string {
+	if p.gmimePart == nil {
+		return ""
+	}
+	if !gobool(C.gmime_is_part(p.gmimePart)) {
+		return ""
+	}
+	cCID := C.g_mime_object_get_content_id(p.gmimePart)
+	defer C.g_free(C.gpointer(unsafe.Pointer(cCID)))
+	return C.GoString(cCID)
+}
+
 func (p *Part) asGMimeObject() *C.GMimeObject {
 	return p.gmimePart
 }
