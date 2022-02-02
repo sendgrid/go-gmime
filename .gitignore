@@ -11,3 +11,5 @@ bin/ginkgo
 go-gmime
 data/
 local/
+
+.idea/

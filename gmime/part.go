@@ -9,6 +9,7 @@ import "C"
 
 import (
 	"net/textproto"
+	"strings"
 	"unsafe"
 )
 
@@ -118,4 +119,11 @@ func (p *Part) ContentID() string {
 
 func (p *Part) asGMimeObject() *C.GMimeObject {
 	return p.gmimePart
+}
+
+// String returns content as a string
+func (p *Part) String() string {
+	objStr := C.g_mime_object_to_string(p.asGMimeObject(), nil)
+	defer C.g_free(C.gpointer(unsafe.Pointer(objStr)))
+	return strings.TrimSpace(C.GoString(objStr))
 }
