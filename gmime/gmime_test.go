@@ -642,6 +642,8 @@ func BenchmarkPart_String(b *testing.B) {
 // TestPart_StringMemoryLeak tests for memory leak in this method
 // This was created primarily for message/rfc822 format reading, so use that
 // run this and watch the memory usage
+// * go test -v . -test.run=TestPart_StringMemoryLeak
+// * run activity monitor, find gmime.test process and make sure it doesn't jump up while it's running
 func TestPart_StringMemoryLeak(t *testing.T) {
 	t.Skipf("skipping since we don't need to run this normally, don't skip it if you want to test memory usage")
 	mimeBytes, _ := ioutil.ReadFile(`test_data/rfc822.eml`)
