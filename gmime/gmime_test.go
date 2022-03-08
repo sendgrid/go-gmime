@@ -574,6 +574,27 @@ func TestAppendAddressList(t *testing.T) {
 	}
 }
 
+// TestPart_ContentID not only tests the function fetches content-id correctly,
+// but it also makes sure there is no crash when the envelope is closed (since we have seen a bug around this)
+func TestPart_ContentID(t *testing.T) {
+	mimeBytes, err := ioutil.ReadFile(`test_data/attachment-content-id.eml`)
+	assert.NoError(t, err)
+	msg, err := Parse(string(mimeBytes))
+	assert.NoError(t, err)
+
+	actual := ""
+	expected := `f_l0eugokh0`
+	err = msg.Walk(func(p *Part) error {
+		if p.IsAttachment() {
+			actual = p.ContentID()
+		}
+		return nil
+	})
+	assert.NoError(t, err)
+	assert.Equal(t, expected, actual)
+	msg.Close()
+}
+
 func TestPart_String(t *testing.T) {
 	type TestCase struct {
 		filename string

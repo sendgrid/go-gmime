@@ -113,7 +113,6 @@ func (p *Part) ContentID() string {
 		return ""
 	}
 	cCID := C.g_mime_object_get_content_id(p.gmimePart)
-	defer C.g_free(C.gpointer(unsafe.Pointer(cCID)))
 	return C.GoString(cCID)
 }
 
