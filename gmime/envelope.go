@@ -36,6 +36,7 @@ func Parse(data string) (*Envelope, error) {
 }
 
 // Subject returns envelope's Subject
+// gmime returns the string in utf-8
 func (m *Envelope) Subject() string {
 	subject := C.g_mime_message_get_subject(m.gmimeMessage)
 	return C.GoString(subject)

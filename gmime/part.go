@@ -25,6 +25,13 @@ func (p *Part) ContentType() string {
 	return C.GoString(ctype)
 }
 
+// ContentTypeWithParam returns content type's parameter
+func (p *Part) ContentTypeWithParam(param string) string {
+	ctype := C.g_mime_object_get_content_type(p.gmimePart)
+	charset := C.g_mime_content_type_get_parameter(ctype, C.CString(param))
+	return C.GoString(charset)
+}
+
 // IsText returns true if part's mime is text/*
 func (p *Part) IsText() bool {
 	return gobool(C.gmime_is_text_part(p.gmimePart))
