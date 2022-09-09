@@ -1,11 +1,7 @@
 package gmime
 
-/*
-#cgo pkg-config: gmime-3.0
-#include "gmime.h"
-*/
+// #include "gmime.h"
 import "C"
-
 import (
 	"errors"
 	"fmt"

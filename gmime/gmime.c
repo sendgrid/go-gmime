@@ -1,6 +1,5 @@
 #include "gmime.h"
 
-
 GMimeMessage *gmime_parse (const char *buffer, size_t len) {
 	GMimeStream *stream = g_mime_stream_mem_new_with_buffer (buffer, len);
 	GMimeParser *parser = g_mime_parser_new_with_stream (stream);

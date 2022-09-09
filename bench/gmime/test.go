@@ -7,12 +7,13 @@ package main
 import (
 	"bufio"
 	"bytes"
-	"github.com/sendgrid/go-gmime/bench/util"
-	"github.com/sendgrid/go-gmime/gmime"
 	"log"
 	"os"
 	"path/filepath"
 	"strconv"
+
+	"github.com/sendgrid/go-gmime/v1/bench/util"
+	"github.com/sendgrid/go-gmime/v1/gmime"
 )
 
 func main() {

@@ -1,16 +1,12 @@
 package gmime
 
-/*
-#cgo pkg-config: gmime-3.0
-#include "gmime.h"
-
-*/
+// #include "gmime.h"
 import "C"
+import "unsafe"
 
 import (
 	"net/textproto"
 	"strings"
-	"unsafe"
 )
 
 // Part is a wrapper for message parts

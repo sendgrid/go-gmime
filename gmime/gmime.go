@@ -1,14 +1,14 @@
 package gmime
 
-/*
-#cgo pkg-config: gmime-3.0
-#include "gmime.h"
-*/
 import "C"
 import (
 	"net/mail"
 	"unsafe"
 )
+
+// #cgo pkg-config: gmime-3.0
+// #include "gmime.h"
+import "C"
 
 var (
 	cStringEmpty       = C.CString("")

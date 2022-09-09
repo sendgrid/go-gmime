@@ -11,14 +11,15 @@ import (
 	"compress/gzip"
 	"flag"
 	"fmt"
-	"github.com/sendgrid/go-gmime/bench/util"
-	"github.com/sendgrid/go-gmime/gmime"
 	"io"
 	"io/ioutil"
 	"log"
 	"os"
 	"runtime/debug"
 	"time"
+
+	"github.com/sendgrid/go-gmime/v1/bench/util"
+	"github.com/sendgrid/go-gmime/v1/gmime"
 )
 
 var archive string

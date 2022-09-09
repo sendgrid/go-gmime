@@ -6,7 +6,7 @@ import (
 	"io/ioutil"
 	"os"
 
-	"github.com/sendgrid/go-gmime/gmime"
+	"github.com/sendgrid/go-gmime/v1/gmime"
 )
 
 func main() {
