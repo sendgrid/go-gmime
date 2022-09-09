@@ -20,7 +20,7 @@ func TestParseAndMutationOnMime_Multipart(t *testing.T) {
 	assert.NoError(t, err)
 	defer msg.Close()
 
-	//Verify that we get subject and header parsed correctly
+	// Verify that we get subject and header parsed correctly
 	assert.Equal(t, msg.Subject(), "test inline image attachment")
 	assert.Equal(t, msg.ContentType(), "multipart/alternative")
 	assert.Equal(t, msg.Header("Message-ID"), "<CAGPJ=uY91HEGoszHE9ELkB3wfcNJN4NGORM9q-vV8o_XJceBmg@mail.gmail.com>")
@@ -36,7 +36,7 @@ func TestParseAndMutationOnMime_Multipart(t *testing.T) {
 		"<div dir=\"ltr\">kien image below<div><br></div><div><img src=\"cid:ii_1463f6eb06c77530\" alt=\"Inline image 1\" width=\"64\" height=\"64\"><br clear=\"all\"><div><br></div>-- <br><div dir=\"ltr\"><div>Kien Pham</div><div>Software Engineer, SendGrid<br>\n</div></div>\n</div></div>\n",
 	}
 
-	//Verify that we get parts contentType and text parsed correctly
+	// Verify that we get parts contentType and text parsed correctly
 	var i, k int
 	err = msg.Walk(func(p *Part) error {
 		assert.Equal(t, contentType[i], p.ContentType())
@@ -91,7 +91,7 @@ func TestParseAndMutationOnMime_NestedMultipart(t *testing.T) {
 	assert.NoError(t, err)
 	defer msg.Close()
 
-	//Verify that we get subject and header parsed correctly
+	// Verify that we get subject and header parsed correctly
 	assert.Equal(t, msg.Subject(), "test inline image attachment")
 	assert.Equal(t, msg.ContentType(), "multipart/related")
 	assert.Equal(t, msg.Header("Message-ID"), "<CAGPJ=uY91HEGoszHE9ELkB3wfcNJN4NGORM9q-vV8o_XJceBmg@mail.gmail.com>")
@@ -108,7 +108,7 @@ func TestParseAndMutationOnMime_NestedMultipart(t *testing.T) {
 		"<div dir=\"ltr\">kien image below<div><br></div><div><img src=\"cid:ii_1463f6eb06c77530\" alt=\"Inline image 1\" width=\"64\" height=\"64\"><br clear=\"all\"><div><br></div>-- <br><div dir=\"ltr\"><div>Kien Pham</div><div>Software Engineer, SendGrid<br>\n</div></div>\n</div></div>\n",
 	}
 
-	//Verify that we get parts contentType and text parsed correctly
+	// Verify that we get parts contentType and text parsed correctly
 	var i, k int
 	err = msg.Walk(func(p *Part) error {
 		assert.Equal(t, contentType[i], p.ContentType())
@@ -640,9 +640,6 @@ func TestPart_String(t *testing.T) {
 }
 
 // BenchmarkPart_String benchmarks Part.String() method.
-// This was created primarily for message/rfc822 format reading, so use that for benchmarking
-//11:22:14 ✖1 ❯ go test -bench=. -benchmem
-//BenchmarkPart_String-8   	   22891	     57073 ns/op	   18448 B/op	       2 allocs/op
 func BenchmarkPart_String(b *testing.B) {
 	mimeBytes, _ := ioutil.ReadFile(`test_data/rfc822.eml`)
 	msg, _ := Parse(string(mimeBytes))

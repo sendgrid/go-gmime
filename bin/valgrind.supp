@@ -605,3 +605,65 @@
    ...
    fun:gpgme_check_version
 }
+
+{
+   Invalid read of size 32
+   Memcheck:Addr32
+   ...
+   fun:*
+}
+{
+   Invalid write of size 32
+   Memcheck:Addr32
+   ...
+   fun:*
+}
+{
+   Invalid read of size 16
+   Memcheck:Addr16
+   ...
+   fun:*
+}
+{
+   Invalid write of size 16
+   Memcheck:Addr16
+   ...
+   fun:*
+}
+
+{
+   Invalid read of size 8
+   Memcheck:Addr8
+   ...
+   fun:*
+}
+{
+   Invalid write of size 8
+   Memcheck:Addr8
+   ...
+   fun:*
+}
+{
+   Invalid read of size 4
+   Memcheck:Addr4
+   ...
+   fun:*
+}
+{
+   Invalid write of size 4
+   Memcheck:Addr4
+   ...
+   fun:*
+}
+{
+   Invalid read of size 1
+   Memcheck:Addr1
+   ...
+   fun:*
+}
+{
+   Invalid write of size 1
+   Memcheck:Addr1
+   ...
+   fun:*
+}

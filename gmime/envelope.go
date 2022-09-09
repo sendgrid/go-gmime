@@ -365,6 +365,7 @@ func (m *Envelope) AddHTMLAlternativeToPlainText(content string) bool {
 	C.g_mime_message_set_mime_part(m.gmimeMessage, (*C.GMimeObject)(unsafe.Pointer(multipart)))
 
 	// create a new html part and add it to the root level multipart
+	// TODO: need to free newHTMLpart somewhere
 	newHTMLpart := C.g_mime_text_part_new_with_subtype(cStringHTML)
 	cContent := C.CString(content)
 	defer C.g_free(C.gpointer(unsafe.Pointer(cContent)))

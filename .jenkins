@@ -1,5 +1,0 @@
-#!/bin/bash
-
-export GOPATH=`pwd`
-bin/install_deps
-bin/test

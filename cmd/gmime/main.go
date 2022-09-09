@@ -3,37 +3,49 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"os"
+	"runtime/debug"
 
 	"github.com/sendgrid/go-gmime/v1/gmime"
 )
 
-func main() {
-	println(">>> test")
-
-	fh, err := os.Open("./gmime/fixtures/inline-attachment.eml")
+func ExampleReadingHeaders() {
+	fileHandle, err := os.Open("gmime/fixtures/text_attachment.eml")
 	if err != nil {
 		panic(err)
 	}
-	defer fh.Close()
-	reader := bufio.NewReader(fh)
-	data, _ := ioutil.ReadAll(reader)
+	defer fileHandle.Close()
+
+	reader := bufio.NewReader(fileHandle)
+	data, err := io.ReadAll(reader)
+	if err != nil {
+		panic(err)
+	}
+
 	msg, err := gmime.Parse(string(data))
 	if err != nil {
 		panic(err)
 	}
 	defer msg.Close()
 
-	// test stuff goes here
-
-	b, err := msg.Export()
-	if err != nil {
-		fmt.Printf("%v\n", err)
+	// How to loop over headers:
+	for headerName, headerValues := range msg.Headers() {
+		fmt.Printf("%s: %v\n", headerName, headerValues)
 	}
 
-	fmt.Printf("%s\n", string(b))
+	// Setting subject line
+	msg.SetSubject("My Favorite Subject!")
+	v, err := msg.Export()
+	if err != nil {
+		panic(err)
+	}
 
-	// data, _ = msg.Export()
-	// println(">>>>>>>>>>>>> Export: ", string(data))
+	fmt.Println("****** Rendered MIME******")
+	fmt.Println(string(v))
+}
+
+func main() {
+	ExampleReadingHeaders()
+	debug.FreeOSMemory()
 }

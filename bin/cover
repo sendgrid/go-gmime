@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-source "$(dirname $0)/include"
-
-go test $PACKAGE/$* -coverprofile=coverage.out
-go tool cover -html=coverage.out
-rm coverage.out
-
