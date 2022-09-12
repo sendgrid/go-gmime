@@ -1,3 +1,0 @@
-#!/bin/bash -e
-
-docker run --rm -v $PWD:$PWD -w $PWD golang:1.5.1 /bin/bash -c "./bin/install_deps && ./bin/test"

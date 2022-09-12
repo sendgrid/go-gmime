@@ -1,18 +1,10 @@
-#!/usr/bin/env bash
-source "$(dirname $0)/include"
+#!/bin/sh
+go test -c -tags valgrind -gccgoflags '-g -fno-split-stack' ./gmime
 
-if gccgo --version | grep -q 4.9;  then
-    GCCGO=gccgo
-else
-    GCCGO=gccgo-4.9
-fi
-LIBS="$(pkg-config --libs gmime-2.6)"
-
-go test -c -tags valgrind -compiler $GCCGO -gccgoflags "-g -gdwarf-3  -fuse-ld=gold -fno-split-stack ${LIBS}" -x ./gmime
-
-export G_SLICE=always-malloc
-export G_DEBUG=gc-friendly
-export MALLOC_CHECK_=2
+# Not sure if these are necessary anymore
+#export G_SLICE=always-malloc
+#export G_DEBUG=gc-friendly
+#export MALLOC_CHECK_=2
 
 (cd gmime &&
     valgrind \
@@ -23,7 +15,7 @@ export MALLOC_CHECK_=2
         --smc-check=all       \
         --error-limit=no      \
         --num-callers=100     \
-        --suppressions=../valgrind.supp \
-        ../gmime.test >../valgrind.log 2>&1 \
+        --suppressions=../bin/valgrind.supp \
+        ../gmime.test 2>&1 | tee ../valgrind.log \
 )
 

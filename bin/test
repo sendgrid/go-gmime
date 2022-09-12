@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-source "$(dirname $0)/include"
-
-export GOTRACEBACK=all
-# handle a specific test run. Ex: bin/test TestSimpleMessage
-go test -v github.com/sendgrid/go-gmime/gmime

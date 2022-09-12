@@ -1,25 +1,39 @@
-// Package gmime implements the MIME, port of C GMime
 package gmime
 
-/*
-#cgo pkg-config: gmime-2.6
-#include <stdlib.h>
-#include <gmime/gmime.h>
-
-// pull out some glib guts
-static gboolean object_is_object(GTypeInstance *obj) {
-        return G_IS_OBJECT(obj);
-}
-
-*/
+// #cgo pkg-config: gmime-3.0
+// #include "gmime.h"
 import "C"
+import (
+	"net/mail"
+	"unsafe"
+)
+
+var (
+	cStringEmpty       = C.CString("")
+	cStringAlternative = C.CString("alternative")
+	cStringMixed       = C.CString("mixed")
+	cStringRelated     = C.CString("related")
+	cStringCharset     = C.CString("charset")
+	cStringCharsetUTF8 = C.CString("utf-8")
+
+	cStringText   = C.CString("text")
+	cStringPlain  = C.CString("plain")
+	cStringHTML   = C.CString("html")
+	cStringBase64 = C.CString("base64")
+
+	cStringContentID               = C.CString("Content-Id")
+	cStringHeaderFormat            = C.CString("%s: %s\n")
+	cStringContentTransferEncoding = C.CString("Content-Transfer-Encoding")
+)
 
 // This function call automatically by runtime
 func init() {
-	C.g_mime_init(0)
+	C.g_mime_init()
+	format := C.g_mime_format_options_get_default()
+	C.g_mime_format_options_set_newline_format(format, C.GMIME_NEWLINE_FORMAT_DOS)
 }
 
-// This function really need only for valgrind
+// Shutdown is really needed only for valgrind
 func Shutdown() {
 	C.g_mime_shutdown()
 }
@@ -42,20 +56,39 @@ func unref(referee C.gpointer) {
 	C.g_object_unref(referee)
 }
 
-// take memory
-func ref(referee C.gpointer) {
-	if referee == nil {
-		panic("ZERO pointer")
+// ParseAddressList parses and returns address list
+func ParseAddressList(addrs string) []*mail.Address {
+	cAddrs := C.CString(addrs)
+	defer C.free(unsafe.Pointer(cAddrs))
+	parsedAddrs := C.internet_address_list_parse(C.g_mime_parser_options_get_default(), cAddrs)
+	if parsedAddrs == nil {
+		return nil
 	}
-	if !gobool(C.object_is_object((*C.GTypeInstance)(referee))) {
-		panic("not a gpointer")
+	// dont move this up next to instatiation. we dont want to free this if parseAddrs is nil
+	// gmime will free it
+	defer C.g_object_unref((C.gpointer)(unsafe.Pointer(parsedAddrs)))
+	nAddrs := C.internet_address_list_length(parsedAddrs)
+	if nAddrs <= 0 {
+		return nil
 	}
-	C.g_object_ref(referee)
+
+	var i C.int
+	goAddrs := make([]*mail.Address, nAddrs)
+	for i = 0; i < nAddrs; i++ {
+		address := C.internet_address_list_get_address(parsedAddrs, i)
+		gAddr := convertToGoAddress(address)
+		goAddrs[i] = gAddr
+	}
+	return goAddrs
 }
 
-func maybeGoString(s *C.char) (string, bool) {
-	if s == nil {
-		return "", false
+func convertToGoAddress(addr *C.InternetAddress) *mail.Address {
+	var gAddr mail.Address
+	name := C.internet_address_get_name(addr)
+	address := C.internet_address_mailbox_get_addr((*C.InternetAddressMailbox)(unsafe.Pointer(addr)))
+	if name != nil {
+		gAddr.Name = C.GoString(name)
 	}
-	return C.GoString(s), true
+	gAddr.Address = C.GoString(address)
+	return &gAddr
 }

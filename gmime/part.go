@@ -1,94 +1,131 @@
 package gmime
 
-/*
-#cgo pkg-config: gmime-2.6
-#include <stdlib.h>
-#include <gmime/gmime.h>
-*/
+// #include "gmime.h"
 import "C"
+import "unsafe"
+
 import (
-	"unsafe"
+	"net/textproto"
+	"strings"
 )
 
-type Part interface {
-	Object
-	ContentObject() DataWrapper
-	SetContentObject(DataWrapper)
-	Filename() string
-	Description() string
-	ContentLocation() string
-	ContentEncoding() string
-	SetContentEncoding(encoding string)
+// Part is a wrapper for message parts
+type Part struct {
+	gmimePart *C.GMimeObject
 }
 
-type aPart struct {
-	*anObject
+// ContentType returns part's content type
+func (p *Part) ContentType() string {
+	ctype := C.gmime_get_content_type_string(p.gmimePart)
+	defer C.g_free(C.gpointer(unsafe.Pointer(ctype)))
+	return C.GoString(ctype)
 }
 
-type rawPart interface {
-	Object
-	rawPart() *C.GMimePart
+// ContentTypeWithParam returns content type's parameter
+func (p *Part) ContentTypeWithParam(param string) string {
+	ctype := C.g_mime_object_get_content_type(p.gmimePart)
+	charset := C.g_mime_content_type_get_parameter(ctype, C.CString(param))
+	return C.GoString(charset)
 }
 
-func CastPart(p *C.GMimePart) *aPart {
-	return &aPart{CastObject((*C.GMimeObject)(unsafe.Pointer(p)))}
+// IsText returns true if part's mime is text/*
+func (p *Part) IsText() bool {
+	return gobool(C.gmime_is_text_part(p.gmimePart))
 }
 
-func NewPart() Part {
-	part := C.g_mime_part_new()
-	defer unref(C.gpointer(part))
-	return CastPart(part)
+// IsAttachment returns true if part's mime is attachment or inline attachment
+func (p *Part) IsAttachment() bool {
+	if p.gmimePart == nil {
+		return false
+	}
+	if !gobool(C.gmime_is_part(p.gmimePart)) || gobool(C.gmime_is_multi_part(p.gmimePart)) {
+		return false
+	}
+	if gobool(C.g_mime_part_is_attachment((*C.GMimePart)(unsafe.Pointer(p.gmimePart)))) {
+		return true
+	}
+	if len(p.Filename()) > 0 {
+		return true
+	}
+
+	return false
 }
 
-func NewPartWithType(ctype string, csubtype string) Part {
-	var _ctype *C.char = C.CString(ctype)
-	var _csubtype *C.char = C.CString(csubtype)
-	defer C.free(unsafe.Pointer(_ctype))
-	defer C.free(unsafe.Pointer(_csubtype))
-
-	part := C.g_mime_part_new_with_type(_ctype, _csubtype)
-	defer unref(C.gpointer(part))
-	return CastPart(part)
+// Filename retrieves the filename of the part
+func (p *Part) Filename() string {
+	if p.gmimePart == nil {
+		return ""
+	}
+	if !gobool(C.gmime_is_part(p.gmimePart)) {
+		return ""
+	}
+	ctype := C.g_mime_part_get_filename((*C.GMimePart)(unsafe.Pointer(p.gmimePart)))
+	return C.GoString(ctype)
 }
 
-func (p *aPart) SetContentObject(content DataWrapper) {
-	rawContent := content.(rawDataWrapper)
-	C.g_mime_part_set_content_object(p.rawPart(), rawContent.rawDataWrapper())
+// Text returns text portion of the part if it's mime is text/*
+func (p *Part) Text() string {
+	content := C.gmime_get_content_string(p.gmimePart)
+	defer C.g_free(C.gpointer(unsafe.Pointer(content)))
+	return C.GoString(content)
 }
 
-func (p *aPart) ContentObject() DataWrapper {
-	cDataWrapper := C.g_mime_part_get_content_object(p.rawPart())
-	if cDataWrapper == nil {
+// Bytes returns decoded raw bytes of the part, most useful to access attachment data
+func (p *Part) Bytes() []byte {
+	b := C.gmime_get_bytes(p.gmimePart)
+	if b == nil {
 		return nil
 	}
-	return CastDataWrapper(cDataWrapper)
+	defer C.g_byte_array_free((*C.GByteArray)(unsafe.Pointer(b)), C.TRUE)
+	return C.GoBytes(unsafe.Pointer(b.data), C.int(b.len))
 }
 
-func (p *aPart) Description() string {
-	desc := C.g_mime_part_get_content_description(p.rawPart())
-	return C.GoString(desc)
+// SetText replaces text content if part is text/*
+func (p *Part) SetText(text string) error {
+	// TODO: Optimize this
+	cstr := C.CString(text)
+	defer C.free(unsafe.Pointer(cstr))
+	C.g_mime_text_part_set_text((*C.GMimeTextPart)(unsafe.Pointer(p.gmimePart)), cstr)
+	return nil
 }
 
-func (p *aPart) ContentLocation() string {
-	loc := C.g_mime_part_get_content_location(p.rawPart())
-	return C.GoString(loc)
+// SetHeader sets or replaces specified header
+func (p *Part) SetHeader(name string, value string) {
+	headers := C.g_mime_object_get_header_list(p.asGMimeObject())
+	cName := C.CString(name)
+	defer C.free(unsafe.Pointer(cName))
+	cValue := C.CString(value)
+	defer C.free(unsafe.Pointer(cValue))
+	cCharset := C.CString("UTF-8")
+	defer C.free(unsafe.Pointer(cCharset))
+
+	C.g_mime_header_list_set(headers, cName, cValue, cCharset)
 }
 
-func (p *aPart) ContentEncoding() string {
-	var enc C.GMimeContentEncoding
-	enc = C.g_mime_part_get_content_encoding(p.rawPart())
-	return goGMimeEncoding2String(enc)
+// Headers gives you all headers for part
+func (p *Part) Headers() textproto.MIMEHeader {
+	return nil
 }
 
-func (p *aPart) SetContentEncoding(encoding string) {
-	rawEncode := goGMimeString2Encoding(encoding)
-	C.g_mime_part_set_content_encoding(p.rawPart(), rawEncode)
+// ContentID returns the content ID of the attachment if the type is attachment, if not we return empty string
+func (p *Part) ContentID() string {
+	if p.gmimePart == nil {
+		return ""
+	}
+	if !gobool(C.gmime_is_part(p.gmimePart)) {
+		return ""
+	}
+	cCID := C.g_mime_object_get_content_id(p.gmimePart)
+	return C.GoString(cCID)
 }
 
-func (p *aPart) Filename() string {
-	return C.GoString(C.g_mime_part_get_filename(p.rawPart()))
+func (p *Part) asGMimeObject() *C.GMimeObject {
+	return p.gmimePart
 }
 
-func (p *aPart) rawPart() *C.GMimePart {
-	return (*C.GMimePart)(p.pointer())
+// String returns content as a string
+func (p *Part) String() string {
+	objStr := C.g_mime_object_to_string(p.asGMimeObject(), nil)
+	defer C.g_free(C.gpointer(unsafe.Pointer(objStr)))
+	return strings.TrimSpace(C.GoString(objStr))
 }

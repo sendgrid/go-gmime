@@ -1,0 +1,43 @@
+MIME-Version: 1.0
+Date: Sat, 5 Mar 2022 21:39:05 -0800
+Message-ID: <CAFWNCUNV0+_GyxffZmKeMG=qh=T+EAMcU0YtNGskL_Ad0uVPcw@mail.gmail.com>
+Subject: Test with content id
+From: Eric Choi <echoi@twilio.com>
+To: Eric Choi <echoi@twilio.com>
+Content-Type: multipart/mixed; boundary="0000000000008febcf05d9862a4c"
+
+--0000000000008febcf05d9862a4c
+Content-Type: multipart/alternative; boundary="0000000000008febcd05d9862a4a"
+
+--0000000000008febcd05d9862a4a
+Content-Type: text/plain; charset="UTF-8"
+
+Test with content ID
+
+--
+
+Eric Choi
+Staff, Software Engineer (L4) | Email Infrastructure - Teapot
+
+--0000000000008febcd05d9862a4a
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Test with content ID<br clear=3D"all"><div><br></div>-- <b=
+r><div dir=3D"ltr" class=3D"gmail_signature" data-smartmail=3D"gmail_signat=
+ure"><div dir=3D"ltr"><div><div dir=3D"ltr"><img src=3D"https://sendgrid.co=
+m/brand/sg-twilio/SG_Twilio_Lockup_RGBx1.png" width=3D"96" height=3D"21"><b=
+r><div>Eric Choi</div><div><div>Staff, Software Engineer (L4) | Email Infra=
+structure - Teapot</div></div><div><br></div><div><br></div></div></div></d=
+iv></div></div>
+
+--0000000000008febcd05d9862a4a--
+--0000000000008febcf05d9862a4c
+Content-Type: image/png; name="4854118-kirby_with_shades_render_by_torzk-d5rliq1.png"
+Content-Disposition: attachment; filename="4854118-kirby_with_shades_render_by_torzk-d5rliq1.png"
+Content-Transfer-Encoding: base64
+X-Attachment-Id: f_l0eugokh0
+Content-ID: <f_l0eugokh0>
+
+
+--0000000000008febcf05d9862a4c--
