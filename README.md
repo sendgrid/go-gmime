@@ -14,7 +14,7 @@ Usage
 
 Just add library with:
 
-    go get github.com/sendgrid/go-gmime/v1/gmime
+    go get github.com/sendgrid/go-gmime/gmime
 
 Setup for development
 ---
