@@ -1,4 +1,4 @@
-module github.com/sendgrid/go-gmime/v1
+module github.com/sendgrid/go-gmime
 
 go 1.17
 
