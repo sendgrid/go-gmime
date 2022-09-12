@@ -7,7 +7,7 @@ import (
 	"os"
 	"runtime/debug"
 
-	"github.com/sendgrid/go-gmime/v1/gmime"
+	"github.com/sendgrid/go-gmime/gmime"
 )
 
 func ExampleReadingHeaders() {
