@@ -32,16 +32,12 @@ Testing / Coverage
 ---
 
 	# run all tests on host machine
-	bin/test
+    go test ./gmime/...
 	
-	# run all tests on Vagrant CentOS VM
-	bin/testvm
-	
-	# run a specific test:
-	bin/test TestSimpleMessage
-		
-	# generate tests coverage
-	bin/cover
+	# run all tests in Docker container
+    docker build . -t docker.io/library/go-gmime
+    docker run -it -v $(pwd):/go/src/github.com/sendgrid/go-gmime docker.io/library/go-gmime
+    go test ./gmime/...
 
 Memory Check
 ---
@@ -52,7 +48,9 @@ We use Valgrind to check for memory leaks. The provided Dockerfile should setup 
 Contributing
 ---
 	# Don't forget to run gofmt before commiting
-	bin/fmt
+	go fmt ./...
+
+Afterwards, submit a PR for review.
 
 License
 ---
