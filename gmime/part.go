@@ -41,28 +41,6 @@ func (p *Part) Disposition() string {
 	return C.GoString(cDisposition)
 }
 
-//func (p *Part) Parent() *Part {
-//	parentObject := C.gmime_get_parent(p.gmimePart)
-//	if parentObject == nil {
-//		fmt.Println("Parent is nil")
-//		return nil
-//	}
-//	//fmt.Println("Parent type:", (&Part{gmimePart: parentObject}).ContentType())
-//	return &Part{gmimePart: parentObject}
-//}
-//
-//func (p *Part) ParentContentType() string {
-//	parent := p.Parent()
-//	if parent == nil {
-//		return ""
-//	}
-//	return parent.ContentType()
-//}
-
-func (p *Part) getParentFromIter(iter *C.GMimePartIter) *C.GMimeObject {
-	return C.g_mime_part_iter_get_parent(iter)
-}
-
 // IsText returns true if part's mime is text/*
 func (p *Part) IsText() bool {
 	return gobool(C.gmime_is_text_part(p.gmimePart))
