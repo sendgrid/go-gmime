@@ -5,6 +5,7 @@
 GMimeMessage *gmime_parse (const char *buffer, size_t len);
 char* gmime_get_content_string (GMimeObject *object);
 char* gmime_get_content_type_string (GMimeObject *object);
+char* gmime_get_content_disposition(GMimeObject *object);
 gboolean gmime_is_multi_part (GMimeObject *object);
 gboolean gmime_is_part (GMimeObject *object);
 gboolean gmime_is_text_part (GMimeObject *object);

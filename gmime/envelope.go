@@ -321,6 +321,40 @@ func (m *Envelope) Walk(cb func(p *Part) error) error {
 	return nil
 }
 
+func (m *Envelope) WalkWithParent(cb func(p *Part) error) error {
+	partIter := C.g_mime_part_iter_new(m.asGMimeObject())
+	defer C.g_mime_part_iter_free(partIter)
+
+	for {
+		currentPart := C.g_mime_part_iter_get_current(partIter)
+
+		parentPartObj := C.g_mime_part_iter_get_parent(partIter)
+		var parentPart *Part
+		if parentPartObj != nil {
+			parentPart = &Part{
+				gmimePart: parentPartObj,
+			}
+		}
+
+		part := &Part{
+			gmimePart: currentPart,
+			parent:    parentPart,
+		}
+
+		err := cb(part)
+		if err != nil {
+			return err
+		}
+
+		next := C.g_mime_part_iter_next(partIter)
+		if !gobool(next) {
+			break
+		}
+	}
+
+	return nil
+}
+
 // Export composes mime from envelope
 func (m *Envelope) Export() ([]byte, error) {
 	// TODO: optimize this, bundle cgo calls

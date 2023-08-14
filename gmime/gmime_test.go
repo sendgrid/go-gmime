@@ -403,6 +403,38 @@ func TestIsAttachment(t *testing.T) {
 	}
 }
 
+func TestIsLegacyAttachment(t *testing.T) {
+	tests := []struct {
+		filename     string
+		contentType  string
+		isAttachment bool
+	}{
+		{"nested_calendar.eml", "text/calendar", true},
+
+		//include previous tests for backwards compatibility
+		{"textplain.eml", "text/plain", false},
+		{"multipleHeaders.eml", "text/plain", false},
+		{"attachmentwithname.eml", "text/plain", true},
+		{"attachmentwithoutname.eml", "text/plain", true},
+		{"inlineattachment.eml", "text/plain", true},
+		{"inline.eml", "text/plain", false},
+	}
+
+	for _, test := range tests {
+		mimeBytes, err := ioutil.ReadFile(fmt.Sprintf("test_data/%s", test.filename))
+		assert.NoError(t, err)
+		msg, err := Parse(string(mimeBytes))
+		assert.NoError(t, err)
+
+		msg.WalkWithParent(func(p *Part) error {
+			if p.ContentType() == test.contentType {
+				assert.Equal(t, test.isAttachment, p.isLegacyAttachment())
+			}
+			return nil
+		})
+	}
+}
+
 func TestParseAddressList(t *testing.T) {
 	tests := []struct {
 		addrList  string
