@@ -64,7 +64,7 @@ func (p *Part) IsAttachment() bool {
 	return false
 }
 
-func (p *Part) isLegacyAttachment() bool {
+func (p *Part) IsLegacyAttachment() bool {
 	if p.gmimePart == nil {
 		return false
 	}
