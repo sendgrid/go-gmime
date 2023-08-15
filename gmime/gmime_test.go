@@ -428,7 +428,7 @@ func TestIsLegacyAttachment(t *testing.T) {
 
 		msg.WalkWithParent(func(p *Part) error {
 			if p.ContentType() == test.contentType {
-				assert.Equal(t, test.isAttachment, p.isLegacyAttachment())
+				assert.Equal(t, test.isAttachment, p.IsLegacyAttachment())
 			}
 			return nil
 		})
