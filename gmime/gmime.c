@@ -37,6 +37,14 @@ char* gmime_get_content_type_string (GMimeObject *object) {
 	return g_mime_content_type_get_mime_type (ctype);
 }
 
+char* gmime_get_content_disposition(GMimeObject *object) {
+    GMimeContentDisposition *disposition = g_mime_object_get_content_disposition(object);
+    if (disposition) {
+        return disposition->disposition;
+    }
+    return NULL;
+}
+
 gboolean gmime_is_text_part (GMimeObject *object) {
 	return GMIME_IS_TEXT_PART (object);
 }

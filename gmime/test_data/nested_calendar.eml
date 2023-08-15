@@ -1,0 +1,29 @@
+From: testuser@example.com
+To: recipient@example.com
+Subject: Testing nested MIME
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="mixed_boundary"
+
+--mixed_boundary
+Content-Type: multipart/alternative; boundary="alternative_boundary"
+
+--alternative_boundary
+Content-Type: text/plain
+
+This is the plain text part.
+
+--alternative_boundary
+Content-Type: text/html
+
+<p>This is the HTML part.</p>
+
+--alternative_boundary
+Content-Type: text/calendar; charset="utf-8"; method=REQUEST
+Content-Transfer-Encoding: base64
+
+asdfgbase64
+
+--alternative_boundary--
+
+--mixed_boundary--
+

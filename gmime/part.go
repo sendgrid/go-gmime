@@ -2,7 +2,10 @@ package gmime
 
 // #include "gmime.h"
 import "C"
-import "unsafe"
+import (
+	"regexp"
+	"unsafe"
+)
 
 import (
 	"net/textproto"
@@ -12,6 +15,7 @@ import (
 // Part is a wrapper for message parts
 type Part struct {
 	gmimePart *C.GMimeObject
+	parent    *Part
 }
 
 // ContentType returns part's content type
@@ -26,6 +30,15 @@ func (p *Part) ContentTypeWithParam(param string) string {
 	ctype := C.g_mime_object_get_content_type(p.gmimePart)
 	charset := C.g_mime_content_type_get_parameter(ctype, C.CString(param))
 	return C.GoString(charset)
+}
+
+func (p *Part) Disposition() string {
+	cDisposition := C.gmime_get_content_disposition(p.gmimePart)
+	if cDisposition == nil {
+		return ""
+	}
+	//defer C.g_free(C.gpointer(unsafe.Pointer(cDisposition)))
+	return C.GoString(cDisposition)
 }
 
 // IsText returns true if part's mime is text/*
@@ -44,6 +57,42 @@ func (p *Part) IsAttachment() bool {
 	if gobool(C.g_mime_part_is_attachment((*C.GMimePart)(unsafe.Pointer(p.gmimePart)))) {
 		return true
 	}
+	if len(p.Filename()) > 0 {
+		return true
+	}
+
+	return false
+}
+
+func (p *Part) isLegacyAttachment() bool {
+	if p.gmimePart == nil {
+		return false
+	}
+
+	if !gobool(C.gmime_is_part(p.gmimePart)) || gobool(C.gmime_is_multi_part(p.gmimePart)) {
+		return false
+	}
+
+	if strings.Contains(strings.ToLower(p.Disposition()), "attachment") {
+		return true
+	}
+
+	contentType := strings.ToLower(p.ContentType())
+
+	if p.parent != nil {
+		parentContentType := strings.ToLower(p.parent.ContentType())
+		matched, _ := regexp.MatchString(`multipart/(alternative|related|mixed)`, parentContentType)
+
+		// Check if the parent is multipart/alternative and the current part is neither text/plain nor text/html
+		if matched && contentType != "text/plain" && contentType != "text/html" {
+			return true
+		}
+
+		if contentType == parentContentType {
+			return false
+		}
+	}
+
 	if len(p.Filename()) > 0 {
 		return true
 	}
