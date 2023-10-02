@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/mail"
+	"os"
 	"runtime"
 	"strings"
 	"testing"
@@ -663,6 +664,103 @@ func TestPart_String(t *testing.T) {
 			actual := make(map[string]string)
 			err = msg.Walk(func(p *Part) error {
 				actual[p.ContentType()] = p.String()
+				return nil
+			})
+			assert.NoError(t, err)
+			assert.Equal(t, tc.expected, actual)
+		})
+	}
+}
+
+func TestPart_GetHeader(t *testing.T) {
+	type TestCase struct {
+		filename string
+		expected []map[string]string
+	}
+	tcs := []TestCase{
+		{
+			filename: `test_data/mime_simple.eml`,
+			expected: []map[string]string{
+				{
+					"Content-Type": "text/html",
+				},
+				{
+					"Content-Transfer-Encoding": "quoted-printable",
+					"Content-Type":              "text/plain; charset=us-ascii",
+				},
+			},
+		},
+	}
+
+	for _, tc := range tcs {
+		t.Run(tc.filename, func(t *testing.T) {
+			mimeBytes, err := os.ReadFile(tc.filename)
+			assert.NoError(t, err)
+			msg, err := Parse(string(mimeBytes))
+			assert.NoError(t, err)
+			defer msg.Close()
+
+			section := 0
+			err = msg.Walk(func(p *Part) error {
+				actual := make(map[string]string)
+
+				for k := range tc.expected[section] {
+					actual[k] = p.GetHeader(k)
+				}
+
+				assert.Equal(t, tc.expected[section], actual)
+				section += 1
+				return nil
+			})
+
+			assert.NoError(t, err)
+		})
+	}
+}
+
+func TestPart_GetHeaders(t *testing.T) {
+	type TestCase struct {
+		filename string
+		expected []map[string]string
+	}
+	tcs := []TestCase{
+		{
+			filename: `test_data/mime_simple.eml`,
+			expected: []map[string]string{
+				{
+					"Content-Type": "text/html",
+				},
+				{
+					"Content-Transfer-Encoding": "quoted-printable",
+					"Content-Type":              "text/plain; charset=us-ascii",
+					"X-Sg-Header":               "sg-header",
+				},
+			},
+		},
+	}
+
+	for _, tc := range tcs {
+		t.Run(tc.filename, func(t *testing.T) {
+			mimeBytes, err := os.ReadFile(tc.filename)
+			assert.NoError(t, err)
+			msg, err := Parse(string(mimeBytes))
+			assert.NoError(t, err)
+			defer msg.Close()
+
+			actual := make([]map[string]string, len(tc.expected))
+			section := 0
+			err = msg.Walk(func(p *Part) error {
+				actual[section] = make(map[string]string)
+				if p.gmimePart == nil {
+					return nil
+				}
+
+				// add headers into the actual map
+				for k, v := range p.GetHeaders() {
+					actual[section][k] = v[0]
+				}
+
+				section += 1
 				return nil
 			})
 			assert.NoError(t, err)
