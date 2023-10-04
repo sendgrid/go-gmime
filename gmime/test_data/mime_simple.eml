@@ -1,0 +1,30 @@
+From: Nathaniel Borenstein <nsb@bellcore.com>
+To:  Ned Freed <ned@innosoft.com>
+Subject: Sample message
+MIME-Version: 1.0
+Content-type: multipart/mixed; boundary="simple
+ boundary"
+
+This is the preamble.  It is to be ignored, though it
+is a handy place for mail composers to include an
+explanatory note to non-MIME compliant readers.
+--simple boundary
+Content-type: text/html
+
+<HTML>
+<HEAD>
+<TITLE>HTML document title</TITLE>
+</HEAD>
+<BODY>
+<P>HTML document body
+</BODY>
+</HTML>
+
+--simple boundary
+Content-type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
+X-SG-Header: sg-header
+
+Something else
+--simple boundary--
+This is the epilogue.  It is also to be ignored.

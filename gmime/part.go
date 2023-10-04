@@ -151,9 +151,32 @@ func (p *Part) SetHeader(name string, value string) {
 	C.g_mime_header_list_set(headers, cName, cValue, cCharset)
 }
 
-// Headers gives you all headers for part
-func (p *Part) Headers() textproto.MIMEHeader {
-	return nil
+// GetHeaders gives you all headers for part
+func (p *Part) GetHeaders() textproto.MIMEHeader {
+	mimeHeaders := make(textproto.MIMEHeader)
+	headers := C.g_mime_object_get_header_list(p.asGMimeObject())
+	numHeaders := int(C.g_mime_header_list_get_count(headers))
+
+	for i := 0; i < numHeaders; i++ {
+		header := C.g_mime_header_list_get_header_at(headers, C.int(i))
+		name := C.GoString(C.g_mime_header_get_name(header))
+		value := C.GoString(C.g_mime_header_get_value(header))
+		mimeHeaders.Add(name, value)
+	}
+
+	return mimeHeaders
+}
+
+func (p *Part) GetHeader(name string) string {
+	cstr := C.CString(name)
+	defer C.free(unsafe.Pointer(cstr))
+
+	b := C.g_mime_object_get_header(p.asGMimeObject(), cstr)
+	if b == nil {
+		return ""
+	}
+
+	return C.GoString(b)
 }
 
 // ContentID returns the content ID of the attachment if the type is attachment, if not we return empty string
