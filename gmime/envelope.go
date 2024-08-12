@@ -52,16 +52,13 @@ func (m *Envelope) Headers() textproto.MIMEHeader {
 	// TODO: this is not super efficient, but easier to read, may be optimize this?
 	headers := C.g_mime_object_get_header_list(m.asGMimeObject())
 	count := C.g_mime_header_list_get_count(headers)
-	goHeaders := make(textproto.MIMEHeader, int(count))
+	goHeaders := make(textproto.MIMEHeader)
 	var i C.int
 	for i = 0; i < count; i++ {
 		header := C.g_mime_header_list_get_header_at(headers, i)
 		name := C.GoString(C.g_mime_header_get_name(header))
 		value := C.GoString(C.g_mime_header_get_value(header))
-		if _, ok := goHeaders[name]; !ok {
-			goHeaders[name] = nil
-		}
-		goHeaders[name] = append(goHeaders[name], value)
+		goHeaders.Add(name, value)
 	}
 	return goHeaders
 }
@@ -71,16 +68,13 @@ func (m *Envelope) RawHeaders() textproto.MIMEHeader {
 	// TODO: this is not super efficient, but easier to read, may be optimize this?
 	headers := C.g_mime_object_get_header_list(m.asGMimeObject())
 	count := C.g_mime_header_list_get_count(headers)
-	goHeaders := make(textproto.MIMEHeader, int(count))
+	goHeaders := make(textproto.MIMEHeader)
 	var i C.int
 	for i = 0; i < count; i++ {
 		header := C.g_mime_header_list_get_header_at(headers, i)
 		name := C.GoString(C.g_mime_header_get_name(header))
 		value := C.GoString(C.g_mime_header_get_raw_value(header))
-		if _, ok := goHeaders[name]; !ok {
-			goHeaders[name] = nil
-		}
-		goHeaders[name] = append(goHeaders[name], value)
+		goHeaders.Add(name, value)
 	}
 	return goHeaders
 }

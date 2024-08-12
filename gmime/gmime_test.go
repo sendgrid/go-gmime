@@ -8,6 +8,7 @@ import (
 	"net/mail"
 	"os"
 	"runtime"
+	"sort"
 	"strings"
 	"testing"
 
@@ -170,6 +171,78 @@ func TestAddHTMLAlternativeToPlainText(t *testing.T) {
 	assert.NoError(t, err)
 	assert.NotContains(t, string(exported), htmlPayload)
 	msg.Close()
+}
+
+func TestHeaders(t *testing.T) {
+	mimeBytes, err := ioutil.ReadFile("test_data/multipleHeaders.eml")
+	assert.NoError(t, err)
+	msg, err := Parse(string(mimeBytes))
+	assert.NoError(t, err)
+
+	assert.Equal(t, "<CAGPJ=uY91HEGoszHE9ELkB3wfcNJN4NGORM9q-vV8o_XJceBmg@mail.gmail.com>", msg.Headers().Get("Message-ID"))
+	assert.Equal(t, "<CAGPJ=uY91HEGoszHE9ELkB3wfcNJN4NGORM9q-vV8o_XJceBmg@mail.gmail.com>", msg.Headers().Get("Message-Id"))
+
+	headers := []string{}
+	for name, values := range msg.Headers() {
+		for _, value := range values {
+			headers = append(headers, fmt.Sprintf("%s: %s", name, value))
+		}
+	}
+	sort.Strings(headers)
+	assert.Equal(t, []string{
+		"Bcc: Tim <tim@sendgrid.com>",
+		"Cc: trevor <trevor@sendgrid.com>",
+		"Date: Tue, 27 May 2014 13:46:04 -0700",
+		"Delivered-To: kien.pham@sendgrid.com",
+		"From: Kien Pham <kpham@sendgrid.com>",
+		"Message-Id: <CAGPJ=uY91HEGoszHE9ELkB3wfcNJN4NGORM9q-vV8o_XJceBmg@mail.gmail.com>",
+		"Mime-Version: 1.0",
+		"Received: by 10.220.115.205 with HTTP; Tue, 27 May 2014 13:46:04 -0700 (PDT)",
+		"Reply-To: isaac <isaac@sendgrid.com>",
+		"Sender: Kane Kim <kane@sendgrid.com>",
+		"Subject: test inline image attachment",
+		"To: Kien Pham <kien@sendgrid.com>",
+		"X-Header: 1",
+		"X-Header: 2",
+		"X-Header: 3",
+		"X-Header: 4",
+	}, headers)
+}
+
+func TestRawHeaders(t *testing.T) {
+	mimeBytes, err := ioutil.ReadFile("test_data/multipleHeaders.eml")
+	assert.NoError(t, err)
+	msg, err := Parse(string(mimeBytes))
+	assert.NoError(t, err)
+
+	assert.Equal(t, " <CAGPJ=uY91HEGoszHE9ELkB3wfcNJN4NGORM9q-vV8o_XJceBmg@mail.gmail.com>\n", msg.RawHeaders().Get("Message-ID"))
+	assert.Equal(t, " <CAGPJ=uY91HEGoszHE9ELkB3wfcNJN4NGORM9q-vV8o_XJceBmg@mail.gmail.com>\n", msg.RawHeaders().Get("Message-Id"))
+
+	headers := []string{}
+	for name, values := range msg.RawHeaders() {
+		for _, value := range values {
+			headers = append(headers, fmt.Sprintf("%s:%s", name, value))
+		}
+	}
+	sort.Strings(headers)
+	assert.Equal(t, []string{
+		"Bcc: Tim <tim@sendgrid.com>\n",
+		"Cc: trevor <trevor@sendgrid.com>\n",
+		"Date: Tue, 27 May 2014 13:46:04 -0700\n",
+		"Delivered-To: kien.pham@sendgrid.com\n",
+		"From: Kien Pham <kpham@sendgrid.com>\n",
+		"Message-Id: <CAGPJ=uY91HEGoszHE9ELkB3wfcNJN4NGORM9q-vV8o_XJceBmg@mail.gmail.com>\n",
+		"Mime-Version: 1.0\n",
+		"Received: by 10.220.115.205 with HTTP; Tue, 27 May 2014 13:46:04 -0700 (PDT)\n",
+		"Reply-To: isaac <isaac@sendgrid.com>\n",
+		"Sender: Kane Kim <kane@sendgrid.com>\n",
+		"Subject: test inline image attachment\n",
+		"To: Kien Pham <kien@sendgrid.com>\n",
+		"X-Header: 1\n",
+		"X-Header: 2\n",
+		"X-Header: 3\n",
+		"X-Header: 4\n",
+	}, headers)
 }
 
 func TestRemoveAll(t *testing.T) {
